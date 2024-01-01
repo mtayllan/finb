@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_01_203954) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_01_211948) do
+  create_table "accounts", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "initial_balance", precision: 9, scale: 2, default: "0.0", null: false
+    t.decimal "balance", precision: 9, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.integer "parent_category_id"
