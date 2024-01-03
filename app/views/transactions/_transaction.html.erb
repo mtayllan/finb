@@ -1,29 +1,21 @@
-<div id="<%= dom_id transaction %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= transaction.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Value:</strong>
-    <%= transaction.value %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Category:</strong>
-    <%= transaction.category.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Account:</strong>
-    <%= transaction.account.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
+<tr id="<%= dom_id transaction %>">
+  <td class="px-6 py-4 whitespace-nowrap">
     <%= transaction.date.to_fs(:day_month_year) %>
-  </p>
-
-  <%= link_to "Edit this transaction", edit_transaction_path(transaction), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-  <hr class="mt-6">
-</div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= transaction.description %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= transaction.category.name %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= transaction.account.name %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap <%= transaction.value >= 0 ? 'text-blue-500' : 'text-orange-500' %>">
+    <%= transaction.value %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= link_to "Edit", edit_transaction_path(transaction), class: "text-indigo-600 hover:text-indigo-900" %>
+    <%= link_to "Delete", transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "text-orange-600 hover:text-orange-900 ml-4" %>
+  </td>
+</tr>
