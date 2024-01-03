@@ -38,6 +38,7 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction.destroy!
+    @transaction.account.update_balance
 
     redirect_to transactions_url, notice: "Transaction was successfully destroyed."
   end
