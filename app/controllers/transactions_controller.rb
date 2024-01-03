@@ -1,8 +1,10 @@
 class TransactionsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_transaction, only: %i[ edit update destroy ]
 
   def index
-    @transactions = Transaction.order(date: :desc)
+    @pagy, @transactions = pagy(Transaction.order(date: :desc))
   end
 
   def new
