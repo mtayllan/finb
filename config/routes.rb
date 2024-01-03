@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :transactions, except: :show
-  resources :accounts
+  resources :accounts, except: :show
   resources :categories, except: :show
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

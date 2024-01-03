@@ -6,8 +6,5 @@
   <p class="text-gray-700 text-base">
     Last Update: <%= l(account.updated_at, format: :short) %>
   </p>
-  <% if action_name != "show" %>
-    <%= link_to "Show this account", account, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium mt-4" %>
-    <%= link_to "Edit this account", edit_account_path(account), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium mt-4" %>
-  <% end %>
+  <%= link_to "Edit this account", edit_account_path(account), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium mt-4" %>
 </div>
