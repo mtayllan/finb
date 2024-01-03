@@ -1,11 +1,8 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: %i[ show edit update destroy ]
+  before_action :set_transaction, only: %i[ edit update destroy ]
 
   def index
     @transactions = Transaction.order(date: :desc)
-  end
-
-  def show
   end
 
   def new
@@ -22,7 +19,7 @@ class TransactionsController < ApplicationController
 
     if @transaction.save
       @transaction.account.update_balance
-      redirect_to transaction_url(@transaction), notice: "Transaction was successfully created."
+      redirect_to transactions_url, notice: "Transaction was successfully created."
     else
       set_categories_and_accounts
       render :new, status: :unprocessable_entity
@@ -32,7 +29,7 @@ class TransactionsController < ApplicationController
   def update
     if @transaction.update(transaction_params)
       @transaction.account.update_balance
-      redirect_to transaction_url(@transaction), notice: "Transaction was successfully updated."
+      redirect_to transactions_url, notice: "Transaction was successfully updated."
     else
       set_categories_and_accounts
       render :edit, status: :unprocessable_entity
