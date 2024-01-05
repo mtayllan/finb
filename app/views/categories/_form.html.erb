@@ -21,6 +21,28 @@
     <%= form.collection_select :parent_category_id, @categories_without_parent, :id, :name, {prompt: "Select a category"}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
   </div>
 
+  <div class="my-5">
+    <%= form.label :color %>
+    <%= form.color_field :color %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :icon %>
+    <div class="block grid grid-cols-5 gap-4 mt-2" data-controller="icon-selector" id="icons-list">
+      <% Category::Icons::ICONS.each do |icon_name, icon_html| %>
+        <button
+          type="button"
+          data-action="icon-selector#select"
+          data-icon-name="<%= icon_name %>"
+          class="w-8 h-8 rounded <%= icon_name.to_s == category.icon && 'bg-blue-200' %>"
+        >
+          <%= icon_html.html_safe %>
+        </button>
+      <% end %>
+      <%= form.hidden_field :icon, data: { 'icon-selector-target': 'iconInput' } %>
+    </div>
+  </div>
+
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
