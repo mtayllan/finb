@@ -4,4 +4,8 @@ class Category < ApplicationRecord
   has_many :sub_categories, class_name: "Category", foreign_key: "parent_category_id", dependent: :destroy
 
   validates :name, :color, :icon, presence: true
+
+  def icon_svg
+    Icons::ICONS[icon.to_sym] || Icons::ICONS[:question]
+  end
 end
