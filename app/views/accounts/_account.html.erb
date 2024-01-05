@@ -1,5 +1,12 @@
 <div id="<%= dom_id account %>" class="rounded-lg overflow-hidden shadow-lg p-6 bg-white">
-  <div class="font-bold text-xl mb-2"><%= account.name %></div>
+  <div class="font-bold text-xl mb-2">
+    <div class="flex items-center">
+      <div class="mr-2">
+        <%= account.name %>
+      </div>
+      <div class="w-6 h-6 rounded-full" style="background-color:<%= account.color %>"></div>
+    </div>
+  </div>
   <p class="text-gray-700 text-base">
     Balance: <%= account.balance %>
   </p>

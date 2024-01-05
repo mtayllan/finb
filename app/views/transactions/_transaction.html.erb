@@ -17,7 +17,12 @@
     </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
-    <%= transaction.account.name %>
+    <div class="flex items-center">
+      <div class="mr-2">
+        <%= transaction.account.name %>
+      </div>
+      <div class="w-6 h-6 rounded-full" style="background-color:<%= transaction.account.color %>"></div>
+    </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap <%= transaction.value >= 0 ? 'text-blue-500' : 'text-orange-500' %>">
     <%= transaction.value %>
