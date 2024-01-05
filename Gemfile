@@ -70,3 +70,5 @@ end
 gem "tailwindcss-rails", "~> 2.0"
 
 gem "pagy"
+
+gem "hotwire-livereload", "~> 1.3", :group => :development
