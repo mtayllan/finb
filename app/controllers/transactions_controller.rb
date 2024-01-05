@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ edit update destroy ]
 
   def index
-    @pagy, @transactions = pagy(Transaction.order(date: :desc))
+    @pagination, @transactions = pagy(Transaction.order(date: :desc))
   end
 
   def new
