@@ -6,7 +6,15 @@
     <%= transaction.description %>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
-    <%= transaction.category.name %>
+    <div class="flex items-center">
+      <div class="mr-2">
+        <%= transaction.category.icon_svg.html_safe %>
+      </div>
+      <div class="mr-2">
+        <%= transaction.category.name %>
+      </div>
+      <div class="w-6 h-6 rounded-full" style="background-color:<%= transaction.category.color %>"></div>
+    </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
     <%= transaction.account.name %>
