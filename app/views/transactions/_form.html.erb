@@ -33,7 +33,7 @@
 
   <div class="my-5">
     <%= form.label :date %>
-    <%= form.date_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= render partial: "components/date_picker", locals: { name: form.field_name(:date), initial_value: transaction.date&.to_fs(:day_month_year) } %>
   </div>
 
   <div class="inline">
