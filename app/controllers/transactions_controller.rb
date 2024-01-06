@@ -1,10 +1,9 @@
 class TransactionsController < ApplicationController
-  include Pagy::Backend
-
   before_action :set_transaction, only: %i[ edit update destroy ]
 
   def index
-    @pagination, @transactions = pagy(Transaction.order(date: :desc))
+    @month = params[:month] ? Date.parse(params[:month]) : Date.current
+    @transactions = Transaction.where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc)
   end
 
   def new
