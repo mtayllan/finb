@@ -29,14 +29,14 @@
   <div class="my-5">
     <%= form.label :icon %>
     <div class="block grid grid-cols-5 gap-4 mt-2" data-controller="icon-selector" id="icons-list">
-      <% Category::Icons::ICONS.each do |icon_name, icon_html| %>
+      <% Category::Icons::PATHS.each_key do |icon_name| %>
         <button
           type="button"
           data-action="icon-selector#select"
           data-icon-name="<%= icon_name %>"
           class="w-8 h-8 rounded <%= icon_name.to_s == category.icon && 'bg-blue-200' %>"
         >
-          <%= icon_html.html_safe %>
+          <%= Category::Icons.fetch(icon_name, background: 'transparent', fill: 'black').html_safe %>
         </button>
       <% end %>
       <%= form.hidden_field :icon, data: { 'icon-selector-target': 'iconInput' } %>
