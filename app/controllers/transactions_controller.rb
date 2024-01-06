@@ -8,11 +8,9 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
-    set_categories_and_accounts
   end
 
   def edit
-    set_categories_and_accounts
   end
 
   def create
@@ -22,7 +20,6 @@ class TransactionsController < ApplicationController
       @transaction.account.update_balance
       redirect_to transactions_url, notice: "Transaction was successfully created."
     else
-      set_categories_and_accounts
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,7 +29,6 @@ class TransactionsController < ApplicationController
       @transaction.account.update_balance
       redirect_to transactions_url, notice: "Transaction was successfully updated."
     else
-      set_categories_and_accounts
       render :edit, status: :unprocessable_entity
     end
   end
@@ -45,11 +41,6 @@ class TransactionsController < ApplicationController
   end
 
   private
-
-  def set_categories_and_accounts
-    @all_categories = Category.all.order(:name)
-    @all_accounts = Account.all.order(:name)
-  end
 
   def set_transaction
     @transaction = Transaction.find(params[:id])
