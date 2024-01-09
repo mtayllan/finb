@@ -47,6 +47,19 @@
   <div class="my-5">
     <%= form.label :date %>
     <%= render partial: "components/date_picker", locals: { name: form.field_name(:date), initial_value: transaction.date&.to_fs(:day_month_year) } %>
+    <div data-controller="quick-date-select" class="flex gap-8 mt-2" data-quick-date-select-input-name-value="<%= form.field_name(:date) %>">
+      <% 7.downto(1) do |i| %>
+        <% date = i.days.ago.to_date %>
+        <button
+          type="button"
+          class="text-blue-600 inline-block"
+          data-action="quick-date-select#select"
+          data-quick-date-select-value-param="<%= date.to_fs(:day_month_year) %>"
+        >
+          <%= date.strftime('%a %d') %>
+        </button>
+      <% end %>
+    </div>
   </div>
 
   <div class="inline">
