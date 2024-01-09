@@ -1,0 +1,27 @@
+<div data-controller="select" class="relative">
+  <input
+    data-select-target="searchInput"
+    class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+    type="text"
+    placeholder="<%= placeholder %>"
+    data-action="focus->select#openDropdown select#search"
+    value="<%= options.find { _1[:value] == value }&.[](:label) %>"
+  >
+  <input type="hidden" name="<%= name %>" data-select-target="inputValue" value="<%= value %>">
+
+  <div
+    data-select-target="dropdown"
+    class="hidden absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1 w-full z-10 overflow-auto max-h-64"
+  >
+    <% options.each do |option| %>
+      <button
+        type="button"
+        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md w-full text-left"
+        data-action="select#selectOption"
+        data-select-option-param="<%= option[:value] %>"
+      >
+        <%= option[:label] %>
+      </button>
+    <% end %>
+  </div>
+</div>
