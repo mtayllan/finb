@@ -23,12 +23,25 @@
 
   <div class="my-5">
     <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.all.order(:name), :id, :name, {}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
+    <%=
+      render 'components/select',
+      name: form.field_name(:category_id),
+      placeholder: 'Select a category',
+      options: Category.all.order(:name).map { |category| { value: category.id, label: category.name } },
+      value: transaction.category_id
+    %>
   </div>
+
 
   <div class="my-5">
     <%= form.label :account_id %>
-    <%= form.collection_select :account_id, Account.all.order(:name), :id, :name, {}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
+    <%=
+      render 'components/select',
+      name: form.field_name(:account_id),
+      placeholder: 'Select an account',
+      options: Account.all.order(:name).map { |account| { value: account.id, label: account.name } },
+      value: transaction.account_id
+    %>
   </div>
 
   <div class="my-5">
