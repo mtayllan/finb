@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
 
   def index
     @month = params[:month] ? Date.parse(params[:month]) : Date.current
-    @transactions = Transaction.where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc)
+    @transactions = Transaction.where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc, created_at: :desc)
   end
 
   def new
