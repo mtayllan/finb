@@ -1,10 +1,11 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 import {
   eachDayOfInterval,
   startOfToday, endOfMonth, endOfWeek, startOfWeek,
   format, parse, parseISO, add, getDay,
   isEqual, isToday, isSameMonth
-} from "date-fns"
+} from "date-fns";
+import { useClickOutside } from 'stimulus-use';
 
 export default class extends Controller {
   static targets = ["days", "currentMonth", "calendar", "input"]
@@ -19,6 +20,11 @@ export default class extends Controller {
     this.currentMonth = format(initialDate, 'MMM-yyyy');
     this.selectedDay = initialDate;
     this.renderCalendar();
+    useClickOutside(this);
+  }
+
+  clickOutside() {
+    this.closeCalendar();
   }
 
   openCalendar() {
