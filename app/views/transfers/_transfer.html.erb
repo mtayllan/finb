@@ -1,0 +1,32 @@
+<div id="<%= dom_id transfer %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Origin account:</strong>
+    <%= transfer.origin_account.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Target account:</strong>
+    <%= transfer.target_account.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= transfer.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Value:</strong>
+    <%= transfer.value %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Date:</strong>
+    <%= transfer.date.to_fs(:day_month_year) %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this transfer", transfer, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this transfer", edit_transfer_path(transfer), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

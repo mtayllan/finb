@@ -1,0 +1,69 @@
+<%= form_with(model: transfer, class: "contents") do |form| %>
+  <% if transfer.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(transfer.errors.count, "error") %> prohibited this transfer from being saved:</h2>
+
+      <ul>
+        <% transfer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% accounts = Account.all.order(:name) %>
+
+  <div class="my-5">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :origin_account_id %>
+    <%=
+      render 'components/select',
+      name: form.field_name(:origin_account_id),
+      placeholder: 'Select an account',
+      options: accounts.map { |account| { value: account.id, label: account.name } },
+      value: transfer.origin_account_id
+    %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :target_account_id %>
+    <%=
+      render 'components/select',
+      name: form.field_name(:target_account_id),
+      placeholder: 'Select an account',
+      options: accounts.map { |account| { value: account.id, label: account.name } },
+      value: transfer.target_account_id
+    %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :value %>
+    <%= form.text_field :value, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :date %>
+    <%= render partial: "components/date_picker", locals: { name: form.field_name(:date), initial_value: transfer.date&.to_fs(:day_month_year) } %>
+    <div data-controller="quick-date-select" class="flex gap-8 mt-2" data-quick-date-select-input-name-value="<%= form.field_name(:date) %>">
+      <% 7.downto(1) do |i| %>
+        <% date = i.days.ago.to_date %>
+        <button
+          type="button"
+          class="text-blue-600 inline-block"
+          data-action="quick-date-select#select"
+          data-quick-date-select-value-param="<%= date.to_fs(:day_month_year) %>"
+        >
+          <%= date.strftime('%a %d') %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
