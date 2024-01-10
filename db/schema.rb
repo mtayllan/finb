@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_05_234439) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_10_185826) do
   create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "initial_balance", precision: 9, scale: 2, default: "0.0", null: false
@@ -42,7 +42,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_05_234439) do
     t.index ["category_id"], name: "index_transactions_on_category_id"
   end
 
+  create_table "transfers", force: :cascade do |t|
+    t.integer "origin_account_id", null: false
+    t.integer "target_account_id", null: false
+    t.string "description"
+    t.decimal "value", precision: 10, scale: 2, null: false
+    t.date "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["origin_account_id"], name: "index_transfers_on_origin_account_id"
+    t.index ["target_account_id"], name: "index_transfers_on_target_account_id"
+  end
+
   add_foreign_key "categories", "categories", column: "parent_category_id"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
+  add_foreign_key "transfers", "accounts", column: "origin_account_id"
+  add_foreign_key "transfers", "accounts", column: "target_account_id"
 end
