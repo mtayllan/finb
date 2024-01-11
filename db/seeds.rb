@@ -88,3 +88,15 @@ end_date = Date.current
 end
 
 Account.all.each(&:update_balance)
+
+15.times do |i|
+  origin = Account.all.sample
+  target = Account.where.not(id: origin.id).sample
+  Transfer.create(
+    description: Faker::Lorem.sentence(word_count: 2),
+    value: Faker::Number.between(from: 0, to: 300.0),
+    origin_account: origin,
+    target_account: target,
+    date: Faker::Date.between(from: initial_date, to: end_date)
+  )
+end
