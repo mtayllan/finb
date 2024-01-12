@@ -87,8 +87,6 @@ end_date = Date.current
   )
 end
 
-Account.all.each(&:update_balance)
-
 15.times do |i|
   origin = Account.all.sample
   target = Account.where.not(id: origin.id).sample
@@ -100,3 +98,5 @@ Account.all.each(&:update_balance)
     date: Faker::Date.between(from: initial_date, to: end_date)
   )
 end
+
+Account.all.each(&:update_balance)
