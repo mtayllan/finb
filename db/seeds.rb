@@ -55,12 +55,12 @@ Account.create([
   {
     name: 'Cash',
     color: '#36AE7C',
-    initial_balance: 3000,
+    initial_balance: 4000,
   },
   {
     name: 'Inter',
     color: '#F87D0A',
-    initial_balance: 5000,
+    initial_balance: 6000,
   },
   {
     name: 'Bradesco',
@@ -70,14 +70,14 @@ Account.create([
   {
     name: 'Itaú',
     color: '#FF5901',
-    initial_balance: 2000,
+    initial_balance: 2500,
   }
 ])
 
-initial_date = Date.current - 3.months
+initial_date = Date.current - 5.months
 end_date = Date.current
 
-100.times do |i|
+200.times do |i|
   Transaction.create(
     description: Faker::Lorem.sentence(word_count: 3),
     value: Faker::Number.between(from: -300.0, to: 50.0),
@@ -87,7 +87,7 @@ end_date = Date.current
   )
 end
 
-15.times do |i|
+25.times do |i|
   origin = Account.all.sample
   target = Account.where.not(id: origin.id).sample
   Transfer.create(
