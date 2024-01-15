@@ -1,32 +1,31 @@
-<div id="<%= dom_id transfer %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Origin account:</strong>
-    <%= transfer.origin_account.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Target account:</strong>
-    <%= transfer.target_account.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= transfer.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Value:</strong>
-    <%= transfer.value %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
+<tr id="<%= dom_id transfer %>">
+  <td class="px-6 py-4 whitespace-nowrap">
     <%= transfer.date.to_fs(:day_month_year) %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this transfer", transfer, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this transfer", edit_transfer_path(transfer), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= transfer.description %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <div class="flex items-center">
+      <div class="mr-2">
+        <%= transfer.origin_account.name %>
+      </div>
+      <div class="w-6 h-6 rounded-full" style="background-color:<%= transfer.origin_account.color %>"></div>
+    </div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <div class="flex items-center">
+      <div class="mr-2">
+        <%= transfer.target_account.name %>
+      </div>
+      <div class="w-6 h-6 rounded-full" style="background-color:<%= transfer.target_account.color %>"></div>
+    </div>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= transfer.value %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= link_to "Edit", edit_transfer_path(transfer), class: "text-indigo-600 hover:text-indigo-900" %>
+    <%= link_to "Delete", transfer, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "text-orange-600 hover:text-orange-900 ml-4" %>
+  </td>
+</tr>
