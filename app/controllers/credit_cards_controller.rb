@@ -19,6 +19,7 @@ class CreditCardsController < ApplicationController
     @credit_card = CreditCard.new(credit_card_params)
 
     if @credit_card.save
+      @credit_card.create_bills
       redirect_to credit_card_url(@credit_card), notice: "Credit card was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -27,6 +28,7 @@ class CreditCardsController < ApplicationController
 
   def update
     if @credit_card.update(credit_card_params)
+      @credit_card.create_bills
       redirect_to credit_card_url(@credit_card), notice: "Credit card was successfully updated."
     else
       render :edit, status: :unprocessable_entity
