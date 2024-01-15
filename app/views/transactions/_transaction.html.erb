@@ -24,7 +24,7 @@
     </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap <%= transaction.value >= 0 ? 'text-blue-500' : 'text-orange-500' %>">
-    <%= transaction.value %>
+    <%= number_to_currency(transaction.value) %>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
     <%= link_to "Edit", edit_transaction_path(transaction), class: "text-indigo-600 hover:text-indigo-900" %>

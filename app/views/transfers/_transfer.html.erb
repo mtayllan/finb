@@ -22,7 +22,7 @@
     </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
-    <%= transfer.value %>
+    <%= number_to_currency(transfer.value) %>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
     <%= link_to "Edit", edit_transfer_path(transfer), class: "text-indigo-600 hover:text-indigo-900" %>
