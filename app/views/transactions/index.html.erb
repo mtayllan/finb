@@ -11,7 +11,7 @@
   <div class="flex justify-center items-center my-6 gap-8">
     <%=
       link_to @month.prev_month.strftime('%b %Y'),
-              url_for(params.permit(:account_id).merge(month: @month.prev_month.strftime('%Y/%m'))),
+              url_for(params.permit(:account_id, :category_id).merge(month: @month.prev_month.strftime('%Y/%m'))),
               class: "text-blue-600 hover:underline"
     %>
 
@@ -19,7 +19,7 @@
 
     <%=
       link_to @month.next_month.strftime('%b %Y'),
-              url_for(params.permit(:account_id).merge(month: @month.next_month.strftime('%Y/%m'))),
+              url_for(params.permit(:account_id, :category_id).merge(month: @month.next_month.strftime('%Y/%m'))),
               class: "text-blue-600 hover:underline"
     %>
   </div>

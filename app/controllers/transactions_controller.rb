@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
     @month = params[:month] ? Date.parse(params[:month]) : Date.current
     @transactions = Transaction.where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc, created_at: :desc)
     @transactions = @transactions.where(account_id: params[:account_id]) if params[:account_id].present?
+    @transactions = @transactions.where(category_id: params[:category_id]) if params[:category_id].present?
   end
 
   def new

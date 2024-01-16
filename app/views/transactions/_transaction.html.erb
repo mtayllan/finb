@@ -10,15 +10,15 @@
       <div class="mr-2">
         <%= transaction.category.icon_svg.html_safe %>
       </div>
-      <div class="mr-2">
-        <%= transaction.category.name %>
+      <div class="mr-2 hover:underline text-blue-600">
+        <%= link_to transaction.category.name, url_for(params.permit(:month, :account_id).merge(category_id: transaction.category_id)) %>
       </div>
     </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
     <div class="flex items-center">
       <div class="mr-2 hover:underline text-blue-600">
-        <%= link_to transaction.account.name, url_for(params.permit(:month).merge(account_id: transaction.account_id)) %>
+        <%= link_to transaction.account.name, url_for(params.permit(:month, :category_id).merge(account_id: transaction.account_id)) %>
       </div>
       <div class="w-6 h-6 rounded-full" style="background-color:<%= transaction.account.color %>"></div>
     </div>
