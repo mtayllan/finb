@@ -9,11 +9,19 @@
   </div>
 
   <div class="flex justify-center items-center my-6 gap-8">
-    <%= link_to @month.prev_month.strftime('%b %Y'), transactions_path(month: @month.prev_month.strftime('%Y/%m')), class: "text-blue-600" %>
+    <%=
+      link_to @month.prev_month.strftime('%b %Y'),
+              url_for(params.permit(:account_id).merge(month: @month.prev_month.strftime('%Y/%m'))),
+              class: "text-blue-600 hover:underline"
+    %>
 
     <div class="font-bold text-2xl"> <%= @month.strftime('%B %Y') %> </div>
 
-    <%= link_to @month.next_month.strftime('%b %Y'), transactions_path(month: @month.next_month.strftime('%Y/%m')), class: "text-blue-600" %>
+    <%=
+      link_to @month.next_month.strftime('%b %Y'),
+              url_for(params.permit(:account_id).merge(month: @month.next_month.strftime('%Y/%m'))),
+              class: "text-blue-600 hover:underline"
+    %>
   </div>
 
   <table id="transactions" class="min-w-full divide-y divide-gray-200 mt-5">
