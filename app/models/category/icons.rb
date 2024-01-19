@@ -3,7 +3,7 @@ class Category
     # icons source: https://phosphoricons.com/
 
     def self.fetch(name, size: 32, background: '#000000', fill: 'white')
-      <<-HTML
+      <<~HTML
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="#{size}" height="#{size}"
