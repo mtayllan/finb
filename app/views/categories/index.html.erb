@@ -8,7 +8,5 @@
     <%= link_to "New category", new_category_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <% @primary_categories.each do |category| %>
-    <%= render 'category_tree', category: category %>
-  <% end %>
+  <%= render @categories %>
 </div>
