@@ -11,12 +11,17 @@
     </div>
   <% end %>
 
-  <% accounts = Account.all.order(:name) %>
+  <div class="my-5">
+    <%= form.label :value %>
+    <%= form.number_field :value, step: 0.01, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
 
   <div class="my-5">
     <%= form.label :description %>
     <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
+
+  <% accounts = Account.all.order(:name) %>
 
   <div class="my-5">
     <%= form.label :origin_account_id %>
@@ -38,11 +43,6 @@
       options: accounts.map { |account| { value: account.id, label: account.name } },
       value: transfer.target_account_id
     %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :value %>
-    <%= form.number_field :value, step: 0.01, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
