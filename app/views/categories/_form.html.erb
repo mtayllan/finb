@@ -17,11 +17,6 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :parent_category_id %>
-    <%= form.collection_select :parent_category_id, @categories_without_parent, :id, :name, {prompt: "Select a category"}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
-  </div>
-
-  <div class="my-5">
     <%= form.label :color %>
     <%= form.color_field :color %>
   </div>
