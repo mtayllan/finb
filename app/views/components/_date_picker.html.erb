@@ -54,4 +54,22 @@
       </div>
     </div>
   </div>
+
+  <div class="flex gap-8 mt-2">
+    <% 1.upto(7) do |i| %>
+      <% date = i.days.ago.to_date %>
+      <button
+        type="button"
+        class="text-blue-600 inline-block"
+        data-action="date-picker#quickSelect"
+        data-date-picker-value-param="<%= date.to_fs(:day_month_year) %>"
+      >
+        <% if date.yesterday? %>
+          Yesterday
+        <% else %>
+          <%= date.strftime('%a %d') %>
+        <% end %>
+      </button>
+    <% end %>
+  </div>
 </div>

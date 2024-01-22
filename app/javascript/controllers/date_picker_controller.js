@@ -100,6 +100,12 @@ export default class extends Controller {
     this.closeCalendar();
   }
 
+  quickSelect(event) {
+    this.selectedDay = parse(event.params.value, 'dd/MM/yyyy', new Date());
+    this.renderCalendar();
+    this.closeCalendar();
+  }
+
   nextMonth() {
     const firstDayCurrentMonth = parse(this.currentMonth, 'MMM-yyyy', new Date());
     const firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
