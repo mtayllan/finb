@@ -12,13 +12,26 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <div class="flex items-center">
+      <%= form.radio_button :transaction_type, "expense", checked: transaction.value <= 0, class: "mr-2" %>
+      <%= form.label :transaction_type_expense, class: "mr-4" do %>
+        Expense
+      <% end %>
+      <%= form.radio_button :transaction_type, "income", checked: transaction.value > 0, class: "mr-2" %>
+      <%= form.label :transaction_type_income do %>
+        Income
+      <% end %>
+    </div>
   </div>
 
   <div class="my-5">
     <%= form.label :value %>
-    <%= form.number_field :value, step: 0.01, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.number_field :value, min: 0.01, step: 0.01, value: transaction.value.abs, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
