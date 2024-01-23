@@ -2,7 +2,7 @@ class TransfersController < ApplicationController
   before_action :set_transfer, only: %i[ show edit update destroy ]
 
   def index
-    @transfers = Transfer.all
+    @transfers = Transfer.all.order(date: :desc)
   end
 
   def show
