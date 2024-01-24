@@ -1,10 +1,12 @@
 class HomeController < ApplicationController
   def index
     current_month = Date.today.beginning_of_month..Date.today.end_of_month
+    last_month = Date.today.prev_month.beginning_of_month..Date.today.prev_month.end_of_month
     last_three_months = (Date.today - 3.months).beginning_of_month..(Date.today - 1.month).end_of_month
 
     @totals = {
       current_month: calculate_expenses_from(current_month),
+      last_month: calculate_expenses_from(last_month),
       last_three_months: calculate_expenses_from(last_three_months),
     }
   end
