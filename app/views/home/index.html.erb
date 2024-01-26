@@ -42,8 +42,8 @@
               <div class="mr-2">
                 <%= category.icon_svg.html_safe %>
               </div>
-              <h2 class="font-semibold text-lg text-gray-700 mr-2">
-                <%= category.name %>
+              <h2 class="font-semibold text-lg text-gray-700 mr-2 hover:underline">
+                <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id) %>
               </h2>
             </div>
             <div>
@@ -62,8 +62,8 @@
               <div class="mr-2">
                 <%= category.icon_svg.html_safe %>
               </div>
-              <h2 class="font-semibold text-lg text-gray-700 mr-2">
-                <%= category.name %>
+              <h2 class="font-semibold text-lg text-gray-700 mr-2 hover:underline">
+                <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id) %>
               </h2>
             </div>
             <div>
@@ -120,8 +120,8 @@
               <div class="mr-2">
                 <%= category.icon_svg.html_safe %>
               </div>
-              <h2 class="font-semibold text-lg text-gray-700 mr-2">
-                <%= category.name %>
+              <h2 class="font-semibold text-lg text-gray-700 mr-2 hover:underline">
+                <%= link_to category.name, transactions_path(month: Date.current.prev_month.strftime('%Y/%m'), category_id: category.id) %>
               </h2>
             </div>
             <div>
@@ -140,8 +140,8 @@
               <div class="mr-2">
                 <%= category.icon_svg.html_safe %>
               </div>
-              <h2 class="font-semibold text-lg text-gray-700 mr-2">
-                <%= category.name %>
+              <h2 class="font-semibold text-lg text-gray-700 mr-2 hover:underline">
+                <%= link_to category.name, transactions_path(month: Date.current.prev_month.strftime('%Y/%m'), category_id: category.id) %>
               </h2>
             </div>
             <div>
