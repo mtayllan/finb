@@ -1,24 +1,28 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# FinB
 
-Things you may want to cover:
+A simple expense organizer app built with Ruby on Rails and SQLite. This app is designed for personal use, allowing users to track and manage their monthly expenses.
 
-* Ruby version
 
-* System dependencies
+## Features
 
-* Configuration
+- **Expense Tracking:** Log your daily expenses and categorize them for better organization.
+- **Monthly Overview:** Get a summary of your monthly spending with a clear breakdown of categories.
+- **Flexible Deployment:** Run the app locally or deploy it on your favorite cloud platform.
 
-* Database creation
 
-* Database initialization
+## Setup
 
-* How to run the test suite
+```
+# todo
+```
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## License
 
-* ...
+This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License - see the LICENSE file for details.
+
+## Feedback
+
+If you have any feedback, feel free to open a new Issue and we can discuss!
+
