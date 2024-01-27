@@ -14,4 +14,5 @@
     Last Update: <%= l(account.updated_at, format: :short) %>
   </p>
   <%= link_to "Edit this account", edit_account_path(account), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium mt-4" %>
+  <%= link_to "Transactions", transactions_path(account_id: account.id), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium mt-4" %>
 </div>
