@@ -12,10 +12,21 @@ A simple expense organizer app built with Ruby on Rails and SQLite. This app is 
 
 
 ## Setup
-
+- Install [Docker](https://www.docker.com/)
+- Clone the repository
 ```
-# todo
+git clone https://github.com/mtayllan/finb.git
 ```
+- Build the image
+```
+cd finb
+docker build -t finb .
+```
+- Run
+```
+docker run -d -p 9090:3000 --name finb -v finb-storage:/rails/storage --env SECRET_KEY_BASE=1 finb
+```
+- Access: http://localhost:9090
 
 
 ## License
