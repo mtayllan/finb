@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer color-themes {
+  :root {
+    --content-color: 55 65 81;
+    --constrast-content-color: 200 200 200;
+    --secondary-color: 37 99 235;
+    --accent-color: 240 46 170;
+
+    --primary-color-default: 131 157 209;
+    --primary-color-50: 242 247 251;
+    --primary-color-100: 231 240 248;
+    --primary-color-200: 211 226 242;
+    --primary-color-300: 185 207 232;
+    --primary-color-400: 156 182 221;
+    --primary-color-500: 131 157 209;
+    --primary-color-600: 106 127 193;
+    --primary-color-700: 99 116 174;
+    --primary-color-800: 74 89 137;
+    --primary-color-900: 65 78 110;
+    --primary-color-950: 38 44 64;
+
+    --content-color-1: 41 41 41;
+    --content-color-2: 68 68 68;
+    --content-color-alt1: 255 255 255;
+    --content-color-alt2: 200 200 200;
+  }
+
+  @media(prefers-color-scheme: dark) {
+    :root {
+      --content-color: 200 200 200;
+      --constrast-content-color: 55 65 81;
+      --secondary-color: 37 99 235;
+      --accent-color: 240 46 170;
+
+      --content-color-1: 255 255 255;
+      --content-color-2: 200 200 200;
+      --content-color-alt1: 41 41 41;
+      --content-color-alt2: 68 68 68;
+
+      --primary-color-default: 55 65 81;
+      --primary-color-50: 246 247 249;
+      --primary-color-100: 236 238 242;
+      --primary-color-200: 212 218 227;
+      --primary-color-300: 175 186 202;
+      --primary-color-400: 132 149 172;
+      --primary-color-500: 100 119 147;
+      --primary-color-600: 80 96 121;
+      --primary-color-700: 65 78 99;
+      --primary-color-800: 55 65 81;
+      --primary-color-900: 51 59 71;
+      --primary-color-950: 34 39 47;
+    }
+  }
+}
