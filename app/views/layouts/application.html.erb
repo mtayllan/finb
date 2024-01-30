@@ -13,8 +13,8 @@
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
-  <body>
-    <nav class="bg-gray-800" data-controller="navbar">
+  <body class="bg-content-alt1">
+    <nav class="bg-primary-800" data-controller="navbar">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
           <div class="flex-shrink-0 flex items-center">
@@ -23,14 +23,14 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <%= link_to 'Transactions', transactions_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-              <%= link_to 'Transfers', transfers_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-              <%= link_to 'Accounts', accounts_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-              <%= link_to 'Categories', categories_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to 'Transactions', transactions_path, class: "text-content-1 hover:bg-content-1 hover:text-content-alt1 px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to 'Transfers', transfers_path, class: "text-content-1 hover:bg-content-1 hover:text-content-alt1 px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to 'Accounts', accounts_path, class: "text-content-1 hover:bg-content-1 hover:text-content-alt1 px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to 'Categories', categories_path, class: "text-content-1 hover:bg-content-1 hover:text-content-alt1 px-3 py-2 rounded-md text-sm font-medium" %>
             </div>
           </div>
           <div class="-mr-2 flex md:hidden">
-            <button type="button" data-action="click->navbar#toggle" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <button type="button" data-action="click->navbar#toggle" class="bg-primary-800 inline-flex items-center justify-center p-2 rounded-md text-content-1 hover:text-primary-800 hover:bg-content-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
               <!--
                 Heroicon name: menu
@@ -50,10 +50,10 @@
 
       <div class="hidden" data-navbar-target="mobile">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <%= link_to 'Transactions', transactions_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
-          <%= link_to 'Transfers', transfers_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
-          <%= link_to 'Accounts', accounts_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
-          <%= link_to 'Categories', categories_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
+          <%= link_to 'Transactions', transactions_path, class: "text-content-1 hover:bg-content-1 hover:text-content-alt1 block px-3 py-2 rounded-md text-base font-medium" %>
+          <%= link_to 'Transfers', transfers_path, class: "text-content-1 hover:bg-content-1 hover:text-content-alt1 block px-3 py-2 rounded-md text-base font-medium" %>
+          <%= link_to 'Accounts', accounts_path, class: "text-content-1 hover:bg-content-1 hover:text-content-alt1 block px-3 py-2 rounded-md text-base font-medium" %>
+          <%= link_to 'Categories', categories_path, class: "text-content-1 hover:bg-content-1 hover:text-content-alt1 block px-3 py-2 rounded-md text-base font-medium" %>
         </div>
       </div>
     </nav>
