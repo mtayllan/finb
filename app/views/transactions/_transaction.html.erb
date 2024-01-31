@@ -1,32 +1,32 @@
-<tr id="<%= dom_id transaction %>">
-  <td class="px-4 py-2 whitespace-nowrap">
+<tr id="<%= dom_id transaction %>" class="border-b transition-colors hover:bg-muted/50">
+  <td class="p-2 align-middle font-medium">
     <%= transaction.date.to_fs(:day_month_year) %>
   </td>
-  <td class="px-4 py-2 whitespace-nowrap">
+  <td class="p-2 align-middle font-medium">
     <%= transaction.description %>
   </td>
-  <td class="px-4 py-2 whitespace-nowrap">
+  <td class="p-2 align-middle font-medium">
     <div class="flex items-center">
       <div class="mr-2">
         <%= transaction.category.icon_svg.html_safe %>
       </div>
-      <div class="mr-2 hover:underline text-blue-600">
+      <div class="underline underline-offset-4 hover:text-primary">
         <%= link_to transaction.category.name, url_for(params.permit(:month, :account_id).merge(category_id: transaction.category_id)) %>
       </div>
     </div>
   </td>
-  <td class="px-4 py-2 whitespace-nowrap">
+  <td class="p-2 align-middle font-medium">
     <div class="flex items-center">
-      <div class="mr-2 hover:underline text-blue-600">
+      <div class="mr-2 underline underline-offset-4 hover:text-primary">
         <%= link_to transaction.account.name, url_for(params.permit(:month, :category_id).merge(account_id: transaction.account_id)) %>
       </div>
       <div class="w-6 h-6 rounded-full" style="background-color:<%= transaction.account.color %>"></div>
     </div>
   </td>
-  <td class="px-4 py-2 whitespace-nowrap <%= transaction.value >= 0 ? 'text-blue-500' : 'text-orange-500' %>">
+  <td class="p-2 align-middle font-medium <%= transaction.value >= 0 ? 'text-blue-500' : 'text-orange-500' %>">
     <%= number_to_currency(transaction.value) %>
   </td>
-  <td class="px-4 py-2 whitespace-nowrap">
+  <td class="p-2 align-middle font-medium">
     <%= link_to "Edit", edit_transaction_path(transaction), class: "text-indigo-600 hover:text-indigo-900" %>
     <%= link_to "Delete", transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "text-orange-600 hover:text-orange-900 ml-4" %>
   </td>
