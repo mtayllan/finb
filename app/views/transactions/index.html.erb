@@ -4,51 +4,54 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Transactions</h1>
-    <%= link_to "New transaction", new_transaction_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="scroll-m-20 text-4xl font-bold tracking-tight">Transactions</h1>
+    <%=
+      link_to "New transaction", new_transaction_path,
+      class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+    %>
   </div>
 
   <div class="flex justify-center items-center my-6 gap-8">
     <%=
       link_to @month.prev_month.strftime('%b %Y'),
               url_for(params.permit(:account_id, :category_id).merge(month: @month.prev_month.strftime('%Y/%m'))),
-              class: "text-blue-600 hover:underline"
+              class: "underline underline-offset-4 hover:text-primary"
     %>
 
-    <div class="font-bold text-2xl"> <%= @month.strftime('%B %Y') %> </div>
+    <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
 
     <%=
       link_to @month.next_month.strftime('%b %Y'),
               url_for(params.permit(:account_id, :category_id).merge(month: @month.next_month.strftime('%Y/%m'))),
-              class: "text-blue-600 hover:underline"
+              class: "underline underline-offset-4 hover:text-primary"
     %>
   </div>
 
-  <div class="relative overflow-x-auto">
-    <table id="transactions" class="min-w-full divide-y divide-gray-200 mt-5">
-      <thead class="bg-gray-50">
-        <tr>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+  <div class="relative w-full overflow-auto">
+    <table id="transactions" class="w-full text-sm">
+      <thead class="[&_tr]:border-b">
+        <tr class="border-b transition-colors hover:bg-muted/50">
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
             Date
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
             Description
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
             Category
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
             Account
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
             Value
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
             Actions
           </th>
         </tr>
       </thead>
-      <tbody class="bg-white divide-y divide-gray-200">
+      <tbody class="[&_tr:last-child]:border-0">
         <%= render @transactions %>
       </tbody>
     </table>
