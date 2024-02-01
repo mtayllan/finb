@@ -24,18 +24,18 @@
     </div>
   </div>
 
-  <div class="my-5">
-    <%= form.label :value %>
-    <%= form.number_field :value, min: 0.01, step: 0.01, value: transaction.value.abs, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="grid w-full items-center gap-1.5 my-5">
+    <%= form.label :value, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <%= form.number_field :value, min: 0.01, step: 0.01, value: transaction.value.abs, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="grid w-full items-center gap-1.5 my-5">
+    <%= form.label :description, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <%= form.text_field :description, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :category_id %>
+  <div class="grid w-full items-center gap-1.5 my-5">
+    <%= form.label :category_id, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
     <%=
       render 'components/select',
       name: form.field_name(:category_id),
@@ -45,9 +45,8 @@
     %>
   </div>
 
-
-  <div class="my-5">
-    <%= form.label :account_id %>
+  <div class="grid w-full items-center gap-1.5 my-5">
+    <%= form.label :account_id, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
     <%=
       render 'components/select',
       name: form.field_name(:account_id),
@@ -57,9 +56,9 @@
     %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :date %>
-    <%= render partial: "components/date_picker", locals: { name: form.field_name(:date), initial_value: transaction.date&.to_fs(:day_month_year) } %>
+  <div class="grid w-full items-center gap-1.5 my-5">
+    <%= form.label :date, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <%= render "components/date_picker", name: form.field_name(:date), initial_value: transaction.date&.to_fs(:day_month_year) %>
   </div>
 
   <div class="inline">
