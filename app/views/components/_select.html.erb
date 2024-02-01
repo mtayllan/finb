@@ -1,7 +1,7 @@
 <div data-controller="select" class="relative">
   <input
     data-select-target="searchInput"
-    class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+    class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
     type="text"
     placeholder="<%= placeholder %>"
     data-action="focus->select#openDropdown select#search"
@@ -11,12 +11,12 @@
 
   <div
     data-select-target="dropdown"
-    class="hidden absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1 w-full z-10 overflow-auto max-h-64"
+    class="hidden absolute right-0 mt-1 w-full z-10 overflow-auto max-h-64 rounded-md border bg-popover text-popover-foreground shadow-md"
   >
     <% options.each do |option| %>
       <button
         type="button"
-        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md w-full text-left"
+        class="flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none hover:bg-accent focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
         data-action="select#selectOption"
         data-select-option-param="<%= option[:value] %>"
       >
