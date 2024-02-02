@@ -1,16 +1,16 @@
-<div id="<%= dom_id category %>" class="p-5 border-b border-gray-200">
+<div id="<%= dom_id category %>" class="px-2 py-3 border-b border-border">
   <div class="flex items-center justify-between">
     <div class="flex items-center">
       <div class="mr-2">
         <%= category.icon_svg.html_safe %>
       </div>
-      <h2 class="font-semibold text-lg text-gray-700 mr-2">
+      <h2 class="text-lg font-medium leading-none">
         <%= category.name %>
       </h2>
     </div>
     <div class="flex items-center">
-      <%= link_to "Edit", edit_category_path(category), class: "text-yellow-500 hover:text-yellow-700 mr-4" %>
-      <%= link_to "Delete", category, data: {  turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "text-red-500 hover:text-red-700" %>
+      <%= link_to "Edit", edit_category_path(category), class: "text-indigo-600 hover:text-indigo-900 mr-4" %>
+      <%= link_to "Delete", category, data: {  turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "text-orange-600 hover:text-orange-900" %>
     </div>
   </div>
 </div>
