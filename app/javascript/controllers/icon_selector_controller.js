@@ -9,9 +9,9 @@ export default class extends Controller {
 
     document.querySelectorAll('#icons-list > button').forEach(button => {
       if (button.dataset['iconName'] === selectedButton.dataset['iconName']) {
-        button.classList.add('bg-blue-200')
+        button.classList.add('bg-accent')
       } else {
-        button.classList.remove('bg-blue-200')
+        button.classList.remove('bg-accent')
       }
     });
   }

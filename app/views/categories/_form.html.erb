@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="grid w-full items-center gap-1.5 my-5">
+    <%= form.label :name, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <%= form.text_field :name, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
+  </div>
+
+  <div class="grid w-full items-center my-5">
+    <%= form.label :color, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <%= form.color_field :color, class: "mt-2" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :color %>
-    <%= form.color_field :color %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :icon %>
-    <div class="block grid grid-cols-5 gap-4 mt-2" data-controller="icon-selector" id="icons-list">
+    <%= form.label :icon, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <div class="grid grid-cols-5 gap-4 mt-2" data-controller="icon-selector" id="icons-list">
       <% Category::Icons::PATHS.each_key do |icon_name| %>
         <button
           type="button"
           data-action="icon-selector#select"
           data-icon-name="<%= icon_name %>"
-          class="w-8 h-8 rounded <%= icon_name.to_s == category.icon && 'bg-blue-200' %>"
+          class="w-8 h-8 rounded <%= icon_name.to_s == category.icon && 'bg-accent' %>"
         >
-          <%= Category::Icons.fetch(icon_name, background: 'transparent', fill: 'black').html_safe %>
+          <%= Category::Icons.fetch(icon_name, background: 'transparent', fill: 'currentColor').html_safe %>
         </button>
       <% end %>
       <%= form.hidden_field :icon, data: { 'icon-selector-target': 'iconInput' } %>
@@ -39,6 +39,6 @@
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
   </div>
 <% end %>
