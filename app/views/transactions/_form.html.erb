@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="my-5">
-    <div class="flex items-center">
-      <%= form.radio_button :transaction_type, "expense", checked: transaction.value <= 0, class: "mr-2" %>
-      <%= form.label :transaction_type_expense, class: "mr-4" do %>
-        Expense
-      <% end %>
-      <%= form.radio_button :transaction_type, "income", checked: transaction.value > 0, class: "mr-2" %>
-      <%= form.label :transaction_type_income do %>
-        Income
-      <% end %>
+    <%= form.label :transaction_type, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-1" %>
+    <div class="flex items-center space-x-2" data-controller="switch-input">
+      <button type="button" data-action="switch-input#toggle" role="switch" data-state="<%= transaction.value > 0 ? 'checked' : 'unchecked' %>" class="peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[state=checked]:bg-blue-500 data-[state=unchecked]:bg-orange-500">
+        <span data-state="<%= transaction.value > 0 ? 'checked' : 'unchecked' %>" class="pointer-events-none block h-4 w-4 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0"></span>
+      </button>
+      <label data-action="click->switch-input#toggle" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+        <%= transaction.value > 0 ? 'Income' : 'Expense' %>
+      </label>
+      <%= form.hidden_field :transaction_type, value: transaction.value > 0 ? 'income' : 'expense' %>
     </div>
   </div>
 
