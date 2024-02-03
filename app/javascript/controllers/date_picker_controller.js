@@ -28,6 +28,11 @@ export default class extends Controller {
   }
 
   openCalendar() {
+    const calendarRectBottom = this.element.getBoundingClientRect().bottom;
+    if (calendarRectBottom + 280 > window.innerHeight) {
+      this.calendarTarget.style.top = 'auto';
+      this.calendarTarget.style.bottom = '100%';
+    }
     this.calendarTarget.classList.remove('hidden');
   }
 
@@ -58,18 +63,15 @@ export default class extends Controller {
 
       const button = document.createElement('button');
       button.type = 'button';
-      button.classList.add('mx-auto', 'flex', 'h-8', 'w-8', 'items-center', 'justify-center', 'rounded-full');
+      button.classList.add('mx-auto', 'flex', 'h-8', 'w-8', 'items-center', 'justify-center', 'text-center', 'text-sm', 'rounded-md', 'transition-colors');
       const dayIsEqualToSelectedDay = isEqual(day, this.selectedDay);
       const dayIsToday = isToday(day);
       const dayIsSameMonth = isSameMonth(day, firstDayCurrentMonth);
 
-      if (dayIsEqualToSelectedDay) button.classList.add('text-white');
-      if (!dayIsEqualToSelectedDay && dayIsToday) button.classList.add('text-blue-500');
-      if (!dayIsEqualToSelectedDay && !dayIsToday && dayIsSameMonth) button.classList.add('text-gray-900');
-      if (!dayIsEqualToSelectedDay && !dayIsToday && !dayIsSameMonth) button.classList.add('text-gray-400');
-      if (dayIsEqualToSelectedDay && dayIsToday) button.classList.add('bg-blue-500');
-      if (dayIsEqualToSelectedDay && !dayIsToday) button.classList.add('bg-gray-900');
-      if (!dayIsEqualToSelectedDay) button.classList.add('hover:bg-gray-200');
+      if (dayIsEqualToSelectedDay) button.classList.add('bg-primary', 'text-primary-foreground', 'hover:bg-primary', 'hover:text-primary-foreground', 'focus:bg-primary', 'focus:text-primary-foreground');
+      if (!dayIsEqualToSelectedDay && dayIsToday) button.classList.add('bg-accent', 'text-accent-foreground');
+      if (!dayIsEqualToSelectedDay && !dayIsToday && !dayIsSameMonth) button.classList.add('text-muted-foreground', 'opacity-50');
+      if (!dayIsEqualToSelectedDay) button.classList.add('hover:bg-accent', 'hover:text-accent-foreground');
       if (dayIsEqualToSelectedDay || dayIsToday) button.classList.add('font-semibold');
 
       button.dataset['action'] = 'date-picker#selectDay';
