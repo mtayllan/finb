@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :transfers
+  resources :transfers, except: :show
   resources :transactions, except: :show
   resources :accounts, except: :show
   resources :categories, except: :show
