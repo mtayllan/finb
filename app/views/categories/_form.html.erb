@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= form.label :name, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <%= render 'components/form_label', form:, attribute: :name %>
     <%= form.text_field :name, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
   </div>
 
   <div class="grid w-full items-center my-5">
-    <%= form.label :color, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <%= render 'components/form_label', form:, attribute: :color %>
     <%= form.color_field :color, class: "mt-2" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :icon, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+    <%= render 'components/form_label', form:, attribute: :icon %>
     <div class="grid grid-cols-5 gap-4 mt-2" data-controller="icon-selector" id="icons-list">
       <% Category::Icons::PATHS.each_key do |icon_name| %>
         <button
