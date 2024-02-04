@@ -3,7 +3,7 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
   <div class="flex justify-between items-center pb-2">
-    <h1 class="scroll-m-20 text-4xl font-bold tracking-tight">Accounts</h1>
+    <%= render("components/h1") { 'Accounts' } %>
     <%= link_to "New Account", new_account_path, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
   </div>
   <div id="accounts" class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
