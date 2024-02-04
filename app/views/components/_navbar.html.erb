@@ -1,4 +1,4 @@
-<header data-controller="navbar">
+<header data-controller="components--navbar">
   <div class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
     <div class="container flex h-14 max-w-screen-2xl items-center">
       <div class="mr-4 hidden md:flex">
@@ -15,7 +15,7 @@
       </div>
       <button
         type="button"
-        data-action="click->navbar#toggle"
+        data-action="click->components--navbar#toggle"
         class="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 py-2 mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
       >
         <svg stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
@@ -30,7 +30,7 @@
 
   <div
     role="dialog"
-    data-navbar-target="mobile"
+    data-components--navbar-target="mobile"
     class="hidden fixed z-50 gap-4 bg-background p-6 shadow-lg inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm pr-0"
     tabindex="-1"
     style="pointer-events: auto;"
@@ -55,7 +55,7 @@
     </div>
     <button
       type="button"
-      data-action="click->navbar#toggle"
+      data-action="click->components--navbar#toggle"
       class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
     >
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4">
