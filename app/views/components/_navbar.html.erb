@@ -7,10 +7,18 @@
           <span class="hidden font-bold sm:inline-block">Finb</span>
         </a>
         <nav class="flex items-center gap-6 text-sm">
-          <%= link_to 'Transactions', transactions_path, class: "transition-colors hover:text-foreground/80 text-foreground/60" %>
-          <%= link_to 'Transfers', transfers_path, class: "transition-colors hover:text-foreground/80 text-foreground/60" %>
-          <%= link_to 'Accounts', accounts_path, class: "transition-colors hover:text-foreground/80 text-foreground/60" %>
-          <%= link_to 'Categories', categories_path, class: "transition-colors hover:text-foreground/80 text-foreground/60" %>
+          <%= link_to 'Transactions', transactions_path,
+            data: { active: controller_name == 'transactions' && action_name == 'index' },
+            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
+          <%= link_to 'Transfers', transfers_path,
+            data: { active: controller_name == 'transfers' && action_name == 'index' },
+            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
+          <%= link_to 'Accounts', accounts_path,
+            data: { active: controller_name == 'accounts' && action_name == 'index' },
+            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
+          <%= link_to 'Categories', categories_path,
+            data: { active: controller_name == 'categories' && action_name == 'index' },
+            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
         </nav>
       </div>
       <button
@@ -44,7 +52,7 @@
         <div style="min-width: 100%; display: table;">
           <div class="flex flex-col space-y-3">
             <%= link_to 'Transactions', transactions_path, class: "transition-colors hover:text-foreground/80 text-foreground/60" %>
-            <%= link_to 'Transfers', transfers_path, class: "transition-colors hover:text-foreground/80 text-foreground/60" %>
+            <%= link_to 'Transfers', transfers_path, class: "transition-colors hover:text-foreground/80 text-foreground/60"  %>
             <%= link_to 'Accounts', accounts_path, class: "transition-colors hover:text-foreground/80 text-foreground/60" %>
             <%= link_to 'Categories', categories_path, class: "transition-colors hover:text-foreground/80 text-foreground/60" %>
           </div>
