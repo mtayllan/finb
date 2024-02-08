@@ -2,7 +2,7 @@
   <h2 class="scroll-m-20 text-2xl font-bold tracking-tight">
     This month
   </h2>
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
     <div class="flex flex-col gap-2">
       <div class="my-2">Summary</div>
       <div class="rounded-xl border bg-card text-card-foreground shadow">
@@ -75,6 +75,15 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div
+    class="grid grid-cols-2 mt-4"
+    data-controller="categories-charts"
+    data-categories-charts-expenses-value="<%= @totals[:current_month][:expenses_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1].abs } }.to_json %>"
+    data-categories-charts-income-value="<%= @totals[:current_month][:income_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1] } }.to_json %>"
+  >
+    <div data-categories-charts-target="expenses" class="w-full h-96 flex"></div>
+    <div data-categories-charts-target="income" class="w-full h-96 flex"></div>
   </div>
 
   <hr class="my-4">
@@ -155,6 +164,16 @@
         <% end %>
       </div>
     </div>
+  </div>
+
+  <div
+    class="grid grid-cols-2 mt-4"
+    data-controller="categories-charts"
+    data-categories-charts-expenses-value="<%= @totals[:last_month][:expenses_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1].abs } }.to_json %>"
+    data-categories-charts-income-value="<%= @totals[:last_month][:income_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1] } }.to_json %>"
+  >
+    <div data-categories-charts-target="expenses" class="w-full h-96 flex"></div>
+    <div data-categories-charts-target="income" class="w-full h-96 flex"></div>
   </div>
 
   <hr class="my-4">
