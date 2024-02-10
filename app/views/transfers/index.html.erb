@@ -11,6 +11,22 @@
     %>
   </div>
 
+  <div class="flex justify-center items-center my-6 gap-8">
+    <%=
+      link_to @month.prev_month.strftime('%b %Y'),
+              url_for(month: @month.prev_month.strftime('%Y/%m')),
+              class: "underline underline-offset-4 hover:text-primary"
+    %>
+
+    <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
+
+    <%=
+      link_to @month.next_month.strftime('%b %Y'),
+              url_for(month: @month.next_month.strftime('%Y/%m')),
+              class: "underline underline-offset-4 hover:text-primary"
+    %>
+  </div>
+
   <div class="relative w-full overflow-auto mt-3">
     <table id="transfers" class="w-full text-sm">
       <thead class="[&_tr]:border-b">
