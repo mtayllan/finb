@@ -1,6 +1,6 @@
 class Transfer < ApplicationRecord
-  belongs_to :origin_account, class_name: 'Account'
-  belongs_to :target_account, class_name: 'Account'
+  belongs_to :origin_account, class_name: "Account"
+  belongs_to :target_account, class_name: "Account"
 
   validates :date, :value, presence: true
   validate :different_accounts

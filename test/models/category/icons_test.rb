@@ -1,8 +1,8 @@
-require 'test_helper'
+require "test_helper"
 
 class Category::IconsTest < ActiveSupport::TestCase
-  test 'fetches the icon for the given name' do
-    assert_equal Category::Icons.fetch(:student, size: 10, background: '#ffffff', fill: 'black'),
+  test "fetches the icon for the given name" do
+    assert_equal Category::Icons.fetch(:student, size: 10, background: "#ffffff", fill: "black"),
     <<~HTML
       <svg
         xmlns="http://www.w3.org/2000/svg"

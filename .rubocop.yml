@@ -1,5 +1,12 @@
+inherit_from: .rubocop_todo.yml
+
 # Omakase Ruby styling for Rails
 inherit_gem:
   rubocop-rails-omakase: rubocop.yml
 
-# Your own specialized rules go here
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: no_space
+
+Style/StringLiterals:
+  Include:
+    - "db/**/*"

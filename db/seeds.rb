@@ -1,77 +1,77 @@
 if Rails.env.development?
   Category.create([
     {
-      name: 'Food',
-      color: '#0C356A',
-      icon: 'food'
+      name: "Food",
+      color: "#0C356A",
+      icon: "food"
     },
     {
-      name: 'Lunch',
-      color: '#0174BE',
-      icon: 'fork_knife'
+      name: "Lunch",
+      color: "#0174BE",
+      icon: "fork_knife"
     },
     {
-      name: 'Health',
-      color: '#7D0A0A',
-      icon: 'heartbeat',
+      name: "Health",
+      color: "#7D0A0A",
+      icon: "heartbeat"
     },
     {
-      name: 'Salary',
-      color: '#3E6D9C',
-      icon: 'money',
+      name: "Salary",
+      color: "#3E6D9C",
+      icon: "money"
     },
     {
-      name: 'Games',
-      color: '#FFCD4B',
-      icon: 'game',
+      name: "Games",
+      color: "#FFCD4B",
+      icon: "game"
     },
     {
-      name: 'House',
-      color: '#5463FF',
-      icon: 'house',
+      name: "House",
+      color: "#5463FF",
+      icon: "house"
     },
     {
-      name: 'Clothes',
-      color: '#36AE7C',
-      icon: 't_shirt',
+      name: "Clothes",
+      color: "#36AE7C",
+      icon: "t_shirt"
     },
     {
-      name: 'Cashback',
-      color: '#6BCB77',
-      icon: 'money',
+      name: "Cashback",
+      color: "#6BCB77",
+      icon: "money"
     },
     {
-      name: 'Gifts',
-      color: '#FFD93D',
-      icon: 'gift',
+      name: "Gifts",
+      color: "#FFD93D",
+      icon: "gift"
     },
     {
-      name: 'Tech',
-      color: '#161E54',
-      icon: 'pc',
+      name: "Tech",
+      color: "#161E54",
+      icon: "pc"
     }
   ])
 
   Account.create([
     {
-      name: 'Cash',
-      color: '#36AE7C',
-      initial_balance: 4000,
+      name: "Cash",
+      color: "#36AE7C",
+      initial_balance: 4000
     },
     {
-      name: 'Inter',
-      color: '#F87D0A',
-      initial_balance: 6000,
+      name: "Inter",
+      color: "#F87D0A",
+      initial_balance: 6000
     },
     {
-      name: 'Bradesco',
-      color: '#BA0401',
-      initial_balance: 10000,
+      name: "Bradesco",
+      color: "#BA0401",
+      initial_balance: 10000
     },
     {
-      name: 'Itaú',
-      color: '#FF5901',
-      initial_balance: 2500,
+      name: "Itaú",
+      color: "#FF5901",
+      initial_balance: 2500
     }
   ])
 
@@ -102,5 +102,3 @@ if Rails.env.development?
 
   Account.all.each(&:update_balance)
 end
-
-
