@@ -150,6 +150,11 @@ GEM
     nokogiri (1.15.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    propshaft (0.8.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
@@ -209,13 +214,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sprockets (4.2.1)
-      concurrent-ruby (~> 1.0)
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      sprockets (>= 3.0.0)
     sqlite3 (1.6.7)
       mini_portile2 (~> 2.8.0)
     stimulus-rails (1.3.0)
@@ -255,10 +253,10 @@ DEPENDENCIES
   faker
   hotwire-livereload (~> 1.3)
   importmap-rails
+  propshaft
   puma (>= 5.0)
   rails (~> 7.1.1)
   selenium-webdriver
-  sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
   tailwindcss-rails (~> 2.0)

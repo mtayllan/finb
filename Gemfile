@@ -8,7 +8,7 @@ gem "sqlite3", "~> 1.4"
 gem "puma", ">= 5.0"
 
 # FRONTEND
-gem "sprockets-rails"
+gem "propshaft"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
