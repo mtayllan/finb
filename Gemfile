@@ -19,17 +19,16 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem "debug"
-  gem 'faker'
+  gem "faker"
 end
 
 group :development do
   gem "hotwire-livereload", "~> 1.3"
   gem "web-console"
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-
