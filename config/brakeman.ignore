@@ -1,0 +1,29 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 105,
+      "fingerprint": "68a99a6f3d98b342fd87bfc376b83b6c84f808940f41a5556c315daa0478d910",
+      "check_name": "PermitAttributes",
+      "message": "Potentially dangerous key allowed for mass assignment",
+      "file": "app/controllers/transactions_controller.rb",
+      "line": 56,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TransactionsController",
+        "method": "transaction_params"
+      },
+      "user_input": ":account_id",
+      "confidence": "High",
+      "cwe_id": [
+        915
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2024-02-12 10:26:32 -0300",
+  "brakeman_version": "6.1.2"
+}
