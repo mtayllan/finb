@@ -24,14 +24,14 @@
   <div class="my-5">
     <%= render 'components/form_label', form:, attribute: :icon %>
     <div class="grid grid-cols-5 gap-4 mt-2" data-controller="icon-selector" id="icons-list">
-      <% Category::Icons::PATHS.each_key do |icon_name| %>
+      <% all_icons.each do |icon_name| %>
         <button
           type="button"
           data-action="icon-selector#select"
           data-icon-name="<%= icon_name %>"
           class="w-8 h-8 rounded <%= icon_name.to_s == category.icon && 'bg-accent' %>"
         >
-          <%= Category::Icons.fetch(icon_name, background: 'transparent', fill: 'currentColor').html_safe %>
+          <%== render_icon(icon_name) %>
         </button>
       <% end %>
       <%= form.hidden_field :icon, data: { 'icon-selector-target': 'iconInput' } %>

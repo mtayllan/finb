@@ -42,7 +42,7 @@
           <div class="mt-2 flex justify-between">
             <div class="flex items-center">
               <div class="mr-2">
-                <%= category.icon_svg.html_safe %>
+                <%== render_category_icon(category) %>
               </div>
               <h2 class="font-semibold mr-2 hover:underline">
                 <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id) %>
@@ -62,7 +62,7 @@
           <div class="mt-2 flex justify-between">
             <div class="flex items-center">
               <div class="mr-2">
-                <%= category.icon_svg.html_safe %>
+                <%== render_category_icon(category) %>
               </div>
               <h2 class="font-semibold mr-2 hover:underline">
                 <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id) %>
@@ -131,7 +131,7 @@
           <div class="mt-2 flex justify-between">
             <div class="flex items-center">
               <div class="mr-2">
-                <%= category.icon_svg.html_safe %>
+                <%== render_category_icon(category) %>
               </div>
               <h2 class="font-semibold mr-2 hover:underline">
                 <%= link_to category.name, transactions_path(month: Date.current.prev_month.strftime('%Y/%m'), category_id: category.id) %>
@@ -151,7 +151,7 @@
           <div class="mt-2 flex justify-between">
             <div class="flex items-center">
               <div class="mr-2">
-                <%= category.icon_svg.html_safe %>
+                <%== render_category_icon(category) %>
               </div>
               <h2 class="font-semibold mr-2 hover:underline">
                 <%= link_to category.name, transactions_path(month: Date.current.prev_month.strftime('%Y/%m'), category_id: category.id) %>
@@ -222,7 +222,7 @@
           <div class="mt-2 flex justify-between">
             <div class="flex items-center">
               <div class="mr-2">
-                <%= category.icon_svg.html_safe %>
+                <%== render_category_icon(category) %>
               </div>
               <h2 class="font-semibold mr-2">
                 <%= category.name %>
@@ -242,7 +242,7 @@
           <div class="mt-2 flex justify-between">
             <div class="flex items-center">
               <div class="mr-2">
-                <%= category.icon_svg.html_safe %>
+                <%== render_category_icon(category) %>
               </div>
               <h2 class="font-semibold mr-2">
                 <%= category.name %>

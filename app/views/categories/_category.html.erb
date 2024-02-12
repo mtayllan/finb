@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between">
     <div class="flex items-center">
       <div class="mr-2">
-        <%= category.icon_svg.html_safe %>
+        <%== render_category_icon(category) %>
       </div>
       <h2 class="text-lg font-medium leading-none">
         <%= category.name %>
