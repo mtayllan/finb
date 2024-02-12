@@ -3,9 +3,10 @@ class TransactionsController < ApplicationController
 
   def index
     @month = params[:month] ? Date.parse(params[:month]) : Date.current
-    @transactions = Transaction.includes(:category, :account).where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc, created_at: :desc)
-    @transactions = @transactions.where(account_id: params[:account_id]) if params[:account_id].present?
-    @transactions = @transactions.where(category_id: params[:category_id]) if params[:category_id].present?
+    filter = { date: @month.beginning_of_month..@month.end_of_month }
+    filter[:account_id] = params[:account_id] if params[:account_id]
+    filter[:category_id] = params[:category_id] if params[:category_id]
+    @transactions = Transaction.includes(:category, :account).where(filter).order(date: :desc, created_at: :desc)
   end
 
   def new
