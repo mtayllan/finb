@@ -26,7 +26,7 @@ group :development do
   gem "hotwire-livereload", "~> 1.3"
   gem "web-console"
   gem "rubocop-rails-omakase", require: false
-  gem 'brakeman', require: false
+  gem "brakeman", require: false
 end
 
 group :test do
