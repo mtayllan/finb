@@ -6,5 +6,12 @@ Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: no_space
 
 Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
   Include:
+    - "app/**/*"
+    - "config/**/*"
+    - "lib/**/*"
+    - "test/**/*"
+    - "Gemfile"
     - "db/**/*"
