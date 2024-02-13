@@ -3,7 +3,9 @@ require_relative "../config/environment"
 require "rails/test_help"
 
 require "simplecov"
-SimpleCov.start("rails")
+SimpleCov.start("rails") do
+  enable_coverage :branch
+end
 
 module ActiveSupport
   class TestCase
