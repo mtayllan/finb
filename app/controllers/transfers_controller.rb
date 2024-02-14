@@ -1,12 +1,9 @@
 class TransfersController < ApplicationController
-  before_action :set_transfer, only: %i[ show edit update destroy ]
+  before_action :set_transfer, only: %i[ edit update destroy ]
 
   def index
     @month = params[:month] ? Date.parse(params[:month]) : Date.current
     @transfers = Transfer.includes(:origin_account, :target_account).where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc, created_at: :desc)
-  end
-
-  def show
   end
 
   def new
