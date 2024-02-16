@@ -1,6 +1,6 @@
 <div
   id="<%= dom_id account %>" class="rounded-xl border bg-card text-card-foreground shadow p-6"
-  style="background: linear-gradient(135deg, hsl(var(--background)) 30%, <%= account.color %> 100%); "
+  style="background: linear-gradient(135deg, hsl(var(--background)) 30%, <%= account.color %> 100%);"
 >
   <div class="flex flex-col space-y-1.5">
     <h3 class="font-semibold leading-none tracking-tight text-xl"><%= account.name %></h3>
@@ -14,6 +14,6 @@
   </p>
   <div class="flex flex-between gap-2 mt-4">
     <%= link_to "Edit this account", edit_account_path(account), class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
-    <%= link_to "Transactions", transactions_path(account_id: account.id), class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
+    <%= link_to "Transactions", account, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
   </div>
 </div>

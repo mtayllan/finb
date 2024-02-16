@@ -1,0 +1,30 @@
+<tr id="<%= dom_id transfer %>" class="border-b transition-colors hover:bg-muted/50">
+  <td class="p-2 align-middle font-medium">
+    <%= transfer.date.to_fs(:day_month_year) %>
+  </td>
+  <td class="p-2 align-middle font-medium">
+    <%= transfer.description %>
+  </td>
+  <td class="p-2 align-middle font-medium">
+    <div class="flex items-center">
+      <% if @account.id == transfer.origin_account.id %>
+        <div class="mr-2">
+          Transfer to <%= transfer.target_account.name %>
+        </div>
+        <div class="w-6 h-6 rounded-full" style="background-color:<%= transfer.target_account.color %>"></div>
+      <% else %>
+        <div class="mr-2">
+          Transfer from <%= transfer.origin_account.name %>
+        </div>
+        <div class="w-6 h-6 rounded-full" style="background-color:<%= transfer.origin_account.color %>"></div>
+      <% end %>
+    </div>
+  </td>
+  <td class="p-2 align-middle font-medium <%= @account.id == transfer.target_account.id ? 'text-positive' : 'text-negative' %>">
+    <%= number_to_currency(transfer.value) %>
+  </td>
+  <td class="p-2 align-middle font-medium">
+    <%= link_to "Edit", edit_transfer_path(transfer), class: "text-indigo-600 hover:text-indigo-900" %>
+    <%= link_to "Delete", transfer, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "text-orange-600 hover:text-orange-900 ml-4" %>
+  </td>
+</tr>
