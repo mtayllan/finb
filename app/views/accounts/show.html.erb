@@ -1,0 +1,62 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <div class="flex justify-between items-center pb-2">
+    <%= render("components/h1") do %>
+      <div class="text-transparent !bg-clip-text" style="background: linear-gradient(180deg, hsl(var(--foreground)) 10%, <%= @account.color %> 100%);">
+        <%= @account.name %>
+      </div>
+    <% end %>
+    <%= link_to "Add transaction", new_transaction_path, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
+  </div>
+
+  <div class="flex justify-center items-center my-6 gap-8">
+    <%=
+      link_to @month.prev_month.strftime('%b %Y'),
+              url_for(params.permit(:category_id).merge(month: @month.prev_month.strftime('%Y/%m'))),
+              class: "underline underline-offset-4 hover:text-primary"
+    %>
+
+    <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
+
+    <%=
+      link_to @month.next_month.strftime('%b %Y'),
+              url_for(params.permit(:category_id).merge(month: @month.next_month.strftime('%Y/%m'))),
+              class: "underline underline-offset-4 hover:text-primary"
+    %>
+  </div>
+
+  <div class="relative w-full overflow-auto">
+    <table id="transactions" class="w-full text-sm">
+      <thead class="[&_tr]:border-b">
+        <tr class="border-b transition-colors hover:bg-muted/50">
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Date
+          </th>
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Description
+          </th>
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Category
+          </th>
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Value
+          </th>
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody class="[&_tr:last-child]:border-0">
+        <% @transactions_and_transfers.each do |record| %>
+          <% if record.is_a?(Transaction) %>
+            <%= render 'transaction', transaction: record %>
+          <% else %>
+            <%= render 'transfer', transfer: record %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
