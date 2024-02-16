@@ -220,6 +220,10 @@ GEM
       ffi (~> 1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
+    redis (5.1.0)
+      redis-client (>= 0.17.0)
+    redis-client (0.20.0)
+      connection_pool
     regexp_parser (2.9.0)
     reline (0.4.2)
       io-console (~> 0.5)
@@ -311,6 +315,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 7.1.1)
+  redis
   rubocop-rails-omakase
   selenium-webdriver
   simplecov

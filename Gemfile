@@ -28,6 +28,7 @@ group :development do
   gem "web-console"
   gem "rubocop-rails-omakase", require: false
   gem "brakeman", require: false
+  gem "redis"
 end
 
 group :test do
