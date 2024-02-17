@@ -21,7 +21,7 @@ class TransactionsController < ApplicationController
 
     if @transaction.save
       @transaction.account.update_balance
-      redirect_to transactions_url, notice: "Transaction was successfully created."
+      redirect_to account_url(@transaction.account), notice: "Transaction was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class TransactionsController < ApplicationController
   def update
     if @transaction.update(transaction_params)
       @transaction.account.update_balance
-      redirect_to transactions_url, notice: "Transaction was successfully updated."
+      redirect_to account_url(@transaction.account), notice: "Transaction was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class TransactionsController < ApplicationController
     @transaction.destroy!
     @transaction.account.update_balance
 
-    redirect_to transactions_url, notice: "Transaction was successfully destroyed."
+    redirect_to account_url(@transaction.account), notice: "Transaction was successfully destroyed."
   end
 
   private
