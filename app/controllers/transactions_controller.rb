@@ -10,7 +10,7 @@ class TransactionsController < ApplicationController
   end
 
   def new
-    @transaction = Transaction.new
+    @transaction = Transaction.new(account_id: params[:account_id])
   end
 
   def edit
