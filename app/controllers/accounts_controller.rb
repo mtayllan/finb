@@ -59,6 +59,6 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :initial_balance, :balance, :color)
+    params.require(:account).permit(:name, :initial_balance, :balance, :color, :kind)
   end
 end
