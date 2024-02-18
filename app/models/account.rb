@@ -3,6 +3,8 @@ class Account < ApplicationRecord
 
   validates :name, :color, :initial_balance, presence: true
 
+  enum :type, [:checking, :savings, :credit_card, :investment]
+
   def update_balance
     update(balance: initial_balance + transactions.sum(:value) - transfers_as_origin.sum(:value) + transfers_as_target.sum(:value))
   end
