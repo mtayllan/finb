@@ -2,13 +2,14 @@ require "test_helper"
 
 class AccountTest < ActiveSupport::TestCase
   test "validations" do
-    account = Account.new(name: "", color: "", initial_balance: nil)
+    account = Account.new(name: "", color: "", initial_balance: nil, kind: nil)
     assert_not account.valid?
     assert_includes account.errors[:name], "can't be blank"
     assert_includes account.errors[:color], "can't be blank"
     assert_includes account.errors[:initial_balance], "can't be blank"
+    assert_includes account.errors[:kind], "can't be blank"
 
-    account.assign_attributes(name: "Bank One", color: "#000", initial_balance: 0)
+    account.assign_attributes(name: "Bank One", color: "#000", initial_balance: 0, kind: :checking)
     assert account.valid?
   end
 
