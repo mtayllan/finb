@@ -9,14 +9,18 @@
     <div class="flex items-center">
       <% if @account.id == transfer.origin_account.id %>
         <div class="mr-2">
-          Transfer to <%= transfer.target_account.name %>
+          <%== render_account_icon(transfer.target_account) %>
         </div>
-        <div class="w-6 h-6 rounded-full" style="background-color:<%= transfer.target_account.color %>"></div>
+        <div>
+          <%= transfer.target_account.name %>: Outbound transfer
+        </div>
       <% else %>
         <div class="mr-2">
-          Transfer from <%= transfer.origin_account.name %>
+          <%== render_account_icon(transfer.origin_account) %>
         </div>
-        <div class="w-6 h-6 rounded-full" style="background-color:<%= transfer.origin_account.color %>"></div>
+        <div>
+          <%= transfer.origin_account.name %>: Inbound transfer
+        </div>
       <% end %>
     </div>
   </td>
