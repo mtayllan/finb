@@ -8,17 +8,17 @@
   <td class="p-2 align-middle font-medium">
     <div class="flex items-center">
       <div class="mr-2">
-        <%= transfer.origin_account.name %>
+        <%== render_account_icon(transfer.origin_account) %>
       </div>
-      <div class="w-6 h-6 rounded-full" style="background-color:<%= transfer.origin_account.color %>"></div>
+      <%= transfer.origin_account.name %>
     </div>
   </td>
   <td class="p-2 align-middle font-medium">
     <div class="flex items-center">
       <div class="mr-2">
-        <%= transfer.target_account.name %>
+        <%== render_account_icon(transfer.target_account) %>
       </div>
-      <div class="w-6 h-6 rounded-full" style="background-color:<%= transfer.target_account.color %>"></div>
+      <%= transfer.target_account.name %>
     </div>
   </td>
   <td class="p-2 align-middle font-medium">

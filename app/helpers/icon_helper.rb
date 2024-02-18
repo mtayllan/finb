@@ -16,6 +16,11 @@ module IconHelper
     render_icon(category.icon, background: category.color)
   end
 
+  ACCOUNT_ICONS = { checking: "bank", savings: "piggy_bank", credit_card: "credit_card", investment: "chart_line_up" }.freeze
+  def render_account_icon(account)
+    render_icon(ACCOUNT_ICONS[account.kind.to_sym], background: account.color)
+  end
+
   def all_icons
     PATHS.keys
   end
