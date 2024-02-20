@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_18_205407) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_20_220737) do
+  create_table "account_balances", force: :cascade do |t|
+    t.integer "account_id", null: false
+    t.date "date", null: false
+    t.decimal "balance", precision: 19, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "date"], name: "index_account_balances_on_account_id_and_date", unique: true
+    t.index ["account_id"], name: "index_account_balances_on_account_id"
+  end
+
   create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "initial_balance", precision: 9, scale: 2, default: "0.0", null: false
@@ -53,6 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_18_205407) do
     t.index ["target_account_id"], name: "index_transfers_on_target_account_id"
   end
 
+  add_foreign_key "account_balances", "accounts", on_delete: :cascade
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
   add_foreign_key "transfers", "accounts", column: "origin_account_id"
