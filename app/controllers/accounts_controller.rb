@@ -9,6 +9,7 @@ class AccountsController < ApplicationController
     @month = params[:month] ? Date.parse(params[:month]) : Date.current
     filter = { date: @month.beginning_of_month..@month.end_of_month }
     filter[:category_id] = params[:category_id] if params[:category_id]
+    filter[:account_id] = @account.id if @account.id
     transactions = Transaction.includes(:category).where(filter).order(date: :desc, created_at: :desc)
     transfers = [] if filter[:category_id]
     transfers ||= Transfer.includes(:origin_account, :target_account)
