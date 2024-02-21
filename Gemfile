@@ -4,8 +4,8 @@ ruby "3.3.0"
 
 # CORE
 gem "rails", "~> 7.1.1"
-gem "sqlite3", "~> 1.4"
 gem "puma", ">= 5.0"
+gem "litestack"
 
 # FRONTEND
 gem "propshaft"
@@ -28,7 +28,6 @@ group :development do
   gem "web-console"
   gem "rubocop-rails-omakase", require: false
   gem "brakeman", require: false
-  gem "redis"
 end
 
 group :test do
