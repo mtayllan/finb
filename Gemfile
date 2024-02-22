@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.0"
 
 # CORE
-gem "rails", "~> 7.1.1"
+gem "rails", "~> 7.1.3"
 gem "puma", ">= 5.0"
 gem "litestack"
 
