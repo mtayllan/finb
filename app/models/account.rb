@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
   has_many :transactions, dependent: :destroy
+  has_many :balances, dependent: :destroy
 
   validates :name, :color, :initial_balance, :kind, presence: true
 
@@ -7,6 +8,7 @@ class Account < ApplicationRecord
 
   def update_balance
     update(balance: initial_balance + transactions.sum(:value) - transfers_as_origin.sum(:value) + transfers_as_target.sum(:value))
+    Account::UpdateBalances.call(self)
   end
 
   def transfers_as_origin
