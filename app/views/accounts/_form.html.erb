@@ -32,6 +32,11 @@
     <%= form.number_field :initial_balance, step: 0.01, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
   </div>
 
+  <div class="grid w-full items-center gap-1.5 my-5">
+    <%= render 'components/form_label', form:, attribute: :initial_balance_date %>
+    <%= render "components/date_picker", name: form.field_name(:initial_balance_date), initial_value: account.initial_balance_date&.to_fs(:day_month_year) %>
+  </div>
+
   <div class="grid w-full items-center my-5 gap-2">
     <%= render 'components/form_label', form:, attribute: :color %>
     <%= render 'components/color_select', form:, attribute: :color, default_value: account.color %>

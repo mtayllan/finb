@@ -2,7 +2,7 @@ class Account < ApplicationRecord
   has_many :transactions, dependent: :destroy
   has_many :balances, dependent: :destroy
 
-  validates :name, :color, :initial_balance, :kind, presence: true
+  validates :name, :color, :initial_balance, :kind, :initial_balance_date, presence: true
 
   enum :kind, [:checking, :savings, :credit_card, :investment]
 
