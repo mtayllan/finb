@@ -10,6 +10,8 @@ class Transfer < ApplicationRecord
   private
 
   def date_after_account_initial_balance_date
+    return if origin_account.nil? || target_account.nil? || date.nil?
+
     errors.add(:date, "must be after date of initial balance: #{origin_account.initial_balance_date}") if date < origin_account.initial_balance_date
     errors.add(:date, "must be after date of initial balance: #{target_account.initial_balance_date}") if date < target_account.initial_balance_date
   end
