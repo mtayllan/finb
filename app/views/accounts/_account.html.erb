@@ -3,7 +3,12 @@
   style="background: linear-gradient(135deg, hsl(var(--background)) 30%, <%= account.color %> 100%);"
 >
   <div class="flex flex-col space-y-1.5">
-    <h3 class="font-semibold leading-none tracking-tight text-xl"><%= account.name %></h3>
+    <div class="flex items-center">
+      <div class="mr-2">
+        <%== render_account_icon(account) %>
+      </div>
+      <h3 class="font-semibold leading-none tracking-tight text-xl"><%= account.name %></h3>
+    </div>
   </div>
   <p class="mt-2">
     Balance:
