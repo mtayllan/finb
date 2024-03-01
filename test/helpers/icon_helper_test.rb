@@ -30,4 +30,20 @@ class IconHelperTest < ActionView::TestCase
       </svg>
     HTML
   end
+
+  test "render the icon for an account" do
+    category = build(:account, kind: "checking", color: "#ff0000")
+
+    assert_equal render_account_icon(category),
+    <<~HTML
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32" height="32"
+        fill="currentColor"
+        viewBox="0 0 340 340">
+        <circle cx="170" cy="170" r="170" fill="#ff0000" />
+        <path d="#{IconHelper.const_get(:PATHS)[:bank]}" transform="translate(42, 42)"></path>
+      </svg>
+    HTML
+  end
 end
