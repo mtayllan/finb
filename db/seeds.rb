@@ -57,25 +57,25 @@ if Rails.env.development?
       name: "Cash",
       color: "#36AE7C",
       initial_balance: 4000,
-      created_at: 5.months.ago
+      initial_balance_date: 5.months.ago
     },
     {
       name: "Inter",
       color: "#F87D0A",
       initial_balance: 6000,
-      created_at: 5.months.ago
+      initial_balance_date: 5.months.ago
     },
     {
       name: "Bradesco",
       color: "#BA0401",
       initial_balance: 10000,
-      created_at: 5.months.ago
+      initial_balance_date: 5.months.ago
     },
     {
       name: "Itaú",
       color: "#FF5901",
       initial_balance: 2500,
-      created_at: 5.months.ago
+      initial_balance_date: 5.months.ago
     }
   ])
 
