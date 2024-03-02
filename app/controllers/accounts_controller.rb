@@ -18,13 +18,6 @@ class AccountsController < ApplicationController
                         .order(date: :desc, created_at: :desc)
 
     @transactions_and_transfers = (transactions + transfers).sort_by(&:date).reverse
-
-    if @account.kind = "checking"
-      @expenses_by_category = Transaction.where(date: filter[:date], account: @account).where("value < 0")
-                                        .group(:category).sum(:value).sort_by { _1[1] }.to_h
-      @income_by_category =   Transaction.where(date: filter[:date], account: @account).where("value > 0")
-                                        .group(:category).sum(:value).sort_by { -_1[1] }.to_h
-    end
   end
 
   def new
