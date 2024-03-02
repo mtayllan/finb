@@ -11,12 +11,19 @@
     <%= link_to "Add transaction", new_transaction_path(account_id: @account.id), class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
   </div>
 
+
   <div class="flex items-center gap-2">
     <div class="text-muted-foreground">Balance:</div>
     <div class="font-semibold tracking-tight">
       <%= number_to_currency(@account.balance) %>
     </div>
   </div>
+
+  <% if @account.kind == 'checking' %>
+    <%= render 'transaction_by_category_report',
+        expenses_by_category: @expenses_by_category,
+        income_by_category: @income_by_category %>
+  <% end %>
 
   <div class="flex justify-center items-center my-6 gap-8">
     <%=
