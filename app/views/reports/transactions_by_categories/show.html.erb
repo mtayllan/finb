@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "transactions_by_category" do %>
+  <div
+    class="grid grid-cols-2 mt-4"
+    data-controller="categories-charts"
+    data-categories-charts-expenses-value="<%= @expenses_by_category.map { { name: _1[0].name, color: _1[0].color, value: _1[1].abs } }.to_json %>"
+    data-categories-charts-income-value="<%= @income_by_category.map { { name: _1[0].name, color: _1[0].color, value: _1[1] } }.to_json %>"
+  >
+    <div data-categories-charts-target="expenses" class="w-full h-96 flex"></div>
+    <div data-categories-charts-target="income" class="w-full h-96 flex"></div>
+  </div>
+<% end %>
