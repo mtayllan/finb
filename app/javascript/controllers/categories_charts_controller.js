@@ -20,7 +20,8 @@ export default class extends Controller {
     });
     chart.setOption({
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        formatter: '{b}: ${c} ({d}%)'
       },
       legend: {
         top: '10%',
@@ -60,9 +61,6 @@ export default class extends Controller {
               itemStyle: {
                 color: item.color
               },
-              tooltip: {
-                valueFormatter: (value) => `$${value}`
-              }
             }
           })
         }
