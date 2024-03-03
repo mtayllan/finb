@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "daily_balances" do %>
+  <div
+    class="w-full h-96 mt-4"
+    data-controller="daily-balance-chart"
+    data-daily-balance-chart-balances-value="<%= @balances.to_json %>"
+  >
+  </div>
+<% end %>
