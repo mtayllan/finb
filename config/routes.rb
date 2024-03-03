@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   namespace :reports do
     resource :transactions_by_category, only: :show
+    resource :daily_balance, only: :show
   end
 end
