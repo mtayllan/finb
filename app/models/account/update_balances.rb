@@ -1,6 +1,6 @@
 module Account::UpdateBalances
   def self.call(account)
-    start_date = account.created_at.to_date
+    start_date = account.initial_balance_date
 
     transactions = account.transactions.where(date: start_date..)
     transfers_as_origin = account.transfers_as_origin.where(date: start_date..)
