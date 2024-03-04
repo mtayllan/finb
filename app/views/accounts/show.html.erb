@@ -25,7 +25,7 @@
     <% end %>
   <% end %>
 
-  <% if @account.kind == 'savings' %>
+  <% if @account.kind == 'savings' || @account.kind == 'investment' %>
     <%= turbo_frame_tag "daily_balances", src: reports_daily_balance_url(account_id: @account.id) do %>
       <div class="h-96 mt-4">Loading...</div>
     <% end %>
