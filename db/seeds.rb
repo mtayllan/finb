@@ -92,6 +92,17 @@ if Rails.env.development?
     )
   end
 
+  initial_date = Date.current.beginning_of_month
+  20.times do |i|
+    Transaction.create(
+      description: Faker::Lorem.sentence(word_count: 3),
+      value: Faker::Number.between(from: -300.0, to: 50.0),
+      category: Category.all.sample,
+      account: Account.all.sample,
+      date: Faker::Date.between(from: initial_date, to: end_date)
+    )
+  end
+
   25.times do |i|
     origin = Account.all.sample
     target = Account.where.not(id: origin.id).sample
