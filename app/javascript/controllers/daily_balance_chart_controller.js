@@ -34,20 +34,23 @@ export default class extends Controller {
         type: 'line',
         smooth: true,
         itemStyle: {
-          color: 'white'
+          color: 'oklch(var(--primary))',
         },
         areaStyle: {
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
             {
               offset: 0,
-              color: 'rgba(255,255,255, 1)'
+              color: 'oklch(var(--primary) / 100%)'
             },
             {
               offset: 1,
-              color: 'rgba(255,255,255, 0)'
+              color: 'oklch(var(--primary) / 0%)'
             }
           ])
         },
+        emphasis: {
+          disabled: true
+        }
       }]
     })
   }
