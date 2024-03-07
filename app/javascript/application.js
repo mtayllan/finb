@@ -4,20 +4,20 @@ import "controllers"
 import "echarts"
 
 echarts.registerTheme('finb', {
-  backgroundColor: 'hsl(var(--background))',
+  backgroundColor: 'oklch(var(--background))',
   label: {
-    color: 'hsl(var(--foreground))'
+    color: 'oklch(var(--foreground))'
   },
   legend: {
     textStyle: {
       fontFamily: 'Inter var',
-      color: 'hsl(var(--foreground))'
+      color: 'oklch(var(--foreground))'
     }
   },
   title: {
     textStyle: {
       fontFamily: 'Inter var',
-      color: 'hsl(var(--primary))'
+      color: 'oklch(var(--primary))'
     }
   }
 })
