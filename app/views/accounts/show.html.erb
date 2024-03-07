@@ -4,7 +4,7 @@
   <% end %>
   <div class="flex justify-between items-center pb-2">
     <%= render("components/h1") do %>
-      <div class="text-transparent !bg-clip-text" style="background: linear-gradient(180deg, hsl(var(--foreground)) 10%, <%= @account.color %> 100%);">
+      <div class="text-transparent !bg-clip-text" style="background: linear-gradient(180deg, oklch(var(--foreground)) 10%, <%= @account.color %> 100%);">
         <%= @account.name %>
       </div>
     <% end %>
