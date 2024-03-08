@@ -47,13 +47,17 @@
 
   <div class="grid w-full items-center gap-1.5 my-5">
     <%= render 'components/form_label', form:, attribute: :account_id %>
-    <%=
-      render 'components/select',
-      name: form.field_name(:account_id),
-      placeholder: 'Select an account',
-      options: Account.all.order(:name).map { |account| { value: account.id, label: account.name } },
-      value: transaction.account_id
+    <%= render 'components/select',
+        name: form.field_name(:account_id),
+        placeholder: 'Select an account',
+        options: Account.all.order(:name).map { |account| { value: account.id, label: account.name, item: account } },
+        value: transaction.account_id do |account|
     %>
+      <div class="mr-2">
+        <%== render_account_icon(account) %>
+      </div>
+      <div><%= account.name %></h3>
+    <% end %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
