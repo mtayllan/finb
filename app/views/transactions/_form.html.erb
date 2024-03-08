@@ -40,9 +40,14 @@
       render 'components/select',
       name: form.field_name(:category_id),
       placeholder: 'Select a category',
-      options: Category.all.order(:name).map { |category| { value: category.id, label: category.name } },
-      value: transaction.category_id
+      options: Category.all.order(:name).map { |category| { value: category.id, label: category.name, item: category } },
+      value: transaction.category_id do |category|
     %>
+      <div class="mr-2">
+        <%== render_category_icon(category, size: 24) %>
+      </div>
+      <div><%= category.name %></h3>
+    <% end %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
@@ -54,7 +59,7 @@
         value: transaction.account_id do |account|
     %>
       <div class="mr-2">
-        <%== render_account_icon(account) %>
+        <%== render_account_icon(account, size: 24) %>
       </div>
       <div><%= account.name %></h3>
     <% end %>
