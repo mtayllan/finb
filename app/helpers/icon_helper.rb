@@ -12,13 +12,13 @@ module IconHelper
     HTML
   end
 
-  def render_category_icon(category)
-    render_icon(category.icon, background: category.color)
+  def render_category_icon(category, size: 32)
+    render_icon(category.icon, background: category.color, size:)
   end
 
   ACCOUNT_ICONS = { checking: "bank", savings: "piggy_bank", credit_card: "credit_card", investment: "chart_line_up" }.freeze
-  def render_account_icon(account)
-    render_icon(ACCOUNT_ICONS[account.kind.to_sym], background: account.color)
+  def render_account_icon(account, size: 32)
+    render_icon(ACCOUNT_ICONS[account.kind.to_sym], background: account.color, size:)
   end
 
   def all_icons
