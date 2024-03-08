@@ -20,7 +20,7 @@
         data-action="components--select#selectOption"
         data-components--select-option-param="<%= option[:value] %>"
       >
-        <%= option[:label] %>
+        <%= yield(option[:item]).presence || option[:label] %>
       </button>
     <% end %>
   </div>
