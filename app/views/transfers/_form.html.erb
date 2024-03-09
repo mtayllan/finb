@@ -29,9 +29,14 @@
       render 'components/select',
       name: form.field_name(:origin_account_id),
       placeholder: 'Select an account',
-      options: accounts.map { |account| { value: account.id, label: account.name } },
-      value: transfer.origin_account_id
+      options: accounts.map { |account| { value: account.id, label: account.name, item: account } },
+      value: transfer.origin_account_id do |account|
     %>
+      <div class="mr-2">
+        <%== render_account_icon(account, size: 24) %>
+      </div>
+      <div><%= account.name %></h3>
+    <% end %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
@@ -40,9 +45,14 @@
       render 'components/select',
       name: form.field_name(:target_account_id),
       placeholder: 'Select an account',
-      options: accounts.map { |account| { value: account.id, label: account.name } },
-      value: transfer.target_account_id
+      options: accounts.map { |account| { value: account.id, label: account.name, item: account } },
+      value: transfer.target_account_id do |account|
     %>
+      <div class="mr-2">
+        <%== render_account_icon(account, size: 24) %>
+      </div>
+      <div><%= account.name %></h3>
+    <% end %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
