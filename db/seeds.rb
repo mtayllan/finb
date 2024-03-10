@@ -2,52 +2,52 @@ if Rails.env.development?
   Category.create([
     {
       name: "Food",
-      color: "#0C356A",
+      color: "#27272a",
       icon: "food"
     },
     {
       name: "Lunch",
-      color: "#0174BE",
+      color: "#64748b",
       icon: "fork_knife"
     },
     {
       name: "Health",
-      color: "#7D0A0A",
+      color: "#78716c",
       icon: "heartbeat"
     },
     {
       name: "Salary",
-      color: "#3E6D9C",
+      color: "#10b981",
       icon: "money"
     },
     {
       name: "Games",
-      color: "#FFCD4B",
+      color: "#14b8a6",
       icon: "game"
     },
     {
       name: "House",
-      color: "#5463FF",
+      color: "#a855f7",
       icon: "house"
     },
     {
       name: "Clothes",
-      color: "#36AE7C",
+      color: "#dc2626",
       icon: "t_shirt"
     },
     {
       name: "Cashback",
-      color: "#6BCB77",
+      color: "#3b82f6",
       icon: "money"
     },
     {
       name: "Gifts",
-      color: "#FFD93D",
+      color: "#84cc16",
       icon: "gift"
     },
     {
       name: "Tech",
-      color: "#161E54",
+      color: "#0ea5e9",
       icon: "pc"
     }
   ])
@@ -55,28 +55,28 @@ if Rails.env.development?
   Account.create([
     {
       name: "Cash",
-      color: "#36AE7C",
+      color: "#27272a",
       initial_balance: 4000,
       initial_balance_date: 5.months.ago,
       kind: :checking
     },
     {
       name: "Inter",
-      color: "#F87D0A",
+      color: "#ec4899",
       initial_balance: 6000,
       initial_balance_date: 5.months.ago,
       kind: :savings
     },
     {
       name: "Bradesco",
-      color: "#BA0401",
+      color: "#fca5a5",
       initial_balance: 10000,
       initial_balance_date: 5.months.ago,
       kind: :investment
     },
     {
       name: "Itaú",
-      color: "#FF5901",
+      color: "#22d3ee",
       initial_balance: 2500,
       initial_balance_date: 5.months.ago,
       kind: :credit_card
