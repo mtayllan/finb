@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   namespace :reports do
-    resource :transactions_by_category, only: :show
     resource :daily_balance, only: :show
     resource :income_by_category, only: :show
+    resource :expenses_by_category, only: :show
   end
 end
