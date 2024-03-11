@@ -20,9 +20,14 @@
   </div>
 
   <% if @account.kind == 'checking' %>
-    <%= turbo_frame_tag "transactions_by_category", src: reports_transactions_by_category_url(account_id: @account.id, month: @month) do %>
-      <div class="h-96 mt-4">Loading...</div>
-    <% end %>
+    <div class="grid grid-cols-2 mt-4 h-96">
+      <%= turbo_frame_tag "expenses_by_categories", src: reports_expenses_by_category_url(account_id: @account.id, month: @month) do %>
+        Loading...
+      <% end %>
+      <%= turbo_frame_tag "income_by_categories", src: reports_income_by_category_url(account_id: @account.id, month: @month) do %>
+        Loading...
+      <% end %>
+    </div>
   <% end %>
 
   <% if @account.kind == 'savings' || @account.kind == 'investment' %>

@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "income_by_categories" do %>
+  <div
+    data-controller="categories-pie-chart"
+    data-categories-pie-chart-title-value="Income by Category"
+    data-categories-pie-chart-data-value="<%= @income_by_category.map { { name: _1[0].name, color: _1[0].color, value: _1[1].abs } }.to_json %>"
+    class="h-full"
+  >
+  </div>
+<% end %>
