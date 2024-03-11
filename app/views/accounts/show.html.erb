@@ -31,6 +31,14 @@
     <% end %>
   <% end %>
 
+  <% if @account.kind == 'credit_card' %>
+    <div class="h-96">
+      <%= turbo_frame_tag "expenses_by_categories", src: reports_expenses_by_category_url(account_id: @account.id, month: @month) do %>
+        Loading...
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="flex justify-center items-center my-6 gap-8">
     <%=
       link_to @month.prev_month.strftime('%b %Y'),
