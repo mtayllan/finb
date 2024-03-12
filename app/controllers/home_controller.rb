@@ -4,6 +4,11 @@ class HomeController < ApplicationController
     last_month = Date.today.prev_month.beginning_of_month..Date.today.prev_month.end_of_month
     last_three_months = (Date.today - 3.months).beginning_of_month..(Date.today - 1.month).end_of_month
 
+    @accounts = Account.order(balance: :desc)
+    @total_balance = @accounts.sum(:balance)
+    @last_transactions = Transaction.order(date: :desc).limit(8)
+    @last_transfers = Transfer.order(date: :desc).limit(8)
+
     @totals = {
       current_month: calculate_expenses_from(current_month),
       last_month: calculate_expenses_from(last_month),

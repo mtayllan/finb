@@ -1,4 +1,92 @@
 <div class="w-full">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div>
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-bold">Accounts</h3>
+        <%= link_to accounts_url do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-muted-foreground hover:fill-foreground" viewBox="0 0 256 256"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"></path></svg>
+        <% end %>
+      </div>
+      <div class="grid gap-6 max-h-96 overflow-scroll pr-4 my-4">
+        <% @accounts.each do |account| %>
+          <div class="flex items-center justify-between space-x-4">
+            <div class="flex items-center space-x-4">
+              <span class="relative flex shrink-0">
+                <%== render_account_icon(account) %>
+              </span>
+              <div>
+                <p class="text-sm font-medium leading-none"><%= account.name %></p>
+                <%= link_to "View details", account_url(account), class: "text-sm text-muted-foreground underline hover:text-foreground" %>
+              </div>
+            </div>
+            <div>
+              <%= number_to_currency(account.balance) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="flex items-center justify-between text-lg font-medium pr-4">
+        <div>Total</div>
+        <div><%= number_to_currency(@total_balance)%></div>
+      </div>
+    </div>
+    <div>
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-bold">Last Transactions</h3>
+        <%= link_to transactions_url do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-muted-foreground hover:fill-foreground" viewBox="0 0 256 256"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"></path></svg>
+        <% end %>
+      </div>
+      <div class="grid gap-6 max-h-[120rem] overflow-scroll my-4">
+        <% @last_transactions.each do |transaction| %>
+          <div class="flex items-center justify-between space-x-4">
+            <div class="flex items-center space-x-4">
+              <span class="relative flex shrink-0">
+                <%== render_category_icon(transaction.category) %>
+              </span>
+              <div>
+                <p class="text-sm font-medium leading-none"><%= transaction.description %></p>
+                <p class="text-sm text-muted-foreground"><%= transaction.account.name %></p>
+              </div>
+            </div>
+            <div>
+              <p class="<%= transaction.value.positive? ? 'text-positive' : 'text-negative'%>">
+                <%= number_to_currency(transaction.value) %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div class="flex items-center justify-between">
+        <h3 class="text-xl font-bold">Last Transfers</h3>
+        <%= link_to transfers_url do %>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-muted-foreground hover:fill-foreground" viewBox="0 0 256 256"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"></path></svg>
+        <% end %>
+      </div>
+      <div class="grid gap-6 max-h-[120rem] my-4">
+        <% @last_transfers.each do |transfer| %>
+          <div class="grid grid-cols-3">
+            <div class="flex items-center gap-4">
+              <%== render_account_icon(transfer.origin_account) %>
+              <%= transfer.origin_account.name %>
+            </div>
+            <div class="flex flex-col items-center justify-center text-sm">
+              <p class="text-muted-foreground leading-none">---></p>
+              <p><%= transfer.value %></p>
+            </div>
+            <div class="flex flex-row-reverse items-center gap-4">
+              <%== render_account_icon(transfer.target_account) %>
+              <%= transfer.target_account.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
   <h2 class="scroll-m-20 text-2xl font-bold tracking-tight">
     This month
   </h2>
@@ -167,7 +255,7 @@
   </div>
 
   <div
-    class="grid grid-cols-2 mt-4"
+    class="grid grid-cols-3 mt-4"
     data-controller="categories-charts"
     data-categories-charts-expenses-value="<%= @totals[:last_month][:expenses_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1].abs } }.to_json %>"
     data-categories-charts-income-value="<%= @totals[:last_month][:income_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1] } }.to_json %>"
