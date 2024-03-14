@@ -1,8 +1,5 @@
-<div
-  id="<%= dom_id account %>" class="rounded-xl border bg-card text-card-foreground shadow p-6"
-  style="background: linear-gradient(135deg, oklch(var(--background)) 30%, <%= account.color %> 100%);"
->
-  <div class="flex flex-col space-y-1.5">
+<div id="<%= dom_id account %>" class="rounded-xl border bg-card text-card-foreground shadow p-6">
+  <div class="flex flex-col space-y-1.5 mb-2">
     <div class="flex items-center">
       <div class="mr-2">
         <%== render_account_icon(account) %>
@@ -10,15 +7,15 @@
       <h3 class="font-semibold leading-none tracking-tight text-xl"><%= account.name %></h3>
     </div>
   </div>
-  <p class="mt-2">
-    Balance:
-    <span class="<%= account.balance.positive? ? 'text-positive' : 'text-negative' %>"><%= number_to_currency account.balance %></span>
-  </p>
-  <p>
-    Last Update: <%= l(account.updated_at, format: :short) %>
-  </p>
-  <div class="flex flex-between gap-2 mt-4">
-    <%= link_to "Edit this account", edit_account_path(account), class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
-    <%= link_to "Transactions", account, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
+  <div class="flex font-bold justify-between">
+    <p>Current Balance</p>
+    <p><%= number_to_currency account.balance %></p>
+  </div>
+  <div class="flex flex-col gap-2 mt-4 border-t-2 border-border pt-4">
+    <div class="flex gap-2">
+      <%= link_to "View", account, class: "w-full inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2" %>
+      <%= link_to "Edit", edit_account_path(account), class: "w-full inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2" %>
+    </div>
+    <%= link_to "Add transaction", new_transaction_path(account_id: account.id), class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2" %>
   </div>
 </div>
