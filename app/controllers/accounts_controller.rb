@@ -49,6 +49,7 @@ class AccountsController < ApplicationController
 
   def destroy
     @account.destroy!
+    Account.all.each(&:update_balance)
 
     redirect_to accounts_url, notice: "Account was successfully destroyed."
   end
