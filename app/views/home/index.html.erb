@@ -69,16 +69,16 @@
         <% @last_transfers.each do |transfer| %>
           <div class="grid grid-cols-3">
             <div class="flex items-center gap-4">
-              <%== render_account_icon(transfer.origin_account) %>
-              <%= transfer.origin_account.name %>
+              <div> <%== render_account_icon(transfer.origin_account) %> </div>
+              <div class="text-ellipsis line-clamp-1 text-sm"><%= transfer.origin_account.name %></div>
             </div>
             <div class="flex flex-col items-center justify-center text-sm">
               <p class="text-muted-foreground leading-none">---></p>
               <p><%= transfer.value %></p>
             </div>
             <div class="flex flex-row-reverse items-center gap-4">
-              <%== render_account_icon(transfer.target_account) %>
-              <%= transfer.target_account.name %>
+              <div><%== render_account_icon(transfer.target_account) %></div>
+              <div class="text-ellipsis line-clamp-1"><%= transfer.target_account.name %></div>
             </div>
           </div>
         <% end %>
