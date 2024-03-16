@@ -29,6 +29,12 @@ class TransfersController < ApplicationController
     if @transfer.update(transfer_params)
       @transfer.origin_account.update_balance
       @transfer.target_account.update_balance
+      if @transfer.origin_account_id_previously_changed?
+        Account.update_balance(@transfer.origin_account_id_previously_was)
+      end
+      if @transfer.target_account_id_previously_changed?
+        Account.update_balance(@transfer.target_account_id_previously_was)
+      end
       redirect_to transfers_url, notice: "Transfer was successfully updated."
     else
       render :edit, status: :unprocessable_entity
