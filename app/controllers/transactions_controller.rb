@@ -30,6 +30,9 @@ class TransactionsController < ApplicationController
   def update
     if @transaction.update(transaction_params)
       @transaction.account.update_balance
+      if @transaction.account_previously_changed?
+        Account.update_balance(@transaction.account_id_previously_was)
+      end
       redirect_to account_url(@transaction.account), notice: "Transaction was successfully updated."
     else
       render :edit, status: :unprocessable_entity

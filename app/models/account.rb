@@ -12,4 +12,8 @@ class Account < ApplicationRecord
     update(balance: initial_balance + transactions.sum(:value) - transfers_as_origin.sum(:value) + transfers_as_target.sum(:value))
     Account::UpdateBalances.call(self)
   end
+
+  def self.update_balance(account_id)
+    find(account_id).update_balance
+  end
 end
