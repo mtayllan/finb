@@ -17,7 +17,7 @@ class AccountTest < ActiveSupport::TestCase
     assert account.valid?
   end
 
-  test "update_balance" do
+  test "#update_balance" do
     account = create(:account, initial_balance: 30)
     initial_balance = account.initial_balance
     transaction_value = 100
@@ -31,6 +31,25 @@ class AccountTest < ActiveSupport::TestCase
     expected_balance = initial_balance + transaction_value - income_transfer_value + outcome_transfer_value
 
     account.update_balance
+    account.reload
+
+    assert_equal expected_balance, account.balance
+  end
+
+  test ".update_balance" do
+    account = create(:account, initial_balance: 30)
+    initial_balance = account.initial_balance
+    transaction_value = 100
+    income_transfer_value = 50
+    outcome_transfer_value = 20
+
+    create(:transaction, account: account, value: transaction_value)
+    create(:transfer, origin_account: account, value: income_transfer_value)
+    create(:transfer, target_account: account, value: outcome_transfer_value)
+
+    expected_balance = initial_balance + transaction_value - income_transfer_value + outcome_transfer_value
+
+    Account.update_balance(account.id)
     account.reload
 
     assert_equal expected_balance, account.balance
