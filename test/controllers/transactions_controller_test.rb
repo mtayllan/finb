@@ -82,4 +82,15 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to account_url(@transaction.account)
     assert_equal flash[:notice], "Transaction was successfully destroyed."
   end
+
+  test "should recalculate balance of both accounts on account change" do
+    old_account = create(:account, initial_balance: 90, balance: 100)
+    new_account = create(:account, initial_balance: 150)
+    transaction = create(:transaction, account: old_account, value: 10)
+
+    patch transaction_url(transaction), params: { transaction: { account_id: new_account.id } }
+
+    assert_equal new_account.reload.balance, 160
+    assert_equal old_account.reload.balance, 90
+  end
 end
