@@ -12,7 +12,7 @@ gem "propshaft"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "tailwindcss-rails", "~> 2.0"
+gem "tailwindcss-rails", "~> 2.4"
 
 # OTHER
 gem "bootsnap", require: false
