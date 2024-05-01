@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   resources :accounts
   resources :categories, except: :show
 
-  resource :data_management, only: :show
-  namespace :data_management do
-    resource :export, only: :create
+  resource :settings, only: :show
+  namespace :settings do
+    resource :export_data, only: :create
   end
 
   namespace :reports do
