@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resource :settings, only: :show
   namespace :settings do
     resource :export_data, only: :create
+    resource :import_data, only: :create
   end
 
   namespace :reports do
