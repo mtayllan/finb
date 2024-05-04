@@ -6,7 +6,7 @@ module DataManagement
           category.attributes.slice("id", "name", "color", "icon")
         end,
         accounts: Account.all.map do |account|
-          account.attributes.slice("id", "name", "balance", "initial_balance", "kind", "initial_balance_date")
+          account.attributes.slice("id", "name", "color", "balance", "initial_balance", "kind", "initial_balance_date")
         end,
         transactions: Transaction.all.map do |transaction|
           transaction.attributes.slice("id", "description", "value", "date", "category_id", "account_id")
