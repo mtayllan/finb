@@ -12,7 +12,7 @@
     <%= button_to "Download Here", settings_export_data_path, data: { turbo: false }, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2" %>
     <p class="text-xs text-muted-foreground mt-2"> Download all your data into a JSON file. It can be used for backup, to transfer to other applications, or for manually analyzing your finances. </p>
   </div>
-  <div class="mt-4 max-w-md">
+  <div class="my-4 max-w-md">
     <p class="text-lg font-bold mb-2">Import Data</p>
     <%= form_with url: settings_import_data_path, method: :post do |form| %>
       <%= form.file_field :file, accept: "application/json", required: true, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
@@ -23,5 +23,11 @@
       <span class="text-destructive font-bold">This will overwrite all your existing data.</span>
       Make sure to backup your data before importing.
     </p>
+  </div>
+
+  <hr>
+
+  <div class="mt-4">
+    <%= button_to "Logout", sessions_url, method: :delete, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-destructive text-destructive-foreground shadow hover:bg-destructive/90 px-4 py-2" %>
   </div>
 </div>
