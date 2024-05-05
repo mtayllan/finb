@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Finb</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= favicon_link_tag asset_path("icon.png") %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <%= hotwire_livereload_tags if Rails.env.development? %>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+  <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+    <div class="flex flex-col space-y-2 text-center">
+      <h1 class="text-2xl font-semibold tracking-tight">Login</h1>
+    </div>
+    <div class="grid gap-6">
+      <%= form_with url: sessions_url, method: :post do  |f| %>
+        <div class="grid gap-2">
+          <div class="grid gap-1">
+            <%= f.label :username, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+            <%= f.text_field :username, required: true, value: @credentials.username, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
+          </div>
+          <div class="grid gap-1">
+            <%= f.label :password, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %>
+            <%= f.password_field :password, required: true, value: @credentials.password, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
+          </div>
+          <% if flash[:alert] %>
+            <p class="text-xs text-destructive">Invalid username or password</p>
+          <% end %>
+          <%= f.submit "Login", class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
+        </div>
+      <% end %>
+    <div>
+  </div>
+</body>
+
+</html>
