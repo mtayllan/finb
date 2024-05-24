@@ -1,5 +1,5 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <%= render('components/h1') { 'Editing transfer' } %>
+  <%= render H1Component.new.with_content('Editing transfer') %>
 
   <%= render "form", transfer: @transfer %>
 

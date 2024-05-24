@@ -1,5 +1,5 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <%= render('components/h1') { 'New category' } %>
+  <%= render H1Component.new.with_content('New category') %>
 
   <%= render "form", category: @category %>
 
