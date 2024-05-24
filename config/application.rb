@@ -23,5 +23,8 @@ module Finb
     #
     config.time_zone = "Brasilia"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.view_component.view_component_path = "app/views/components"
+    config.eager_load_paths << Rails.root.join("app/views/components")
   end
 end
