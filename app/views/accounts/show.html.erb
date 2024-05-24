@@ -3,7 +3,7 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
   <div class="flex justify-between items-center pb-2">
-    <%= render("components/h1") do %>
+    <%= render H1Component.new do %>
       <div class="text-transparent !bg-clip-text" style="background: linear-gradient(180deg, oklch(var(--foreground)) 10%, <%= @account.color %> 100%);">
         <%= @account.name %>
       </div>
