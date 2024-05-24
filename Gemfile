@@ -13,6 +13,7 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "tailwindcss-rails", "~> 2.5"
+gem "view_component"
 
 # OTHER
 gem "bootsnap", require: false
