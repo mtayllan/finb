@@ -26,7 +26,7 @@
 
   <div class="grid w-full items-center gap-1.5 my-5">
     <%= render 'components/form_label', form:, attribute: :value %>
-    <%= render 'components/money_input', form:, attribute: :value, default_value: transaction.value&.abs %>
+    <%= render MoneyInputComponent.new(form:, attribute: :value, default_value: transaction.value&.abs) %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
