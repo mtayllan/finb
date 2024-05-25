@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render 'components/form_label', form:, attribute: :name %>
+    <%= render FormLabelComponent.new(form, :name) %>
     <%= form.text_field :name, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
   </div>
 
   <div class="grid w-full items-center my-5 gap-2">
-    <%= render 'components/form_label', form:, attribute: :color %>
+    <%= render FormLabelComponent.new(form, :color) %>
     <%= render 'components/color_select', form:, attribute: :color, default_value: category.color %>
   </div>
 
   <div class="my-5">
-    <%= render 'components/form_label', form:, attribute: :icon %>
+    <%= render FormLabelComponent.new(form, :icon) %>
     <div class="grid grid-cols-5 gap-4 mt-2" data-controller="icon-selector" id="icons-list">
       <% all_icons.each do |icon_name| %>
         <button
