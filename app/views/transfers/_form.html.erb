@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render 'components/form_label', form:, attribute: :value %>
+    <%= render FormLabelComponent.new(form, :value) %>
     <%= render MoneyInputComponent.new(form:, attribute: :value, default_value: transfer.value) %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render 'components/form_label', form:, attribute: :description %>
+    <%= render FormLabelComponent.new(form, :description) %>
     <%= form.text_field :description, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
   </div>
 
   <% accounts = Account.all.order(:name) %>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render 'components/form_label', form:, attribute: :origin_account_id %>
+    <%= render FormLabelComponent.new(form, :origin_account_id) %>
     <%=
       render 'components/select',
       name: form.field_name(:origin_account_id),
@@ -40,7 +40,7 @@
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render 'components/form_label', form:, attribute: :target_account_id %>
+    <%= render FormLabelComponent.new(form, :target_account_id) %>
     <%=
       render 'components/select',
       name: form.field_name(:target_account_id),
@@ -56,7 +56,7 @@
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render 'components/form_label', form:, attribute: :date %>
+    <%= render FormLabelComponent.new(form, :date) %>
     <%= render "components/date_picker", name: form.field_name(:date), initial_value: transfer.date&.to_fs(:day_month_year) %>
   </div>
 
