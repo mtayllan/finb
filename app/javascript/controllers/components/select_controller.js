@@ -6,6 +6,12 @@ export default class extends Controller {
 
   connect() {
     useClickOutside(this);
+    const currentValue = this.inputValueTarget.value;
+    this.dropdownTarget.querySelectorAll('button').forEach(button => {
+      if (button.dataset.value === currentValue) {
+        this.searchInputTarget.value = button.textContent.trim();
+      }
+    });
   }
 
   clickOutside() {
@@ -34,7 +40,8 @@ export default class extends Controller {
 
   selectOption(event) {
     this.searchInputTarget.value = event.currentTarget.textContent.trim();
-    this.inputValueTarget.value = event.params.option;
+    this.inputValueTarget.value = event.currentTarget.dataset.value;
+    this.inputValueTarget.dispatchEvent(new Event('change'));
     this.closeDropdown();
   }
 }

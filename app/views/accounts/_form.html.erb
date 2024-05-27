@@ -18,13 +18,11 @@
 
   <div class="grid w-full items-center gap-1.5 my-5">
     <%= render FormLabelComponent.new(form, :kind) %>
-    <%=
-      render 'components/select',
-      name: form.field_name(:kind),
-      placeholder: 'Select a kind',
-      options: Account.kinds.map { |k, _| { value: k, label: t("account_kinds.#{k}") } },
-      value: account.kind
-    %>
+    <%= render SelectComponent.new(name: form.field_name(:kind), placeholder: 'Select a kind', value: account.kind) do |comp| %>
+      <% Account.kinds.each do |kind, _| %>
+        <% comp.with_option(value: kind, label: t("account_kinds.#{kind}")) %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
