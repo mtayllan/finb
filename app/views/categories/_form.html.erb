@@ -18,7 +18,7 @@
 
   <div class="grid w-full items-center my-5 gap-2">
     <%= render FormLabelComponent.new(form, :color) %>
-    <%= render 'components/color_select', form:, attribute: :color, default_value: category.color %>
+    <%= render ColorSelectComponent.new(form, :color, default_value: category.color) %>
   </div>
 
   <div class="my-5">
