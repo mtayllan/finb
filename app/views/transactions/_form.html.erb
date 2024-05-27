@@ -36,32 +36,29 @@
 
   <div class="grid w-full items-center gap-1.5 my-5">
     <%= render FormLabelComponent.new(form, :category_id) %>
-    <%=
-      render 'components/select',
-      name: form.field_name(:category_id),
-      placeholder: 'Select a category',
-      options: Category.all.order(:name).map { |category| { value: category.id, label: category.name, item: category } },
-      value: transaction.category_id do |category|
-    %>
-      <div class="mr-2">
-        <%== render_category_icon(category, size: 24) %>
-      </div>
-      <div><%= category.name %></h3>
+    <%= render SelectComponent.new(name: form.field_name(:category_id), placeholder: 'Select a category', value: transaction.category_id) do |comp| %>
+      <% Category.all.order(:name).each do |category| %>
+        <% comp.with_option(value: category.id) do %>
+          <div class="mr-2">
+            <%== render_category_icon(category, size: 24) %>
+          </div>
+          <div><%= category.name %></h3>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
     <%= render FormLabelComponent.new(form, :account_id) %>
-    <%= render 'components/select',
-        name: form.field_name(:account_id),
-        placeholder: 'Select an account',
-        options: Account.all.order(:name).map { |account| { value: account.id, label: account.name, item: account } },
-        value: transaction.account_id do |account|
-    %>
-      <div class="mr-2">
-        <%== render_account_icon(account, size: 24) %>
-      </div>
-      <div><%= account.name %></h3>
+    <%= render SelectComponent.new(name: form.field_name(:account_id), placeholder: 'Select an account', value: transaction.account_id) do |comp| %>
+      <% Account.all.order(:name).each do |account| %>
+        <% comp.with_option(value: account.id) do %>
+          <div class="mr-2">
+            <%== render_account_icon(account, size: 24) %>
+          </div>
+          <div><%= account.name %></h3>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 
