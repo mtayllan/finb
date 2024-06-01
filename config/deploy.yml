@@ -1,0 +1,29 @@
+# Name of your application. Used to uniquely configure containers.
+service: finb
+
+# Name of the container image.
+image: mtayllan/finb-beta
+
+# Deploy to these servers.
+servers:
+  - <%= ENV['KAMAL_SERVER_IP'] %>
+
+registry:
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  multiarch: false
+
+ssh:
+  user: app
+
+env:
+  secret:
+    - CREDENTIAL
+    - SECRET_KEY_BASE
+
+volumes:
+  - "storage:/rails/storage"
