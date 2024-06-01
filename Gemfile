@@ -17,6 +17,7 @@ gem "view_component"
 
 # OTHER
 gem "bootsnap", require: false
+gem "kamal"
 
 group :development, :test do
   gem "debug"
