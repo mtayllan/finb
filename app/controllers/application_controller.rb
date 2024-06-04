@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     return if ENV.fetch("CREDENTIAL", "").split(":").size != 2
-    return if cookies.signed[:authenticated]
-
-    redirect_to sessions_url
+    redirect_to sessions_url unless Session.exists?(token: cookies.signed[:auth_token])
   end
 end

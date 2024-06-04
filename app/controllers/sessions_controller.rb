@@ -16,7 +16,8 @@ class SessionsController < ActionController::Base
     @credentials = Credentials.new(credentials_params[:username], credentials_params[:password])
 
     if @credentials.username == username && @credentials.password == password
-      cookies.signed[:authenticated] = { value: true, expires: 1.week.from_now }
+      session = Session.start_new_session
+      cookies.signed[:auth_token] = { value: session.token, expires: 1.week.from_now, httponly: true }
       redirect_to root_url
     else
       flash.now[:alert] = "Invalid username or password."

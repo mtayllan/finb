@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_24_173733) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_04_003539) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -38,6 +38,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_24_173733) do
     t.datetime "updated_at", null: false
     t.string "color", default: "#000000", null: false
     t.string "icon", default: "", null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
