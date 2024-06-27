@@ -133,7 +133,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.7.2)
-    kamal (1.7.1)
+    kamal (1.7.3)
       activesupport (>= 7.0)
       base64 (~> 0.2)
       bcrypt_pbkdf (~> 1.0)
@@ -299,9 +299,8 @@ GEM
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     sqlite3 (1.7.3-x86_64-linux)
-    sshkit (1.22.2)
+    sshkit (1.23.0)
       base64
-      mutex_m
       net-scp (>= 1.1.2)
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
