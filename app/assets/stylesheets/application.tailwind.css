@@ -27,6 +27,9 @@
 
     --positive: 62.52% 0.187 259.51;
     --negative: 70.49% 0.187 47.6;
+
+    --warning: 77.01% 0.164 70.73;
+    --success: 63.53% 0.207 143.16;
   }
 
   @media(prefers-color-scheme: dark) {
