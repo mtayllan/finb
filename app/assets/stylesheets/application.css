@@ -1,1 +1,29 @@
 /* Application styles */
+/* width */
+
+:root {
+  --sb-track-color: #fafafa;
+  --sb-thumb-color: #181818;
+  --sb-size: 3px;
+}
+
+@media(prefers-color-scheme: dark) {
+  :root {
+    --sb-track-color: #181818;
+    --sb-thumb-color: #fafafa;
+  }
+}
+
+::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
