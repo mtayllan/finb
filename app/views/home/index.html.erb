@@ -7,7 +7,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-muted-foreground hover:fill-foreground" viewBox="0 0 256 256"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"></path></svg>
         <% end %>
       </div>
-      <div class="grid gap-6 max-h-96 overflow-scroll pr-4 my-4">
+      <div class="grid gap-6 max-h-96 overflow-y-auto pr-4 my-4">
         <% @accounts.each do |account| %>
           <div class="flex items-center justify-between space-x-4">
             <div class="flex items-center space-x-4">
@@ -37,7 +37,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-muted-foreground hover:fill-foreground" viewBox="0 0 256 256"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"></path></svg>
         <% end %>
       </div>
-      <div class="grid gap-6 max-h-[120rem] overflow-scroll my-4">
+      <div class="grid gap-6 max-h-[120rem] overflow-y-auto my-4">
         <% @last_transactions.each do |transaction| %>
           <div class="flex items-center justify-between space-x-4">
             <div class="flex items-center space-x-4">
