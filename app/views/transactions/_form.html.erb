@@ -1,4 +1,4 @@
-<%= form_with(model: transaction, class: "contents") do |form| %>
+<%= form_with(model: transaction, class: "contents", data: { controller: "transaction-search" }) do |form| %>
   <% if transaction.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
@@ -31,10 +31,20 @@
 
   <div class="grid w-full items-center gap-1.5 my-5">
     <%= render FormLabelComponent.new(form, :description) %>
-    <%= form.text_field :description, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
+    <div data-transaction-search-target="transaction" class="relative text-left">
+      <%= form.text_field :description,
+          class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+          data: { action: "transaction-search#search" },
+          value: transaction.description,
+          autocomplete: "off"
+      %>
+
+      <div class="hidden absolute right-0 mt-1 w-full z-10 overflow-auto max-h-64 rounded-md border bg-popover text-popover-foreground shadow-md">
+      </div>
+    </div>
   </div>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <div class="grid w-full items-center gap-1.5 my-5" data-transaction-search-target="category">
     <%= render FormLabelComponent.new(form, :category_id) %>
     <%= render SelectComponent.new(name: form.field_name(:category_id), placeholder: 'Select a category', value: transaction.category_id) do |comp| %>
       <% Category.all.order(:name).each do |category| %>
@@ -48,7 +58,7 @@
     <% end %>
   </div>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <div class="grid w-full items-center gap-1.5 my-5" data-transaction-search-target="account">
     <%= render FormLabelComponent.new(form, :account_id) %>
     <%= render SelectComponent.new(name: form.field_name(:account_id), placeholder: 'Select an account', value: transaction.account_id) do |comp| %>
       <% Account.all.order(:name).each do |account| %>

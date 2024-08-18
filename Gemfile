@@ -18,6 +18,7 @@ gem "view_component"
 # OTHER
 gem "bootsnap", require: false
 gem "kamal"
+gem "jbuilder"
 
 group :development, :test do
   gem "debug"
