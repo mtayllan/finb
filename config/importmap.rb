@@ -8,3 +8,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "date-fns", to: "https://ga.jspm.io/npm:date-fns@3.0.6/index.mjs"
 pin "stimulus-use", to: "https://ga.jspm.io/npm:stimulus-use@0.52.2/dist/index.js"
 pin "echarts", to: "echarts.min.js"
+pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.9
