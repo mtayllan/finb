@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :accounts
   resources :categories, except: :show
 
+  resources :similar_transactions, only: [:index]
+
   resource :settings, only: :show
   namespace :settings do
     resource :export_data, only: :create

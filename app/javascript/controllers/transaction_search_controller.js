@@ -32,7 +32,7 @@ export default class extends Controller {
       return;
     }
 
-    const transactions = await get(`/transactions?q=${query}`, { responseKind: 'json' }).then(response => response.json);
+    const transactions = await get(`/similar_transactions?q=${query}`, { responseKind: 'json' }).then(response => response.json);
 
     this.transactionDropdown().innerHTML = '';
 
@@ -42,17 +42,17 @@ export default class extends Controller {
       button.classList.add('flex', 'w-full', 'cursor-default', 'select-none', 'items-center', 'rounded-sm', 'py-1.5', 'pl-2', 'pr-8', 'text-sm', 'outline-none', 'hover:bg-accent', 'focus:bg-accent', 'focus:text-accent-foreground');
       button.dataset.action = 'transaction-search#selectOption';
       button.dataset['description'] = transaction.description;
-      button.dataset['categoryId'] = transaction.category.id;
-      button.dataset['categoryName'] = transaction.category.name;
-      button.dataset['accountId'] = transaction.account.id;
-      button.dataset['accountName'] = transaction.account.name;
+      button.dataset['categoryId'] = transaction.category_id;
+      button.dataset['categoryName'] = transaction.category_name;
+      button.dataset['accountId'] = transaction.account_id;
+      button.dataset['accountName'] = transaction.account_name;
       button.innerHTML = `
         <div class="flex flex-col text-left">
           <div>${transaction.description}</div>
           <div class="text-xs">
-            <span style="color:${transaction.category.color}" class="text-xs">${transaction.category.name}</span>
+            <span style="color:${transaction.category_color}" class="text-xs">${transaction.category_name}</span>
             /
-            <span style="color:${transaction.account.color}" class="text-xs">${transaction.account.name}</span>
+            <span style="color:${transaction.account_color}" class="text-xs">${transaction.account_name}</span>
           </div>
         </div>
       `;
