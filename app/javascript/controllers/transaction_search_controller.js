@@ -1,12 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
-import { useClickOutside } from "stimulus-use"
+import { useClickOutside, useDebounce } from "stimulus-use"
 import { get } from "@rails/request.js"
 
 export default class extends Controller {
   static targets = ["transaction", "account", "category"]
+  static debounces = [{ name: "search", wait: 200 }]
 
   connect() {
     useClickOutside(this, { element: this.transactionTarget });
+    useDebounce(this);
   }
 
   clickOutside() {
