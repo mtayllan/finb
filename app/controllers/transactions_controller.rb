@@ -2,19 +2,11 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ edit update destroy ]
 
   def index
-    respond_to do |format|
-      format.html do
-        @month = params[:month] ? Date.parse(params[:month]) : Date.current
-        filter = { date: @month.beginning_of_month..@month.end_of_month }
-        filter[:account_id] = params[:account_id] if params[:account_id]
-        filter[:category_id] = params[:category_id] if params[:category_id]
-        @transactions = Transaction.includes(:category, :account).where(filter).order(date: :desc, created_at: :desc)
-      end
-
-      format.json do
-        @transactions = Transaction.where("lower(description) LIKE lower(?)", "%#{params[:q]}%").limit(5)
-      end
-    end
+    @month = params[:month] ? Date.parse(params[:month]) : Date.current
+    filter = { date: @month.beginning_of_month..@month.end_of_month }
+    filter[:account_id] = params[:account_id] if params[:account_id]
+    filter[:category_id] = params[:category_id] if params[:category_id]
+    @transactions = Transaction.includes(:category, :account).where(filter).order(date: :desc, created_at: :desc)
   end
 
   def new
