@@ -5,6 +5,10 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     ENV["CREDENTIAL"] = "valid_username:valid_password"
   end
 
+  teardown do
+    ENV["CREDENTIAL"] = ""
+  end
+
   test "should get show" do
     get sessions_url
     assert_response :success
