@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[ show edit update destroy ]
 
   def index
-    @accounts = Account.all.order(:name)
+    @accounts = Current.user.accounts.order(:name)
   end
 
   def show
@@ -29,6 +29,7 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(account_params)
+    @account.user = Current.user
 
     if @account.save
       @account.update_balance
@@ -57,7 +58,7 @@ class AccountsController < ApplicationController
   private
 
   def set_account
-    @account = Account.find(params[:id])
+    @account = Current.user.accounts.find(params[:id])
   end
 
   def account_params

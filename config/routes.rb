@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
-  resource :sessions, only: %i[show create destroy]
+  resource :sessions, only: %i[new create destroy]
 
   resources :transfers, except: :show
   resources :transactions, except: :show

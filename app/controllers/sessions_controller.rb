@@ -1,40 +1,29 @@
-class SessionsController < ActionController::Base
+class SessionsController < ApplicationController
   layout false
+  skip_before_action :authenticate
 
-  before_action :check_feature_enabled
-
-  Credentials = Data.define(:username, :password)
-
-  def show
-    @credentials = Credentials.new(username: "", password: "")
+  def new
+    redirect_to post_authentication_url if Session.find_by(token: cookies.signed[:session_token])
   end
 
   def create
-    username, password = ENV.fetch("CREDENTIAL").split(":")
+    if (user = User.authenticate_by(username: params[:username], password: params[:password]))
+      session = Session.create(user: user)
+      cookies.signed[:session_token] = { value: session.token, httponly: true, expires: 1.week.from_now }
 
-    credentials_params = params.permit(:username, :password)
-    @credentials = Credentials.new(credentials_params[:username], credentials_params[:password])
-
-    if @credentials.username == username && @credentials.password == password
-      session = Session.start_new_session
-      cookies.signed[:auth_token] = { value: session.token, expires: 1.week.from_now, httponly: true }
-      redirect_to root_url
+      redirect_to post_authentication_url, notice: "Signed in successfully"
     else
-      flash.now[:alert] = "Invalid username or password."
-      render :show, status: :unprocessable_entity
+      flash.now[:alert] = "Invalid credentials"
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    cookies.delete(:authenticated)
-    redirect_to sessions_url
+    cookies.delete(:session_token)
+    redirect_to new_sessions_url, notice: "Signed out successfully"
   end
 
-  private
-
-  def check_feature_enabled
-    return if ENV.fetch("CREDENTIAL", "").split(":").size == 2
-
-    redirect_to root_url
+  def post_authentication_url
+    session.delete(:return_to_after_authenticating) || root_path
   end
 end

@@ -1,0 +1,35 @@
+bank_one:
+  name: First Bank
+  initial_balance: 0
+  balance: 0
+  color: "#fff000"
+  kind: checking
+  initial_balance_date: <%= Date.current %>
+  user: default
+
+savings_one:
+  name: My Savings
+  initial_balance: 0
+  balance: 1000
+  color: "#00ff00"
+  kind: savings
+  initial_balance_date: <%= Date.current %>
+  user: default
+
+investments_one:
+  name: My Investment
+  initial_balance: 0
+  balance: 5000
+  color: "#00ffff"
+  kind: investment
+  initial_balance_date: <%= Date.current %>
+  user: default
+
+credit_one:
+  name: Myster Card
+  initial_balance: 0
+  balance: -1000
+  color: "#ff11ff"
+  kind: credit_card
+  initial_balance_date: <%= Date.current %>
+  user: default

@@ -6,6 +6,7 @@ ruby "3.3.0"
 gem "rails", "~> 7.2"
 gem "puma", ">= 5.0"
 gem "litestack"
+gem "bcrypt", "~> 3.1.7"
 
 # FRONTEND
 gem "propshaft"

@@ -1,54 +1,66 @@
 if Rails.env.development?
+  user = User.create(username: "default", password: "qwe123")
+
   Category.create([
     {
       name: "Food",
       color: "#27272a",
-      icon: "food"
+      icon: "food",
+      user:
     },
     {
       name: "Lunch",
       color: "#64748b",
-      icon: "fork_knife"
+      icon: "fork_knife",
+      user:
     },
     {
       name: "Health",
       color: "#78716c",
-      icon: "heartbeat"
+      icon: "heartbeat",
+      user:
     },
     {
       name: "Salary",
       color: "#10b981",
-      icon: "money"
+      icon: "money",
+      user:
     },
     {
       name: "Games",
       color: "#14b8a6",
-      icon: "game"
+      icon: "game",
+      user:
     },
     {
       name: "House",
       color: "#a855f7",
-      icon: "house"
+      icon: "house",
+      user:
     },
     {
       name: "Clothes",
       color: "#dc2626",
-      icon: "t_shirt"
+      icon: "t_shirt",
+      user:
     },
     {
       name: "Cashback",
       color: "#3b82f6",
-      icon: "money"
+      icon: "money",
+      user:
     },
     {
       name: "Gifts",
       color: "#84cc16",
-      icon: "gift"
+      icon: "gift",
+      user:
     },
     {
       name: "Tech",
       color: "#0ea5e9",
-      icon: "pc"
+      icon: "pc",
+      user:
     }
   ])
 
@@ -58,28 +70,32 @@ if Rails.env.development?
       color: "#27272a",
       initial_balance: 4000,
       initial_balance_date: 5.months.ago,
-      kind: :checking
+      kind: :checking,
+      user:
     },
     {
       name: "Inter",
       color: "#ec4899",
       initial_balance: 6000,
       initial_balance_date: 5.months.ago,
-      kind: :savings
+      kind: :savings,
+      user:
     },
     {
       name: "Bradesco",
       color: "#fca5a5",
       initial_balance: 10000,
       initial_balance_date: 5.months.ago,
-      kind: :investment
+      kind: :investment,
+      user:
     },
     {
       name: "Itaú",
       color: "#22d3ee",
       initial_balance: 2500,
       initial_balance_date: 5.months.ago,
-      kind: :credit_card
+      kind: :credit_card,
+      user:
     }
   ])
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_04_003539) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_02_012612) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_04_003539) do
     t.string "color", default: "#000000", null: false
     t.integer "kind", default: 0, null: false
     t.date "initial_balance_date", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -38,12 +40,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_04_003539) do
     t.datetime "updated_at", null: false
     t.string "color", default: "#000000", null: false
     t.string "icon", default: "", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
     t.string "token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -70,7 +76,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_04_003539) do
     t.index ["target_account_id"], name: "index_transfers_on_target_account_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "password_digest", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
   add_foreign_key "account_balances", "accounts", on_delete: :cascade
+  add_foreign_key "accounts", "users"
+  add_foreign_key "categories", "users"
+  add_foreign_key "sessions", "users"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
   add_foreign_key "transfers", "accounts", column: "origin_account_id"

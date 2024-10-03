@@ -1,0 +1,6 @@
+income1:
+  account: bank_one
+  category: salary
+  description: My First Salary
+  value: 500
+  date: <%= Date.current %>

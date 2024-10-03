@@ -25,7 +25,6 @@ ssh:
 
 env:
   secret:
-    - CREDENTIAL
     - SECRET_KEY_BASE
 
 volumes:
