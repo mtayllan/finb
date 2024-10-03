@@ -1,6 +1,10 @@
 require "test_helper"
 
 class AccountsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    sign_in_default_user
+  end
+
   test "should get index" do
     get accounts_url
     assert_response :success
@@ -27,32 +31,34 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    @account = create(:account)
+    account = accounts(:bank_one)
 
-    get edit_account_url(@account)
+    get edit_account_url(account)
+
     assert_response :success
   end
 
   test "should update account" do
-    @account = create(:account)
+    account = accounts(:bank_one)
 
-    patch account_url(@account), params: { account: { name: Faker::Bank.name, initial_balance: 50 } }
+    patch account_url(account), params: { account: { name: Faker::Bank.name, initial_balance: 50 } }
     assert_redirected_to accounts_url
     assert_equal flash[:notice], "Account was successfully updated."
   end
 
   test "should show error on invalid account update" do
-    @account = create(:account)
+    account = accounts(:bank_one)
 
-    patch account_url(@account), params: { account: { name: "" } }
+    patch account_url(account), params: { account: { name: "" } }
 
     assert_response :unprocessable_entity
   end
 
   test "should destroy account" do
-    @account = create(:account)
+    account = accounts(:bank_one)
+
     assert_difference("Account.count", -1) do
-      delete account_url(@account)
+      delete account_url(account)
     end
 
     assert_redirected_to accounts_url
@@ -60,7 +66,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show checking account report" do
-    account = create(:account, kind: :checking)
+    account = accounts(:bank_one)
 
     get account_url(account)
 
@@ -69,7 +75,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show savings account report" do
-    account = create(:account, kind: :savings)
+    account = accounts(:savings_one)
 
     get account_url(account)
 
@@ -77,7 +83,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show investment account report" do
-    account = create(:account, kind: :investment)
+    account = accounts(:investments_one)
 
     get account_url(account)
 
@@ -85,7 +91,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show credit_card account report" do
-    account = create(:account, kind: :credit_card)
+    account = accounts(:credit_one)
 
     get account_url(account)
 
@@ -93,9 +99,9 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show account transactions filtered by category" do
-    account = create(:account)
-    category = create(:category)
-    other_category = create(:category)
+    account = create(:account, user: users(:default))
+    category = create(:category, user: users(:default))
+    other_category = create(:category, user: users(:default))
     create_list(:transaction, 3, account: account, category:)
     create_list(:transaction, 2, account: account, category: other_category)
 
@@ -105,7 +111,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show account transactions filtered by month" do
-    account = create(:account, initial_balance_date: 3.months.ago)
+    account = create(:account, initial_balance_date: 3.months.ago, user: users(:default))
     create_list(:transaction, 3, account: account, date: 1.month.ago)
     create_list(:transaction, 2, account: account, date: 2.months.ago)
 

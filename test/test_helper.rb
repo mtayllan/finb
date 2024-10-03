@@ -9,6 +9,7 @@ end
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require "test_helpers/session_test_helper"
 
 module ActiveSupport
   class TestCase
@@ -24,6 +25,8 @@ module ActiveSupport
         SimpleCov.result
       end
     end
+
+    include SessionTestHelper
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all

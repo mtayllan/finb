@@ -1,0 +1,17 @@
+food:
+  name: Food
+  color: "#ff0000"
+  icon: food
+  user: default
+
+salary:
+  name: Salary
+  color: "#fff000"
+  icon: money
+  user: default
+
+other:
+  name: Other
+  color: "#ffffff"
+  icon: question
+  user: default

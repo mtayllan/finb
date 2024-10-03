@@ -1,6 +1,10 @@
 require "test_helper"
 
 class TransactionsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    sign_in_default_user
+  end
+
   test "should get index" do
     get transactions_url
     assert_response :success
@@ -17,11 +21,12 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create expense transaction" do
-    account = create(:account)
+    account = accounts(:bank_one)
+    category = categories(:food)
     assert_difference("Transaction.count") do
       post transactions_url, params: { transaction: {
         date: Date.current, value: 10, description: "test", transaction_type: "expense",
-        account_id: account.id, category_id: create(:category).id
+        account_id: account.id, category_id: category.id
       } }
     end
 
@@ -31,11 +36,12 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create income transaction" do
-    account = create(:account)
+    account = accounts(:bank_one)
+    category = categories(:salary)
     assert_difference("Transaction.count") do
       post transactions_url, params: { transaction: {
         date: Date.current, value: 10, description: "test", transaction_type: "income",
-        account_id: account.id, category_id: create(:category).id
+        account_id: account.id, category_id: category.id
       } }
     end
 
@@ -51,22 +57,22 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    @transaction = create(:transaction)
+    @transaction = transactions(:income1)
 
     get edit_transaction_url(@transaction)
     assert_response :success
   end
 
   test "should update transaction" do
-    @transaction = create(:transaction)
+    @transaction = transactions(:income1)
 
-    patch transaction_url(@transaction), params: { transaction: { name: Faker::Bank.name } }
+    patch transaction_url(@transaction), params: { transaction: { description: Faker::Bank.name } }
     assert_redirected_to account_url(@transaction.account)
     assert_equal flash[:notice], "Transaction was successfully updated."
   end
 
   test "should show error on invalid transaction update" do
-    @transaction = create(:transaction)
+    @transaction = transactions(:income1)
 
     patch transaction_url(@transaction), params: { transaction: { date: nil } }
 
@@ -74,7 +80,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy transaction" do
-    @transaction = create(:transaction)
+    @transaction = transactions(:income1)
     assert_difference("Transaction.count", -1) do
       delete transaction_url(@transaction)
     end
@@ -84,9 +90,10 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should recalculate balance of both accounts on account change" do
-    old_account = create(:account, initial_balance: 90, balance: 100)
-    new_account = create(:account, initial_balance: 150)
-    transaction = create(:transaction, account: old_account, value: 10)
+    user = users(:default)
+    old_account = create(:account, initial_balance: 90, balance: 100, user:)
+    new_account = create(:account, initial_balance: 150, user:)
+    transaction = create(:transaction, account: old_account, value: 10, category: categories(:other))
 
     patch transaction_url(transaction), params: { transaction: { account_id: new_account.id } }
 

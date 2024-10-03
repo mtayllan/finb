@@ -1,6 +1,10 @@
 require "test_helper"
 
 class TransfersControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    sign_in_default_user
+  end
+
   test "should get index" do
     get transfers_url
     assert_response :success
@@ -12,9 +16,12 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create transfer" do
+    user = User.first
+    origin_account = create(:account, user: user)
+    target_account = create(:account, user: user)
     assert_difference("Transfer.count") do
       post transfers_url, params: { transfer: {
-        date: Date.current, value: 10, origin_account_id: create(:account).id, target_account_id: create(:account).id
+        date: Date.current, value: 10, origin_account_id: origin_account.id, target_account_id: target_account.id
       } }
     end
 

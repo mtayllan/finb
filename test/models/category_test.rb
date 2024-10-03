@@ -7,8 +7,9 @@ class CategoryTest < ActiveSupport::TestCase
     assert_includes category.errors[:name], "can't be blank"
     assert_includes category.errors[:color], "can't be blank"
     assert_includes category.errors[:icon], "can't be blank"
+    assert_includes category.errors[:user], "must exist"
 
-    category.assign_attributes(name: "Bank One", color: "#000", icon: "house")
+    category.assign_attributes(name: "Category One", color: "#000", icon: "house", user: users(:default))
     assert category.valid?
   end
 end

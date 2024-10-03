@@ -1,6 +1,6 @@
 class SimilarTransactionsController < ApplicationController
   def index
-    @transactions = Transaction
+    @transactions = Current.user.transactions
       .select(
         "transactions.description, transactions.category_id, transactions.account_id, " \
         "categories.name as category_name, categories.color as category_color, " \

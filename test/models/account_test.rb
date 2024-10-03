@@ -9,16 +9,17 @@ class AccountTest < ActiveSupport::TestCase
     assert_includes account.errors[:initial_balance], "can't be blank"
     assert_includes account.errors[:initial_balance_date], "can't be blank"
     assert_includes account.errors[:kind], "can't be blank"
+    assert_includes account.errors[:user], "must exist"
 
     account.assign_attributes(
       name: "Bank One", color: "#000", initial_balance: 0,
-      kind: :checking, initial_balance_date: Date.current
+      kind: :checking, initial_balance_date: Date.current, user: users(:default)
     )
     assert account.valid?
   end
 
   test "#update_balance" do
-    account = create(:account, initial_balance: 30)
+    account = create(:account, initial_balance: 30, user: users(:default))
     initial_balance = account.initial_balance
     transaction_value = 100
     income_transfer_value = 50
@@ -37,7 +38,7 @@ class AccountTest < ActiveSupport::TestCase
   end
 
   test ".update_balance" do
-    account = create(:account, initial_balance: 30)
+    account = create(:account, initial_balance: 30, user: users(:default))
     initial_balance = account.initial_balance
     transaction_value = 100
     income_transfer_value = 50

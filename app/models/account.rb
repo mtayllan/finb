@@ -1,4 +1,6 @@
 class Account < ApplicationRecord
+  belongs_to :user
+
   has_many :transactions, dependent: :destroy
   has_many :balances, dependent: :destroy
   has_many :transfers_as_origin, class_name: "Transfer", foreign_key: "origin_account_id", dependent: :destroy

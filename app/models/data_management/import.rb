@@ -16,30 +16,55 @@ module DataManagement
     private
 
     def clear_data
-      Transaction.delete_all
-      Transfer.delete_all
-      Account.delete_all
-      Category.delete_all
+      Transaction.joins(:account).where({ account: { user_id: Current.user.id } }).delete_all
+      Transfer.joins(:target_account).where({ target_account: { user_id: Current.user.id } }).delete_all
+      Transfer.joins(:origin_account).where({ origin_account: { user_id: Current.user.id } }).delete_all
+      Current.user.accounts.delete_all
+      Current.user.categories.delete_all
     end
 
     def insert_categories
-      Category.insert_all(@data["categories"])
+      @categories_map = {}
+      @data["categories"].each do |category|
+        params = category.except("id")
+        params[:user] = Current.user
+        record = Category.create(params)
+        @categories_map[category["id"]] = record.id
+      end
     end
 
     def insert_accounts
-      Account.insert_all(@data["accounts"])
+      @accounts_map = {}
+      @data["accounts"].each do |account|
+        params = account.except("id")
+        params[:user] = Current.user
+        record = Account.create(params)
+        @accounts_map[account["id"]] = record.id
+      end
     end
 
     def insert_transactions
-      Transaction.insert_all(@data["transactions"])
+      parsed_transactions = @data["transactions"].map do |transaction|
+        transaction.except("id").merge({
+          account_id: @accounts_map[transaction["account_id"]],
+          category_id: @categories_map[transaction["category_id"]]
+        })
+      end
+      Transaction.insert_all(parsed_transactions)
     end
 
     def insert_transfers
-      Transfer.insert_all(@data["transfers"])
+      parsed_transfers = @data["transfers"].map do |transfer|
+        transfer.except("id").merge({
+          target_account_id: @accounts_map[transfer["target_account_id"]],
+          origin_account_id: @accounts_map[transfer["origin_account_id"]]
+        })
+      end
+      Transfer.insert_all(parsed_transfers)
     end
 
     def populate_account_balances
-      Account.find_each(&:update_balance)
+      Current.user.accounts.find_each(&:update_balance)
     end
   end
 end
