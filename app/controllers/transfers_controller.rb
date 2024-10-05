@@ -3,7 +3,7 @@ class TransfersController < ApplicationController
 
   def index
     @month = params[:month] ? Date.parse(params[:month]) : Date.current
-    @transfers = Transfer.includes(:origin_account, :target_account).where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc, created_at: :desc)
+    @transfers = Current.user.transfers.includes(:origin_account, :target_account).where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc, created_at: :desc)
   end
 
   def new
@@ -51,7 +51,7 @@ class TransfersController < ApplicationController
 
   private
     def set_transfer
-      @transfer = Transfer.find(params[:id])
+      @transfer = Current.user.transfers.find(params[:id])
     end
 
     def transfer_params
