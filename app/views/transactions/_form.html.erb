@@ -47,7 +47,7 @@
   <div class="grid w-full items-center gap-1.5 my-5" data-transaction-search-target="category">
     <%= render FormLabelComponent.new(form, :category_id) %>
     <%= render SelectComponent.new(name: form.field_name(:category_id), placeholder: 'Select a category', value: transaction.category_id) do |comp| %>
-      <% Category.all.order(:name).each do |category| %>
+      <% Current.user.categories.order(:name).each do |category| %>
         <% comp.with_option(value: category.id) do %>
           <div class="mr-2">
             <%== render_category_icon(category, size: 24) %>
@@ -61,7 +61,7 @@
   <div class="grid w-full items-center gap-1.5 my-5" data-transaction-search-target="account">
     <%= render FormLabelComponent.new(form, :account_id) %>
     <%= render SelectComponent.new(name: form.field_name(:account_id), placeholder: 'Select an account', value: transaction.account_id) do |comp| %>
-      <% Account.all.order(:name).each do |account| %>
+      <% Current.user.accounts.order(:name).each do |account| %>
         <% comp.with_option(value: account.id) do %>
           <div class="mr-2">
             <%== render_account_icon(account, size: 24) %>
