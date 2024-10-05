@@ -16,7 +16,7 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create transfer" do
-    user = User.first
+    user = users(:default)
     origin_account = create(:account, user: user)
     target_account = create(:account, user: user)
     assert_difference("Transfer.count") do
@@ -36,22 +36,22 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    @transfer = create(:transfer)
+    @transfer = transfers(:one)
 
     get edit_transfer_url(@transfer)
     assert_response :success
   end
 
   test "should update transfer" do
-    @transfer = create(:transfer)
+    @transfer = transfers(:one)
 
-    patch transfer_url(@transfer), params: { transfer: { name: Faker::Bank.name, initial_balance: 50 } }
+    patch transfer_url(@transfer), params: { transfer: { description: Faker::Bank.name } }
     assert_redirected_to transfers_url
     assert_equal flash[:notice], "Transfer was successfully updated."
   end
 
   test "should show error on invalid transfer update" do
-    @transfer = create(:transfer)
+    @transfer = transfers(:one)
 
     patch transfer_url(@transfer), params: { transfer: { date: nil } }
 
@@ -59,7 +59,7 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy transfer" do
-    @transfer = create(:transfer)
+    @transfer = transfers(:one)
     assert_difference("Transfer.count", -1) do
       delete transfer_url(@transfer)
     end

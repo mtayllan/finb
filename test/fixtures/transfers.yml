@@ -1,0 +1,6 @@
+one:
+  origin_account: bank_one
+  target_account: savings_one
+  description: Lets save money
+  value: 500
+  date: <%= Date.current %>
