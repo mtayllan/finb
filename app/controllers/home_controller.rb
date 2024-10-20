@@ -1,17 +1,14 @@
 class HomeController < ApplicationController
   def index
-    current_month = Date.today.beginning_of_month..Date.today.end_of_month
-    last_month = Date.today.prev_month.beginning_of_month..Date.today.prev_month.end_of_month
+    @month = params[:month] ? Date.parse(params[:month]) : Date.current
+    month_range = @month.beginning_of_month..@month.end_of_month
 
     @accounts = Current.user.accounts.order(balance: :desc)
     @total_balance = @accounts.sum(:balance)
     @last_transactions = Current.user.transactions.order(date: :desc).limit(8)
     @last_transfers = Current.user.transfers.order(date: :desc).limit(8)
 
-    @totals = {
-      current_month: calculate_expenses_from(current_month),
-      last_month: calculate_expenses_from(last_month)
-    }
+    @totals = calculate_expenses_from(month_range)
   end
 
   private
