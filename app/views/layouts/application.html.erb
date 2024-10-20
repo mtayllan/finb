@@ -14,8 +14,9 @@
   </head>
 
   <body>
-    <%= render 'components/navbar' %>
-    <main class="container mx-auto mt-14 px-5 flex pb-5">
+    <%= render "layouts/header" %>
+    <%= render "layouts/bottom_navigation" %>
+    <main class="container mx-auto mt-4 mb-20 md:mb-0 md:mt-14 px-5 flex pb-5">
       <%= yield %>
     </main>
 
@@ -26,5 +27,8 @@
         </div>
       </div>
     <% end %>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
   </body>
 </html>
