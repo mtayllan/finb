@@ -1,0 +1,30 @@
+<div
+  class="md:hidden fixed z-50 w-full h-16 max-w-lg border border-border bottom-0 left-0 bg-accent text-accent-foreground/40">
+  <div class="grid h-full max-w-lg grid-cols-6 mx-auto">
+    <%= link_to root_path, class: "inline-flex flex-col items-center justify-center px-5 rounded-s-full #{controller_name == "home" ? "text-primary" : ''}" do %>
+      <i data-lucide="house"></i>
+      <span class="sr-only">Home</span>
+    <% end %>
+
+    <%= link_to transactions_path, class: "inline-flex flex-col items-center justify-center px-5 rounded-s-full #{controller_name == "transactions" ? "text-primary" : ''}" do %>
+      <i data-lucide="list-plus"></i>
+      <span class="sr-only">Transactions</span>
+    <% end %>
+    <%= link_to transfers_path, class: "inline-flex flex-col items-center justify-center px-5 rounded-s-full #{controller_name == "transfers" ? "text-primary" : ''}" do %>
+      <i data-lucide="repeat"></i>
+      <span class="sr-only">Transfers</span>
+    <% end %>
+    <%= link_to accounts_path, class: "inline-flex flex-col items-center justify-center px-5 rounded-s-full #{controller_name == "accounts" ? "text-primary" : ''}" do %>
+      <i data-lucide="landmark"></i>
+      <span class="sr-only">Accounts</span>
+    <% end %>
+    <%= link_to categories_path, class: "inline-flex flex-col items-center justify-center px-5 rounded-s-full #{controller_name == "categories" ? "text-primary" : ''}" do %>
+      <i data-lucide="tag"></i>
+      <span class="sr-only">Categories</span>
+    <% end %>
+    <%= link_to settings_path, class: "inline-flex flex-col items-center justify-center px-5 rounded-s-full #{controller_name == "settings" ? "text-primary" : ''}" do %>
+      <i data-lucide="settings"></i>
+      <span class="sr-only">Settings</span>
+    <% end %>
+  </div>
+</div>
