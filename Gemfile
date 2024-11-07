@@ -5,8 +5,10 @@ ruby "3.3.0"
 # CORE
 gem "rails", "~> 7.2"
 gem "puma", ">= 5.0"
-gem "litestack"
+gem "sqlite3", ">= 2.1"
 gem "bcrypt", "~> 3.1.7"
+gem "solid_cache"
+gem "solid_cable"
 
 # FRONTEND
 gem "propshaft"

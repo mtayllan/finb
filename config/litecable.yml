@@ -1,8 +1,0 @@
-development:
-  path: ./storage/cable.development.sqlite3
-
-test:
-  path: ./storage/cable.test.sqlite3
-
-production:
-  path: ./storage/cable.production.sqlite3
