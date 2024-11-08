@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.0"
 
 # CORE
-gem "rails", "~> 7.2"
+gem "rails", "~> 8.0"
 gem "puma", ">= 5.0"
 gem "sqlite3", ">= 2.1"
 gem "bcrypt", "~> 3.1.7"
