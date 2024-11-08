@@ -1,52 +1,45 @@
+<% require "dotenv"; Dotenv.load(".env.production") %>
+
 service: finb
 
-image: <%= ENV['KAMAL_IMAGE_NAME'] %>
+image: <%= ENV["KAMAL_IMAGE_NAME"] %>
 
 servers:
   web:
     hosts:
-      - <%= ENV['KAMAL_SERVER_IP'] %>
-    labels:
-        traefik.http.routers.finb-beta.entrypoints: websecure
-        traefik.http.routers.finb-beta.rule: Host(`<%= ENV['LETS_ENCRYPT_DOMAIN'] %>`)
-        traefik.http.routers.finb-beta.tls.certresolver: letsencrypt
+      - <%= ENV["KAMAL_HOST"] %>
+
+proxy:
+  ssl: true
+  host: <%= ENV["KAMAL_HOST"] %>
 
 registry:
-  username:
-    - KAMAL_REGISTRY_USERNAME
-  password:
-    - KAMAL_REGISTRY_PASSWORD
+  username: <%= ENV["KAMAL_REGISTRY_USERNAME"] %>
+  password: <%= ENV["KAMAL_REGISTRY_PASSWORD"] %>
 
-builder:
-  multiarch: false
+env:
+  secret:
+    - RAILS_MASTER_KEY
 
 ssh:
   user: app
 
-env:
-  secret:
-    - SECRET_KEY_BASE
+# Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
+# "bin/kamal logs -r job" will tail logs from the first server in the job section.
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
 
 volumes:
   - "storage:/rails/storage"
 
-traefik:
-  options:
-    publish:
-      - "443:443"
-    volume:
-      - "/letsencrypt/acme.json:/letsencrypt/acme.json"
-  args:
-    accesslog: true
-    entryPoints.web.address: ":80"
-    entryPoints.websecure.address: ":443"
-    entryPoints.web.http.redirections.entryPoint.to: websecure
-    entryPoints.web.http.redirections.entryPoint.scheme: https
-    entryPoints.web.http.redirections.entrypoint.permanent: true
-    certificatesResolvers.letsencrypt.acme.email: "<%= ENV['LETS_ENCRYPT_EMAIL'] %>"
-    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
-    certificatesResolvers.letsencrypt.acme.httpchallenge: true
-    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
+# Bridge fingerprinted assets, like JS and CSS, between versions to avoid
+# hitting 404 on in-flight requests. Combines all files from new and old
+# version inside the asset_path.
+asset_path: /rails/public/assets
 
-healthcheck:
-  cord: false
+# Configure the image builder.
+builder:
+  arch: amd64
