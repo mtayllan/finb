@@ -1,6 +1,6 @@
 <div class="w-full">
   <div class="flex justify-between items-center pb-2">
-    <%= render H1Component.new do %>
+    <%= render UI::H1.new do %>
       <div class="text-transparent !bg-clip-text" style="background: linear-gradient(180deg, oklch(var(--foreground)) 10%, <%= @account.color %> 100%);">
         <%= @account.name %>
       </div>

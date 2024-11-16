@@ -74,7 +74,7 @@ export default class extends Controller {
       if (!dayIsEqualToSelectedDay) button.classList.add('hover:bg-accent', 'hover:text-accent-foreground');
       if (dayIsEqualToSelectedDay || dayIsToday) button.classList.add('font-semibold');
 
-      button.dataset['action'] = 'components--date-picker#selectDay';
+      button.dataset['action'] = 'ui--date-picker#selectDay';
 
       const time = document.createElement('time');
       time.dateTime = format(day, 'yyyy-MM-dd');

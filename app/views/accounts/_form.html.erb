@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render FormLabelComponent.new(form, :name) %>
+    <%= render UI::FormLabel.new(form, :name) %>
     <%= form.text_field :name, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render FormLabelComponent.new(form, :kind) %>
-    <%= render SelectComponent.new(name: form.field_name(:kind), placeholder: 'Select a kind', value: account.kind) do |comp| %>
+    <%= render UI::FormLabel.new(form, :kind) %>
+    <%= render UI::Select.new(name: form.field_name(:kind), placeholder: 'Select a kind', value: account.kind) do |comp| %>
       <% Account.kinds.each do |kind, _| %>
         <% comp.with_option(value: kind, label: t("account_kinds.#{kind}")) %>
       <% end %>
@@ -26,18 +26,18 @@
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render FormLabelComponent.new(form, :initial_balance) %>
+    <%= render UI::FormLabel.new(form, :initial_balance) %>
     <%= form.number_field :initial_balance, step: 0.01, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
   </div>
 
   <div class="grid w-full items-center gap-1.5 my-5">
-    <%= render FormLabelComponent.new(form, :initial_balance_date) %>
-    <%= render "components/date_picker", name: form.field_name(:initial_balance_date), initial_value: account.initial_balance_date&.to_fs(:day_month_year) %>
+    <%= render UI::FormLabel.new(form, :initial_balance_date) %>
+    <%= render "components/ui/date_picker", name: form.field_name(:initial_balance_date), initial_value: account.initial_balance_date&.to_fs(:day_month_year) %>
   </div>
 
   <div class="grid w-full items-center my-5 gap-2">
-    <%= render FormLabelComponent.new(form, :color) %>
-    <%= render ColorSelectComponent.new(form, :color, default_value: account.color) %>
+    <%= render UI::FormLabel.new(form, :color) %>
+    <%= render UI::ColorSelect.new(form, :color, default_value: account.color) %>
   </div>
 
   <div class="inline">

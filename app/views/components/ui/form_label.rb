@@ -1,4 +1,4 @@
-class FormLabelComponent < ViewComponent::Base
+class UI::FormLabel < ViewComponent::Base
   def initialize(form, attribute)
     @form, @attribute = form, attribute
   end
