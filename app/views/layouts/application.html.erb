@@ -11,6 +11,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= hotwire_livereload_tags if Rails.env.development? %>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
 
   <body>
@@ -27,8 +29,5 @@
         </div>
       </div>
     <% end %>
-
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>lucide.createIcons();</script>
   </body>
 </html>

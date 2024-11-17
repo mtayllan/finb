@@ -9,14 +9,14 @@
     <div class="flex items-center">
       <% if @account.id == transfer.origin_account.id %>
         <div class="mr-2">
-          <%== render_account_icon(transfer.target_account) %>
+          <%= render AppUI::Accounts::Icon.new(transfer.target_account) %>
         </div>
         <div>
           <%= transfer.target_account.name %>: Outbound transfer
         </div>
       <% else %>
         <div class="mr-2">
-          <%== render_account_icon(transfer.origin_account) %>
+          <%= render AppUI::Accounts::Icon.new(transfer.origin_account) %>
         </div>
         <div>
           <%= transfer.origin_account.name %>: Inbound transfer

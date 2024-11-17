@@ -8,7 +8,7 @@
   <td class="p-2 align-middle font-medium">
     <div class="flex items-center">
       <div class="mr-2">
-        <%== render_category_icon(transaction.category) %>
+        <%= render AppUI::Categories::Icon.new(transaction.category) %>
       </div>
       <div class="underline underline-offset-4 hover:text-primary">
         <%= link_to transaction.category.name, url_for(params.permit(:month, :account_id).merge(category_id: transaction.category_id)) %>
