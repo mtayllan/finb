@@ -19,7 +19,7 @@
       <% accounts.all.order(:name).each do |account| %>
         <% comp.with_option(value: account.id) do %>
           <div class="mr-2">
-            <%== render_account_icon(account, size: 24) %>
+            <%= render AppUI::Accounts::Icon.new(account, size: "lg") %>
           </div>
           <div><%= account.name %></h3>
         <% end %>
@@ -33,7 +33,7 @@
       <% accounts.all.order(:name).each do |account| %>
         <% comp.with_option(value: account.id) do %>
           <div class="mr-2">
-            <%== render_account_icon(account, size: 24) %>
+            <%= render AppUI::Accounts::Icon.new(account, size: "lg") %>
           </div>
           <div><%= account.name %></h3>
         <% end %>

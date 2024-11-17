@@ -8,7 +8,7 @@
   <td class="p-2 align-middle font-medium">
     <div class="flex items-center">
       <div class="mr-2">
-        <%== render_account_icon(transfer.origin_account) %>
+        <%= render AppUI::Accounts::Icon.new(transfer.origin_account, size: "lg") %>
       </div>
       <%= transfer.origin_account.name %>
     </div>
@@ -16,7 +16,7 @@
   <td class="p-2 align-middle font-medium">
     <div class="flex items-center">
       <div class="mr-2">
-        <%== render_account_icon(transfer.target_account) %>
+        <%= render AppUI::Accounts::Icon.new(transfer.target_account, size: "lg") %>
       </div>
       <%= transfer.target_account.name %>
     </div>

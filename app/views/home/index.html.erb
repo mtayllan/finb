@@ -12,7 +12,7 @@
           <div class="flex items-center justify-between space-x-4">
             <div class="flex items-center space-x-4">
               <span class="relative flex shrink-0">
-                <%== render_account_icon(account) %>
+                <%= render AppUI::Accounts::Icon.new(account) %>
               </span>
               <div>
                 <p class="text-sm font-medium leading-none"><%= account.name %></p>
@@ -42,7 +42,7 @@
           <div class="flex items-center justify-between space-x-4">
             <div class="flex items-center space-x-4">
               <span class="relative flex shrink-0">
-                <%== render_category_icon(transaction.category) %>
+                <%= render AppUI::Categories::Icon.new(transaction.category) %>
               </span>
               <div>
                 <p class="text-sm font-medium leading-none"><%= transaction.description %></p>
@@ -69,7 +69,9 @@
         <% @last_transfers.each do |transfer| %>
           <div class="grid grid-cols-3">
             <div class="flex items-center gap-4">
-              <div> <%== render_account_icon(transfer.origin_account) %> </div>
+              <div>
+                <%= render AppUI::Accounts::Icon.new(transfer.origin_account) %>
+              </div>
               <div class="text-ellipsis line-clamp-1 text-sm"><%= transfer.origin_account.name %></div>
             </div>
             <div class="flex flex-col items-center justify-center text-sm">
@@ -77,7 +79,9 @@
               <p><%= transfer.value %></p>
             </div>
             <div class="flex flex-row-reverse items-center gap-4">
-              <div><%== render_account_icon(transfer.target_account) %></div>
+              <div>
+                <%= render AppUI::Accounts::Icon.new(transfer.target_account) %>
+              </div>
               <div class="text-ellipsis line-clamp-1"><%= transfer.target_account.name %></div>
             </div>
           </div>
@@ -148,7 +152,7 @@
               <div class="mt-2 flex justify-between">
                 <div class="flex items-center">
                   <div class="mr-2">
-                    <%== render_category_icon(category) %>
+                    <%= render AppUI::Categories::Icon.new(category) %>
                   </div>
                   <h2 class="font-semibold mr-2 hover:underline">
                     <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id) %>
@@ -168,7 +172,7 @@
               <div class="mt-2 flex justify-between">
                 <div class="flex items-center">
                   <div class="mr-2">
-                    <%== render_category_icon(category) %>
+                    <%= render AppUI::Categories::Icon.new(category) %>
                   </div>
                   <h2 class="font-semibold mr-2 hover:underline">
                     <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id) %>
