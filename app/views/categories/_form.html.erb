@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :name) %>
-    <%= form.text_field :name, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
-  </div>
+    <%= render UI::TextField.new(form, :name) %>
+  <% end %>
 
-  <div class="grid w-full items-center my-5 gap-2">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :color) %>
-    <%= render UI::ColorSelect.new(form, :color, default_value: category.color) %>
-  </div>
+    <%= render UI::ColorField.new(form, :color, default_value: category.color) %>
+  <% end %>
 
   <div class="my-5">
     <%= render UI::FormLabel.new(form, :icon) %>

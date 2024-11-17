@@ -1,15 +1,15 @@
-<div data-controller="ui--select" class="relative">
+<div data-controller="ui--select-field" class="relative">
   <input
-    data-ui--select-target="searchInput"
+    data-ui--select-field-target="searchInput"
     class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
     type="text"
     placeholder="<%= @placeholder %>"
-    data-action="focus->ui--select#openDropdown ui--select#search"
+    data-action="focus->ui--select-field#openDropdown ui--select-field#search"
   >
-  <input type="hidden" name="<%= @name %>" data-ui--select-target="inputValue" value="<%= @value %>">
+  <input type="hidden" name="<%= @name %>" data-ui--select-field-target="inputValue" value="<%= @value %>">
 
   <div
-    data-ui--select-target="dropdown"
+    data-ui--select-field-target="dropdown"
     class="hidden absolute right-0 mt-1 w-full z-10 overflow-auto max-h-64 rounded-md border bg-popover text-popover-foreground shadow-md"
   >
     <% options.each do |option| %>

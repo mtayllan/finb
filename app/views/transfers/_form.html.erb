@@ -11,21 +11,21 @@
     </div>
   <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :value) %>
-    <%= render UI::MoneyInput.new(form:, attribute: :value, default_value: transfer.value) %>
-  </div>
+    <%= render UI::MoneyField.new(form, :value, default_value: transfer.value) %>
+  <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :description) %>
     <%= form.text_field :description, class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" %>
-  </div>
+  <% end %>
 
   <% accounts = Current.user.accounts.order(:name) %>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :origin_account_id) %>
-    <%= render UI::Select.new(name: form.field_name(:origin_account_id), placeholder: 'Select an account', value: transfer.origin_account_id) do |comp| %>
+    <%= render UI::SelectField.new(name: form.field_name(:origin_account_id), placeholder: 'Select an account', value: transfer.origin_account_id) do |comp| %>
       <% accounts.all.order(:name).each do |account| %>
         <% comp.with_option(value: account.id) do %>
           <div class="mr-2">
@@ -35,11 +35,11 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :target_account_id) %>
-    <%= render UI::Select.new(name: form.field_name(:target_account_id), placeholder: 'Select an account', value: transfer.target_account_id) do |comp| %>
+    <%= render UI::SelectField.new(name: form.field_name(:target_account_id), placeholder: 'Select an account', value: transfer.target_account_id) do |comp| %>
       <% accounts.all.order(:name).each do |account| %>
         <% comp.with_option(value: account.id) do %>
           <div class="mr-2">
@@ -49,12 +49,12 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :date) %>
     <%= render "components/ui/date_picker", name: form.field_name(:date), initial_value: transfer.date&.to_fs(:day_month_year) %>
-  </div>
+  <% end %>
 
   <div class="inline">
     <%= form.submit class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 hover:cursor-pointer" %>

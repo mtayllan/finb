@@ -24,12 +24,12 @@
     </div>
   </div>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :value) %>
-    <%= render UI::MoneyInput.new(form:, attribute: :value, default_value: transaction.value&.abs) %>
-  </div>
+    <%= render UI::MoneyField.new(form, :value, default_value: transaction.value&.abs) %>
+  <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :description) %>
     <div data-transaction-search-target="transaction" class="relative text-left">
       <%= form.text_field :description,
@@ -42,11 +42,11 @@
       <div class="hidden absolute right-0 mt-1 w-full z-10 overflow-auto max-h-64 rounded-md border bg-popover text-popover-foreground shadow-md">
       </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5" data-transaction-search-target="category">
+  <%= render UI::FormGroup.new(data: { transaction_search_target: "category" }) do %>
     <%= render UI::FormLabel.new(form, :category_id) %>
-    <%= render UI::Select.new(name: form.field_name(:category_id), placeholder: 'Select a category', value: transaction.category_id) do |comp| %>
+    <%= render UI::SelectField.new(name: form.field_name(:category_id), placeholder: 'Select a category', value: transaction.category_id) do |comp| %>
       <% Current.user.categories.order(:name).each do |category| %>
         <% comp.with_option(value: category.id) do %>
           <div class="mr-2">
@@ -56,11 +56,11 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5" data-transaction-search-target="account">
+  <%= render UI::FormGroup.new(data: { transaction_search_target: "account" }) do %>
     <%= render UI::FormLabel.new(form, :account_id) %>
-    <%= render UI::Select.new(name: form.field_name(:account_id), placeholder: 'Select an account', value: transaction.account_id) do |comp| %>
+    <%= render UI::SelectField.new(name: form.field_name(:account_id), placeholder: 'Select an account', value: transaction.account_id) do |comp| %>
       <% Current.user.accounts.order(:name).each do |account| %>
         <% comp.with_option(value: account.id) do %>
           <div class="mr-2">
@@ -70,12 +70,12 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 
-  <div class="grid w-full items-center gap-1.5 my-5">
+  <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :date) %>
     <%= render "components/ui/date_picker", name: form.field_name(:date), initial_value: transaction.date&.to_fs(:day_month_year) %>
-  </div>
+  <% end %>
 
   <div class="inline">
     <%= form.submit class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 hover:cursor-pointer" %>
