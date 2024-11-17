@@ -1,15 +1,5 @@
 <%= form_with(model: transfer, class: "contents") do |form| %>
-  <% if transfer.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(transfer.errors.count, "error") %> prohibited this transfer from being saved:</h2>
-
-      <ul>
-        <% transfer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render FormErrorsExplanation.new(transfer.errors) if transfer.errors.any? %>
 
   <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :value) %>

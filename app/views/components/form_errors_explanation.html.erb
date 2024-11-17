@@ -1,0 +1,7 @@
+<div class="text-warning rounded-lg border p-4">
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
