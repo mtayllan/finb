@@ -1,15 +1,5 @@
 <%= form_with(model: transaction, class: "contents", data: { controller: "transaction-search" }) do |form| %>
-  <% if transaction.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
-
-      <ul>
-        <% transaction.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render FormErrorsExplanation.new(transaction.errors) if transaction.errors.any? %>
 
   <div class="my-5">
     <%= render UI::FormLabel.new(form, :transaction_type) %>
