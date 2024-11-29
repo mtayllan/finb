@@ -7,6 +7,7 @@ class SimilarTransactionsController < ApplicationController
         "accounts.name as account_name, accounts.color as account_color"
       )
       .joins(:category, :account)
+      .where(date: 3.months.ago..)
       .where("lower(transactions.description) LIKE lower(?)", "%#{params[:q]}%")
       .group("transactions.description, transactions.category_id, transactions.account_id")
       .limit(5)
