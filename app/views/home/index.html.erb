@@ -188,7 +188,7 @@
       </div>
 
       <div
-        class="grid grid-cols-2 mt-4"
+        class="grid md:grid-cols-2 mt-4"
         data-controller="categories-charts"
         data-categories-charts-expenses-value="<%= @totals[:expenses_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1].abs } }.to_json %>"
         data-categories-charts-income-value="<%= @totals[:income_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1] } }.to_json %>"
