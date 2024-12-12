@@ -1,4 +1,4 @@
-<%= form_with(model: transaction, class: "contents", data: { controller: "transaction-search" }) do |form| %>
+<%= form_with(model: transaction, data: { controller: "transaction-search" }) do |form| %>
   <%= render FormErrorsExplanation.new(transaction.errors) if transaction.errors.any? %>
 
   <div class="my-5">
@@ -67,7 +67,9 @@
     <%= render "components/ui/date_picker", name: form.field_name(:date), initial_value: transaction.date&.to_fs(:day_month_year) %>
   <% end %>
 
-  <div class="inline">
+  <div class="flex justify-between">
     <%= form.submit class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 hover:cursor-pointer" %>
+
+    <%= link_to "Cancel", transactions_path, class: "ml-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-muted text-muted-foreground shadow hover:bg-muted/40 h-9 px-4 py-2" %>
   </div>
 <% end %>
