@@ -18,6 +18,38 @@ export default class extends Controller {
     window.addEventListener('resize', function () {
       chart.resize();
     });
+
+    const sortedData = data.sort((a, b) => b.value - a.value);
+    const maxSegments = 9; // To reserve one slot for "Others"
+    const processedData = {
+      mainSegments: sortedData.slice(0, maxSegments).map(item => ({
+        value: item.value,
+        name: item.name,
+        itemStyle: {
+          color: item.color
+        },
+      })),
+      smallSegments: sortedData.slice(maxSegments)
+    };
+    if (processedData.smallSegments.length > 0) {
+      const othersValue = processedData.smallSegments.reduce((sum, item) => sum + parseFloat(item.value), 0);
+      const total = data.reduce((sum, item) => sum + parseFloat(item.value), 0);
+
+      processedData.mainSegments.push({
+        name: 'Others',
+        value: othersValue,
+        itemStyle: { color: '#999' },  // Grey color for Others
+        tooltip: {
+          formatter: (params) => {
+            const segments = processedData.smallSegments
+              .map(item => `${item.name}: $${item.value} (${((item.value / total) * 100).toFixed(1)}%)`)
+              .join('<br/>');
+            return `Others: $${othersValue} (${(params.percent).toFixed(1)}%)<br/>${segments}`;
+          }
+        }
+      });
+    }
+
     chart.setOption({
       tooltip: {
         trigger: 'item',
@@ -54,15 +86,7 @@ export default class extends Controller {
           labelLine: {
             show: false
           },
-          data: data.map((item) => {
-            return {
-              value: item.value,
-              name: item.name,
-              itemStyle: {
-                color: item.color
-              },
-            }
-          })
+          data: processedData.mainSegments,
         }
       ]
     })
