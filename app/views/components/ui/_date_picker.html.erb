@@ -1,3 +1,5 @@
+<%# locals: (initial_value:, name:, show_quick_select: true) -%>
+
 <div data-controller="ui--date-picker">
 
   <div class="relative">
@@ -54,17 +56,19 @@
     </div>
   </div>
 
-  <div class="flex gap-2 mt-2">
-    <% 1.upto(7) do |i| %>
-      <% date = i.days.ago.to_date %>
-      <button
-        type="button"
-        class="text-xs hover:underline"
-        data-action="ui--date-picker#quickSelect"
-        data-ui--date-picker-value-param="<%= date.to_fs(:day_month_year) %>"
-      >
-        <%= date.strftime('%a %d') %>
-      </button>
-    <% end %>
-  </div>
+  <% if show_quick_select %>
+    <div class="flex gap-2 mt-2">
+      <% 1.upto(7) do |i| %>
+        <% date = i.days.ago.to_date %>
+        <button
+          type="button"
+          class="text-xs hover:underline"
+          data-action="ui--date-picker#quickSelect"
+          data-ui--date-picker-value-param="<%= date.to_fs(:day_month_year) %>"
+        >
+          <%= date.strftime('%a %d') %>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
 </div>

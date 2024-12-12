@@ -9,6 +9,7 @@ gem "sqlite3", ">= 2.1"
 gem "bcrypt", "~> 3.1.7"
 gem "solid_cache"
 gem "solid_cable"
+gem "groupdate"
 
 # FRONTEND
 gem "propshaft"
