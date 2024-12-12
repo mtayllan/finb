@@ -5,13 +5,13 @@ if Rails.env.development?
     {
       name: "Food",
       color: "#27272a",
-      icon: "food",
+      icon: "bowl-food",
       user:
     },
     {
       name: "Lunch",
       color: "#64748b",
-      icon: "fork_knife",
+      icon: "fork-knife",
       user:
     },
     {
@@ -29,7 +29,7 @@ if Rails.env.development?
     {
       name: "Games",
       color: "#14b8a6",
-      icon: "game",
+      icon: "game-controller",
       user:
     },
     {
@@ -41,7 +41,7 @@ if Rails.env.development?
     {
       name: "Clothes",
       color: "#dc2626",
-      icon: "t_shirt",
+      icon: "t-shirt",
       user:
     },
     {
@@ -59,7 +59,31 @@ if Rails.env.development?
     {
       name: "Tech",
       color: "#0ea5e9",
-      icon: "pc",
+      icon: "desktop",
+      user:
+    },
+    {
+      name: "Collection",
+      color: "#22d3ee",
+      icon: "coins",
+      user:
+    },
+    {
+      name: "Taxes",
+      color: "#0ea5e9",
+      icon: "hand-coins",
+      user:
+    },
+    {
+      name: "Car",
+      color: "#0ea5e9",
+      icon: "car",
+      user:
+    },
+    {
+      name: "Trip",
+      color: "#eab308",
+      icon: "airplane-takeoff",
       user:
     }
   ])
