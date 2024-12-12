@@ -117,6 +117,8 @@ GEM
     ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    groupdate (6.5.1)
+      activesupport (>= 7)
     hotwire-livereload (1.4.1)
       actioncable (>= 6.0.0)
       listen (>= 3.0.0)
@@ -349,6 +351,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  groupdate
   hotwire-livereload (~> 1.4)
   importmap-rails
   kamal (~> 2.3)

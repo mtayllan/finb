@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resource :import_data, only: :create
   end
 
+  resource :reports, only: :show
   namespace :reports do
     resource :daily_balance, only: :show
     resource :income_by_category, only: :show

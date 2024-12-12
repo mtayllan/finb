@@ -1,0 +1,44 @@
+<div class="w-full">
+  <div class="flex justify-between items-center pb-2">
+    <%= render UI::H1.new.with_content('Reports') %>
+  </div>
+  <hr>
+
+  <%= form_with url: reports_path, method: :get, local: true, class: "space-y-4" do |form| %>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :start_date) %>
+        <%= render "components/ui/date_picker", name: form.field_name(:start_date), initial_value: @start_date.to_fs(:day_month_year), show_quick_select: false  %>
+      <% end %>
+
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :end_date) %>
+        <%= render "components/ui/date_picker", name: form.field_name(:end_date), initial_value: @end_date.to_fs(:day_month_year), show_quick_select: false  %>
+      <% end %>
+
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :granularity) %>
+        <%= render UI::SelectField.new(name: form.field_name(:granularity), placeholder: 'Granularity', value: @granularity) do |select| %>
+          <% select.with_option(value: "day", label: "day") %>
+          <% select.with_option(value: "week", label: "week") %>
+          <% select.with_option(value: "month", label: "month") %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="flex justify-end">
+      <%= form.submit "Filter", class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 hover:cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <div class="text-center">
+    <h3 class="text-xl font-bold">Balance Report</h3>
+    <div
+      data-controller="charts--transactions-totals"
+      data-charts--transactions-totals-expenses-value="<%= @expenses.to_a.to_json %>"
+      data-charts--transactions-totals-income-value="<%= @income.to_a.to_json %>"
+      data-charts--transactions-totals-granularity-value="<%= @granularity %>"
+      class="h-96"
+    >
+    </div>
+  </div>
+</div>
