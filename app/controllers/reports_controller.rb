@@ -4,8 +4,8 @@ class ReportsController < ApplicationController
     @end_date = Date.parse(params[:end_date]) rescue Date.today.end_of_month
     @granularity = params[:granularity].presence || "month"
 
-    @income = Transaction.where("value > 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)
-    @expenses = Transaction.where("value < 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)
+    @income = Current.user.transactions.where("value > 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)
+    @expenses = Current.user.transactions.where("value < 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)
   end
 
   def filter_params
