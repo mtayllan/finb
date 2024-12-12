@@ -155,7 +155,7 @@
                     <%= render AppUI::Categories::Icon.new(category) %>
                   </div>
                   <h2 class="font-semibold mr-2 hover:underline">
-                    <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id) %>
+                    <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id), data: { turbo: false }  %>
                   </h2>
                 </div>
                 <div>
@@ -175,7 +175,7 @@
                     <%= render AppUI::Categories::Icon.new(category) %>
                   </div>
                   <h2 class="font-semibold mr-2 hover:underline">
-                    <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id) %>
+                    <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id), data: { turbo: false } %>
                   </h2>
                 </div>
                 <div>
