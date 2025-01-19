@@ -21,7 +21,7 @@ gem "view_component"
 
 # OTHER
 gem "bootsnap", require: false
-gem "kamal", "~> 2.3", require: false
+gem "kamal", "~> 2.4", require: false
 gem "thruster", "~> 0.1", require: false
 
 group :development, :test do
