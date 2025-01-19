@@ -1,0 +1,7 @@
+{
+  "github.copilot.chat.testGeneration.instructions": [
+    {
+      "file": ".github/copilot-test-instructions.md"
+    }
+  ]
+}

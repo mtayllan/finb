@@ -1,0 +1,3 @@
+- This is a web application using Ruby on Rails version 8.0 and Ruby 3.3
+- Use Minitest to generate tests
+- Use rails fixtures to setup test data
