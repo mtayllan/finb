@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[ show edit update destroy ]
 
   def index
-    @accounts = Current.user.accounts.order(:name)
+    @grouped_accounts = Current.user.accounts.order(:name).group_by(&:kind)
   end
 
   def show
@@ -33,7 +33,7 @@ class AccountsController < ApplicationController
 
     if @account.save
       @account.update_balance
-      redirect_to accounts_url, notice: "Account was successfully created."
+      redirect_to accounts_url(@account), notice: "Account was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class AccountsController < ApplicationController
   def update
     if @account.update(account_params)
       @account.update_balance
-      redirect_to accounts_url, notice: "Account was successfully updated."
+      redirect_to accounts_url(@account), notice: "Account was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

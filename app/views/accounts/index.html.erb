@@ -3,7 +3,31 @@
     <%= render UI::H1.new.with_content('Accounts') %>
     <%= link_to "New Account", new_account_path, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
   </div>
-  <div id="accounts" class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
-    <%= render @accounts %>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+    <% Account.kinds.keys.each do |kind| %>
+      <div>
+        <div class="text-lg font-bold mb-2">
+          <%= kind.humanize %>
+        </div>
+
+        <div class="flex flex-col">
+          <% @grouped_accounts[kind].each do |account| %>
+            <%= link_to account_path(account), class: "flex justify-between items-center hover:bg-secondary rounded-md p-1" do %>
+              <div class="flex items-center space-x-2">
+                <%= render AppUI::Accounts::Icon.new(account, size: "lg") %>
+                <span>
+                  <%= account.name %>
+                </span>
+              </div>
+              <p
+                class="text-xs <%= account.balance.positive? ? 'text-positive' : 'text-negative' %>">
+                <%= number_to_currency account.balance %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
