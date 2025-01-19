@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_17_130103) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_19_174433) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -42,6 +42,47 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_17_130103) do
     t.string "icon", default: "", null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "credit_card_statements", force: :cascade do |t|
+    t.integer "credit_card_id", null: false
+    t.datetime "paid_at"
+    t.datetime "due_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["credit_card_id"], name: "index_credit_card_statements_on_credit_card_id"
+  end
+
+  create_table "credit_card_transaction_installments", force: :cascade do |t|
+    t.integer "original_transaction_id", null: false
+    t.integer "statement_id", null: false
+    t.decimal "value", null: false
+    t.integer "number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["original_transaction_id"], name: "idx_on_original_transaction_id_bf7530c8b6"
+    t.index ["statement_id"], name: "index_credit_card_transaction_installments_on_statement_id"
+  end
+
+  create_table "credit_card_transactions", force: :cascade do |t|
+    t.integer "statement_id", null: false
+    t.decimal "value", null: false
+    t.integer "total_installments", null: false
+    t.integer "category_id", null: false
+    t.string "description", null: false
+    t.date "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_credit_card_transactions_on_category_id"
+    t.index ["statement_id"], name: "index_credit_card_transactions_on_statement_id"
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.integer "account_id", null: false
+    t.integer "expiration_day", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_credit_cards_on_account_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -85,6 +126,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_17_130103) do
   add_foreign_key "account_balances", "accounts", on_delete: :cascade
   add_foreign_key "accounts", "users"
   add_foreign_key "categories", "users"
+  add_foreign_key "credit_card_statements", "credit_cards"
+  add_foreign_key "credit_card_transaction_installments", "credit_card_statements", column: "statement_id"
+  add_foreign_key "credit_card_transaction_installments", "credit_card_transactions", column: "original_transaction_id"
+  add_foreign_key "credit_card_transactions", "categories"
+  add_foreign_key "credit_card_transactions", "credit_card_statements", column: "statement_id"
+  add_foreign_key "credit_cards", "accounts"
   add_foreign_key "sessions", "users"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"

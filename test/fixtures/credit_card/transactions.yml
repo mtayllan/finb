@@ -1,0 +1,7 @@
+one:
+  statement: one
+  value: 99.99
+  total_installments: 1
+  category: other
+  description: "Groceries"
+  date: 2024-01-19
