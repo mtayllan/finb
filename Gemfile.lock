@@ -119,10 +119,10 @@ GEM
       activesupport (>= 6.1)
     groupdate (6.5.1)
       activesupport (>= 7)
-    hotwire-livereload (1.4.1)
-      actioncable (>= 6.0.0)
-      listen (>= 3.0.0)
-      railties (>= 6.0.0)
+    hotwire-spark (0.1.12)
+      listen
+      rails (>= 7.0.0)
+      zeitwerk
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.3)
@@ -353,7 +353,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   groupdate
-  hotwire-livereload (~> 1.4)
+  hotwire-spark
   importmap-rails
   kamal (~> 2.3)
   propshaft
