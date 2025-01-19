@@ -20,7 +20,8 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
       post accounts_url, params: { account: { name: Faker::Bank.name, initial_balance_date: Date.current.iso8601 } }
     end
 
-    assert_redirected_to accounts_url
+    account = Account.last
+    assert_redirected_to accounts_url(account)
     assert_equal flash[:notice], "Account was successfully created."
   end
 
@@ -42,7 +43,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     account = accounts(:bank_one)
 
     patch account_url(account), params: { account: { name: Faker::Bank.name, initial_balance: 50 } }
-    assert_redirected_to accounts_url
+    assert_redirected_to accounts_url(account)
     assert_equal flash[:notice], "Account was successfully updated."
   end
 
