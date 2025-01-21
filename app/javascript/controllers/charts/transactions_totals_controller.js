@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { format } from 'date-fns'
+import { format, parseISO } from 'date-fns'
 
 const FORMAT_BY_GRANULARITY = {
   day: 'MMM d',
@@ -24,7 +24,7 @@ export default class extends Controller {
       },
       xAxis: {
         type: 'category',
-        data: this.expensesValue.map(expense => format(new Date(expense[0]), FORMAT_BY_GRANULARITY[this.granularityValue])),
+        data: this.expensesValue.map(expense => format(parseISO(expense[0]), FORMAT_BY_GRANULARITY[this.granularityValue])),
       },
       yAxis: {
         type: 'value'
