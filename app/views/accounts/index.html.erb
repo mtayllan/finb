@@ -12,7 +12,7 @@
         </div>
 
         <div class="flex flex-col">
-          <% @grouped_accounts[kind].each do |account| %>
+          <% @grouped_accounts[kind]&.each do |account| %>
             <%= link_to account_path(account), class: "flex justify-between items-center hover:bg-secondary rounded-md p-1" do %>
               <div class="flex items-center space-x-2">
                 <%= render AppUI::Accounts::Icon.new(account, size: "lg") %>
