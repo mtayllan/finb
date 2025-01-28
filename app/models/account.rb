@@ -11,7 +11,11 @@ class Account < ApplicationRecord
   enum :kind, [:checking, :savings, :credit_card, :investment]
 
   def update_balance
-    update(balance: initial_balance + transactions.sum(:value) - transfers_as_origin.sum(:value) + transfers_as_target.sum(:value))
+    transactions_value = transactions.where(date: ..Date.current).sum(:value)
+    transfers_as_origin_value = transfers_as_origin.where(date: ..Date.current).sum(:value)
+    transfers_as_target_value = transfers_as_target.where(date: ..Date.current).sum(:value)
+
+    update(balance: initial_balance + transactions_value + transfers_as_target_value - transfers_as_origin_value)
     Account::UpdateBalances.call(self)
   end
 
