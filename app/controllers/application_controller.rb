@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate
+  before_action :recalculate_balances
 
   def authenticate
     if (user_session = Session.find_by(token: cookies.signed[:session_token]))
@@ -7,6 +8,21 @@ class ApplicationController < ActionController::Base
     else
       session[:return_to_after_authenticating] = request.url
       redirect_to new_sessions_path, alert: "Please sign in"
+    end
+  end
+
+  def recalculate_balances
+    return unless Current.user
+    last_calc_date = Rails.cache.fetch("last_balance_calculation_date/#{Current.user.id}") do
+      Current.user.accounts.minimum(:updated_at).to_date
+    end
+
+    if last_calc_date < Date.current
+      Current.user.accounts.find_each do |account|
+        account.update_balance
+      end
+
+      Rails.cache.write("last_balance_calculation_date/#{Current.user.id}", Date.current)
     end
   end
 end
