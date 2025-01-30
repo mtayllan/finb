@@ -1,0 +1,13 @@
+<% if @form %>
+  <%= @form.submit class: classes, data: @data do %>
+    <%= content %>
+  <% end %>
+<% elsif @href %>
+  <%= link_to @href, class: classes, data: @data do %>
+    <%= content %>
+  <% end %>
+<% else %>
+  <%= button_tag class: classes, data: @data do %>
+    <%= content %>
+  <% end %>
+<% end %>
