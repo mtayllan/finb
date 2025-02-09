@@ -1,0 +1,7 @@
+one:
+  name: My Credit Card
+  color: "#ff00ff"
+  closing_day: 1
+  due_day: 7
+  limit: 2000
+  user: default

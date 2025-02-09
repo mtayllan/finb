@@ -161,3 +161,61 @@ if Rails.env.development?
 
   Account.all.each(&:update_balance)
 end
+
+CreditCard.create(
+  name: "Nubank Mastercard",
+  limit: 2000,
+  due_day: 10,
+  closing_day: 3,
+  color: "#f59e0b",
+  user: User.first
+)
+
+CreditCard.create(
+  name: "Itaú Visa",
+  limit: 3000,
+  due_day: 25,
+  closing_day: 18,
+  color: "#22d3ee",
+  user: User.first
+)
+
+statement1 = CreditCard::Statement.create(
+  credit_card: CreditCard.first,
+  closing_date: 1.month.ago.change(day: 3),
+  due_date: 1.month.ago.change(day: 10),
+  paid_at: 1.month.ago.change(day: 10)
+)
+
+7.times do |i|
+  CreditCard::Transaction.create(
+    statement: statement1,
+    description: Faker::Lorem.sentence(word_count: 3),
+    value: Faker::Number.between(from: 10.0, to: 100.0),
+    date: 1.month.ago.change(day: 1),
+    category: Category.all.sample
+  )
+end
+
+CreditCard::Payment.create(
+  statement: statement1,
+  value: 1000,
+  date: 1.month.ago.change(day: 10),
+  account: Account.first
+)
+
+statement2 = CreditCard::Statement.create(
+  credit_card: CreditCard.first,
+  closing_date: Date.current.change(day: 3),
+  due_date: Date.current.change(day: 10)
+)
+
+10.times do |i|
+  CreditCard::Transaction.create(
+    statement: statement2,
+    description: Faker::Lorem.sentence(word_count: 3),
+    value: Faker::Number.between(from: 10.0, to: 100.0),
+    date: 3.days.ago,
+    category: Category.all.sample
+  )
+end

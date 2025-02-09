@@ -1,0 +1,7 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <%= render UI::H1.new.with_content('New Credit Card') %>
+
+  <%= render "form", credit_card: @credit_card %>
+
+  <%= link_to "Back to accounts", credit_cards_path, class: "ml-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-muted text-muted-foreground shadow hover:bg-muted/40 h-9 px-4 py-2" %>
+</div>

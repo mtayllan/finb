@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   resources :transfers, except: :show
   resources :transactions, except: :show
   resources :accounts
+  resources :credit_cards
+  namespace :credit_card do
+    resources :transactions, except: :show
+  end
+
   resources :categories, except: :show
 
   resources :similar_transactions, only: [:index]

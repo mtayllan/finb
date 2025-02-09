@@ -1,0 +1,65 @@
+<div class="w-full">
+  <div class="flex justify-between items-center pb-2">
+    <%= render UI::H1.new do %>
+      <div class="text-transparent !bg-clip-text" style="background: linear-gradient(180deg, oklch(var(--foreground)) 10%, <%= @credit_card.color %> 100%);">
+        <%= @credit_card.name %>
+      </div>
+    <% end %>
+    <%= link_to "Add transaction", new_credit_card_transaction_path(credit_card_id: @credit_card), class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
+  </div>
+
+  <div class="flex justify-center items-center my-6 gap-8">
+    <%=
+      link_to @month.prev_month.strftime('%b %Y'),
+              url_for(params.permit(:category_id).merge(month: @month.prev_month.strftime('%Y/%m'))),
+              class: "underline underline-offset-4 hover:text-primary"
+    %>
+
+    <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
+
+    <%=
+      link_to @month.next_month.strftime('%b %Y'),
+              url_for(params.permit(:category_id).merge(month: @month.next_month.strftime('%Y/%m'))),
+              class: "underline underline-offset-4 hover:text-primary"
+    %>
+  </div>
+
+  <div class="relative w-full overflow-auto">
+    <table id="transactions" class="w-full text-sm">
+      <thead class="[&_tr]:border-b">
+        <tr class="border-b transition-colors hover:bg-muted/50">
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Date
+          </th>
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Description
+          </th>
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Category
+          </th>
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Value
+          </th>
+          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody class="[&_tr:last-child]:border-0">
+        <% @transactions.each do |record| %>
+          <%= render 'transaction', transaction: record %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <div class="text-2xl font-semibold tracking-tight mt-4">
+    More Options
+  </div>
+  <div class="mt-2 flex gap-2">
+    <%= link_to "Edit Credit Card", edit_credit_card_path(@credit_card), class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2" %>
+    <%= link_to "Delete Credit Card", @credit_card, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 px-4 py-2" %>
+  </div>
+</div>

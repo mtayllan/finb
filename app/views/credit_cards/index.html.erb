@@ -1,0 +1,18 @@
+<div class="w-full">
+  <div class="flex flex-wrap justify-between items-center pb-2">
+    <%= render UI::H1.new.with_content('Credit Cards') %>
+    <%= render UI::Button.new(href: new_credit_card_path).with_content("New Card") %>
+  </div>
+
+  <div class="grid grid-cols-1 gap-2">
+    <% @credit_cards.each do |credit_card| %>
+      <div class="flex w-full p-1 border justify-between">
+        <%= link_to credit_card.name, credit_card_path(credit_card) %>
+        <div>
+          <%= link_to 'Edit', edit_credit_card_path(credit_card) %>
+          <%= link_to 'Delete', credit_card_path(credit_card), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
