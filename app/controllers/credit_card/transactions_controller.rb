@@ -15,7 +15,7 @@ class CreditCard::TransactionsController < ApplicationController
     @transaction.statement = credit_card.statements.find_or_create_by_month(month, credit_card:)
 
     if @transaction.save
-      redirect_to credit_cards_url(credit_card), notice: "Transaction was successfully created."
+      redirect_to credit_card_url(credit_card), notice: "Transaction was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

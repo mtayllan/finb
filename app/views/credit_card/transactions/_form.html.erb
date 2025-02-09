@@ -38,14 +38,7 @@
 
   <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :statement_month) %>
-    <%= render UI::SelectField.new(name: form.field_name(:statement_month), placeholder: 'Select a statement', value: transaction.statement&.due_date) do |comp| %>
-      <% (-2..2).each do |offset| %>
-        <% date = Date.current + offset.month %>
-        <% comp.with_option(value: date.end_of_month) do %>
-          <%= date.strftime('%B %Y') %>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= render UI::MonthPicker.new(name: form.field_name(:statement_month), initial_value: (transaction.statement&.due_date || Date.current)&.strftime("%b %Y")) %>
   <% end %>
 
   <%= render UI::FormGroup.new do %>

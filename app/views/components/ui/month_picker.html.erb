@@ -1,0 +1,52 @@
+<div data-controller="ui--month-picker">
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+      <i class="ph ph-calendar-blank"></i>
+    </div>
+    <input
+      type="text"
+      placeholder="mm/yyyy"
+      class="w-full inline-flex items-center whitespace-nowrap rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 justify-start text-left font-normal pl-9"
+      data-action="focus->ui--month-picker#openCalendar"
+      name="<%= @name %>"
+      value="<%= @initial_value %>"
+      data-ui--month-picker-target="input"
+      readonly>
+
+    <div class="absolute z-50 rounded-md border bg-popover text-popover-foreground shadow-md outline-none w-auto p-3 my-1 hidden" data-ui--month-picker-target="calendar">
+      <div class="flex items-center justify-between">
+        <button
+          type="button"
+          data-action="ui--month-picker#previousYear"
+          class="mr-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+        >
+          <span class="sr-only">Previous year</span>
+          <i class="ph ph-caret-left"></i>
+        </button>
+        <h2 class="flex-auto font-semibold text-center" data-ui--month-picker-target="currentYearLabel">
+        </h2>
+        <button
+          data-action="ui--month-picker#nextYear"
+          type="button"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+        >
+
+          <span class="sr-only">Next year</span>
+          <i class="ph ph-caret-right"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-4 mt-2 text-sm text-center" data-ui--month-picker-target="months">
+        <% 12.times do |i| %>
+          <button
+            type="button"
+            class="mx-auto flex h-8 w-12 items-center justify-center text-center text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
+            data-action="click->ui--month-picker#selectMonth"
+            data-ui--month-picker-month-number-param="<%= i + 1 %>"
+          >
+            <%= Date::ABBR_MONTHNAMES[i + 1] %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
