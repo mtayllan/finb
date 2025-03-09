@@ -135,7 +135,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.8.2)
-    kamal (2.4.0)
+    kamal (2.5.3)
       activesupport (>= 7.0)
       base64 (~> 0.2)
       bcrypt_pbkdf (~> 1.0)
@@ -362,7 +362,7 @@ DEPENDENCIES
   groupdate
   hotwire-spark
   importmap-rails
-  kamal (~> 2.4.0)
+  kamal (~> 2.5)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0)
