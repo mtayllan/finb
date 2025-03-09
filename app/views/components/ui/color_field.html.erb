@@ -1,7 +1,7 @@
 <div data-controller="ui--color-field">
   <%= @form.hidden_field @attribute, value: @default_value %>
 
-  <div class="grid grid-cols-6 gap-1 w-fit">
+  <div class="grid grid-cols-6 lg:grid-cols-8 gap-1 w-fit">
     <% COLORS.each do |color| %>
       <button
         type="button"
