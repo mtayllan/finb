@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :transfers, except: :show
   resources :transactions, except: :show
-  resources :accounts
+  resources :accounts do
+    resource :balance_fix, only: [:new, :create], controller: "accounts/balance_fixes"
+  end
   resources :categories, except: :show
 
   resources :similar_transactions, only: [:index]

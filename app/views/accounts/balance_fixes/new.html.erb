@@ -1,0 +1,57 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <%= render UI::H1.new do %>
+    Fix Balance for <%= @account.name %>
+  <% end %>
+
+  <div class="mb-4">
+    <p class="text-muted-foreground">Current balance: <strong><%= number_to_currency(@account.balance) %></strong></p>
+  </div>
+
+  <%= form_with url: account_balance_fix_path(@account), method: :post, class: "space-y-4" do |form| %>
+    <div>
+      <%= label_tag "balance_fix[correct_balance]", "Correct Balance", class: "block text-sm font-medium leading-6" %>
+      <div class="mt-2">
+        <%= render UI::MoneyField.new(form, "balance_fix[correct_balance]", default_value: @account.balance) %>
+      </div>
+    </div>
+
+    <div class="border p-4 rounded-md">
+      <h3 class="text-base font-semibold mb-2">Adjustment Transaction Details</h3>
+
+      <div class="mb-4">
+        <div>
+          <%= label_tag "transaction[description]", "Description", class: "block text-sm font-medium leading-6" %>
+          <div class="mt-2">
+            <%= text_field_tag "transaction[description]", nil,
+                placeholder: "Balance adjustment",
+                class: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+                required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <%= label_tag "transaction[category_id]", "Category", class: "block text-sm font-medium leading-6" %>
+        <div class="mt-2">
+          <%= render UI::SelectField.new(name: "transaction[category_id]", placeholder: 'Select a category', value: nil) do |comp| %>
+            <% @categories.each do |category| %>
+              <% comp.with_option(value: category.id) do %>
+                <div class="mr-2">
+                  <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
+                </div>
+                <div><%= category.name %></div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <p class="text-sm text-muted-foreground mt-4">Date: <%= Date.current.to_fs(:day_month_year) %></p>
+    </div>
+
+    <div class="flex justify-between mt-6">
+      <%= form.submit "Fix Balance", class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" %>
+      <%= link_to "Cancel", account_path(@account), class: "ml-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-muted text-muted-foreground shadow hover:bg-muted/40 h-9 px-4 py-2" %>
+    </div>
+  <% end %>
+</div>
