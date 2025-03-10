@@ -9,21 +9,21 @@
     <input
       type="text"
       placeholder="dd/mm/yyyy"
-      class="w-full inline-flex items-center whitespace-nowrap rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 justify-start text-left font-normal pl-9"
+      class="w-full inline-flex items-center whitespace-nowrap rounded-md text-sm transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 justify-start text-left font-normal pl-9"
       data-action="focus->ui--date-picker#openCalendar"
       name="<%= name %>"
       value="<%= initial_value %>"
       data-ui--date-picker-target="input"
       readonly>
 
-    <div class="absolute z-50 rounded-md border bg-popover text-popover-foreground shadow-md outline-none w-auto p-3 my-1 hidden" data-ui--date-picker-target="calendar">
+    <div class="absolute z-50 rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden w-auto p-3 my-1 hidden" data-ui--date-picker-target="calendar">
       <div class="flex items-center">
         <h2 class="flex-auto font-semibold" data-ui--date-picker-target="currentMonth">
         </h2>
         <button
           type="button"
           data-action="ui--date-picker#previousMonth"
-          class="mr-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+          class="mr-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
         >
           <span class="sr-only">Previous month</span>
           <span class="w-4 h-4" aria-hidden="true">
@@ -33,7 +33,7 @@
         <button
           data-action="ui--date-picker#nextMonth"
           type="button"
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
         >
 
           <span class="sr-only">Next month</span>

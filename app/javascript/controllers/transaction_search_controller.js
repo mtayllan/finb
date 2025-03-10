@@ -41,7 +41,7 @@ export default class extends Controller {
     transactions.forEach(transaction => {
       const button = document.createElement('button');
       button.type = 'button';
-      button.classList.add('flex', 'w-full', 'cursor-default', 'select-none', 'items-center', 'rounded-sm', 'py-1.5', 'pl-2', 'pr-8', 'text-sm', 'outline-none', 'hover:bg-accent', 'focus:bg-accent', 'focus:text-accent-foreground');
+      button.classList.add('flex', 'w-full', 'cursor-default', 'select-none', 'items-center', 'rounded-sm', 'py-1.5', 'pl-2', 'pr-8', 'text-sm', 'outline-hidden', 'hover:bg-accent', 'focus:bg-accent', 'focus:text-accent-foreground');
       button.dataset.action = 'transaction-search#selectOption';
       button.dataset['description'] = transaction.description;
       button.dataset['categoryId'] = transaction.category_id;
