@@ -19,7 +19,7 @@ export default class extends Controller {
       tooltip: {
         trigger: 'axis',
         axisPointer: {
-          type: 'shadow'
+          type: 'shadow-sm'
         }
       },
       xAxis: {

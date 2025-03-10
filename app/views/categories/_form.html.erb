@@ -30,9 +30,9 @@
 
   <div class="flex flex-wrap gap-2">
     <%= render UI::Button.new(form:) %>
-    <%= link_to "Back to categories", categories_path, class: "ml-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-muted text-muted-foreground shadow hover:bg-muted/40 h-9 px-4 py-2" %>
+    <%= link_to "Back to categories", categories_path, class: "ml-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-muted text-muted-foreground shadow-sm hover:bg-muted/40 h-9 px-4 py-2" %>
     <% if category.persisted? %>
-      <%= link_to category, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 h-9 px-4 py-2" do %>
+      <%= link_to category, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90 h-9 px-4 py-2" do %>
         Delete Category
       <% end %>
     <% end %>
