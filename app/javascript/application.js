@@ -4,20 +4,31 @@ import "controllers"
 import "echarts"
 
 echarts.registerTheme('finb', {
-  backgroundColor: 'oklch(var(--background))',
   label: {
-    color: 'oklch(var(--foreground))'
+    color: 'var(--color-base-content)'
   },
   legend: {
     textStyle: {
-      fontFamily: 'Inter var',
-      color: 'oklch(var(--foreground))'
+      fontFamily: 'Inter',
+      color: 'var(--color-base-content)'
     }
   },
   title: {
     textStyle: {
-      fontFamily: 'Inter var',
-      color: 'oklch(var(--primary))'
+      fontFamily: 'Inter',
+      color: 'var(--color-base-content)'
     }
+  },
+  categoryAxis: {
+    axisLabel: {
+      fontFamily: 'Inter',
+      color: "var(--color-base-content)"
+    },
+  },
+  valueAxis: {
+    axisLabel: {
+      fontFamily: 'Inter',
+      color: "var(--color-base-content)"
+    },
   }
 })
