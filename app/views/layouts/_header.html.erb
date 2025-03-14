@@ -1,35 +1,26 @@
-<header class="hidden md:block">
-  <div class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
-    <div class="container flex h-14 max-w-(--breakpoint-2xl) items-center">
-      <div class="mr-4 flex">
-        <a class="mr-6 flex items-center space-x-2" href="/">
-          <%= image_tag "icon.png", alt: "finb icon", class: "h-6 w-6" %>
-          <span class="font-bold sm:inline-block">Finb</span>
-        </a>
-        <nav class="flex items-center gap-6 text-sm">
-          <%= link_to 'Transactions', transactions_path,
-            data: { active: controller_name == 'transactions' },
-            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
-          <%= link_to 'Transfers', transfers_path,
-            data: { active: controller_name == 'transfers' },
-            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
-          <%= link_to 'Accounts', accounts_path,
-            data: { active: controller_name == 'accounts' },
-            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
-          <%= link_to 'Categories', categories_path,
-            data: { active: controller_name == 'categories' },
-            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
-          <%= link_to 'Settings', settings_path,
-            data: { active: controller_name == 'settings'},
-            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
-          <%= link_to 'Reports', reports_path,
-            data: { active: controller_name == 'reports'},
-            class: "transition-colors hover:text-foreground/80 text-foreground/60 data-[active=true]:text-foreground data-[active=true]:underline" %>
-        </nav>
-      </div>
-    </div>
-  </div>
-</header>
+<div class="hidden md:flex navbar bg-base-100 shadow-sm">
+  <%= link_to 'FinB', root_path, class: "btn btn-ghost text-xl" %>
+  <ul class="menu menu-horizontal px-1">
+    <li>
+      <%= link_to 'Transactions', transactions_path, class: class_names('menu-active': controller_name == 'transactions')  %>
+    </li>
+    <li>
+      <%= link_to 'Transfers', transfers_path, class: class_names('menu-active': controller_name == 'transfers')  %>
+    </li>
+    <li>
+      <%= link_to 'Accounts', accounts_path, class: class_names('menu-active': controller_name == 'accounts')  %>
+    </li>
+    <li>
+      <%= link_to 'Categories', categories_path, class: class_names('menu-active': controller_name == 'categories')  %>
+    </li>
+    <li>
+      <%= link_to 'Settings', settings_path, class: class_names('menu-active': controller_name == 'settings')  %>
+    </li>
+    <li>
+      <%= link_to 'Reports', reports_path, class: class_names('menu-active': controller_name == 'reports')  %>
+    </li>
+  </ul>
+</div>
 
 
 

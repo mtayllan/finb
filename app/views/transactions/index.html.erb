@@ -1,14 +1,14 @@
 <div class="w-full">
   <div class="flex flex-wrap justify-between items-center">
     <%= render UI::H1.new.with_content('Transactions') %>
-    <%= render UI::Button.new(href: new_transaction_path).with_content("New Transaction") %>
+    <%= link_to "New Transaction", new_transaction_path, class: "btn btn-primary" %>
   </div>
 
   <div class="flex justify-center items-center my-6 gap-8">
     <%=
       link_to @month.prev_month.strftime('%b %Y'),
               url_for(params.permit(:account_id, :category_id).merge(month: @month.prev_month.strftime('%Y/%m'))),
-              class: "underline underline-offset-4 hover:text-primary"
+              class: "link"
     %>
 
     <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
@@ -16,35 +16,23 @@
     <%=
       link_to @month.next_month.strftime('%b %Y'),
               url_for(params.permit(:account_id, :category_id).merge(month: @month.next_month.strftime('%Y/%m'))),
-              class: "underline underline-offset-4 hover:text-primary"
+              class: "link"
     %>
   </div>
 
-  <div class="relative w-full overflow-auto">
-    <table id="transactions" class="w-full text-sm">
-      <thead class="[&_tr]:border-b">
-        <tr class="border-b transition-colors hover:bg-muted/50">
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Date
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Description
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Category
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Account
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Value
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Actions
-          </th>
+  <div class="overflow-x-auto">
+    <table id="transactions" class="table table-zebra">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Account</th>
+          <th>Value</th>
+          <th>Actions</th>
         </tr>
       </thead>
-      <tbody class="[&_tr:last-child]:border-0">
+      <tbody>
         <%= render @transactions %>
       </tbody>
     </table>
