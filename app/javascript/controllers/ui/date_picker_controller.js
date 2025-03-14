@@ -63,15 +63,15 @@ export default class extends Controller {
 
       const button = document.createElement('button');
       button.type = 'button';
-      button.classList.add('mx-auto', 'flex', 'h-8', 'w-8', 'items-center', 'justify-center', 'text-center', 'text-sm', 'rounded-md', 'transition-colors');
+      button.classList.add('w-8', 'h-8', 'hover:cursor-pointer');
       const dayIsEqualToSelectedDay = isEqual(day, this.selectedDay);
       const dayIsToday = isToday(day);
       const dayIsSameMonth = isSameMonth(day, firstDayCurrentMonth);
 
-      if (dayIsEqualToSelectedDay) button.classList.add('bg-primary', 'text-primary-foreground', 'hover:bg-primary', 'hover:text-primary-foreground', 'focus:bg-primary', 'focus:text-primary-foreground');
-      if (!dayIsEqualToSelectedDay && dayIsToday) button.classList.add('bg-accent', 'text-accent-foreground');
-      if (!dayIsEqualToSelectedDay && !dayIsToday && !dayIsSameMonth) button.classList.add('text-muted-foreground', 'opacity-50');
-      if (!dayIsEqualToSelectedDay) button.classList.add('hover:bg-accent', 'hover:text-accent-foreground');
+      if (dayIsEqualToSelectedDay) button.classList.add('btn', 'btn-primary', 'btn-active');
+      if (!dayIsEqualToSelectedDay && dayIsToday) button.classList.add('text-secondary');
+      if (!dayIsEqualToSelectedDay && !dayIsToday && !dayIsSameMonth) button.classList.add('opacity-50');
+      if (!dayIsEqualToSelectedDay) button.classList.add('hover:text-primary');
       if (dayIsEqualToSelectedDay || dayIsToday) button.classList.add('font-semibold');
 
       button.dataset['action'] = 'ui--date-picker#selectDay';

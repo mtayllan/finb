@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between">
         <h3 class="text-xl font-bold">Accounts</h3>
         <%= link_to accounts_url do %>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-muted-foreground hover:fill-foreground" viewBox="0 0 256 256"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"></path></svg>
+          <i class="ph ph-arrow-square-out"></i>
         <% end %>
       </div>
       <div class="grid gap-6 max-h-96 overflow-y-auto pr-4 my-4">
@@ -16,7 +16,7 @@
               </span>
               <div>
                 <p class="text-sm font-medium leading-none"><%= account.name %></p>
-                <%= link_to "View details", account_url(account), class: "text-sm text-muted-foreground underline hover:text-foreground" %>
+                <%= link_to "View details", account_url(account), class: "text-sm link" %>
               </div>
             </div>
             <div>
@@ -34,7 +34,7 @@
       <div class="flex items-center justify-between">
         <h3 class="text-xl font-bold">Last Transactions</h3>
         <%= link_to transactions_url do %>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-muted-foreground hover:fill-foreground" viewBox="0 0 256 256"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"></path></svg>
+          <i class="ph ph-arrow-square-out"></i>
         <% end %>
       </div>
       <div class="grid gap-6 max-h-[120rem] overflow-y-auto my-4">
@@ -46,7 +46,7 @@
               </span>
               <div>
                 <p class="text-sm font-medium leading-none"><%= transaction.description %></p>
-                <p class="text-sm text-muted-foreground"><%= transaction.account.name %></p>
+                <p class="text-sm"><%= transaction.account.name %></p>
               </div>
             </div>
             <div>
@@ -62,7 +62,7 @@
       <div class="flex items-center justify-between">
         <h3 class="text-xl font-bold">Last Transfers</h3>
         <%= link_to transfers_url do %>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="fill-muted-foreground hover:fill-foreground" viewBox="0 0 256 256"><path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z"></path></svg>
+          <i class="ph ph-arrow-square-out"></i>
         <% end %>
       </div>
       <div class="grid gap-6 max-h-[120rem] my-4">
@@ -75,7 +75,7 @@
               <div class="text-ellipsis line-clamp-1 text-sm"><%= transfer.origin_account.name %></div>
             </div>
             <div class="flex flex-col items-center justify-center text-sm">
-              <p class="text-muted-foreground leading-none">---></p>
+              <p class="leading-none">---></p>
               <p><%= transfer.value %></p>
             </div>
             <div class="flex flex-row-reverse items-center gap-4">
@@ -99,7 +99,7 @@
       <%=
         link_to @month.prev_month.strftime('%b %Y'),
                 url_for(month: @month.prev_month.strftime('%Y/%m')),
-                class: "underline underline-offset-4 hover:text-primary"
+                class: "link"
       %>
 
       <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
@@ -107,7 +107,7 @@
       <%=
         link_to @month.next_month.strftime('%b %Y'),
                 url_for(month: @month.next_month.strftime('%Y/%m')),
-                class: "underline underline-offset-4 hover:text-primary"
+                class: "link"
       %>
     </div>
 
@@ -115,30 +115,30 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         <div class="flex flex-col gap-2">
           <div class="my-2">Summary</div>
-          <div class="rounded-xl border bg-card text-card-foreground shadow-sm">
+          <div class="rounded-xl border shadow-sm">
             <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
               <h3 class="tracking-tight text-sm font-medium">Balance</h3>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M117.66,170.34a8,8,0,0,1,0,11.32l-32,32a8,8,0,0,1-11.32,0l-32-32a8,8,0,0,1,11.32-11.32L72,188.69V48a8,8,0,0,1,16,0V188.69l18.34-18.35A8,8,0,0,1,117.66,170.34Zm96-96-32-32a8,8,0,0,0-11.32,0l-32,32a8,8,0,0,0,11.32,11.32L168,67.31V208a8,8,0,0,0,16,0V67.31l18.34,18.35a8,8,0,0,0,11.32-11.32Z"></path></svg>
+              <i class="ph-bold ph-arrows-down-up text-xl"></i>
             </div>
             <div class="p-6 pt-0">
               <div class="text-2xl font-bold"><%= number_to_currency(@totals[:total_expenses] + @totals[:total_income]) %></div>
             </div>
           </div>
 
-          <div class="rounded-xl border bg-card text-card-foreground shadow-sm">
+          <div class="rounded-xl border shadow-sm">
             <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
               <h3 class="tracking-tight text-sm font-medium">Income</h3>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"></path></svg>
+              <i class="ph-bold ph-arrow-up text-xl"></i>
             </div>
             <div class="p-6 pt-0">
               <div class="text-2xl font-bold"><%= number_to_currency(@totals[:total_income]) %></div>
             </div>
           </div>
 
-          <div class="rounded-xl border bg-card text-card-foreground shadow-sm">
+          <div class="rounded-xl border shadow-sm">
             <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
               <h3 class="tracking-tight text-sm font-medium">Expenses</h3>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+              <i class="ph-bold ph-arrow-down text-xl"></i>
             </div>
             <div class="p-6 pt-0">
               <div class="text-2xl font-bold"><%= number_to_currency(@totals[:total_expenses]) %></div>

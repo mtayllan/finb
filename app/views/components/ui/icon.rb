@@ -3,16 +3,6 @@ class UI::Icon < ViewComponent::Base
     @icon, @size, @color, @variant, @background = icon, size, color, variant, background
   end
 
-  erb_template <<-ERB
-    <% if @background %>
-      <div class="<%= background_size %> rounded-full grid place-items-center" style="background-color: <%= @color %>">
-        <i class="<%= variant %> <%= icon %> <%= size %>"></i>
-      </div>
-    <% else %>
-      <i class="<%= variant %> <%= icon %> <%= size %>" style="color: <%= @color %>"></i>
-    <% end %>
-  ERB
-
   private
 
   def size

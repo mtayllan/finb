@@ -3,53 +3,49 @@
 <div data-controller="ui--date-picker">
 
   <div class="relative">
-    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"></path></svg>
+    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-1">
+      <i class="ph ph-calendar-dots"></i>
     </div>
     <input
       type="text"
       placeholder="dd/mm/yyyy"
-      class="w-full inline-flex items-center whitespace-nowrap rounded-md text-sm transition-colors focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 justify-start text-left font-normal pl-9"
+      class="input w-full pl-9"
       data-action="focus->ui--date-picker#openCalendar"
       name="<%= name %>"
       value="<%= initial_value %>"
       data-ui--date-picker-target="input"
       readonly>
 
-    <div class="absolute z-50 rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden w-auto p-3 my-1 hidden" data-ui--date-picker-target="calendar">
+    <div class="absolute z-50 rounded-md border bg-base-100 shadow-md outline-hidden w-auto p-3 my-1 hidden" data-ui--date-picker-target="calendar">
       <div class="flex items-center">
         <h2 class="flex-auto font-semibold" data-ui--date-picker-target="currentMonth">
         </h2>
         <button
           type="button"
           data-action="ui--date-picker#previousMonth"
-          class="mr-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+          class="btn btn-xs btn-soft btn-primary mr-2 h-7 w-7"
         >
           <span class="sr-only">Previous month</span>
-          <span class="w-4 h-4" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>
-          </span>
+          <i class="ph ph-caret-left"></i>
         </button>
         <button
           data-action="ui--date-picker#nextMonth"
           type="button"
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input hover:bg-accent hover:text-accent-foreground h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+          class="btn btn-xs btn-soft btn-primary h-7 w-7"
         >
 
           <span class="sr-only">Next month</span>
-          <span class="w-4 h-4" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>
-          </span>
+          <i class="ph ph-caret-right"></i>
         </button>
       </div>
       <div class="grid grid-cols-7 mt-2 text-xs leading-6 text-center">
-        <div class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]">Su</div>
-        <div class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]">Mo</div>
-        <div class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]">Tu</div>
-        <div class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]">We</div>
-        <div class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]">Th</div>
-        <div class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]">Fr</div>
-        <div class="text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]">Sa</div>
+        <div class="text-base-content/80 rounded-md w-8 font-normal text-[0.8rem]">Su</div>
+        <div class="text-base-content/80 rounded-md w-8 font-normal text-[0.8rem]">Mo</div>
+        <div class="text-base-content/80 rounded-md w-8 font-normal text-[0.8rem]">Tu</div>
+        <div class="text-base-content/80 rounded-md w-8 font-normal text-[0.8rem]">We</div>
+        <div class="text-base-content/80 rounded-md w-8 font-normal text-[0.8rem]">Th</div>
+        <div class="text-base-content/80 rounded-md w-8 font-normal text-[0.8rem]">Fr</div>
+        <div class="text-base-content/80 rounded-md w-8 font-normal text-[0.8rem]">Sa</div>
       </div>
       <div class="grid grid-cols-7 mt-2 text-sm" data-ui--date-picker-target="days">
       </div>
@@ -62,7 +58,7 @@
         <% date = i.days.ago.to_date %>
         <button
           type="button"
-          class="text-xs hover:underline"
+          class="text-xs link link-hover"
           data-action="ui--date-picker#quickSelect"
           data-ui--date-picker-value-param="<%= date.to_fs(:day_month_year) %>"
         >

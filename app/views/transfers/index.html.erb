@@ -1,14 +1,14 @@
 <div class="w-full">
   <div class="flex flex-wrap justify-between items-center">
     <%= render UI::H1.new.with_content('Transfers') %>
-    <%= render UI::Button.new(href: new_transfer_path).with_content("New Transfer") %>
+    <%= link_to "New Transfer", new_transfer_path, class: "btn btn-primary" %>
   </div>
 
   <div class="flex justify-center items-center my-6 gap-8">
     <%=
       link_to @month.prev_month.strftime('%b %Y'),
               url_for(month: @month.prev_month.strftime('%Y/%m')),
-              class: "underline underline-offset-4 hover:text-primary"
+              class: "link"
     %>
 
     <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
@@ -16,35 +16,23 @@
     <%=
       link_to @month.next_month.strftime('%b %Y'),
               url_for(month: @month.next_month.strftime('%Y/%m')),
-              class: "underline underline-offset-4 hover:text-primary"
+              class: "link"
     %>
   </div>
 
-  <div class="relative w-full overflow-auto mt-3">
-    <table id="transfers" class="w-full text-sm">
-      <thead class="[&_tr]:border-b">
-        <tr class="border-b transition-colors hover:bg-muted/50">
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Date
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Description
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Origin Account
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Target Account
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Value
-          </th>
-          <th scope="col" class="h-10 px-2 text-left align-middle font-medium text-muted-foreground w-[100px]">
-            Actions
-          </th>
+  <div class="overflow-x-auto">
+    <table id="transfers" class="table table-zebra">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Origin Account</th>
+          <th>Target Account</th>
+          <th>Value</th>
+          <th>Actions</th>
         </tr>
       </thead>
-      <tbody class="[&_tr:last-child]:border-0">
+      <tbody>
         <%= render @transfers %>
       </tbody>
     </table>
