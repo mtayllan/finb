@@ -16,8 +16,9 @@ class AccountsController < ApplicationController
                         .where(date: filter[:date])
                         .where("(origin_account_id = :account_id OR target_account_id = :account_id)", account_id: @account.id)
                         .order(date: :desc, created_at: :desc)
+    balances = @account.balances.where(date: filter[:date]).order(date: :desc)
 
-    @transactions_and_transfers = (transactions + transfers).sort_by(&:date).reverse
+    @account_events = (transactions + transfers + balances).sort_by(&:date).reverse
   end
 
   def new

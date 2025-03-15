@@ -58,7 +58,7 @@
   </div>
 
   <div class="overflow-x-auto">
-    <table id="transactions" class="table table-zebra">
+    <table id="transactions" class="table">
       <thead>
         <tr>
           <th>Date</th>
@@ -69,11 +69,13 @@
         </tr>
       </thead>
       <tbody>
-        <% @transactions_and_transfers.each do |record| %>
+        <% @account_events.each do |record| %>
           <% if record.is_a?(Transaction) %>
             <%= render 'transaction', transaction: record %>
-          <% else %>
+          <% elsif record.is_a?(Transfer) %>
             <%= render 'transfer', transfer: record %>
+          <% else %>
+            <%= render 'balance', balance: record %>
           <% end %>
         <% end %>
       </tbody>
