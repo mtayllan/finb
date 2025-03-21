@@ -1,4 +1,4 @@
-<%= form_with(model: transaction, data: { controller: "transaction-search" }) do |form| %>
+<%= form_with(model: transaction, data: { controller: "transaction-search installments" }) do |form| %>
   <%= render FormErrorsExplanation.new(transaction.errors) if transaction.errors.any? %>
 
   <div class="my-5">
@@ -16,7 +16,14 @@
 
   <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :value) %>
-    <%= render UI::MoneyField.new(form, :value, default_value: transaction.value&.abs) %>
+    <div class="flex-grow">
+      <%= render UI::MoneyField.new(form, :value, default_value: transaction.value&.abs) %>
+    </div>
+  <% end %>
+
+  <%= render UI::FormGroup.new do %>
+    <%= render UI::FormLabel.new(form, :installments) %>
+    <%= form.number_field :installments, class: "input w-full", min: 1, value: 1, step: 1 %>
   <% end %>
 
   <%= render UI::FormGroup.new do %>
@@ -28,7 +35,6 @@
           value: transaction.description,
           autocomplete: "off"
       %>
-
       <div class="hidden absolute right-0 mt-1 w-full z-10 overflow-auto max-h-64 rounded-md border bg-base-100 text-base-content shadow-md">
       </div>
     </div>

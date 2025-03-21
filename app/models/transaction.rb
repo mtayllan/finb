@@ -1,4 +1,6 @@
 class Transaction < ApplicationRecord
+  include Transaction::Installmentable
+
   belongs_to :category
   belongs_to :account
 
