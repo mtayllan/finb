@@ -18,9 +18,11 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
+    installments = params[:transaction][:installments].to_i
 
-    if @transaction.save
-      @transaction.account.update_balance
+    if @transaction.valid?
+      Transaction.create_with_installments(@transaction, installments)
+
       redirect_to account_url(@transaction.account), notice: "Transaction was successfully created."
     else
       render :new, status: :unprocessable_entity
