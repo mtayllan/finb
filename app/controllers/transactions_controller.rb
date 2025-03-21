@@ -22,6 +22,7 @@ class TransactionsController < ApplicationController
 
     if @transaction.valid?
       Transaction.create_with_installments(@transaction, installments)
+      @transaction.account.update_balance
 
       redirect_to account_url(@transaction.account), notice: "Transaction was successfully created."
     else
