@@ -42,8 +42,6 @@ module Transaction::Installmentable
         end
       end
 
-      # Return the first transaction
-      transactions.first.account.update_balance
       transactions.first
     end
 
