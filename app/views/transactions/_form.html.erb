@@ -1,4 +1,4 @@
-<%= form_with(model: transaction, data: { controller: "transaction-search installments" }) do |form| %>
+<%= form_with(model: transaction, data: { controller: "transaction-search" }) do |form| %>
   <%= render FormErrorsExplanation.new(transaction.errors) if transaction.errors.any? %>
 
   <div class="my-5">
@@ -21,9 +21,11 @@
     </div>
   <% end %>
 
-  <%= render UI::FormGroup.new do %>
-    <%= render UI::FormLabel.new(form, :installments) %>
-    <%= form.number_field :installments, class: "input w-full", min: 1, value: 1, step: 1 %>
+  <% if transaction.new_record? %>
+    <%= render UI::FormGroup.new do %>
+      <%= render UI::FormLabel.new(form, :installments) %>
+      <%= form.number_field :installments, class: "input w-full", min: 1, value: 1, step: 1 %>
+    <% end %>
   <% end %>
 
   <%= render UI::FormGroup.new do %>
