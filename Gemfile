@@ -28,11 +28,12 @@ group :development, :test do
   gem "debug"
   gem "faker"
   gem "factory_bot_rails"
+  gem "standard"
+  gem "standard-rails"
 end
 
 group :development do
   gem "web-console"
-  gem "rubocop-rails-omakase", require: false
   gem "brakeman", require: false
   gem "hotwire-spark"
 end
