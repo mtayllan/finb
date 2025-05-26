@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration[7.2]
   def change
-    create_table :users do |t|
+    create_table :users do |t| # standard:disable Rails/CreateTableWithTimestamps
       t.string :username, null: false
       t.string :password_digest, null: false
     end
