@@ -4,7 +4,7 @@ class AddInitialBalanceDateToAccount < ActiveRecord::Migration[7.1]
 
     reversible do |direction|
       direction.up { execute("UPDATE accounts SET initial_balance_date = created_at") }
-      direction.down { }
+      direction.down {}
     end
 
     change_column_null :accounts, :initial_balance_date, false

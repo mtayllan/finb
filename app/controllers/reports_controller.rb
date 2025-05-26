@@ -1,7 +1,15 @@
 class ReportsController < ApplicationController
   def show
-    @start_date = Date.parse(params[:start_date]) rescue 2.months.ago.beginning_of_month.to_date
-    @end_date = Date.parse(params[:end_date]) rescue Date.today.end_of_month
+    @start_date = begin
+      Date.parse(params[:start_date])
+    rescue
+      2.months.ago.beginning_of_month.to_date
+    end
+    @end_date = begin
+      Date.parse(params[:end_date])
+    rescue
+      Date.today.end_of_month
+    end
     @granularity = params[:granularity].presence || "month"
 
     @income = Current.user.transactions.where("value > 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)

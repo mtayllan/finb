@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   def transfers
     transfers = Transfer.joins(:origin_account, :target_account)
-    transfers.where({ origin_account: { user_id: id } })
-      .or(transfers.where({ target_account: { user_id: id } }))
+    transfers.where({origin_account: {user_id: id}})
+      .or(transfers.where({target_account: {user_id: id}}))
   end
 end

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     if (user = User.authenticate_by(username: params[:username], password: params[:password]))
       session = Session.create(user: user)
-      cookies.signed[:session_token] = { value: session.token, httponly: true, expires: 1.week.from_now }
+      cookies.signed[:session_token] = {value: session.token, httponly: true, expires: 1.week.from_now}
 
       redirect_to post_authentication_url, notice: "Signed in successfully"
     else

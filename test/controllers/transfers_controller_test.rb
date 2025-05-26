@@ -20,9 +20,9 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
     origin_account = create(:account, user: user)
     target_account = create(:account, user: user)
     assert_difference("Transfer.count") do
-      post transfers_url, params: { transfer: {
+      post transfers_url, params: {transfer: {
         date: Date.current, value: 10, origin_account_id: origin_account.id, target_account_id: target_account.id
-      } }
+      }}
     end
 
     assert_redirected_to transfers_url
@@ -30,7 +30,7 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show error on invalid transfer creation" do
-    post transfers_url, params: { transfer: { name: "" } }
+    post transfers_url, params: {transfer: {name: ""}}
 
     assert_response :unprocessable_entity
   end
@@ -45,7 +45,7 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
   test "should update transfer" do
     @transfer = transfers(:one)
 
-    patch transfer_url(@transfer), params: { transfer: { description: Faker::Bank.name } }
+    patch transfer_url(@transfer), params: {transfer: {description: Faker::Bank.name}}
     assert_redirected_to transfers_url
     assert_equal flash[:notice], "Transfer was successfully updated."
   end
@@ -53,7 +53,7 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
   test "should show error on invalid transfer update" do
     @transfer = transfers(:one)
 
-    patch transfer_url(@transfer), params: { transfer: { date: nil } }
+    patch transfer_url(@transfer), params: {transfer: {date: nil}}
 
     assert_response :unprocessable_entity
   end

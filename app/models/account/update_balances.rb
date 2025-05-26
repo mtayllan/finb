@@ -20,7 +20,7 @@ module Account::UpdateBalances
       next if balance == previous_balance
       previous_balance = balance
 
-      data << { date:, account_id: account.id, balance: }
+      data << {date:, account_id: account.id, balance:}
     end
 
     Account::Balance.upsert_all(data, unique_by: [:account_id, :date], update_only: [:balance])

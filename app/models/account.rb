@@ -8,7 +8,7 @@ class Account < ApplicationRecord
 
   validates :name, :color, :initial_balance, :kind, :initial_balance_date, presence: true
 
-  enum :kind, [:checking, :savings, :credit_card, :investment]
+  enum :kind, {checking: 0, savings: 1, credit_card: 2, investment: 3}
 
   def update_balance
     transactions_value = transactions.where(date: ..Date.current).sum(:value)

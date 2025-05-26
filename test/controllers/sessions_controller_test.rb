@@ -9,7 +9,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   test "should create session with valid credentials" do
     user = users(:default)
 
-    post sessions_url, params: { username: user.username, password: "qwe123" }
+    post sessions_url, params: {username: user.username, password: "qwe123"}
 
     assert_redirected_to root_url
     assert parsed_cookies.signed[:session_token]
@@ -17,7 +17,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should render show with error message for invalid credentials" do
-    post sessions_url, params: { username: "invalid_username", password: "invalid_password" }
+    post sessions_url, params: {username: "invalid_username", password: "invalid_password"}
 
     assert_response :unprocessable_entity
     assert_equal "Invalid credentials", flash[:alert]

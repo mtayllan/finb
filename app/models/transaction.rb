@@ -5,7 +5,7 @@ class Transaction < ApplicationRecord
   belongs_to :account
 
   validates :value, :date, :description, presence: true
-  validates :value, numericality: { other_than: 0 }
+  validates :value, numericality: {other_than: 0}
   validate :date_after_account_initial_balance_date
 
   private
