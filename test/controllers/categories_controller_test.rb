@@ -17,7 +17,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create category" do
     assert_difference("Category.count") do
-      post categories_url, params: { category: { name: Faker::Bank.name, color: "#fff", icon: "house" } }
+      post categories_url, params: {category: {name: Faker::Bank.name, color: "#fff", icon: "house"}}
     end
 
     assert_redirected_to categories_url
@@ -25,7 +25,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show error on invalid category creation" do
-    post categories_url, params: { category: { name: "" } }
+    post categories_url, params: {category: {name: ""}}
 
     assert_response :unprocessable_entity
   end
@@ -40,7 +40,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "should update category" do
     @category = categories(:food)
 
-    patch category_url(@category), params: { category: { name: Faker::Bank.name, initial_balance: 50 } }
+    patch category_url(@category), params: {category: {name: Faker::Bank.name, initial_balance: 50}}
     assert_redirected_to categories_url
     assert_equal flash[:notice], "Category was successfully updated."
   end
@@ -48,7 +48,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "should show error on invalid category update" do
     @category = categories(:food)
 
-    patch category_url(@category), params: { category: { name: "" } }
+    patch category_url(@category), params: {category: {name: ""}}
 
     assert_response :unprocessable_entity
   end

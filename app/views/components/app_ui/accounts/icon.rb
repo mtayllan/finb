@@ -10,7 +10,7 @@ class AppUI::Accounts::Icon < ViewComponent::Base
 
   private
 
-  ICONS = { checking: "bank", savings: "piggy-bank", credit_card: "credit-card", investment: "chart-line-up" }.freeze
+  ICONS = {checking: "bank", savings: "piggy-bank", credit_card: "credit-card", investment: "chart-line-up"}.freeze
   def icon
     ICONS[@account.kind.to_sym]
   end

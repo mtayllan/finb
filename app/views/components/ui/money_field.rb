@@ -8,8 +8,8 @@ class UI::MoneyField < ViewComponent::Base
     @form.text_field(
       @attribute,
       value: @default_value,
-      data: { controller: "ui--money-field", action: "ui--money-field#format" },
-      class: "input w-full",
+      data: {controller: "ui--money-field", action: "ui--money-field#format"},
+      class: "input w-full"
     )
   end
 end

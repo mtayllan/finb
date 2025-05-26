@@ -34,7 +34,7 @@ module Transaction::Installmentable
           # Set installment-specific attributes
           installment_number = i + 1
           installment.description = "#{base_description} (#{installment_number}/#{installments_count})"
-          installment.value = i == 0 ? first_installment_value : value_per_installment
+          installment.value = (i == 0) ? first_installment_value : value_per_installment
           installment.date = base_date + i.months
           installment.save!
 

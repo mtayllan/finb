@@ -1,9 +1,9 @@
 class TransfersController < ApplicationController
-  before_action :set_transfer, only: %i[ edit update destroy ]
+  before_action :set_transfer, only: %i[edit update destroy]
 
   def index
     @month = params[:month] ? Date.parse(params[:month]) : Date.current
-    @transfers = Current.user.transfers.includes(:origin_account, :target_account).where(date: @month.beginning_of_month..@month.end_of_month).order(date: :desc, created_at: :desc)
+    @transfers = Current.user.transfers.includes(:origin_account, :target_account).where(date: @month.all_month).order(date: :desc, created_at: :desc)
   end
 
   def new
@@ -50,11 +50,12 @@ class TransfersController < ApplicationController
   end
 
   private
-    def set_transfer
-      @transfer = Current.user.transfers.find(params[:id])
-    end
 
-    def transfer_params
-      params.require(:transfer).permit(:origin_account_id, :target_account_id, :value, :date, :description)
-    end
+  def set_transfer
+    @transfer = Current.user.transfers.find(params[:id])
+  end
+
+  def transfer_params
+    params.require(:transfer).permit(:origin_account_id, :target_account_id, :value, :date, :description)
+  end
 end

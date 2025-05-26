@@ -11,7 +11,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index with filtered results" do
-    get transactions_url, params: { month:  Date.current.strftime("%Y/%m"), category_id: create(:category).id, account_id: create(:account).id }
+    get transactions_url, params: {month: Date.current.strftime("%Y/%m"), category_id: create(:category).id, account_id: create(:account).id}
     assert_response :success
   end
 
@@ -24,10 +24,10 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     account = accounts(:bank_one)
     category = categories(:food)
     assert_difference("Transaction.count") do
-      post transactions_url, params: { transaction: {
+      post transactions_url, params: {transaction: {
         date: Date.current, value: 10, description: "test", transaction_type: "expense",
         account_id: account.id, category_id: category.id
-      } }
+      }}
     end
 
     assert_redirected_to account_url(account)
@@ -39,10 +39,10 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     account = accounts(:bank_one)
     category = categories(:salary)
     assert_difference("Transaction.count") do
-      post transactions_url, params: { transaction: {
+      post transactions_url, params: {transaction: {
         date: Date.current, value: 10, description: "test", transaction_type: "income",
         account_id: account.id, category_id: category.id
-      } }
+      }}
     end
 
     assert_redirected_to account_url(account)
@@ -51,7 +51,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show error on invalid transaction creation" do
-    post transactions_url, params: { transaction: { name: "" } }
+    post transactions_url, params: {transaction: {name: ""}}
 
     assert_response :unprocessable_entity
   end
@@ -66,7 +66,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   test "should update transaction" do
     @transaction = transactions(:income1)
 
-    patch transaction_url(@transaction), params: { transaction: { description: Faker::Bank.name } }
+    patch transaction_url(@transaction), params: {transaction: {description: Faker::Bank.name}}
     assert_redirected_to account_url(@transaction.account)
     assert_equal flash[:notice], "Transaction was successfully updated."
   end
@@ -74,7 +74,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   test "should show error on invalid transaction update" do
     @transaction = transactions(:income1)
 
-    patch transaction_url(@transaction), params: { transaction: { date: nil } }
+    patch transaction_url(@transaction), params: {transaction: {date: nil}}
 
     assert_response :unprocessable_entity
   end
@@ -95,7 +95,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     new_account = create(:account, initial_balance: 150, user:)
     transaction = create(:transaction, account: old_account, value: 10, category: categories(:other))
 
-    patch transaction_url(transaction), params: { transaction: { account_id: new_account.id } }
+    patch transaction_url(transaction), params: {transaction: {account_id: new_account.id}}
 
     assert_equal new_account.reload.balance, 160
     assert_equal old_account.reload.balance, 90

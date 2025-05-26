@@ -16,9 +16,9 @@ module DataManagement
     private
 
     def clear_data
-      Transaction.joins(:account).where({ account: { user_id: Current.user.id } }).delete_all
-      Transfer.joins(:target_account).where({ target_account: { user_id: Current.user.id } }).delete_all
-      Transfer.joins(:origin_account).where({ origin_account: { user_id: Current.user.id } }).delete_all
+      Transaction.joins(:account).where({account: {user_id: Current.user.id}}).delete_all
+      Transfer.joins(:target_account).where({target_account: {user_id: Current.user.id}}).delete_all
+      Transfer.joins(:origin_account).where({origin_account: {user_id: Current.user.id}}).delete_all
       Current.user.accounts.delete_all
       Current.user.categories.delete_all
     end

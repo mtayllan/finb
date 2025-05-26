@@ -1,9 +1,9 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: %i[ edit update destroy ]
+  before_action :set_transaction, only: %i[edit update destroy]
 
   def index
     @month = params[:month] ? Date.parse(params[:month]) : Date.current
-    filter = { date: @month.beginning_of_month..@month.end_of_month }
+    filter = {date: @month.all_month}
     filter[:account_id] = params[:account_id] if params[:account_id]
     filter[:category_id] = params[:category_id] if params[:category_id]
     @transactions = Current.user.transactions.includes(:category, :account).where(filter).order(date: :desc, created_at: :desc)

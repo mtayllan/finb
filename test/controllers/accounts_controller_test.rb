@@ -17,7 +17,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create account" do
     assert_difference("Account.count") do
-      post accounts_url, params: { account: { name: Faker::Bank.name, initial_balance_date: Date.current.iso8601 } }
+      post accounts_url, params: {account: {name: Faker::Bank.name, initial_balance_date: Date.current.iso8601}}
     end
 
     account = Account.last
@@ -26,7 +26,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show error on invalid account creation" do
-    post accounts_url, params: { account: { name: "" } }
+    post accounts_url, params: {account: {name: ""}}
 
     assert_response :unprocessable_entity
   end
@@ -42,7 +42,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   test "should update account" do
     account = accounts(:bank_one)
 
-    patch account_url(account), params: { account: { name: Faker::Bank.name, initial_balance: 50 } }
+    patch account_url(account), params: {account: {name: Faker::Bank.name, initial_balance: 50}}
     assert_redirected_to accounts_url(account)
     assert_equal flash[:notice], "Account was successfully updated."
   end
@@ -50,7 +50,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   test "should show error on invalid account update" do
     account = accounts(:bank_one)
 
-    patch account_url(account), params: { account: { name: "" } }
+    patch account_url(account), params: {account: {name: ""}}
 
     assert_response :unprocessable_entity
   end
@@ -106,7 +106,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     create_list(:transaction, 3, account: account, category:)
     create_list(:transaction, 2, account: account, category: other_category)
 
-    get account_url(account, params: { category_id: category.id })
+    get account_url(account, params: {category_id: category.id})
 
     assert_select "tr", 4
   end
@@ -116,7 +116,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     create_list(:transaction, 3, account: account, date: 1.month.ago)
     create_list(:transaction, 2, account: account, date: 2.months.ago)
 
-    get account_url(account, params: { month: 1.month.ago.iso8601 })
+    get account_url(account, params: {month: 1.month.ago.iso8601})
 
     assert_select "tr", 4
   end
