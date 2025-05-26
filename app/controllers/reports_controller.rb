@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
     @end_date = begin
       Date.parse(params[:end_date])
     rescue
-      Date.today.end_of_month
+      Date.current.end_of_month
     end
     @granularity = params[:granularity].presence || "month"
 

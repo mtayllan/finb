@@ -159,5 +159,5 @@ if Rails.env.development?
     )
   end
 
-  Account.all.each(&:update_balance)
+  Account.all.find_each(&:update_balance)
 end
