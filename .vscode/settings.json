@@ -4,5 +4,8 @@
       "file": ".github/copilot-test-instructions.md"
     }
   ],
-  "rubyLsp.formatter": "standard"
+  "rubyLsp.formatter": "standard",
+  "rubyLsp.linters": [
+    "standard"
+  ]
 }
