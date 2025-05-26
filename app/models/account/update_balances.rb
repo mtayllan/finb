@@ -23,6 +23,7 @@ module Account::UpdateBalances
       data << {date:, account_id: account.id, balance:}
     end
 
+    Account::Balance.where(account_id: account.id).where.not(date: data.pluck(:date)).delete_all
     Account::Balance.upsert_all(data, unique_by: [:account_id, :date], update_only: [:balance])
   end
 end
