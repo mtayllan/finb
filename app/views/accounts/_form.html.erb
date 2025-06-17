@@ -30,6 +30,11 @@
     <%= render UI::ColorField.new(form, :color, default_value: account.color) %>
   <% end %>
 
+  <%= render UI::FormGroup.new do %>
+    <%= render UI::FormLabel.new(form, :credit_card_expiration_day) %>
+    <%= render UI::NumberField.new(form, :credit_card_expiration_day) %>
+  <% end %>
+
   <div class="inline">
     <%= render UI::Button.new(form:) %>
   </div>
