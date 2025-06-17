@@ -3,6 +3,7 @@ class Transaction < ApplicationRecord
 
   belongs_to :category
   belongs_to :account
+  belongs_to :credit_card_statement, optional: true, class_name: "CreditCard::Statement"
 
   validates :value, :date, :description, presence: true
   validates :value, numericality: {other_than: 0}
