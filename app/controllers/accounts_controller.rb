@@ -6,19 +6,27 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @month = params[:month] ? Date.parse(params[:month]) : Date.current
-    filter = {date: @month.all_month}
-    filter[:category_id] = params[:category_id] if params[:category_id]
-    filter[:account_id] = @account.id
-    transactions = Transaction.includes(:category).where(filter).order(date: :desc, created_at: :desc)
-    transfers = [] if filter[:category_id]
-    transfers ||= Transfer.includes(:origin_account, :target_account)
-      .where(date: filter[:date])
-      .where("(origin_account_id = :account_id OR target_account_id = :account_id)", account_id: @account.id)
-      .order(date: :desc, created_at: :desc)
-    balances = @account.balances.where(date: filter[:date]).order(date: :desc)
+    respond_to do |format|
+      format.html do
+        @month = params[:month] ? Date.parse(params[:month]) : Date.current
+        filter = {date: @month.all_month}
+        filter[:category_id] = params[:category_id] if params[:category_id]
+        filter[:account_id] = @account.id
+        transactions = Transaction.includes(:category).where(filter).order(date: :desc, created_at: :desc)
+        transfers = [] if filter[:category_id]
+        transfers ||= Transfer.includes(:origin_account, :target_account)
+          .where(date: filter[:date])
+          .where("(origin_account_id = :account_id OR target_account_id = :account_id)", account_id: @account.id)
+          .order(date: :desc, created_at: :desc)
+        balances = @account.balances.where(date: filter[:date]).order(date: :desc)
 
-    @account_events = (transactions + transfers + balances).sort_by(&:date).reverse
+        @account_events = (transactions + transfers + balances).sort_by(&:date).reverse
+      end
+
+      format.json do
+        render json: @account
+      end
+    end
   end
 
   def new

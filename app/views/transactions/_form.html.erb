@@ -1,4 +1,4 @@
-<%= form_with(model: transaction, data: { controller: "transaction-search" }) do |form| %>
+<%= form_with(model: transaction, data: { controller: "transaction-search credit-card-statement-select" }) do |form| %>
   <%= render FormErrorsExplanation.new(transaction.errors) if transaction.errors.any? %>
 
   <div class="my-5">
@@ -73,6 +73,16 @@
   <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :date) %>
     <%= render "components/ui/date_picker", name: form.field_name(:date), initial_value: transaction.date&.to_fs(:day_month_year) %>
+  <% end %>
+
+  <%= render UI::FormGroup.new(data: { credit_card_statement_select_target: "statementMonthFormGroup" }) do %>
+    <%= render UI::FormLabel.new(form, :credit_card_statement) %>
+    <%= render UI::SelectField.new(name: form.field_name(:credit_card_statement), placeholder: 'Select a Month', value: transaction.credit_card_statement&.month) do |comp| %>
+      <% [-1, 0, 1].each do |i| %>
+        <% month = Date.current.beginning_of_month + i.months %>
+        <% comp.with_option(value: month.to_date, label: month.to_date.to_fs(:month_year)) %>
+      <% end %>
+    <% end %>
   <% end %>
 
   <div class="flex justify-between">

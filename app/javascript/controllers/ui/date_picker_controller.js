@@ -89,6 +89,7 @@ export default class extends Controller {
 
   renderSelectedDay() {
     this.inputTarget.value = format(this.selectedDay, 'dd/MM/yyyy');
+    this.inputTarget.dispatchEvent(new Event('change'));
   }
 
   renderCurrentMonth() {
