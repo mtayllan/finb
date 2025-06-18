@@ -76,8 +76,8 @@
   <% end %>
 
   <%= render UI::FormGroup.new(data: { credit_card_statement_select_target: "statementMonthFormGroup" }) do %>
-    <%= render UI::FormLabel.new(form, :credit_card_statement) %>
-    <%= render UI::SelectField.new(name: form.field_name(:credit_card_statement), placeholder: 'Select a Month', value: transaction.credit_card_statement&.month) do |comp| %>
+    <%= render UI::FormLabel.new(form, :credit_card_statement_month) %>
+    <%= render UI::SelectField.new(name: form.field_name(:credit_card_statement_month), placeholder: 'Select a Month', value: transaction.credit_card_statement&.month) do |comp| %>
       <% [-1, 0, 1].each do |i| %>
         <% month = Date.current.beginning_of_month + i.months %>
         <% comp.with_option(value: month.to_date, label: month.to_date.to_fs(:month_year)) %>
