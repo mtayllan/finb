@@ -10,6 +10,8 @@ class Account < ApplicationRecord
 
   enum :kind, {checking: 0, savings: 1, credit_card: 2, investment: 3}
 
+  has_many :credit_card_statements, class_name: "CreditCard::Statement", dependent: :destroy
+
   def update_balance
     transactions_value = transactions.where(date: ..Date.current).sum(:value)
     transfers_as_origin_value = transfers_as_origin.where(date: ..Date.current).sum(:value)

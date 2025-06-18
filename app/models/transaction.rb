@@ -9,6 +9,8 @@ class Transaction < ApplicationRecord
   validates :value, numericality: {other_than: 0}
   validate :date_after_account_initial_balance_date
 
+  attribute :credit_card_statement_month
+
   private
 
   def date_after_account_initial_balance_date

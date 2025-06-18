@@ -14,7 +14,7 @@ export default class extends Controller {
     this.dateInput = this.element.querySelector('input[name="transaction[date]"]');
     this.dateInput.addEventListener('change', this.handleDateChange.bind(this));
 
-    this.statementSelectInput = this.statementMonthFormGroupTarget.querySelector('input[name="transaction[credit_card_statement]"]');
+    this.statementSelectInput = this.statementMonthFormGroupTarget.querySelector('input[name="transaction[credit_card_statement_month]"]');
 
     const initialAccountId = this.accountInput.value;
     await this.toggleStatementFormGroup(initialAccountId);

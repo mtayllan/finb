@@ -1,0 +1,22 @@
+<div class="w-full">
+  <div class="flex flex-wrap justify-between items-center pb-2">
+    <%= render UI::H1.new.with_content('Credit Cards') %>
+  </div>
+
+  <div class="flex flex-col max-w-sm">
+    <% @credit_cards.each do |credit_card| %>
+      <%= link_to credit_card_path(credit_card), class: "flex justify-between items-center hover:bg-neutral rounded-md p-1" do %>
+        <div class="flex items-center space-x-2">
+          <%= render AppUI::Accounts::Icon.new(credit_card, size: "lg") %>
+          <span>
+            <%= credit_card.name %>
+          </span>
+        </div>
+        <p
+          class="text-xs <%= credit_card.balance.positive? ? 'text-positive' : 'text-negative' %>">
+          <%= number_to_currency credit_card.balance %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

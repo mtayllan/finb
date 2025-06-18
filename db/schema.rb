@@ -48,8 +48,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
   create_table "credit_card_statements", force: :cascade do |t|
     t.date "paid_at"
     t.integer "account_id", null: false
-    t.date "month"
-    t.decimal "value"
+    t.date "month", null: false
+    t.decimal "value", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_credit_card_statements_on_account_id"
