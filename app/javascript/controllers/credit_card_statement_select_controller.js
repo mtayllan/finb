@@ -1,13 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 import { get } from "@rails/request.js"
 import {
-  startOfMonth, addMonths, format, parse
+  startOfMonth, addMonths, format, parse, addDays, setDay
 } from "date-fns";
 
 export default class extends Controller {
   static targets = ["statementMonthFormGroup"]
 
-  connect() {
+  async connect() {
     this.accountInput = this.element.querySelector('input[name="transaction[account_id]"]')
     this.accountInput.addEventListener('change', this.handleAccountChange.bind(this));
 
@@ -17,7 +17,7 @@ export default class extends Controller {
     this.statementSelectInput = this.statementMonthFormGroupTarget.querySelector('input[name="transaction[credit_card_statement]"]');
 
     const initialAccountId = this.accountInput.value;
-    this.toggleStatementFormGroup(initialAccountId);
+    await this.toggleStatementFormGroup(initialAccountId);
 
     const initialDate = this.dateInput.value;
     if (initialDate) {
@@ -41,31 +41,45 @@ export default class extends Controller {
       return;
     }
 
-    const account = await get(`/accounts/${accountId}`, { responseKind: 'json' }).then(response => response.json);
-    if (account.kind === 'credit_card') {
+    this.account = await get(`/accounts/${accountId}`, { responseKind: 'json' }).then(response => response.json);
+    if (this.account.kind === 'credit_card') {
       this.statementMonthFormGroupTarget.classList.remove('hidden');
       this.statementSelectInput.disabled = false;
     } else {
       this.statementMonthFormGroupTarget.classList.add('hidden');
       this.statementSelectInput.disabled = true;
     }
+
+    const initialDate = this.dateInput.value;
+    if (initialDate) {
+      this.renderStatementSelect(initialDate);
+    }
   }
 
   renderStatementSelect(date) {
-    const startOfMonthInSelectedDate = startOfMonth(parse(date, 'dd/MM/yyyy', new Date()));
+    if (!this.account) return;
+
+    const parsedDate = parse(date, 'dd/MM/yyyy', new Date())
+    const startOfMonthInSelectedDate = startOfMonth(parsedDate);
     const months = [-1, 0, 1].map(monthOffset => {
       const month = addMonths(startOfMonthInSelectedDate, monthOffset);
       return { value: format(month, 'dd/MM/yyyy'), label: format(month, 'MMM/yyyy') };
     })
-    const currentMonth = months[1]; // Current month is the middle one
+    const expirationDate = setDay(startOfMonthInSelectedDate, this.account.credit_card_expiration_day);
+    const lastStatementDate = addDays(expirationDate, -7);
+    let defaultMonth = months[1]; // Default to current month
+    if (parsedDate > lastStatementDate) {
+      defaultMonth = months[2]; // If selected date is after last statement, use next month
+    }
+
     this.statementSelectInput.nextElementSibling.querySelectorAll('button').forEach(button => {
       const month = months.pop();
       button.textContent = month.label;
       button.dataset.value = month.value;
     })
     this.statementSelectTextBox = this.statementMonthFormGroupTarget.querySelector('input[type="text"]');
-    this.statementSelectTextBox.value = currentMonth.label; // Set to current month label
-    this.statementSelectInput.value = currentMonth.value; // Set to current month
+    this.statementSelectTextBox.value = defaultMonth.label; // Set to current month label
+    this.statementSelectInput.value = defaultMonth.value; // Set to current month
     this.statementSelectInput.dispatchEvent(new Event('change'));
   }
 
