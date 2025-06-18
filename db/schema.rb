@@ -31,7 +31,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
     t.integer "kind", default: 0, null: false
     t.date "initial_balance_date", null: false
     t.integer "user_id", null: false
-    t.date "credit_card_expiration_day"
+    t.integer "credit_card_expiration_day"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
