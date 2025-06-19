@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import { get } from "@rails/request.js"
 import {
-  startOfMonth, addMonths, format, parse, addDays, setDay
+  startOfMonth, addMonths, format, parse, addDays, setDate
 } from "date-fns";
 
 export default class extends Controller {
@@ -59,18 +59,27 @@ export default class extends Controller {
   renderStatementSelect(date) {
     if (!this.account) return;
 
-    const parsedDate = parse(date, 'dd/MM/yyyy', new Date())
-    const startOfMonthInSelectedDate = startOfMonth(parsedDate);
+    const parsedDate = parse(date, 'dd/MM/yyyy', new Date());
+    // calculate the statement month for the selected date
+    let expirationDateOnMonth = setDate(parsedDate, this.account.credit_card_expiration_day);
+    if (parsedDate > expirationDateOnMonth) {
+      expirationDateOnMonth = addMonths(expirationDateOnMonth, 1);
+    }
+    const closingDate = addDays(expirationDateOnMonth, -7);
+    let defaultStatementMonth;
+    if (closingDate > parsedDate) {
+      defaultStatementMonth = startOfMonth(expirationDateOnMonth)
+    } else {
+      defaultStatementMonth = startOfMonth(addMonths(expirationDateOnMonth, 1));
+    }
+
+    // Generate proximate months around the default statement month
+    const startOfMonthInSelectedStatement = startOfMonth(defaultStatementMonth);
     const months = [-1, 0, 1].map(monthOffset => {
-      const month = addMonths(startOfMonthInSelectedDate, monthOffset);
+      const month = addMonths(startOfMonthInSelectedStatement, monthOffset);
       return { value: format(month, 'dd/MM/yyyy'), label: format(month, 'MMM/yyyy') };
     })
-    const expirationDate = setDay(startOfMonthInSelectedDate, this.account.credit_card_expiration_day);
-    const lastStatementDate = addDays(expirationDate, -7);
-    let defaultMonth = months[1]; // Default to current month
-    if (parsedDate > lastStatementDate) {
-      defaultMonth = months[2]; // If selected date is after last statement, use next month
-    }
+    const defaultMonth = months[1];
 
     this.statementSelectInput.nextElementSibling.querySelectorAll('button').forEach(button => {
       const month = months.pop();
