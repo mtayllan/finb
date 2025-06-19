@@ -8,9 +8,11 @@ module DataManagement
       clear_data
       insert_categories
       insert_accounts
+      insert_statements
       insert_transactions
       insert_transfers
       populate_account_balances
+      populate_statement_values
     end
 
     private
@@ -19,6 +21,7 @@ module DataManagement
       Transaction.joins(:account).where({account: {user_id: Current.user.id}}).delete_all
       Transfer.joins(:target_account).where({target_account: {user_id: Current.user.id}}).delete_all
       Transfer.joins(:origin_account).where({origin_account: {user_id: Current.user.id}}).delete_all
+      CreditCard::Statement.joins(:account).where({account: {user_id: Current.user.id}}).delete_all
       Current.user.accounts.delete_all
       Current.user.categories.delete_all
     end
@@ -43,11 +46,22 @@ module DataManagement
       end
     end
 
+    def insert_statements
+      @statements_map = {}
+      @data["credit_card_statements"].each do |statement|
+        params = statement.except("id")
+        params[:account_id] = @accounts_map[statement["account_id"]]
+        record = CreditCard::Statement.create(params)
+        @statements_map[statement["id"]] = record.id
+      end
+    end
+
     def insert_transactions
       parsed_transactions = @data["transactions"].map do |transaction|
         transaction.except("id").merge({
           account_id: @accounts_map[transaction["account_id"]],
-          category_id: @categories_map[transaction["category_id"]]
+          category_id: @categories_map[transaction["category_id"]],
+          credit_card_statement_id: @statements_map[transaction["credit_card_statement_id"]]
         })
       end
       Transaction.insert_all(parsed_transactions)
@@ -65,6 +79,10 @@ module DataManagement
 
     def populate_account_balances
       Current.user.accounts.find_each(&:update_balance)
+    end
+
+    def populate_statement_values
+      CreditCard::Statement.find_each(&:update_value)
     end
   end
 end
