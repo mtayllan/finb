@@ -58,7 +58,7 @@ class TransactionsController < ApplicationController
 
   def after_save_url(transaction)
     if transaction.credit_card_statement
-      credit_card_url(transaction.account)
+      credit_card_url(transaction.account, month: transaction.credit_card_statement.month.strftime("%Y/%m"))
     else
       account_url(transaction.account)
     end
