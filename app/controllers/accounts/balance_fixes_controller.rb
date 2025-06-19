@@ -19,7 +19,6 @@ class Accounts::BalanceFixesController < ApplicationController
     )
 
     if @transaction.save
-      @account.update_balance
       redirect_to account_path(@account), notice: "Account balance was successfully fixed."
     else
       @categories = Current.user.categories.order(:name)

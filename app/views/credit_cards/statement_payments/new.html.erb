@@ -1,0 +1,40 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <%= render UI::H1.new do %>
+    Pay Statement for <%= @credit_card.name %>
+  <% end %>
+
+  <div class="mb-4">
+    <p class="text-base-content/80">Value: <strong><%= number_to_currency(@statement.value) %></strong></p>
+    <p class="text-base-content/80">Month: <strong><%= @month.to_fs(:month_year) %></strong></p>
+  </div>
+
+  <%= form_with url: credit_card_statement_payment_path(@credit_card), method: :post, class: "space-y-4" do |form| %>
+    <%= hidden_field_tag :month, @month %>
+    <%= hidden_field_tag :statement_id, @statement.id %>
+
+    <div class="border p-4 rounded-md">
+      <div>
+        <%= label_tag "origin_account_id", "Account", class: "block text-sm font-medium leading-6" %>
+        <div class="mt-2">
+          <%= render UI::SelectField.new(name: "origin_account_id", placeholder: 'Select a account', value: nil) do |comp| %>
+            <% @accounts.each do |account| %>
+              <% comp.with_option(value: account.id) do %>
+                <div class="mr-2">
+                  <%= render AppUI::Accounts::Icon.new(account, size: "lg") %>
+                </div>
+                <div><%= account.name %></div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <p class="text-sm text-base-content/80 mt-4">Date: <%= Date.current.to_fs(:day_month_year) %></p>
+    </div>
+
+    <div class="flex justify-between mt-6">
+      <%= form.submit "Pay", class: "btn btn-primary" %>
+      <%= link_to "Cancel", :back, class: "ml-2 btn btn-soft" %>
+    </div>
+  <% end %>
+</div>

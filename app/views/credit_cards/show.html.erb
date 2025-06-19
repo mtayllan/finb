@@ -15,6 +15,13 @@
       <%= number_to_currency(@statement.value) %>
     </div>
   </div>
+  <% if @statement.paid_at? %>
+    <div class="badge badge-xs badge-success">Paid at <%= @statement.paid_at.to_fs(:day_month_year) %></div>
+  <% else %>
+    <div class="badge badge-xs badge-warning">Waiting payment</div>
+    <br>
+    <%= link_to "Pay Now", new_credit_card_statement_payment_path(@credit_card, month: @statement.month.strftime('%Y/%m')), class: "btn btn-xs btn-soft" %>
+  <% end %>
 
   <div class="flex justify-center items-center my-6 gap-8">
     <%= link_to @month.prev_month.strftime('%b %Y'),
