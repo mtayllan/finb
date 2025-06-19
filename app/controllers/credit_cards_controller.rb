@@ -13,6 +13,8 @@ class CreditCardsController < ApplicationController
   private
 
   def default_month
+    return Date.current.beginning_of_month if @credit_card.credit_card_expiration_day.nil?
+
     expiration_date = Date.current.change(day: @credit_card.credit_card_expiration_day)
     if expiration_date > Date.current
       Date.current.beginning_of_month
