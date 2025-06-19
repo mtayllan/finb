@@ -13,6 +13,8 @@ class Account < ApplicationRecord
   has_many :credit_card_statements, class_name: "CreditCard::Statement", dependent: :destroy
 
   def update_balance
+    return if destroyed?
+
     transactions_value = transactions.where(date: ..Date.current).sum(:value)
     transfers_as_origin_value = transfers_as_origin.where(date: ..Date.current).sum(:value)
     transfers_as_target_value = transfers_as_target.where(date: ..Date.current).sum(:value)

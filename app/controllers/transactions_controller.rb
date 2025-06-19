@@ -18,15 +18,10 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
-    installments = params[:transaction][:installments].to_i
-    if @transaction.credit_card_statement_month.present?
-      @transaction.credit_card_statement = @transaction.account.credit_card_statements.find_or_create_by(month: @transaction.credit_card_statement_month)
-    end
 
     if @transaction.valid?
+      installments = params[:transaction][:installments].to_i
       Transaction.create_with_installments(@transaction, installments)
-      @transaction.account.update_balance
-      @transaction.credit_card_statement&.update_value
 
       redirect_to account_url(@transaction.account), notice: "Transaction was successfully created."
     else
@@ -35,20 +30,7 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    @transaction.assign_attributes(transaction_params)
-    if @transaction.credit_card_statement_month.present?
-      @transaction.credit_card_statement = @transaction.account.credit_card_statements.find_or_create_by(month: @transaction.credit_card_statement_month)
-    end
-
-    if @transaction.save
-      @transaction.account.update_balance
-      @transaction.credit_card_statement&.update_value
-      if @transaction.account_previously_changed?
-        Account.update_balance(@transaction.account_id_previously_was)
-      end
-      if @transaction.credit_card_statement_previously_changed?
-        CreditCard::Statement.find_by(id: @transaction.credit_card_statement_id_previously_was)&.update_value
-      end
+    if @transaction.update(transaction_params)
       redirect_to account_url(@transaction.account), notice: "Transaction was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -57,8 +39,6 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction.destroy!
-    @transaction.account.update_balance
-    @transaction.credit_card_statement&.update_value
 
     redirect_to account_url(@transaction.account), notice: "Transaction was successfully destroyed."
   end

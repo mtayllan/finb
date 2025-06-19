@@ -108,7 +108,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
     get account_url(account, params: {category_id: category.id})
 
-    assert_select "tr", 4
+    assert_select "tr", 5
   end
 
   test "show account transactions filtered by month" do
@@ -118,6 +118,6 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
     get account_url(account, params: {month: 1.month.ago.iso8601})
 
-    assert_select "tr", 4
+    assert_select "tr", 5
   end
 end

@@ -36,9 +36,8 @@ module Transaction::Installmentable
           installment.description = "#{base_description} (#{installment_number}/#{installments_count})"
           installment.value = (i == 0) ? first_installment_value : value_per_installment
           installment.date = base_date + i.months
-          if original_transaction.credit_card_statement.present?
-            month = original_transaction.credit_card_statement.month + i.months
-            installment.credit_card_statement = installment.account.credit_card_statements.find_or_create_by(month: month)
+          if original_transaction.credit_card_statement_month.present?
+            installment.credit_card_statement_month = Date.parse(original_transaction.credit_card_statement_month) + i.months
           end
           installment.save!
 
