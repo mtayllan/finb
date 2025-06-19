@@ -23,7 +23,7 @@ class TransactionsController < ApplicationController
       installments = params[:transaction][:installments].to_i
       Transaction.create_with_installments(@transaction, installments)
 
-      redirect_to account_url(@transaction.account), notice: "Transaction was successfully created."
+      redirect_to after_save_url(@transaction), notice: "Transaction was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class TransactionsController < ApplicationController
 
   def update
     if @transaction.update(transaction_params)
-      redirect_to account_url(@transaction.account), notice: "Transaction was successfully updated."
+      redirect_to after_save_url(@transaction), notice: "Transaction was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class TransactionsController < ApplicationController
   def destroy
     @transaction.destroy!
 
-    redirect_to account_url(@transaction.account), notice: "Transaction was successfully destroyed."
+    redirect_to after_save_url(@transaction), notice: "Transaction was successfully destroyed."
   end
 
   private
@@ -54,5 +54,13 @@ class TransactionsController < ApplicationController
       params[:transaction][:value] = "-#{params[:transaction][:value]}"
     end
     params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date, :credit_card_statement_month)
+  end
+
+  def after_save_url(transaction)
+    if transaction.credit_card_statement
+      credit_card_url(transaction.account)
+    else
+      account_url(transaction.account)
+    end
   end
 end
