@@ -1,0 +1,39 @@
+<h1>Edit Split for Transaction</h1>
+
+<h2>Transaction: <%= @transaction.description %></h2>
+<p>Amount: $<%= @transaction.value.abs %></p>
+<p>Date: <%= @transaction.date %></p>
+
+<%= form_with model: @split, url: transaction_split_path(@transaction), method: :patch, local: true do |form| %>
+  <% if @split.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@split.errors.count, "error") %> prohibited this split from being saved:</h4>
+      <ul>
+        <% @split.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :owes_to_id, "Split with User" %>
+    <%= form.collection_select :owes_to_id, User.where.not(id: Current.user.id), :id, :username, { prompt: "Select a user" }, { class: "form-control" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount_owed %>
+    <%= form.number_field :amount_owed, step: :any, class: "form-control", max: @transaction.value.abs %>
+  </div>
+
+    <div class="field">
+    <%= form.label :owes_to_category_id, "Category for the other user" %>
+    <%= form.collection_select :owes_to_category_id, @split.owes_to.categories, :id, :name, { prompt: "Select a category (optional)" }, { class: "form-control" } %>
+  end
+
+  <div class="actions">
+    <%= form.submit "Update Split", class: "btn btn-primary" %>
+    <%= link_to "Show", transaction_split_path(@transaction), class: "btn btn-secondary" %>
+    <%= link_to "Back", transactions_path, class: "btn btn-light" %>
+  </div>
+<% end %>

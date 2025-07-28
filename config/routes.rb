@@ -10,8 +10,16 @@ Rails.application.routes.draw do
 
   resource :sessions, only: %i[new create destroy]
 
+  resources :splits do
+    member do
+      patch :mark_as_paid
+    end
+  end
+
   resources :transfers, except: :show
-  resources :transactions, except: :show
+  resources :transactions, except: :show do
+    resource :split, controller: "transactions/splits", only: [:show, :new, :create, :edit, :update, :destroy]
+  end
   resources :accounts do
     resource :balance_fix, only: [:new, :create], controller: "accounts/balance_fixes"
   end

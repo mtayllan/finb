@@ -1,0 +1,21 @@
+<h1>Split for Transaction</h1>
+
+<h2>Transaction: <%= @transaction.description %></h2>
+<p>Amount: $<%= @transaction.value.abs %></p>
+<p>Date: <%= @transaction.date %></p>
+
+<div class="split-details">
+  <h3>Split Details</h3>
+  <p><strong>Amount Owed:</strong> $<%= @split.amount_owed %></p>
+  <p><strong>Split with:</strong> <%= @split.owes_to.username %></p>
+  <p><strong>Status:</strong> <%= @split.paid? ? "Paid" : "Unpaid" %></p>
+  <% if @split.paid? %>
+    <p><strong>Paid At:</strong> <%= @split.paid_at %></p>
+  <% end %>
+</div>
+
+<div class="actions">
+  <%= link_to "Edit Split", edit_transaction_split_path(@transaction), class: "btn btn-secondary" %>
+  <%= button_to "Delete Split", transaction_split_path(@transaction), method: :delete, class: "btn btn-danger", confirm: "Are you sure?" %>
+  <%= link_to "Back to Transactions", transactions_path, class: "btn btn-primary" %>
+</div>

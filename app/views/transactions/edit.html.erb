@@ -1,5 +1,23 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <%= render UI::H1.new.with_content('Editing transaction') %>
+  <div class="flex flex-wrap justify-between items-center mb-4">
+    <%= render UI::H1.new.with_content('Editing transaction') %>
+    
+    <div class="flex gap-2">
+      <% if @transaction.value < 0 %>
+        <%= link_to new_transaction_split_path(@transaction), class: "btn btn-outline btn-info" do %>
+          <i class="ph ph-users-three"></i>
+          Create Split
+        <% end %>
+      <% end %>
+      
+      <% if @transaction.splits.any? %>
+        <%= link_to splits_path, class: "btn btn-outline btn-secondary" do %>
+          <i class="ph ph-eye"></i>
+          View Splits (<%= @transaction.splits.count %>)
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
   <%= render "form", transaction: @transaction %>
 </div>

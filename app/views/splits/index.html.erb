@@ -1,0 +1,65 @@
+<div class="w-full">
+  <div class="flex flex-wrap justify-between items-center mb-4">
+    <%= render UI::H1.new.with_content('Splits') %>
+
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+        </svg>
+        New Split
+      </div>
+      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-64">
+        <li>
+          <%= link_to new_transaction_split_path(Transaction.joins(:account).where(accounts: { user: Current.user }).last) do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+            From Latest Transaction
+          <% end %>
+        </li>
+        <li>
+          <%= link_to transactions_path do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h6a2 2 0 002-2V9a2 2 0 00-2-2h-2m-5 4h10m0 0l-3-3m3 3l-3 3"></path>
+            </svg>
+            Browse Transactions
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 my-6">
+    <div class="tabs tabs-bordered">
+      <%= link_to "From Me", splits_path(tab: "from_me"),
+          class: "tab tab-lg #{'tab-active' if params[:tab] == 'from_me' || params[:tab].blank?}",
+          data: { turbo_frame: "splits_content" } %>
+      <%= link_to "To Me", splits_path(tab: "to_me"),
+          class: "tab tab-lg #{'tab-active' if params[:tab] == 'to_me'}",
+          data: { turbo_frame: "splits_content" } %>
+      <%= link_to "Summary", splits_path(tab: "summary"),
+          class: "tab tab-lg #{'tab-active' if params[:tab] == 'summary'}",
+          data: { turbo_frame: "splits_content" } %>
+    </div>
+
+    <!-- Quick filters -->
+    <div class="flex items-center gap-2">
+      <div class="badge badge-neutral">
+        <%= pluralize(Split.joins(:source_transaction).joins("JOIN accounts ON transactions.account_id = accounts.id").where(accounts: { user_id: Current.user.id }).count, 'total split') %>
+      </div>
+      <% pending_count = Split.joins(:source_transaction).joins("JOIN accounts ON transactions.account_id = accounts.id").where(accounts: { user_id: Current.user.id }).unpaid.count %>
+      <% if pending_count > 0 %>
+        <div class="badge badge-warning">
+          <%= pluralize(pending_count, 'pending') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Content with Turbo Frame -->
+  <%= turbo_frame_tag "splits_content" do %>
+    <%= render "splits_table" %>
+  <% end %>
+</div>

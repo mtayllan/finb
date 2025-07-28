@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_28_222009) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -63,6 +63,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "splits", force: :cascade do |t|
+    t.integer "source_transaction_id", null: false
+    t.integer "payer_id", null: false
+    t.integer "owes_to_id", null: false
+    t.decimal "amount_owed", precision: 9, scale: 2, null: false
+    t.integer "owes_to_category_id"
+    t.datetime "paid_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owes_to_category_id"], name: "index_splits_on_owes_to_category_id"
+    t.index ["owes_to_id"], name: "index_splits_on_owes_to_id"
+    t.index ["paid_at"], name: "index_splits_on_paid_at"
+    t.index ["payer_id", "owes_to_id"], name: "index_splits_on_payer_id_and_owes_to_id"
+    t.index ["payer_id"], name: "index_splits_on_payer_id"
+    t.index ["source_transaction_id"], name: "index_splits_on_source_transaction_id", unique: true
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "description"
     t.decimal "value", precision: 9, scale: 2, default: "0.0", null: false
@@ -100,6 +117,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
   add_foreign_key "categories", "users"
   add_foreign_key "credit_card_statements", "accounts"
   add_foreign_key "sessions", "users"
+  add_foreign_key "splits", "categories", column: "owes_to_category_id"
+  add_foreign_key "splits", "transactions", column: "source_transaction_id"
+  add_foreign_key "splits", "users", column: "owes_to_id"
+  add_foreign_key "splits", "users", column: "payer_id"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
   add_foreign_key "transactions", "credit_card_statements"

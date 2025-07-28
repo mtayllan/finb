@@ -1,0 +1,13 @@
+split_one:
+  source_transaction: income1
+  payer: default
+  owes_to: user_two
+  amount_owed: 100.00
+  paid_at: <%= 1.day.ago %>
+
+split_unpaid:
+  source_transaction: income2
+  payer: default
+  owes_to: user_two
+  amount_owed: 50.00
+  paid_at: null

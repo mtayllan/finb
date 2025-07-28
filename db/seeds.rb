@@ -1,5 +1,9 @@
 if Rails.env.development?
+  # Create users for testing splits functionality
   user = User.create(username: "default", password: "qwe123")
+  friend1 = User.create(username: "alice", password: "qwe123")
+  friend2 = User.create(username: "bob", password: "qwe123")
+  friend3 = User.create(username: "charlie", password: "qwe123")
 
   Category.create([
     {
@@ -160,4 +164,42 @@ if Rails.env.development?
   end
 
   Account.all.find_each(&:update_balance)
+
+  # Create some splits for testing
+  # Get all users for split creation
+  all_users = User.all
+  transactions_with_splits = Transaction.where(value: ..0).limit(15)  # Get some expense transactions
+
+  transactions_with_splits.each_with_index do |transaction, index|
+    # Create splits where default user either owes money or is owed money
+    if index.even?
+      # Default user paid, others owe
+      other_users = all_users.where.not(id: user.id).sample(rand(1..2))
+
+      other_users.each do |other_user|
+        Split.create(
+          source_transaction: transaction,
+          payer: user,
+          owes_to: other_user,
+          amount_owed: transaction.value.abs / (other_users.count + 1),
+          owes_to_category: Category.all.sample,
+          paid_at: [nil, rand(1..10).days.ago].sample  # Some paid, some pending
+        )
+      end
+    else
+      # Other user paid, default user owes
+      payer = all_users.where.not(id: user.id).sample
+
+      Split.create(
+        source_transaction: transaction,
+        payer: payer,
+        owes_to: user,
+        amount_owed: transaction.value.abs / 2,
+        owes_to_category: Category.all.sample,
+        paid_at: [nil, rand(1..10).days.ago].sample  # Some paid, some pending
+      )
+    end
+  end
+
+  puts "Created #{Split.count} splits for testing"
 end

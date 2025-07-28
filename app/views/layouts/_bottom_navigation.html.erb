@@ -11,6 +11,10 @@
     <i class="ph-bold ph-repeat"></i>
     <span class="sr-only">Transfers</span>
   <% end %>
+  <%= link_to splits_path, class: class_names('dock-active': controller_name == "splits") do %>
+    <i class="ph-bold ph-users-three"></i>
+    <span class="sr-only">Splits</span>
+  <% end %>
   <%= link_to accounts_path, class: class_names('dock-active': controller_name == "accounts") do %>
     <i class="ph-bold ph-bank"></i>
     <span class="sr-only">Accounts</span>

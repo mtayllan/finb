@@ -29,6 +29,12 @@
       <i class="ph ph-pencil-simple-line"></i>
       Edit
     <% end %>
+    <% if transaction.value < 0 %>
+      <%= link_to new_transaction_split_path(transaction), class: "btn btn-soft btn-info" do %>
+        <i class="ph ph-users-three"></i>
+        Split
+      <% end %>
+    <% end %>
     <%= link_to transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error" do %>
       <i class="ph ph-trash"></i>
       Delete

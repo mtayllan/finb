@@ -1,0 +1,88 @@
+<div class="w-full">
+  <%= render UI::H1.new.with_content('Edit Split') %>
+
+  <div class="card bg-base-100 shadow-xl max-w-2xl">
+    <div class="card-body">
+      <!-- Transaction Info -->
+      <div class="mb-6 p-4 bg-base-200 rounded-lg">
+        <h3 class="font-semibold text-lg mb-2">Transaction Details</h3>
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <span class="text-gray-600">Description:</span>
+            <span class="font-medium ml-2"><%= @split.source_transaction.description %></span>
+          </div>
+          <div>
+            <span class="text-gray-600">Date:</span>
+            <span class="font-medium ml-2"><%= @split.source_transaction.date.strftime('%b %d, %Y') %></span>
+          </div>
+          <div>
+            <span class="text-gray-600">Amount:</span>
+            <span class="font-medium ml-2"><%= number_to_currency(@split.source_transaction.value.abs) %></span>
+          </div>
+          <div>
+            <span class="text-gray-600">Account:</span>
+            <span class="font-medium ml-2"><%= @split.source_transaction.account.name %></span>
+          </div>
+        </div>
+      </div>
+
+      <%= form_with model: @split, local: true, class: "space-y-6" do |form| %>
+        <% if @split.errors.any? %>
+          <div class="alert alert-error">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <h4 class="font-bold">Please fix the following errors:</h4>
+              <ul class="list-disc list-inside">
+                <% @split.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="form-control">
+          <%= form.label :amount_owed, class: "label" do %>
+            <span class="label-text font-semibold">Amount Owed</span>
+          <% end %>
+          <%= form.number_field :amount_owed, step: 0.01, max: @split.source_transaction.value.abs,
+              class: "input input-bordered w-full", placeholder: "0.00" %>
+          <div class="label">
+            <span class="label-text-alt">Maximum: <%= number_to_currency(@split.source_transaction.value.abs) %></span>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <%= form.label :owes_to_category_id, class: "label" do %>
+            <span class="label-text font-semibold">Category for <%= @split.owes_to.username %></span>
+          <% end %>
+          <%= form.collection_select :owes_to_category_id, @split.owes_to.categories, :id, :name,
+              { prompt: "Select a category (optional)" },
+              { class: "select select-bordered w-full" } %>
+        </div>
+
+        <div class="form-control">
+          <%= form.label :paid_at, class: "label" do %>
+            <span class="label-text font-semibold">Payment Date</span>
+          <% end %>
+          <%= form.datetime_local_field :paid_at, class: "input input-bordered w-full" %>
+          <div class="label">
+            <span class="label-text-alt">Leave empty if not paid yet</span>
+          </div>
+        </div>
+
+        <div class="card-actions justify-between">
+          <div class="space-x-2">
+            <%= link_to "Cancel", @split, class: "btn btn-outline" %>
+            <%= link_to "Back to Splits", splits_path, class: "btn btn-ghost" %>
+          </div>
+          <div class="space-x-2">
+            <%= form.submit "Update Split", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

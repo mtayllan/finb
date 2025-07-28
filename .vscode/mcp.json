@@ -1,0 +1,13 @@
+{
+	"servers": {
+		"context7-mcp-1": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@upstash/context7-mcp"
+			],
+			"type": "stdio"
+		}
+	},
+	"inputs": []
+}

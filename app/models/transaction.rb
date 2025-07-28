@@ -5,6 +5,8 @@ class Transaction < ApplicationRecord
   belongs_to :account
   belongs_to :credit_card_statement, optional: true, class_name: "CreditCard::Statement"
 
+  has_many :splits, foreign_key: "source_transaction_id", dependent: :destroy
+
   validates :value, :date, :description, presence: true
   validates :value, numericality: {other_than: 0}
   validate :date_after_account_initial_balance_date
@@ -14,6 +16,23 @@ class Transaction < ApplicationRecord
   before_validation :set_credit_card_statement
   after_commit :update_account_balance
   after_commit :update_credit_card_statement_value
+
+  def final_value
+    # Se há splits onde esta transação é de quem pagou, subtrair o total dividido
+    splits_as_payer = splits.where(payer_id: account.user_id)
+    return value unless splits_as_payer.any?
+    
+    value - splits_as_payer.sum(:amount_owed)
+  end
+
+  def has_split?
+    splits.any?
+  end
+
+  def splittable?
+    # Transações negativas podem sempre ter novos splits criados
+    value < 0
+  end
 
   private
 

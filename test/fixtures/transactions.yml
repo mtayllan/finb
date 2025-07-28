@@ -4,3 +4,10 @@ income1:
   description: My First Salary
   value: 500
   date: <%= Date.current %>
+
+income2:
+  account: bank_one
+  category: salary
+  description: My Second Salary
+  value: 300
+  date: <%= Date.current - 1.day %>
