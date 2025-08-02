@@ -5,40 +5,177 @@
   <hr>
 
   <%= form_with url: reports_path, method: :get, local: true, class: "space-y-4" do |form| %>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="mt-4">
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :quick_filters) %>
+        <select name="quick_filter" class="select select-bordered w-full" onchange="this.form.requestSubmit()">
+          <option value="">Select a date range...</option>
+          <option value="today" <%= 'selected' if @start_date == Date.current && @end_date == Date.current %>>Today</option>
+          <option value="this_week" <%= 'selected' if @start_date == Date.current.beginning_of_week && @end_date == Date.current.end_of_week %>>This Week</option>
+          <option value="last_week" <%= 'selected' if @start_date == 1.week.ago.beginning_of_week && @end_date == 1.week.ago.end_of_week %>>Last Week</option>
+          <option value="last_2_weeks">Last 2 Weeks</option>
+          <option value="this_month" <%= 'selected' if @start_date == Date.current.beginning_of_month && @end_date == Date.current.end_of_month %>>This Month</option>
+          <option value="last_month" <%= 'selected' if @start_date == 1.month.ago.beginning_of_month && @end_date == 1.month.ago.end_of_month %>>Last Month</option>
+          <option value="last_3_months">Last 3 Months</option>
+          <option value="this_year" <%= 'selected' if @start_date == Date.current.beginning_of_year && @end_date == Date.current.end_of_year %>>This Year</option>
+        </select>
+      <% end %>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :category_id) %>
+        <%= render UI::SelectField.new(name: form.field_name(:category_id), placeholder: 'All Categories', value: @selected_category_id) do |select| %>
+          <% @categories.each do |category| %>
+            <% select.with_option(value: category.id, label: category.name) %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :account_id) %>
+        <%= render UI::SelectField.new(name: form.field_name(:account_id), placeholder: 'All Accounts', value: @selected_account_id) do |select| %>
+          <% @accounts.each do |account| %>
+            <% select.with_option(value: account.id, label: account.name) %>
+          <% end %>
+        <% end %>
+      <% end %>
+
       <%= render UI::FormGroup.new do %>
         <%= render UI::FormLabel.new(form, :start_date) %>
-        <%= render "components/ui/date_picker", name: form.field_name(:start_date), initial_value: @start_date.to_fs(:day_month_year), show_quick_select: false  %>
+        <%= render "components/ui/date_picker", name: form.field_name(:start_date), initial_value: @start_date.to_fs(:day_month_year), show_quick_select: false %>
       <% end %>
 
       <%= render UI::FormGroup.new do %>
         <%= render UI::FormLabel.new(form, :end_date) %>
-        <%= render "components/ui/date_picker", name: form.field_name(:end_date), initial_value: @end_date.to_fs(:day_month_year), show_quick_select: false  %>
+        <%= render "components/ui/date_picker", name: form.field_name(:end_date), initial_value: @end_date.to_fs(:day_month_year), show_quick_select: false %>
       <% end %>
 
       <%= render UI::FormGroup.new do %>
         <%= render UI::FormLabel.new(form, :granularity) %>
         <%= render UI::SelectField.new(name: form.field_name(:granularity), placeholder: 'Granularity', value: @granularity) do |select| %>
-          <% select.with_option(value: "day", label: "day") %>
-          <% select.with_option(value: "week", label: "week") %>
-          <% select.with_option(value: "month", label: "month") %>
+          <% select.with_option(value: "total", label: "Total") %>
+          <% select.with_option(value: "day", label: "Day") %>
+          <% select.with_option(value: "week", label: "Week") %>
+          <% select.with_option(value: "month", label: "Month") %>
         <% end %>
       <% end %>
     </div>
-    <div class="flex justify-end">
+    <div class="flex justify-end gap-2">
+      <%= link_to "Clear Filters", reports_path, class: "btn btn-soft" %>
       <%= form.submit "Update", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <div class="text-center">
-    <h3 class="text-xl font-bold">Balance Report</h3>
-    <div
-      data-controller="charts--transactions-totals"
-      data-charts--transactions-totals-expenses-value="<%= @expenses.to_a.to_json %>"
-      data-charts--transactions-totals-income-value="<%= @income.to_a.to_json %>"
-      data-charts--transactions-totals-granularity-value="<%= @granularity %>"
-      class="h-96"
-    >
+  <% if @granularity != "total" && (@income_by_period.any? || @expenses_by_period.any?) %>
+    <div class="mt-6">
+      <h3 class="text-xl font-bold mb-4">Transaction Totals by <%= @granularity.capitalize %></h3>
+      <div
+        data-controller="charts--transactions-totals"
+        data-charts--transactions-totals-expenses-value="<%= @expenses_by_period.to_a.to_json %>"
+        data-charts--transactions-totals-income-value="<%= @income_by_period.to_a.to_json %>"
+        data-charts--transactions-totals-granularity-value="<%= @granularity %>"
+        class="h-96"
+      >
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+    <div class="stat bg-base-200">
+      <div class="stat-title">Income</div>
+      <div class="stat-value text-positive"><%= number_to_currency(@total_income) %></div>
+    </div>
+    <div class="stat bg-base-200">
+      <div class="stat-title">Expenses</div>
+      <div class="stat-value text-negative"><%= number_to_currency(@total_expenses.abs) %></div>
+    </div>
+    <div class="stat bg-base-200">
+      <div class="stat-title">Net Total</div>
+      <div class="stat-value <%= @net_total >= 0 ? 'text-positive' : 'text-negative' %>"><%= number_to_currency(@net_total) %></div>
     </div>
   </div>
+
+  <% if @category_totals.any? %>
+    <div class="mt-6">
+      <h3 class="text-xl font-bold mb-4">By Category</h3>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="h-96">
+          <div
+            data-controller="categories-pie-chart"
+            data-categories-pie-chart-title-value="Transaction Totals by Category"
+            data-categories-pie-chart-data-value="<%= @category_totals.map { |category, total| { name: category.name, color: category.color, value: total.abs } }.to_json %>"
+            class="h-full"
+          >
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="table table-zebra">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th class="text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @category_totals.each do |category, total| %>
+                <tr>
+                  <td>
+                    <div class="flex items-center space-x-2">
+                      <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
+                      <span><%= category.name %></span>
+                    </div>
+                  </td>
+                  <td class="text-right <%= total >= 0 ? 'text-positive' : 'text-negative' %>">
+                    <%= number_to_currency(total) %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @account_totals.any? %>
+    <div class="mt-6">
+      <h3 class="text-xl font-bold mb-4">By Account</h3>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="h-96">
+          <div
+            data-controller="categories-pie-chart"
+            data-categories-pie-chart-title-value="Transaction Totals by Account"
+            data-categories-pie-chart-data-value="<%= @account_totals.map { |account, total| { name: account.name, color: account.color, value: total.abs } }.to_json %>"
+            class="h-full"
+          >
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="table table-zebra">
+            <thead>
+              <tr>
+                <th>Account</th>
+                <th class="text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @account_totals.each do |account, total| %>
+                <tr>
+                  <td>
+                    <div class="flex items-center space-x-2">
+                      <%= render AppUI::Accounts::Icon.new(account, size: "lg") %>
+                      <span><%= account.name %></span>
+                    </div>
+                  </td>
+                  <td class="text-right <%= total >= 0 ? 'text-positive' : 'text-negative' %>">
+                    <%= number_to_currency(total) %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
