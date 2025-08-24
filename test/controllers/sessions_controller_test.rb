@@ -19,7 +19,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   test "should render show with error message for invalid credentials" do
     post sessions_url, params: {username: "invalid_username", password: "invalid_password"}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
     assert_equal "Invalid credentials", flash[:alert]
   end
 

@@ -32,7 +32,7 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
   test "should show error on invalid transfer creation" do
     post transfers_url, params: {transfer: {name: ""}}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should get edit" do
@@ -55,7 +55,7 @@ class TransfersControllerTest < ActionDispatch::IntegrationTest
 
     patch transfer_url(@transfer), params: {transfer: {date: nil}}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should destroy transfer" do

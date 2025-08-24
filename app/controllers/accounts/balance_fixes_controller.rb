@@ -22,7 +22,7 @@ class Accounts::BalanceFixesController < ApplicationController
       redirect_to account_path(@account), notice: "Account balance was successfully fixed."
     else
       @categories = Current.user.categories.order(:name)
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 

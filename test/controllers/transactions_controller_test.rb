@@ -53,7 +53,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   test "should show error on invalid transaction creation" do
     post transactions_url, params: {transaction: {name: ""}}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should get edit" do
@@ -76,7 +76,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
 
     patch transaction_url(@transaction), params: {transaction: {date: nil}}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should destroy transaction" do

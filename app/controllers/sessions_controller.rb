@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_to post_authentication_url, notice: "Signed in successfully"
     else
       flash.now[:alert] = "Invalid credentials"
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 

@@ -21,7 +21,7 @@ class TransfersController < ApplicationController
       @transfer.target_account.update_balance
       redirect_to transfers_url, notice: "Transfer was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -37,7 +37,7 @@ class TransfersController < ApplicationController
       end
       redirect_to transfers_url, notice: "Transfer was successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
