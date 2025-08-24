@@ -14,8 +14,10 @@ class ApplicationController < ActionController::Base
   def recalculate_balances
     return unless Current.user
     last_calc_date = Rails.cache.fetch("last_balance_calculation_date/#{Current.user.id}") do
-      Current.user.accounts.minimum(:updated_at).to_date
+      Current.user.accounts.minimum(:updated_at)&.to_date
     end
+
+    return unless last_calc_date
 
     if last_calc_date < Date.current
       Current.user.accounts.find_each do |account|
