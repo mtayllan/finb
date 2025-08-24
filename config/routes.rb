@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resource :sessions, only: %i[new create destroy]
 
   resources :transfers, except: :show
-  resources :transactions, except: :show
+  resources :transactions, except:
+   :show
   resources :accounts do
     resource :balance_fix, only: [:new, :create], controller: "accounts/balance_fixes"
   end
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
     resource :statement_payment, only: [:new, :create], controller: "credit_cards/statement_payments"
   end
   resources :categories, except: :show
+  resources :splits, except: :show do
+    resource :confirmations, only: [:create, :destroy], controller: "splits/confirmations"
+  end
 
   resources :similar_transactions, only: [:index]
 

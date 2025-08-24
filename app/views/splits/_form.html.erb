@@ -1,0 +1,61 @@
+<% transaction = @split.payer_transaction %>
+
+<div class="mx-auto md:w-2/3 w-full">
+  <div>
+    <%= render UI::H1.new.with_content('Transaction Split') %>
+    <div class="flex flex-col mt-4">
+      <div>
+        <b><%= transaction.description %></b>
+      </div>
+      <div>
+        <%= number_to_currency(transaction.value) %> | <%= transaction.date.to_fs(:day_month_year) %>
+      </div>
+      <div class="flex space-x-2 mt-2">
+        <div class="flex items-center">
+          <div class="mr-2"><%= render AppUI::Accounts::Icon.new(transaction.account) %></div>
+          <div><%= transaction.account.name %></div>
+        </div>
+        <div class="flex items-center">
+          <div class="mr-2"><%= render AppUI::Categories::Icon.new(transaction.category) %></div>
+          <div><%= transaction.category.name %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <div>
+    <%= form_with(model: @split) do |form| %>
+      <%= form.hidden_field :payer_transaction_id, value: @split.payer_transaction_id %>
+
+      <%= render FormErrorsExplanation.new(@split.errors) if @split.errors.any? %>
+
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :amount_borrowed) %>
+        <div class="flex-grow">
+          <%= render UI::MoneyField.new(form, :amount_borrowed, default_value: @split.amount_borrowed) %>
+        </div>
+      <% end %>
+
+
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :borrower_id) %>
+        <%= render UI::SelectField.new(name: form.field_name(:borrower_id), placeholder: 'Select a user', value: @split.borrower_id) do |comp| %>
+          <% User.where.not(id: Current.user.id).each do |user| %>
+            <% comp.with_option(value: user.id) do %>
+              <%= user.username %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+
+      <div class="flex justify-between">
+        <%= render UI::Button.new(form:) %>
+        <%= link_to "Cancel", transactions_path, class: "btn btn-soft" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

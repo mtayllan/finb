@@ -12,14 +12,18 @@
     </div>
   </td>
   <td>
-    <div class="flex items-center">
-      <div class="mr-2">
-        <%= render AppUI::Accounts::Icon.new(transaction.account) %>
+    <% if transaction.account %>
+      <div class="flex items-center">
+        <div class="mr-2">
+          <%= render AppUI::Accounts::Icon.new(transaction.account) %>
+        </div>
+        <div class="link">
+          <%= link_to transaction.account.name, url_for(params.permit(:month, :category_id).merge(account_id: transaction.account_id)) %>
+        </div>
       </div>
-      <div class="link">
-        <%= link_to transaction.account.name, url_for(params.permit(:month, :category_id).merge(account_id: transaction.account_id)) %>
-      </div>
-    </div>
+    <% else %>
+      SPLIT: <%= transaction.borrower_split.payer_transaction.account.user.username %>
+    <% end %>
   </td>
   <td class="<%= transaction.value >= 0 ? 'text-positive' : 'text-negative' %>">
     <%= number_to_currency(transaction.value) %>
@@ -32,6 +36,10 @@
     <%= link_to transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error" do %>
       <i class="ph ph-trash"></i>
       Delete
+    <% end %>
+    <%= link_to new_split_path(transaction_id: transaction.id), class: "btn btn-soft" do %>
+      <i class="ph ph-arrows-out-line-horizontal"></i>
+      Split
     <% end %>
   </td>
 </tr>
