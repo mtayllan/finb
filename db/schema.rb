@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_24_200448) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_24_215108) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -72,8 +72,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_200448) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["borrower_id"], name: "index_splits_on_borrower_id"
-    t.index ["borrower_transaction_id"], name: "index_splits_on_borrower_transaction_id"
-    t.index ["payer_transaction_id"], name: "index_splits_on_payer_transaction_id"
+    t.index ["borrower_transaction_id"], name: "index_splits_on_borrower_transaction_id", unique: true, where: "borrower_transaction_id IS NOT NULL"
+    t.index ["payer_transaction_id"], name: "index_splits_on_payer_transaction_id", unique: true
   end
 
   create_table "transactions", force: :cascade do |t|
