@@ -2,8 +2,11 @@ class Transaction < ApplicationRecord
   include Transaction::Installmentable
 
   belongs_to :category
-  belongs_to :account
+  belongs_to :account, optional: true
   belongs_to :credit_card_statement, optional: true, class_name: "CreditCard::Statement"
+
+  has_one :payer_split, class_name: "Split", foreign_key: "payer_transaction_id"
+  has_one :borrower_split, class_name: "Split", foreign_key: "borrower_transaction_id", dependent: :nullify
 
   validates :value, :date, :description, presence: true
   validates :value, numericality: {other_than: 0}
@@ -11,9 +14,9 @@ class Transaction < ApplicationRecord
 
   attribute :credit_card_statement_month
 
-  before_validation :set_credit_card_statement
-  after_commit :update_account_balance
-  after_commit :update_credit_card_statement_value
+  before_validation :set_credit_card_statement, if: :account
+  after_commit :update_account_balance, if: :account
+  after_commit :update_credit_card_statement_value, if: :account
 
   private
 
@@ -42,7 +45,7 @@ class Transaction < ApplicationRecord
   end
 
   def set_credit_card_statement
-    return if credit_card_statement_month.blank? || account.nil?
+    return if credit_card_statement_month.blank?
 
     self.credit_card_statement = account.credit_card_statements.find_or_create_by(month: credit_card_statement_month)
   end
