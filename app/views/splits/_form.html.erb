@@ -39,7 +39,7 @@
 
       <!-- Quick Split Buttons -->
       <div class="mb-4">
-        <div class="text-sm font-medium text-gray-700 mb-2">Quick Split:</div>
+        <div class="text-xs font-bold mb-2">Quick Split:</div>
         <div class="flex space-x-2">
           <button type="button"
                   class="btn btn-sm btn-soft"
@@ -62,11 +62,11 @@
         </div>
       </div>
 
-
+      <% users = User.where.not(id: Current.user.id) %>
       <%= render UI::FormGroup.new do %>
         <%= render UI::FormLabel.new(form, :borrower_id) %>
-        <%= render UI::SelectField.new(name: form.field_name(:borrower_id), placeholder: 'Select a user', value: @split.borrower_id) do |comp| %>
-          <% User.where.not(id: Current.user.id).each do |user| %>
+        <%= render UI::SelectField.new(name: form.field_name(:borrower_id), placeholder: 'Select a user', value: @split.borrower_id || users.first&.id) do |comp| %>
+          <% users.each do |user| %>
             <% comp.with_option(value: user.id) do %>
               <%= user.username %>
             <% end %>
