@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_23_150509) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_24_200448) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -106,6 +106,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_23_150509) do
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
+    t.boolean "super", default: false
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
@@ -113,7 +114,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_23_150509) do
   add_foreign_key "accounts", "users"
   add_foreign_key "categories", "users"
   add_foreign_key "credit_card_statements", "accounts"
-  add_foreign_key "sessions", "users"
+  add_foreign_key "sessions", "users", on_delete: :cascade
   add_foreign_key "splits", "transactions", column: "borrower_transaction_id"
   add_foreign_key "splits", "transactions", column: "payer_transaction_id"
   add_foreign_key "splits", "users", column: "borrower_id"
