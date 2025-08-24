@@ -18,6 +18,11 @@ class Transaction < ApplicationRecord
   after_commit :update_account_balance, if: :account
   after_commit :update_credit_card_statement_value, if: :account
 
+  def report_value
+    # use + because report_value is for expenses transactions and they are negative
+    value + (payer_split&.amount_borrowed || 0)
+  end
+
   private
 
   def date_after_account_initial_balance_date
