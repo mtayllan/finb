@@ -22,7 +22,14 @@
     <li>
       <%= link_to 'Reports', reports_path, class: class_names('menu-active': controller_name == 'reports')  %>
     </li>
+    <li>
+      <%= link_to 'Splits', splits_path, class: class_names('menu-active': controller_name == 'splits')  %>
+    </li>
   </ul>
+
+  <div class="navbar-end text-sm">
+    Logged as <%= Current.user.username %>
+  </div>
 </div>
 
 

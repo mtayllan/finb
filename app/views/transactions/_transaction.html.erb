@@ -12,26 +12,45 @@
     </div>
   </td>
   <td>
-    <div class="flex items-center">
-      <div class="mr-2">
-        <%= render AppUI::Accounts::Icon.new(transaction.account) %>
+    <% if transaction.account %>
+      <div class="flex items-center">
+        <div class="mr-2">
+          <%= render AppUI::Accounts::Icon.new(transaction.account) %>
+        </div>
+        <div class="link">
+          <%= link_to transaction.account.name, url_for(params.permit(:month, :category_id).merge(account_id: transaction.account_id)) %>
+        </div>
       </div>
-      <div class="link">
-        <%= link_to transaction.account.name, url_for(params.permit(:month, :category_id).merge(account_id: transaction.account_id)) %>
-      </div>
-    </div>
+    <% else %>
+      SPLIT: <%= transaction.borrower_split.payer_transaction.account.user.username %>
+    <% end %>
   </td>
   <td class="<%= transaction.value >= 0 ? 'text-positive' : 'text-negative' %>">
     <%= number_to_currency(transaction.value) %>
+    <% if transaction.payer_split %>
+      |
+      <%= number_to_currency(transaction.payer_split.amount_borrowed) %>
+    <% end %>
   </td>
   <td class="flex gap-2">
-    <%= link_to edit_transaction_path(transaction), class: "btn btn-soft btn-secondary" do %>
+    <%= link_to edit_transaction_path(transaction), class: "btn btn-soft btn-secondary btn-sm" do %>
       <i class="ph ph-pencil-simple-line"></i>
       Edit
     <% end %>
-    <%= link_to transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error" do %>
+    <%= link_to transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error btn-sm" do %>
       <i class="ph ph-trash"></i>
       Delete
+    <% end %>
+    <% if transaction.can_edit_split? %>
+      <%= link_to edit_split_path(transaction.payer_split, return_to_transactions: true), class: "btn btn-soft btn-sm" do %>
+        <i class="ph ph-arrows-out-line-horizontal"></i>
+        Edit Split
+      <% end %>
+    <% elsif transaction.can_create_split? %>
+      <%= link_to new_split_path(transaction_id: transaction.id, return_to_transactions: true), class: "btn btn-soft btn-sm" do %>
+        <i class="ph ph-arrows-out-line-horizontal"></i>
+        Create Split
+      <% end %>
     <% end %>
   </td>
 </tr>

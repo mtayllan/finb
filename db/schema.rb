@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_24_215108) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -63,15 +63,29 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "splits", force: :cascade do |t|
+    t.integer "payer_transaction_id", null: false
+    t.integer "borrower_transaction_id"
+    t.integer "borrower_id", null: false
+    t.decimal "amount_borrowed", null: false
+    t.date "confirmed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["borrower_id"], name: "index_splits_on_borrower_id"
+    t.index ["borrower_transaction_id"], name: "index_splits_on_borrower_transaction_id", unique: true, where: "borrower_transaction_id IS NOT NULL"
+    t.index ["payer_transaction_id"], name: "index_splits_on_payer_transaction_id", unique: true
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "description"
     t.decimal "value", precision: 9, scale: 2, default: "0.0", null: false
     t.integer "category_id", null: false
-    t.integer "account_id", null: false
+    t.integer "account_id"
     t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "credit_card_statement_id"
+    t.boolean "from_split", default: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["category_id"], name: "index_transactions_on_category_id"
     t.index ["credit_card_statement_id"], name: "index_transactions_on_credit_card_statement_id"
@@ -92,6 +106,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
+    t.boolean "super", default: false
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
@@ -99,7 +114,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_17_012803) do
   add_foreign_key "accounts", "users"
   add_foreign_key "categories", "users"
   add_foreign_key "credit_card_statements", "accounts"
-  add_foreign_key "sessions", "users"
+  add_foreign_key "sessions", "users", on_delete: :cascade
+  add_foreign_key "splits", "transactions", column: "borrower_transaction_id"
+  add_foreign_key "splits", "transactions", column: "payer_transaction_id"
+  add_foreign_key "splits", "users", column: "borrower_id"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
   add_foreign_key "transactions", "credit_card_statements"

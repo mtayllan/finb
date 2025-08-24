@@ -2,21 +2,15 @@ module DataManagement
   class Export
     def to_json
       {
-        categories: Current.user.categories.map do |category|
-          category.attributes.slice("id", "name", "color", "icon")
+        users: User.all.map(&:attributes),
+        categories: Category.find_each.map(&:attributes),
+        accounts: Account.find_each.map(&:attributes),
+        transactions: Transaction.find_each.map do |transaction|
+          transaction.attributes.except("credit_card_statement_month")
         end,
-        accounts: Current.user.accounts.map do |account|
-          account.attributes.slice("id", "name", "color", "balance", "initial_balance", "kind", "initial_balance_date", "credit_card_expiration_day")
-        end,
-        transactions: Current.user.transactions.all.map do |transaction|
-          transaction.attributes.slice("id", "description", "value", "date", "category_id", "account_id", "credit_card_statement_id")
-        end,
-        transfers: Current.user.transfers.all.map do |transfer|
-          transfer.attributes.slice("id", "description", "value", "date", "origin_account_id", "target_account_id")
-        end,
-        credit_card_statements: Current.user.credit_card_statements.all.map do |statement|
-          statement.attributes.slice("id", "month", "account_id", "paid_at")
-        end
+        transfers: Transfer.find_each.map(&:attributes),
+        credit_card_statements: CreditCard::Statement.find_each.map(&:attributes),
+        splits: Split.find_each.map(&:attributes)
       }.to_json
     end
   end

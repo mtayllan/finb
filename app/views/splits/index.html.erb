@@ -1,0 +1,154 @@
+<!-- name of each tab group should be unique -->
+<div class="w-full max-w-full">
+  <div class="prose">
+    <h1>Splits</h1>
+    <p>
+      A collection of transactions where you either owe someone or someone owes you.
+    </p>
+  </div>
+
+  <div class="flex justify-center items-center my-6 gap-8">
+    <%=
+      link_to @month.prev_month.strftime('%b %Y'),
+              url_for(month: @month.prev_month.strftime('%Y/%m')),
+              class: "link"
+    %>
+
+    <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
+
+    <%=
+      link_to @month.next_month.strftime('%b %Y'),
+              url_for(month: @month.next_month.strftime('%Y/%m')),
+              class: "link"
+    %>
+  </div>
+
+  <div class="prose my-8">
+    <h2>As Payer</h2>
+  </div>
+  <div class="flex flex-col w-full gap-2">
+    <div class="hidden md:grid md:grid-cols-9 gap-4 w-full font-semibold text-sm text-base-content/60 pb-2 border-b-1 border-base-content/10">
+      <div>Date</div>
+      <div class="md:col-span-2">Description</div>
+      <div>Payer</div>
+      <div class="md:col-span-2">Value (paid/borrowed)</div>
+      <div class="md:col-span-3"></div>
+    </div>
+    <% @splits_as_payer.each do |split| %>
+      <div class="border-b-1 border-base-content/10 pb-2 md:pb-0 grid md:grid-cols-9 gap-4 w-full">
+        <div class="text-sm"><%= split.payer_transaction.date.to_fs(:day_month_year) %></div>
+        <div class="md:col-span-2"><%= split.payer_transaction.description %></div>
+        <div class="hidden md:block">You</div>
+        <div class="md:col-span-2">
+          <%= number_to_currency(split.payer_transaction.value.abs) %>
+          |
+          <%= number_to_currency(split.amount_borrowed) %>
+          <% if split.confirmed_at? %>
+            <div class="badge badge-soft badge-xs badge-success">confirmed</div>
+          <% end %>
+        </div>
+        <div class="md:col-span-3 flex gap-2 pb-2">
+          <%= link_to 'Edit', edit_split_path(split), class: "btn btn-soft" %>
+          <%= link_to 'Delete', split, class: "btn btn-soft btn-error", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="prose my-8">
+    <h2>As Borrower</h2>
+  </div>
+
+  <div class="flex flex-col w-full gap-2">
+    <div class="hidden md:grid md:grid-cols-9 gap-4 w-full font-semibold text-sm text-base-content/60 pb-2 border-b-1 border-base-content/10">
+      <div>Date</div>
+      <div class="md:col-span-2">Description</div>
+      <div>Payer</div>
+      <div class="md:col-span-2">Value (paid/borrowed)</div>
+      <div class="md:col-span-3">Category</div>
+    </div>
+    <% @splits_as_borrower.each do |split| %>
+      <div class="border-b-1 border-base-content/10 pb-2 md:pb-0 grid md:grid-cols-9 gap-4 w-full">
+        <div class="text-sm"><%= split.payer_transaction.date.to_fs(:day_month_year) %></div>
+        <div class="md:col-span-2"><%= split.payer_transaction.description %></div>
+        <div>
+          <span class="md:hidden">From</span>
+          <%= split.payer_transaction.account.user.username %>
+        </div>
+        <div class="md:col-span-2">
+          <%= number_to_currency(split.payer_transaction.value.abs) %>
+          |
+          <%= number_to_currency(split.amount_borrowed) %>
+        </div>
+        <div class="md:col-span-3 flex gap-2 pb-2">
+          <% if split.borrower_transaction %>
+            <div class="flex items-center space-x-2">
+              <div>
+                <%= render UI::Icon.new(split.borrower_transaction.category.icon, size: "2xl", background: true, color: split.borrower_transaction.category.color) %>
+              </div>
+              <div>
+                <%= split.borrower_transaction.category.name %>
+              </div>
+              <div>
+                <%= button_to "Unconfirm", split_confirmations_path(split), method: :delete, class: "btn btn-soft btn-sm btn-error" %>
+              </div>
+            </div>
+          <% else %>
+            <%= form_with(url: split_confirmations_path(split), method: :post) do |form| %>
+              <div class="flex space-x-2">
+                <%= render UI::SelectField.new(name: "category_id", placeholder: 'Select a category', value: split.borrower_transaction&.category_id) do |comp| %>
+                  <% Current.user.categories.order(:name).each do |category| %>
+                    <% comp.with_option(value: category.id) do %>
+                      <div class="mr-2">
+                        <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
+                      </div>
+                      <div><%= category.name %></div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
+                <%= form.submit 'Confirm', class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="prose my-8">
+    <h2>Summary</h2>
+  </div>
+  <% @summaries.each do |summary| %>
+    <div class="font-bold">
+      Me x <%= summary[:other].username %>
+    </div>
+    <ul>
+      <li> Me spent: <%= number_to_currency(summary[:me_spent]) %> </li>
+      <li> <%= summary[:other].username %> spent: <%= number_to_currency(summary[:other_spent]) %> </li>
+      <li> Me owes: <%= number_to_currency(summary[:me_owed]) %></li>
+      <li> <%= summary[:other].username %> owes: <%= number_to_currency(summary[:other_owed]) %></li>
+      <li> Total spent by both: <%= number_to_currency(summary[:me_spent] + summary[:other_spent]) %></li>
+      <li>
+        Result:
+        <% if summary[:other_owed] > summary[:me_owed] %>
+          <%= summary[:other].username %> must pay me
+        <% else %>
+          I must pay <%= summary[:other].username %>
+        <% end %>
+      </li>
+      <li>
+        Value:
+        <% if summary[:other_owed] > summary[:me_owed] %>
+          <%= number_to_currency(summary[:other_owed]) %> - <%= number_to_currency(summary[:me_owed]) %> =
+          <%= number_to_currency(summary[:other_owed] - summary[:me_owed]) %>
+        <% else %>
+          <%= number_to_currency(summary[:me_owed]) %> - <%= number_to_currency(summary[:other_owed]) %> =
+          <%= number_to_currency(summary[:me_owed] - summary[:other_owed]) %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</div>
+
+
