@@ -27,7 +27,7 @@
       </div>
       <div class="flex items-center justify-between text-lg font-medium pr-4">
         <div>Total</div>
-        <div><%= number_to_currency(@total_balance)%></div>
+        <div><%= number_to_currency(@total_balance) %></div>
       </div>
     </div>
     <div>
@@ -46,11 +46,17 @@
               </span>
               <div>
                 <p class="text-sm font-medium leading-none"><%= transaction.description %></p>
-                <p class="text-sm"><%= transaction.account.name %></p>
+                <p class="text-sm">
+                  <% if transaction.account %>
+                    <%= transaction.account.name %>
+                  <% else %>
+                    From Split
+                  <% end %>
+                </p>
               </div>
             </div>
             <div>
-              <p class="<%= transaction.value.positive? ? 'text-positive' : 'text-negative'%>">
+              <p class="<%= transaction.value.positive? ? 'text-positive' : 'text-negative' %>">
                 <%= number_to_currency(transaction.value) %>
               </p>
             </div>

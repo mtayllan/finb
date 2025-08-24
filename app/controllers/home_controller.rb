@@ -17,11 +17,11 @@ class HomeController < ApplicationController
     transactions = Current.user.transactions
     {
       total_income: transactions.where(date: range).where("value > 0").sum(:value),
-      total_expenses: transactions.where(date: range).where("value < 0").sum(:value),
+      total_expenses: transactions.where(date: range).where("value < 0").sum(&:report_value),
       expenses_by_category: transactions.where(date: range)
         .where("value < 0")
-        .group(:category)
-        .sum(:value)
+        .group_by(&:category)
+        .map { |k, v| [k, v.sum(&:report_value)] }
         .sort_by { it[1] }
         .to_h,
       income_by_category: transactions.where(date: range)
