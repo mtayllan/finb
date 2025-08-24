@@ -28,7 +28,6 @@
   <div>
     <%= form_with(model: @split) do |form| %>
       <%= form.hidden_field :payer_transaction_id, value: @split.payer_transaction_id %>
-
       <%= render FormErrorsExplanation.new(@split.errors) if @split.errors.any? %>
 
       <%= render UI::FormGroup.new do %>
