@@ -23,6 +23,14 @@ class Transaction < ApplicationRecord
     value + (payer_split&.amount_borrowed || 0)
   end
 
+  def can_edit_split?
+    payer_split && !payer_split.confirmed_at?
+  end
+
+  def can_create_split?
+    value.negative? && payer_split.nil?
+  end
+
   private
 
   def date_after_account_initial_balance_date

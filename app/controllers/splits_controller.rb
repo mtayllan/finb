@@ -24,24 +24,26 @@ class SplitsController < ApplicationController
   end
 
   def new
+    session[:return_to_transactions] = params[:return_to_transactions].present?
     @split = Split.new(payer_transaction_id: params[:transaction_id])
   end
 
   def create
     @split = Split.new(split_params)
     if @split.save
-      redirect_to splits_path, notice: "Split was successfully created."
+      redirect_to after_save_path, notice: "Split was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    session[:return_to_transactions] = params[:return_to_transactions].present?
   end
 
   def update
     if @split.update(split_params)
-      redirect_to splits_path, notice: "Split was successfully updated."
+      redirect_to after_save_path, notice: "Split was successfully updated."
     else
       render :edit
     end
@@ -62,6 +64,14 @@ class SplitsController < ApplicationController
     @split = Current.user.splits_as_payer.find(params[:id])
     if @split.confirmed_at?
       redirect_to splits_path, notice: "Cannot change confirmed split"
+    end
+  end
+
+  def after_save_path
+    if session[:return_to_transactions]
+      transactions_path
+    else
+      splits_path
     end
   end
 end
