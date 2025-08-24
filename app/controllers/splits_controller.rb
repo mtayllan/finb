@@ -33,7 +33,7 @@ class SplitsController < ApplicationController
     if @split.save
       redirect_to after_save_path, notice: "Split was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 

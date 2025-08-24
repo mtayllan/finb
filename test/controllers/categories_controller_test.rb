@@ -27,7 +27,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "should show error on invalid category creation" do
     post categories_url, params: {category: {name: ""}}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should get edit" do
@@ -50,7 +50,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
     patch category_url(@category), params: {category: {name: ""}}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should destroy category" do

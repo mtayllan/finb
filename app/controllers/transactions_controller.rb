@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
 
       redirect_to after_save_url(@transaction), notice: "Transaction was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -33,7 +33,7 @@ class TransactionsController < ApplicationController
     if @transaction.update(transaction_params)
       redirect_to after_save_url(@transaction), notice: "Transaction was successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 

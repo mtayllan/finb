@@ -28,7 +28,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   test "should show error on invalid account creation" do
     post accounts_url, params: {account: {name: ""}}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should get edit" do
@@ -52,7 +52,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
     patch account_url(account), params: {account: {name: ""}}
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
   end
 
   test "should destroy account" do

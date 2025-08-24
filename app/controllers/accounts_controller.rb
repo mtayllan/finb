@@ -44,7 +44,7 @@ class AccountsController < ApplicationController
       @account.update_balance
       redirect_to accounts_url(@account), notice: "Account was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -53,7 +53,7 @@ class AccountsController < ApplicationController
       @account.update_balance
       redirect_to accounts_url(@account), notice: "Account was successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 

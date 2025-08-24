@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_url, notice: "Category was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to categories_url, notice: "Category was successfully updated."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
