@@ -6,11 +6,7 @@ module DataManagement
 
     def call
       clear_data
-      insert_categories
-      insert_accounts
-      insert_statements
-      insert_transactions
-      insert_transfers
+      insert_data
       populate_account_balances
       populate_statement_values
     end
@@ -18,67 +14,27 @@ module DataManagement
     private
 
     def clear_data
-      Transaction.joins(:account).where({account: {user_id: Current.user.id}}).delete_all
-      Transfer.joins(:target_account).where({target_account: {user_id: Current.user.id}}).delete_all
-      Transfer.joins(:origin_account).where({origin_account: {user_id: Current.user.id}}).delete_all
-      CreditCard::Statement.joins(:account).where({account: {user_id: Current.user.id}}).delete_all
-      Current.user.accounts.delete_all
-      Current.user.categories.delete_all
+      Split.delete_all
+      Transaction.delete_all
+      Transfer.delete_all
+      CreditCard::Statement.delete_all
+      Account.delete_all
+      Category.delete_all
+      User.delete_all
     end
 
-    def insert_categories
-      @categories_map = {}
-      @data["categories"].each do |category|
-        params = category.except("id")
-        params[:user] = Current.user
-        record = Category.create(params)
-        @categories_map[category["id"]] = record.id
-      end
-    end
-
-    def insert_accounts
-      @accounts_map = {}
-      @data["accounts"].each do |account|
-        params = account.except("id")
-        params[:user] = Current.user
-        record = Account.create(params)
-        @accounts_map[account["id"]] = record.id
-      end
-    end
-
-    def insert_statements
-      @statements_map = {}
-      @data["credit_card_statements"].each do |statement|
-        params = statement.except("id")
-        params[:account_id] = @accounts_map[statement["account_id"]]
-        record = CreditCard::Statement.create(params)
-        @statements_map[statement["id"]] = record.id
-      end
-    end
-
-    def insert_transactions
-      parsed_transactions = @data["transactions"].map do |transaction|
-        transaction.except("id").merge({
-          account_id: @accounts_map[transaction["account_id"]],
-          category_id: @categories_map[transaction["category_id"]],
-          credit_card_statement_id: @statements_map[transaction["credit_card_statement_id"]]
-        })
-      end
-      Transaction.insert_all(parsed_transactions)
-    end
-
-    def insert_transfers
-      parsed_transfers = @data["transfers"].map do |transfer|
-        transfer.except("id").merge({
-          target_account_id: @accounts_map[transfer["target_account_id"]],
-          origin_account_id: @accounts_map[transfer["origin_account_id"]]
-        })
-      end
-      Transfer.insert_all(parsed_transfers)
+    def insert_data
+      User.insert_all(@data["users"])
+      Category.insert_all(@data["categories"])
+      Account.insert_all(@data["accounts"])
+      CreditCard::Statement.insert_all(@data["credit_card_statements"])
+      Transfer.insert_all(@data["transfers"])
+      Transaction.insert_all(@data["transactions"])
+      Split.insert_all(@data["splits"])
     end
 
     def populate_account_balances
-      Current.user.accounts.find_each(&:update_balance)
+      Account.find_each(&:update_balance)
     end
 
     def populate_statement_values

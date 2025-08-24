@@ -26,10 +26,11 @@ class ReportsController < ApplicationController
 
     if @granularity == "total"
       @total_income = transactions.where("value > 0").sum(:value)
-      @total_expenses = transactions.where("value < 0").sum(:value)
+      # Use report_value because of splits but only on expenses as there are no splits for income transactions
+      @total_expenses = transactions.where("value < 0").sum(&:report_value)
     else
       @income_by_period = transactions.where("value > 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)
-      @expenses_by_period = transactions.where("value < 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)
+      @expenses_by_period = transactions.where("value < 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(&:report_value)
 
       @total_income = @income_by_period.values.sum
       @total_expenses = @expenses_by_period.values.sum
@@ -37,8 +38,8 @@ class ReportsController < ApplicationController
 
     @net_total = @total_income + @total_expenses
 
-    @category_totals = transactions.group(:category).sum(:value).sort_by { |_, v| v.abs }.reverse.to_h
-    @account_totals = transactions.group(:account).sum(:value).sort_by { |_, v| v.abs }.reverse.to_h
+    @category_totals = transactions.group_by(&:category).map { |k, v| [k, v.sum(&:report_value)] }.sort_by { |_, v| v.abs }.reverse.to_h
+    @account_totals = transactions.joins(:account).group(:account).sum(:value).sort_by { |_, v| v.abs }.reverse.to_h
 
     # For backwards compatibility with the chart
     @income = @income_by_period || {}
