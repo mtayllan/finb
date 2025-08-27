@@ -1,5 +1,12 @@
 <tr id="<%= dom_id transaction %>">
-  <td><%= transaction.date.to_fs(:day_month_year) %></td>
+  <td>
+    <% if transaction.date > Date.current %>
+      <div class="tooltip tooltip-right cursor-help" data-tip="Future Transaction">
+        <i class="ph ph-hourglass text-warning"></i>
+      </div>
+    <% end %>
+    <%= transaction.date.to_fs(:day_month_year) %>
+  </td>
   <td><%= transaction.description %></td>
   <td>
     <div class="flex items-center">
