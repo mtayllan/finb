@@ -22,6 +22,13 @@
   </div>
   <hr>
 
+  <div class="my-4">
+    <%= form_with(url: update_currency_settings_path, method: :put) do |form| %>
+      <%= form.select :currency, options_for_select(['USD', 'BRL'], Current.user.default_currency), {}, class: "select" %>
+      <%= form.submit "Update Currency", class: "btn btn-primary btn-soft" %>
+    <% end %>
+  </div>
+
   <div class="mt-4">
     <%= button_to "Logout", sessions_url, method: :delete, class: "btn btn-error" %>
   </div>

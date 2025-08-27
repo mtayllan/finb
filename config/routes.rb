@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   resource :sessions, only: %i[new create destroy]
 
   resources :transfers, except: :show
-  resources :transactions, except:
-   :show
+  resources :transactions, except: :show
   resources :accounts do
     resource :balance_fix, only: [:new, :create], controller: "accounts/balance_fixes"
   end
@@ -26,7 +25,11 @@ Rails.application.routes.draw do
 
   resources :similar_transactions, only: [:index]
 
-  resource :settings, only: :show
+  resource :settings, only: :show do
+    member do
+      put :update_currency
+    end
+  end
   namespace :settings do
     resource :export_data, only: :create
     resource :import_data, only: :create

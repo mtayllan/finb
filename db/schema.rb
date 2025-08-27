@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_24_215108) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_27_004720) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -107,6 +107,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_215108) do
     t.string "username", null: false
     t.string "password_digest", null: false
     t.boolean "super", default: false
+    t.string "default_currency", default: "USD", null: false
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
