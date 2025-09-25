@@ -2,7 +2,7 @@ class Settings::ImportDataController < ApplicationController
   def create
     file = params.permit(:file)[:file]
 
-    if Current.user.super?
+    if Current.user.superuser?
       DataManagement::Import.new(file).call
       redirect_to settings_path, notice: "Data imported successfully"
     else
