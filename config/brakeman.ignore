@@ -3,13 +3,13 @@
     {
       "warning_type": "Mass Assignment",
       "warning_code": 105,
-      "fingerprint": "68a99a6f3d98b342fd87bfc376b83b6c84f808940f41a5556c315daa0478d910",
+      "fingerprint": "3883d063c78fac38414ff855c723cb149c3118993cdc33157a832d02fbacdf66",
       "check_name": "PermitAttributes",
       "message": "Potentially dangerous key allowed for mass assignment",
       "file": "app/controllers/transactions_controller.rb",
       "line": 56,
       "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
-      "code": "params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date)",
+      "code": "params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date, :credit_card_statement_month)",
       "render_path": null,
       "location": {
         "type": "method",
@@ -22,8 +22,75 @@
         915
       ],
       "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "3f712c714f7cebd2ed93ec9e0f1fe816192bd88eb1c5b29b53a7aebbada2d067",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/transactions/index.html.erb",
+      "line": 36,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Current.user.transactions.includes(:category, :account, :payer_split).where(:date => (Date.parse(params[:month]) or Date.current).all_month, :account_id => params[:account_id], :category_id => params[:category_id]).order(:date => :desc, :created_at => :desc), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "TransactionsController",
+          "method": "index",
+          "line": 10,
+          "file": "app/controllers/transactions_controller.rb",
+          "rendered": {
+            "name": "transactions/index",
+            "file": "app/views/transactions/index.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "transactions/index"
+      },
+      "user_input": "params[:category_id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "b5a2ce79c525c6387899ce172cb81f95936ccc2a58321879c0f81d1ff2f1bc1c",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/transfers/index.html.erb",
+      "line": 36,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Current.user.transfers.includes(:origin_account, :target_account).where(:date => (Date.parse(params[:month]) or Date.current).all_month).order(:date => :desc, :created_at => :desc), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "TransfersController",
+          "method": "index",
+          "line": 7,
+          "file": "app/controllers/transfers_controller.rb",
+          "rendered": {
+            "name": "transfers/index",
+            "file": "app/views/transfers/index.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "transfers/index"
+      },
+      "user_input": "params[:month]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
     }
   ],
-  "updated": "2024-02-12 10:26:32 -0300",
-  "brakeman_version": "6.1.2"
+  "brakeman_version": "7.1.0"
 }
