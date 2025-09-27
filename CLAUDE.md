@@ -1,195 +1,134 @@
-# FinB - Financial Budget Management Application
+# CLAUDE.md
 
-## Overview
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-FinB is a personal finance management application built with Ruby on Rails 8.0. It's designed to help users track expenses, manage accounts, categorize transactions, and generate financial reports. The application uses SQLite for data storage and features a modern UI built with Tailwind CSS and Hotwire (Turbo + Stimulus).
+## About the project
 
-## Architecture
+FinB is a Personal Finances Manager
 
-### Technology Stack
+## Common Development Commands
 
-- **Backend**: Ruby on Rails 8.0
-- **Database**: SQLite3 with Solid Cache and Solid Cable
-- **Frontend**: 
-  - Tailwind CSS 4.0 for styling
-  - Hotwire (Turbo Rails + Stimulus) for interactivity
-  - ViewComponent for UI components
-  - Importmap for JavaScript management
-- **Authentication**: Custom implementation using bcrypt
-- **Deployment**: Docker-ready with Kamal support
-
-### Key Features
-
-1. **Multi-Account Management**
-   - Support for different account types: checking, savings, credit card, investment
-   - Automatic balance calculation and tracking
-   - Initial balance setup with custom dates
-   - Color-coded accounts for visual organization
-
-2. **Transaction Management**
-   - Income and expense tracking
-   - Category-based organization
-   - Transaction descriptions
-   - Support for installment transactions
-   - Date validation to ensure data integrity
-
-3. **Credit Card Features**
-   - Credit card statement tracking
-   - Monthly statement generation
-   - Statement payment functionality
-   - Automatic transaction-statement association
-
-4. **Transfer Management**
-   - Money transfers between accounts
-   - Automatic balance updates for both origin and target accounts
-
-5. **Reporting System**
-   - Daily balance reports with charts
-   - Income by category analysis
-   - Expenses by category analysis
-   - Visual charts using JavaScript controllers
-
-6. **Data Management**
-   - Import/Export functionality for data backup
-   - User data isolation (multi-user support)
-
-## Database Schema
-
-### Core Models
-
-1. **User** - System users with authentication
-   - username (unique)
-   - password_digest (bcrypt)
-
-2. **Account** - Financial accounts
-   - name, color, kind (enum)
-   - initial_balance, balance
-   - initial_balance_date
-   - credit_card_expiration_day (for credit cards)
-   - Belongs to User
-
-3. **Transaction** - Financial transactions
-   - description, value, date
-   - Belongs to Account, Category
-   - Optional: credit_card_statement
-
-4. **Category** - Transaction categories
-   - name, color, icon
-   - Belongs to User
-
-5. **Transfer** - Money transfers between accounts
-   - description, value, date
-   - origin_account_id, target_account_id
-
-6. **CreditCard::Statement** - Credit card statements
-   - month, value, paid_at
-   - Belongs to Account
-
-7. **Account::Balance** - Daily balance snapshots
-   - date, balance
-   - Belongs to Account
-
-## Project Structure
-
-```
-/app
-├── controllers/         # MVC Controllers
-│   ├── accounts/       # Account-related controllers
-│   ├── credit_cards/   # Credit card controllers
-│   ├── reports/        # Reporting controllers
-│   └── settings/       # Settings controllers
-├── models/             # ActiveRecord models
-│   ├── account/        # Account-related models
-│   ├── credit_card/    # Credit card models
-│   └── data_management/ # Import/Export logic
-├── views/              # ERB templates
-│   └── components/     # ViewComponent UI components
-└── javascript/         # Stimulus controllers
-    └── controllers/    # Frontend interactivity
-```
-
-## Key Workflows
-
-### Authentication Flow
-- Session-based authentication using signed cookies
-- Custom Session model for token management
-- Before-action authentication in ApplicationController
-
-### Balance Calculation
-- Automatic balance updates on transaction/transfer changes
-- Daily balance calculation with caching
-- Account::UpdateBalances service for historical balance tracking
-
-### Credit Card Management
-- Transactions can be associated with credit card statements
-- Statements are automatically created based on transaction dates
-- Statement values are calculated from associated transactions
-
-## Development Guidelines
-
-### Running the Application
-
-```bash
-# Using Docker (recommended)
-docker build -t finb .
-docker run -d -p 9090:3000 --name finb -v finb-storage:/rails/storage --env SECRET_KEY_BASE=1 finb
-
-# Local development
-bundle install
-rails db:create db:migrate
-./bin/dev  # Runs Rails server with Tailwind CSS watch
-```
+### Development Server
+- `bin/dev` - Start development server (Rails, Vite)
+- `bin/rails server` - Start Rails server only
+- `bin/rails console` - Open Rails console
 
 ### Testing
-- Uses Minitest with FactoryBot for test data
-- SimpleCov for code coverage
-- Capybara for system tests
+- `bin/rails test` - Run all tests
+- `bin/rails test:db` - Run tests with database reset
+- `bin/rails test:system` - Run system tests only (use sparingly - they take longer)
+- `bin/rails test test/models/article_test.rb` - Run specific test file
+- `bin/rails test test/models/article_test.rb:42` - Run specific test at line
 
-### Code Quality
-- Standard Ruby linter
-- Brakeman for security analysis
-- Hotwire Spark for development
+### Linting & Formatting
+- `bundle exec standardrb` - Run Standard.rb linter
+- `bin/brakeman` - Run security analysis
 
-### Important Commands
+## General Development Rules
 
-```bash
-# Run tests
-rails test
+### Authentication Context
+- Use `Current.user` for the current user. Do NOT use `current_user`.
 
-# Run linter
-bundle exec standardrb
+### Development Guidelines
+- Prior to generating any code, carefully read the project conventions and guidelines
+- Ignore i18n methods and files. Hardcode strings in english to optimize speed of development
+- Do not run `rails server` in your responses
+- Do not run `touch tmp/restart.txt`
+- Do not run `rails credentials`
 
-# Security check
-bundle exec brakeman
+## High-Level Architecture
 
-# Database operations
-rails db:migrate
-rails db:seed
+### Core Domain Model
+- `User` - Represents a user of the system
+- `Account` - Represents a financial account, belongs only to a User
+  - `Balance` - Represents the current balance of an Account at a specific date
+- `Transaction` - Represents a financial transaction, belongs to an Account
+- `Category` - Represents a category for transactions, belongs to a User
+- `Transfer` - Represents a transfer between accounts, belongs to two Accounts
+- `Session` - Represents a user session, used for authentication
+
+### Project Conventions
+
+- Prioritize good OOP code, do not create `app/services` module.
+- All business logic goes on app/models. Create a new object scoped to the principal model when developing a complex business logic scenario. Example: `app/models/account/update_balances.rb`
+- If a model belongs mainly to another one, create it scoped to the other. Example: `app/models/account/balance.rb`
+
+
+### Frontend Architecture
+- **Hotwire Stack**: Turbo + Stimulus for reactive UI without heavy JavaScript
+- **ViewComponents**: Reusable UI components in `app/views/components/`
+  - `ui` for pure components
+  - `app_ui` for app related components
+- **Stimulus Controllers**: Handle interactivity, organized alongside components
+- **Styling**: Tailwind CSS v4 with Daisy UI https://daisyui.com/
+- Icons with **Phosphor Icons** lib
+- User rails importmaps to install JS packages
+
+
+### Testing Philosophy
+- Comprehensive test coverage using Rails' built-in Minitest
+- Use fixtures for default test data, like a default User, Account, or Category
+- Use FactoryBot for complex scenarios, like filters
+- Keep fixtures minimal (2-3 per model for base cases)
+- Only test critical code paths that significantly increase confidence
+- Write tests as you go, when required
+- Only mock what's necessary
+
+### Performance Considerations
+- Database queries optimized with proper indexes
+- N+1 queries prevented via includes/joins
+- Background jobs for heavy operations
+- Caching strategies for expensive calculations
+- Turbo Frames for partial page updates
+
+### ViewComponent vs Partials Decision Making
+
+**Use ViewComponents when:**
+- Element has complex logic or styling patterns
+- Element will be reused across multiple views/contexts
+- Element needs structured styling with variants/sizes
+- Element requires interactive behavior or Stimulus controllers
+- Element has configurable slots or complex APIs
+- Element needs accessibility features or ARIA support
+
+**Use Partials when:**
+- Element is primarily static HTML with minimal logic
+- Element is used in only one or few specific contexts
+- Element is simple template content
+- Element doesn't need variants, sizes, or complex configuration
+- Element is more about content organization than reusable functionality
+
+**Component Guidelines:**
+- Prefer components over partials when available
+- Keep domain logic OUT of view templates
+- Logic belongs in component files, not template files
+
+## Git Commit Instructions
+The commit message should follow this format:
+```
+<header>
+<BLANK LINE>
+<body>
 ```
 
-## Security Considerations
+Among them, <header> is mandatory.
 
-- CSRF protection enabled
-- Authentication required for all actions (except login)
-- User data isolation through associations
-- Parameterized queries to prevent SQL injection
-- Secure password storage with bcrypt
+The header format is:
 
-## Performance Optimizations
+```
+<type>: <short summary>
+```
 
-- Solid Cache for caching
-- Solid Cable for WebSocket connections
-- Daily balance caching to reduce recalculation
-- Efficient queries with proper indexes
-- Hotwire for reduced page reloads
+```
+Type: build|ci|docs|feat|fix|perf|refactor|test
+Summary: in present tense. Not capitalized. No period at the end.
+```
 
-## Future Enhancements
+<scope> indicates the scope of the change
 
-Based on the current codebase structure, potential areas for enhancement:
+<summary> is a brief description of the commit, using imperative mood and present tense. For example, use change instead of changed or changes.
 
-1. API endpoints for mobile app integration
-2. Budget planning and goals
-3. Recurring transaction support
-4. Multi-currency support
-5. Advanced reporting with PDF export
-6. Notification system for bill reminders
+<body> is a more detailed description of the commit message, also using imperative mood and present tense like <header>. <body> describes the motivation for the change, such as why the change was introduced, what the previous logic was, what the current logic is, and what impact the change has.
+
+**IMPORTANT**: Do NOT add co-authoring information (Co-Authored-By) to commit messages
+
