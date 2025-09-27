@@ -23,6 +23,12 @@ class Transaction < ApplicationRecord
     value + (payer_split&.amount_borrowed || 0)
   end
 
+  def self.report_value_sql
+    <<~SQL
+      transactions.value + COALESCE(splits.amount_borrowed, 0)
+    SQL
+  end
+
   def can_edit_split?
     payer_split && !payer_split.confirmed_at?
   end

@@ -30,7 +30,10 @@ class ReportsController < ApplicationController
       @total_expenses = transactions.where("value < 0").sum(&:report_value)
     else
       @income_by_period = transactions.where("value > 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)
-      @expenses_by_period = transactions.where("value < 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(&:report_value)
+      @expenses_by_period = transactions.where("value < 0")
+        .left_joins(:payer_split)
+        .group_by_period(@granularity, :date, range: @start_date..@end_date)
+        .sum(Transaction.report_value_sql)
 
       @total_income = @income_by_period.values.sum
       @total_expenses = @expenses_by_period.values.sum
