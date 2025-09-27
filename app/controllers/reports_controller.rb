@@ -79,8 +79,4 @@ class ReportsController < ApplicationController
       params[:end_date] = Date.current.end_of_year.to_s
     end
   end
-
-  def filter_params
-    params.permit(:start_date, :end_date, :granularity, :category_id, :account_id, :quick_filter)
-  end
 end
