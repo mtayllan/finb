@@ -18,8 +18,8 @@ class CreditCards::StatementPaymentsController < ApplicationController
       description: "CC payment: #{statement.month.strftime("%B %Y")}",
       date: Date.current
     )
-    origin_account.update_balance
-    credit_card.update_balance
+    origin_account.update_balance(start_date: Date.current)
+    credit_card.update_balance(start_date: Date.current)
     statement.update(paid_at: Time.current)
 
     redirect_to credit_card_path(credit_card, month: statement.month), notice: "Statement paid successfully."

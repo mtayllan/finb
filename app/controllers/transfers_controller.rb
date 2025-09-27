@@ -17,8 +17,8 @@ class TransfersController < ApplicationController
     @transfer = Transfer.new(transfer_params)
 
     if @transfer.save
-      @transfer.origin_account.update_balance
-      @transfer.target_account.update_balance
+      @transfer.origin_account.update_balance(start_date: @transfer.date)
+      @transfer.target_account.update_balance(start_date: @transfer.date)
       redirect_to transfers_url, notice: "Transfer was successfully created."
     else
       render :new, status: :unprocessable_content
@@ -27,13 +27,14 @@ class TransfersController < ApplicationController
 
   def update
     if @transfer.update(transfer_params)
-      @transfer.origin_account.update_balance
-      @transfer.target_account.update_balance
+      earliest_date = [@transfer.date, @transfer.date_previously_was].compact.min
+      @transfer.origin_account.update_balance(start_date: earliest_date)
+      @transfer.target_account.update_balance(start_date: earliest_date)
       if @transfer.origin_account_id_previously_changed?
-        Account.update_balance(@transfer.origin_account_id_previously_was)
+        Account.update_balance(@transfer.origin_account_id_previously_was, start_date: earliest_date)
       end
       if @transfer.target_account_id_previously_changed?
-        Account.update_balance(@transfer.target_account_id_previously_was)
+        Account.update_balance(@transfer.target_account_id_previously_was, start_date: earliest_date)
       end
       redirect_to transfers_url, notice: "Transfer was successfully updated."
     else
@@ -42,9 +43,10 @@ class TransfersController < ApplicationController
   end
 
   def destroy
+    transfer_date = @transfer.date
     @transfer.destroy!
-    @transfer.origin_account.update_balance
-    @transfer.target_account.update_balance
+    @transfer.origin_account.update_balance(start_date: transfer_date)
+    @transfer.target_account.update_balance(start_date: transfer_date)
 
     redirect_to transfers_url, notice: "Transfer was successfully destroyed."
   end

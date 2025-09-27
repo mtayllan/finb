@@ -46,11 +46,12 @@ class Transaction < ApplicationRecord
   end
 
   def update_account_balance
-    account.update_balance
+    earliest_date = [date, date_previously_was].compact.min
+    account.update_balance(start_date: earliest_date)
 
     previous_account_id = account_id_previously_was
     if previous_account_id
-      Account.update_balance(previous_account_id)
+      Account.update_balance(previous_account_id, start_date: earliest_date)
     end
   end
 
