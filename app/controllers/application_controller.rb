@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
     if last_calc_date < Date.current
       Current.user.accounts.find_each do |account|
-        account.update_balance
+        account.update_balance(start_date: last_calc_date)
       end
 
       Rails.cache.write("last_balance_calculation_date/#{Current.user.id}", Date.current)

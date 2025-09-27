@@ -12,7 +12,7 @@ class Account < ApplicationRecord
 
   has_many :credit_card_statements, class_name: "CreditCard::Statement", dependent: :destroy
 
-  def update_balance
+  def update_balance(start_date: nil)
     return if destroyed?
 
     transactions_value = transactions.where(date: ..Date.current).sum(:value)
@@ -20,10 +20,10 @@ class Account < ApplicationRecord
     transfers_as_target_value = transfers_as_target.where(date: ..Date.current).sum(:value)
 
     update(balance: initial_balance + transactions_value + transfers_as_target_value - transfers_as_origin_value)
-    Account::UpdateBalances.call(self)
+    Account::UpdateBalances.call(self, start_date: start_date)
   end
 
-  def self.update_balance(account_id)
-    find(account_id).update_balance
+  def self.update_balance(account_id, start_date: nil)
+    find(account_id).update_balance(start_date: start_date)
   end
 end
