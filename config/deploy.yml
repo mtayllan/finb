@@ -18,6 +18,7 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+    - HONEYBADGER_API_KEY
 
 ssh:
   user: <%= ENV["KAMAL_SSH_USER"] %>
