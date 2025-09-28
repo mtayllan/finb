@@ -3,4 +3,5 @@ income1:
   category: salary
   description: My First Salary
   value: 500
+  report_value: 500
   date: <%= Date.current %>
