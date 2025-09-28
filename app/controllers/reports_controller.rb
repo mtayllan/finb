@@ -27,13 +27,10 @@ class ReportsController < ApplicationController
     if @granularity == "total"
       @total_income = transactions.where("value > 0").sum(:value)
       # Use report_value because of splits but only on expenses as there are no splits for income transactions
-      @total_expenses = transactions.where("value < 0").sum(&:report_value)
+      @total_expenses = transactions.where("value < 0").sum(:report_value)
     else
       @income_by_period = transactions.where("value > 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:value)
-      @expenses_by_period = transactions.where("value < 0")
-        .left_joins(:payer_split)
-        .group_by_period(@granularity, :date, range: @start_date..@end_date)
-        .sum(Transaction.report_value_sql)
+      @expenses_by_period = transactions.where("value < 0").group_by_period(@granularity, :date, range: @start_date..@end_date).sum(:report_value)
 
       @total_income = @income_by_period.values.sum
       @total_expenses = @expenses_by_period.values.sum

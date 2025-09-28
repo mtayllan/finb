@@ -15,18 +15,13 @@ class Transaction < ApplicationRecord
   attribute :credit_card_statement_month
 
   before_validation :set_credit_card_statement, if: :account
+  before_save :set_report_value
   after_commit :update_account_balance, if: :account
   after_commit :update_credit_card_statement_value, if: :account
 
-  def report_value
+  def calculate_report_value
     # use + because report_value is for expenses transactions and they are negative
     value + (payer_split&.amount_borrowed || 0)
-  end
-
-  def self.report_value_sql
-    <<~SQL
-      transactions.value + COALESCE(splits.amount_borrowed, 0)
-    SQL
   end
 
   def can_edit_split?
@@ -68,5 +63,9 @@ class Transaction < ApplicationRecord
     return if credit_card_statement_month.blank?
 
     self.credit_card_statement = account.credit_card_statements.find_or_create_by(month: credit_card_statement_month)
+  end
+
+  def set_report_value
+    self.report_value = calculate_report_value
   end
 end

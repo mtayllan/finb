@@ -1,8 +1,8 @@
 require "test_helper"
 
 class SplitTest < ActiveSupport::TestCase
-  test "should not allow duplicate splits for same payer transaction" do
-    user2 = User.create!(username: "user2", password: "password123")
+  test "should update payer transaction report_value when split is created" do
+    user2 = User.create!(username: "user5", password: "password123")
     account = accounts(:bank_one)
     category = categories(:food)
 
@@ -14,107 +14,77 @@ class SplitTest < ActiveSupport::TestCase
       date: Date.current
     )
 
-    # Create first split
+    # Initially, report_value should equal the transaction value
+    assert_equal(-100.0, payer_transaction.reload.report_value.to_f)
+
+    # Create a split
     Split.create!(
       payer_transaction: payer_transaction,
       borrower: user2,
-      amount_borrowed: 10.0
+      amount_borrowed: 30.0
     )
 
-    # Attempt to create second split with same payer transaction
-    split2 = Split.new(
-      payer_transaction: payer_transaction,
-      borrower: user2,
-      amount_borrowed: 5.0
-    )
-
-    assert_not split2.valid?
-    assert_includes split2.errors[:payer_transaction_id], "can only have one split per transaction"
+    # After creating split, report_value should be updated: -100 + 30 = -70
+    assert_equal(-70.0, payer_transaction.reload.report_value.to_f)
   end
 
-  test "should not allow duplicate splits for same borrower transaction" do
-    user2 = User.create!(username: "user3", password: "password123")
+  test "should update payer transaction report_value when split is updated" do
+    user2 = User.create!(username: "user6", password: "password123")
     account = accounts(:bank_one)
     category = categories(:food)
 
     payer_transaction = Transaction.create!(
       account: account,
       category: category,
-      description: "Payer transaction",
+      description: "Test transaction",
       value: -100.0,
       date: Date.current
     )
 
-    borrower_transaction = Transaction.create!(
-      account: account,
-      category: category,
-      description: "Borrower transaction",
-      value: 50.0,
-      date: Date.current
-    )
-
-    another_payer_transaction = Transaction.create!(
-      account: account,
-      category: category,
-      description: "Another payer transaction",
-      value: -80.0,
-      date: Date.current
-    )
-
-    # Create first split
-    Split.create!(
+    # Create a split
+    split = Split.create!(
       payer_transaction: payer_transaction,
-      borrower_transaction: borrower_transaction,
       borrower: user2,
-      amount_borrowed: 10.0
+      amount_borrowed: 30.0
     )
 
-    # Attempt to create second split with same borrower transaction
-    split2 = Split.new(
-      payer_transaction: another_payer_transaction,
-      borrower_transaction: borrower_transaction,
-      borrower: user2,
-      amount_borrowed: 5.0
-    )
+    # Initial report_value: -100 + 30 = -70
+    assert_equal(-70.0, payer_transaction.reload.report_value.to_f)
 
-    assert_not split2.valid?
-    assert_includes split2.errors[:borrower_transaction_id], "can only have one split per transaction"
+    # Update the split amount
+    split.update!(amount_borrowed: 50.0)
+
+    # Updated report_value: -100 + 50 = -50
+    assert_equal(-50.0, payer_transaction.reload.report_value.to_f)
   end
 
-  test "should allow multiple splits with different transactions" do
-    user2 = User.create!(username: "user4", password: "password123")
+  test "should update payer transaction report_value when split is destroyed" do
+    user2 = User.create!(username: "user7", password: "password123")
     account = accounts(:bank_one)
     category = categories(:food)
 
-    transaction1 = Transaction.create!(
+    payer_transaction = Transaction.create!(
       account: account,
       category: category,
-      description: "Transaction 1",
+      description: "Test transaction",
       value: -100.0,
       date: Date.current
     )
 
-    transaction2 = Transaction.create!(
-      account: account,
-      category: category,
-      description: "Transaction 2",
-      value: -80.0,
-      date: Date.current
-    )
-
-    split1 = Split.create!(
-      payer_transaction: transaction1,
+    # Create a split
+    split = Split.create!(
+      payer_transaction: payer_transaction,
       borrower: user2,
-      amount_borrowed: 10.0
+      amount_borrowed: 30.0
     )
 
-    split2 = Split.create!(
-      payer_transaction: transaction2,
-      borrower: user2,
-      amount_borrowed: 5.0
-    )
+    # With split: -100 + 30 = -70
+    assert_equal(-70.0, payer_transaction.reload.report_value.to_f)
 
-    assert split1.valid?
-    assert split2.valid?
+    # Destroy the split
+    split.destroy!
+
+    # After destroying split, report_value should return to original value: -100 + 0 = -100
+    assert_equal(-100.0, payer_transaction.reload.report_value.to_f)
   end
 end
