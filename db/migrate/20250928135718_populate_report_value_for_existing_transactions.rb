@@ -1,7 +1,7 @@
 class PopulateReportValueForExistingTransactions < ActiveRecord::Migration[8.0]
   def up
     Transaction.find_each do |transaction|
-      transaction.update_column(:report_value, transaction.calculated_report_value)
+      transaction.update_column(:report_value, transaction.calculate_report_value)
     end
   end
 

@@ -5,3 +5,4 @@ income1:
   value: 500
   report_value: 500
   date: <%= Date.current %>
+  exclude_from_reports: false

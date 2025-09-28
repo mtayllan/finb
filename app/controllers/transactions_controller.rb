@@ -53,7 +53,7 @@ class TransactionsController < ApplicationController
     if params[:transaction][:transaction_type] == "expense"
       params[:transaction][:value] = "-#{params[:transaction][:value]}"
     end
-    params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date, :credit_card_statement_month)
+    params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date, :credit_card_statement_month, :exclude_from_reports)
   end
 
   def after_save_url(transaction)

@@ -50,7 +50,7 @@
           <div class="mr-2">
             <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
           </div>
-          <div><%= category.name %></h3>
+          <div><%= category.name %></div>
         <% end %>
       <% end %>
     <% end %>
@@ -64,7 +64,7 @@
           <div class="mr-2">
             <%= render AppUI::Accounts::Icon.new(account, size: "lg") %>
           </div>
-          <div><%= account.name %></h3>
+          <div><%= account.name %></div>
         <% end %>
       <% end %>
     <% end %>
@@ -83,6 +83,13 @@
         <% comp.with_option(value: month.to_date, label: month.to_date.to_fs(:month_year)) %>
       <% end %>
     <% end %>
+  <% end %>
+
+  <%= render UI::FormGroup.new do %>
+    <div class="flex items-center space-x-2">
+      <%= form.check_box :exclude_from_reports, class: "checkbox" %>
+      <%= render UI::FormLabel.new(form, :exclude_from_reports) %>
+    </div>
   <% end %>
 
   <div class="flex justify-between">

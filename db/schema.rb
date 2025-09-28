@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_28_135718) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_28_143129) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -87,6 +87,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_28_135718) do
     t.integer "credit_card_statement_id"
     t.boolean "from_split", default: false
     t.decimal "report_value", precision: 9, scale: 2
+    t.boolean "exclude_from_reports", default: false, null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["category_id"], name: "index_transactions_on_category_id"
     t.index ["credit_card_statement_id"], name: "index_transactions_on_credit_card_statement_id"

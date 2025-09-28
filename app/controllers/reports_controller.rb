@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
     @selected_account_id = params[:account_id]
 
     transactions = Current.user.transactions.where(date: @start_date..@end_date)
+    transactions = transactions.where(exclude_from_reports: false)
     transactions = transactions.where(category_id: @selected_category_id) if @selected_category_id.present?
     transactions = transactions.where(account_id: @selected_account_id) if @selected_account_id.present?
 

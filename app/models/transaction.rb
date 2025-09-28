@@ -20,6 +20,8 @@ class Transaction < ApplicationRecord
   after_commit :update_credit_card_statement_value, if: :account
 
   def calculate_report_value
+    return 0 if exclude_from_reports
+
     # use + because report_value is for expenses transactions and they are negative
     value + (payer_split&.amount_borrowed || 0)
   end
