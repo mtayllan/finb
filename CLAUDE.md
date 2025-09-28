@@ -129,6 +129,3 @@ Summary: in present tense. Not capitalized. No period at the end.
 <summary> is a brief description of the commit, using imperative mood and present tense. For example, use change instead of changed or changes.
 
 <body> is a more detailed description of the commit message, also using imperative mood and present tense like <header>. <body> describes the motivation for the change, such as why the change was introduced, what the previous logic was, what the current logic is, and what impact the change has.
-
-**IMPORTANT**: Do NOT add co-authoring information (Co-Authored-By) to commit messages
-
