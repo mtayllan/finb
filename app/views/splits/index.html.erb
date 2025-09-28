@@ -68,51 +68,7 @@
       <div class="md:col-span-3">Category</div>
     </div>
     <% @splits_as_borrower.each do |split| %>
-      <div class="border-b-1 border-base-content/10 pb-2 md:pb-0 grid md:grid-cols-9 gap-4 w-full">
-        <div class="text-sm"><%= split.payer_transaction.date.to_fs(:day_month_year) %></div>
-        <div class="md:col-span-2"><%= split.payer_transaction.description %></div>
-        <div>
-          <span class="md:hidden">From</span>
-          <%= split.payer_transaction.account.user.username %>
-        </div>
-        <div class="md:col-span-2">
-          <%= number_to_currency(split.payer_transaction.value.abs) %>
-          |
-          <%= number_to_currency(split.amount_borrowed) %>
-        </div>
-        <div class="md:col-span-3 flex gap-2 pb-2">
-          <% if split.borrower_transaction %>
-            <div class="flex items-center space-x-2">
-              <div>
-                <%= render UI::Icon.new(split.borrower_transaction.category.icon, size: "2xl", background: true, color: split.borrower_transaction.category.color) %>
-              </div>
-              <div>
-                <%= split.borrower_transaction.category.name %>
-              </div>
-              <div>
-                <%= button_to "Unconfirm", split_confirmations_path(split), method: :delete, class: "btn btn-soft btn-sm btn-error" %>
-              </div>
-            </div>
-          <% else %>
-            <%= form_with(url: split_confirmations_path(split), method: :post) do |form| %>
-              <div class="flex space-x-2">
-                <%= render UI::SelectField.new(name: "category_id", placeholder: 'Select a category', value: split.borrower_transaction&.category_id) do |comp| %>
-                  <% Current.user.categories.order(:name).each do |category| %>
-                    <% comp.with_option(value: category.id) do %>
-                      <div class="mr-2">
-                        <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
-                      </div>
-                      <div><%= category.name %></div>
-                    <% end %>
-                  <% end %>
-                <% end %>
-
-                <%= form.submit 'Confirm', class: "btn btn-primary" %>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+      <%= render "borrower_row", split: split %>
     <% end %>
   </div>
 

@@ -14,7 +14,10 @@ class Splits::ConfirmationsController < ApplicationController
     )
     @split.update!(borrower_transaction: transaction, confirmed_at: Date.current)
 
-    redirect_to splits_path, notice: "Split confirmed!"
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("split_#{@split.id}", partial: "splits/borrower_row", locals: {split: @split}) }
+      format.html { redirect_to splits_path, notice: "Split confirmed!" }
+    end
   end
 
   def destroy
@@ -25,7 +28,10 @@ class Splits::ConfirmationsController < ApplicationController
     @split.borrower_transaction.destroy!
     @split.update(confirmed_at: nil)
 
-    redirect_to splits_path, notice: "Split unconfirmed!"
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("split_#{@split.id}", partial: "splits/borrower_row", locals: {split: @split}) }
+      format.html { redirect_to splits_path, notice: "Split unconfirmed!" }
+    end
   end
 
   private
