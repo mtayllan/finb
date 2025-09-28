@@ -49,34 +49,39 @@
         </tr>
       </thead>
       <tbody>
-        <% @transactions.each do |transaction| %>
-          <tr id="<%= dom_id transaction %>">
-            <td><%= transaction.date.to_fs(:day_month_year) %></td>
-            <td><%= transaction.description %></td>
-            <td>
-              <div class="flex items-center">
-                <div class="mr-2">
-                  <%= render AppUI::Categories::Icon.new(transaction.category) %>
-                </div>
-                <div>
-                  <%= transaction.category.name %>
-                </div>
-              </div>
-            </td>
-            <td class="<%= transaction.value >= 0 ? 'text-positive' : 'text-negative' %>">
-              <%= number_to_currency(transaction.value) %>
-            </td>
-            <td class="flex gap-2">
-              <%= link_to edit_transaction_path(transaction), class: "btn btn-soft btn-secondary" do %>
-                <i class="ph ph-pencil-simple-line"></i>
-                Edit
-              <% end %>
-              <%= link_to transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error" do %>
-                <i class="ph ph-trash"></i>
-                Delete
-              <% end %>
-            </td>
+        <% @transactions.group_by(&:date).each do |date, transactions| %>
+          <tr class="bg-base-200 text-xs font-bold">
+            <td colspan="5" class="h-[1rem]"></td>
           </tr>
+          <% transactions.each do |transaction| %>
+            <tr id="<%= dom_id transaction %>">
+              <td><%= transaction.date.to_fs(:day_month_year) %></td>
+              <td><%= transaction.description %></td>
+              <td>
+                <div class="flex items-center">
+                  <div class="mr-2">
+                    <%= render AppUI::Categories::Icon.new(transaction.category) %>
+                  </div>
+                  <div>
+                    <%= transaction.category.name %>
+                  </div>
+                </div>
+              </td>
+              <td class="<%= transaction.value >= 0 ? 'text-positive' : 'text-negative' %>">
+                <%= number_to_currency(transaction.value) %>
+              </td>
+              <td class="flex gap-2">
+                <%= link_to edit_transaction_path(transaction), class: "btn btn-soft btn-secondary" do %>
+                  <i class="ph ph-pencil-simple-line"></i>
+                  Edit
+                <% end %>
+                <%= link_to transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error" do %>
+                  <i class="ph ph-trash"></i>
+                  Delete
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
