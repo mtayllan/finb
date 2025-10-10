@@ -120,7 +120,7 @@ GEM
       activesupport (>= 6.1)
     groupdate (6.7.0)
       activesupport (>= 7.1)
-    honeybadger (6.1.0)
+    honeybadger (6.1.1)
       logger
       ostruct
     hotwire-spark (0.1.13)
