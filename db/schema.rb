@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_28_143129) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_26_183529) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.date "date", null: false
@@ -76,6 +76,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_28_143129) do
     t.index ["payer_transaction_id"], name: "index_splits_on_payer_transaction_id", unique: true
   end
 
+  create_table "statement_analyses", force: :cascade do |t|
+    t.integer "account_id", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "total_rows", null: false
+    t.integer "credit_card_statement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_statement_analyses_on_account_id"
+    t.index ["credit_card_statement_id"], name: "index_statement_analyses_on_credit_card_statement_id"
+  end
+
+  create_table "statement_analysis_items", force: :cascade do |t|
+    t.integer "statement_analysis_id", null: false
+    t.string "description", null: false
+    t.date "date", null: false
+    t.decimal "value", precision: 9, scale: 2, null: false
+    t.integer "category_id"
+    t.boolean "should_import", default: true, null: false
+    t.integer "row_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "original_description"
+    t.index ["category_id"], name: "index_statement_analysis_items_on_category_id"
+    t.index ["statement_analysis_id"], name: "index_statement_analysis_items_on_statement_analysis_id"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "description"
     t.decimal "value", precision: 9, scale: 2, default: "0.0", null: false
@@ -121,6 +147,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_28_143129) do
   add_foreign_key "splits", "transactions", column: "borrower_transaction_id"
   add_foreign_key "splits", "transactions", column: "payer_transaction_id"
   add_foreign_key "splits", "users", column: "borrower_id"
+  add_foreign_key "statement_analyses", "accounts"
+  add_foreign_key "statement_analyses", "credit_card_statements"
+  add_foreign_key "statement_analysis_items", "categories"
+  add_foreign_key "statement_analysis_items", "statement_analyses"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
   add_foreign_key "transactions", "credit_card_statements"

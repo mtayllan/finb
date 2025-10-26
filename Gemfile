@@ -10,6 +10,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "solid_cache"
 gem "solid_cable"
 gem "groupdate"
+gem "csv"
 
 # FRONTEND
 gem "propshaft"

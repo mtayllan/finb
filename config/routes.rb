@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :transactions, except: :show
   resources :accounts do
     resource :balance_fix, only: [:new, :create], controller: "accounts/balance_fixes"
+    resources :statement_imports, only: [:new, :create, :edit, :update, :destroy], controller: "accounts/statement_imports"
   end
   resources :credit_cards, only: [:index, :show] do
     resource :statement_payment, only: [:new, :create], controller: "credit_cards/statement_payments"
