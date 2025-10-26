@@ -5,6 +5,7 @@ class Account < ApplicationRecord
   has_many :balances, dependent: :destroy
   has_many :transfers_as_origin, class_name: "Transfer", foreign_key: "origin_account_id", dependent: :destroy
   has_many :transfers_as_target, class_name: "Transfer", foreign_key: "target_account_id", dependent: :destroy
+  has_many :statement_analyses, dependent: :destroy
 
   validates :name, :color, :initial_balance, :kind, :initial_balance_date, presence: true
 

@@ -1,0 +1,166 @@
+<div class="w-full" data-controller="statement-analysis">
+  <div class="flex justify-between items-center pb-4">
+    <%= render UI::H1.new do %>
+      Import to <%= @account.name %>
+    <% end %>
+    <div class="badge badge-lg <%= @statement_analysis.pending? ? 'badge-warning' : 'badge-success' %>">
+      <%= @statement_analysis.status.humanize %>
+    </div>
+  </div>
+
+  <div class="mb-6">
+    <div class="stats shadow">
+      <div class="stat">
+        <div class="stat-title">Total Rows</div>
+        <div class="stat-value text-primary"><%= @statement_analysis.total_rows %></div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Selected for Import</div>
+        <div class="stat-value text-secondary" data-statement-analysis-target="selectedCount">
+          <%= @statement_analysis.items.where(should_import: true).count %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= form_with url: account_statement_import_path(@account, @statement_analysis), method: :patch, class: "space-y-6" do |form| %>
+
+    <% unless @statement_analysis.can_edit? %>
+      <div class="alert alert-info">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>This import has been completed and cannot be edited.</span>
+      </div>
+    <% end %>
+
+    <% if @statement_analysis.can_edit? %>
+      <div class="card bg-base-200 p-4">
+        <h3 class="font-semibold mb-4">Bulk Actions</h3>
+
+        <div class="flex flex-wrap gap-4 items-end">
+          <div>
+            <label class="label cursor-pointer gap-2">
+              <input type="checkbox"
+                     class="checkbox checkbox-sm"
+                     data-action="change->statement-analysis#toggleAll"
+                     data-statement-analysis-target="selectAllCheckbox">
+              <span class="label-text">Select / Deselect All</span>
+            </label>
+          </div>
+
+          <div class="flex-1 min-w-64">
+            <label class="label">
+              <span class="label-text">Apply category to selected:</span>
+            </label>
+            <div class="flex gap-2">
+              <select class="select select-bordered select-sm flex-1" data-statement-analysis-target="bulkCategorySelect">
+                <option value="">Choose a category...</option>
+                <% @categories.each do |category| %>
+                  <option value="<%= category.id %>"><%= category.name %></option>
+                <% end %>
+              </select>
+              <button type="button"
+                      class="btn btn-sm btn-secondary"
+                      data-action="click->statement-analysis#applyBulkCategory">
+                Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="overflow-x-auto">
+      <table class="table table-zebra table-sm">
+        <thead>
+          <tr>
+            <th width="50">Import</th>
+            <th width="50">Row</th>
+            <th width="100">Date</th>
+            <th>Description</th>
+            <th width="120">Value</th>
+            <th width="250">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @statement_analysis.items.order(:row_number).each do |item| %>
+            <tr data-statement-analysis-target="row">
+              <td>
+                <% if @statement_analysis.can_edit? %>
+                  <%= check_box_tag "items[#{item.id}][should_import]", "1", item.should_import,
+                      class: "checkbox checkbox-sm",
+                      data: {
+                        statement_analysis_target: "importCheckbox",
+                        action: "change->statement-analysis#updateSummary"
+                      } %>
+                <% else %>
+                  <% if item.should_import %>
+                    <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  <% else %>
+                    <svg class="w-5 h-5 text-base-content/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  <% end %>
+                <% end %>
+              </td>
+              <td class="text-base-content/60">#<%= item.row_number %></td>
+              <td><%= item.date.strftime("%d/%m/%Y") %></td>
+              <td>
+                <% if @statement_analysis.can_edit? %>
+                  <%= text_field_tag "items[#{item.id}][description]", item.description,
+                      class: "input input-sm input-bordered w-full",
+                      placeholder: "Description" %>
+                <% else %>
+                  <span class="max-w-xs truncate block" title="<%= item.description %>">
+                    <%= item.description %>
+                  </span>
+                <% end %>
+              </td>
+              <td class="text-right font-mono <%= item.calculated_value.negative? ? 'text-error' : 'text-success' %>">
+                <%= number_to_currency(item.calculated_value) %>
+              </td>
+              <td>
+                <% if @statement_analysis.can_edit? %>
+                  <%= select_tag "items[#{item.id}][category_id]",
+                      options_for_select(@categories.map { |c| [c.name, c.id] }, item.category_id),
+                      include_blank: "Select category",
+                      class: "select select-bordered select-sm w-full",
+                      data: { statement_analysis_target: "categorySelect" } %>
+                <% else %>
+                  <% if item.category %>
+                    <span class="badge badge-outline"><%= item.category.name %></span>
+                  <% else %>
+                    <span class="text-base-content/40">-</span>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flex justify-between mt-6 gap-4">
+      <% if @statement_analysis.can_edit? %>
+        <div>
+          <%= button_tag "Import Transactions", type: "submit", class: "btn btn-primary" %>
+        </div>
+        <div>
+          <%= button_to "Cancel Import",
+              account_statement_import_path(@account, @statement_analysis),
+              method: :delete,
+              data: { turbo_confirm: "Are you sure? This will delete the analysis and you'll need to upload the CSV again." },
+              class: "btn btn-soft btn-error" %>
+        </div>
+      <% else %>
+        <div>
+          <%= link_to "Back to Account", account_path(@account), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>

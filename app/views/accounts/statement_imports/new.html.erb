@@ -1,0 +1,53 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <%= render UI::H1.new do %>
+    Import Statement for <%= @account.name %>
+  <% end %>
+
+  <%= form_with url: account_statement_imports_path(@account), method: :post, multipart: true, class: "space-y-6" do |form| %>
+
+    <div>
+      <%= label_tag :csv_file, "CSV File", class: "block text-sm font-medium leading-6" %>
+      <div class="mt-2">
+        <%= file_field_tag :csv_file, accept: ".csv", required: true, class: "file-input file-input-bordered w-full" %>
+      </div>
+      <p class="text-sm text-base-content/60 mt-1">
+        Select a CSV file with your bank or credit card statement
+      </p>
+    </div>
+
+    <% if @account.credit_card? %>
+      <div>
+        <%= label_tag :credit_card_statement_id, "Credit Card Statement (Optional)", class: "block text-sm font-medium leading-6" %>
+        <div class="mt-2">
+          <%= select_tag :credit_card_statement_id,
+              options_for_select(@credit_card_statements.map { |s| [s.month.strftime("%B %Y"), s.id] }),
+              include_blank: "Select a statement",
+              class: "select select-bordered w-full" %>
+        </div>
+        <p class="text-sm text-base-content/60 mt-1">
+          If specified, all transactions will be assigned to this statement
+        </p>
+      </div>
+    <% end %>
+
+    <div class="flex justify-between mt-6">
+      <%= form.submit "Analyze CSV", class: "btn btn-primary" %>
+      <%= link_to "Cancel", account_path(@account), class: "ml-2 btn btn-soft" %>
+    </div>
+  <% end %>
+
+  <div class="mt-8 alert">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <div>
+      <h3 class="font-bold">How it works:</h3>
+      <ul class="text-sm list-disc list-inside mt-2">
+        <li>Upload your CSV file and we'll automatically detect the date, value, and description columns</li>
+        <li>Review all detected transactions before importing</li>
+        <li>Assign categories to each transaction (individually or in bulk)</li>
+        <li>Uncheck any transactions you don't want to import</li>
+      </ul>
+    </div>
+  </div>
+</div>
