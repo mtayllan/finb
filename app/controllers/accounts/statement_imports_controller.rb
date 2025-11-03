@@ -10,6 +10,7 @@ class Accounts::StatementImportsController < ApplicationController
 
   def create
     csv_file = params[:csv_file]
+    delimiter = params[:delimiter].presence || ","
 
     if csv_file.blank?
       redirect_to new_account_statement_import_path(@account), alert: "Please select a CSV file"
@@ -17,7 +18,7 @@ class Accounts::StatementImportsController < ApplicationController
     end
 
     begin
-      analysis_result = StatementAnalysis::CsvAnalyzer.analyze(csv_file)
+      analysis_result = StatementAnalysis::CsvAnalyzer.analyze(csv_file, delimiter: delimiter)
 
       @statement_analysis = StatementAnalysis.new(
         account: @account,

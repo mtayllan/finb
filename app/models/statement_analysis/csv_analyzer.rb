@@ -16,12 +16,13 @@ class StatementAnalysis::CsvAnalyzer
     /\A-?\d+[.,]\d{2}\s*(R\$|\$)?\z/                    # 123,56 R$ or 123.56 $
   ].freeze
 
-  def self.analyze(file)
-    new(file).analyze
+  def self.analyze(file, delimiter: ",")
+    new(file, delimiter: delimiter).analyze
   end
 
-  def initialize(file)
+  def initialize(file, delimiter: ",")
     @file = file
+    @delimiter = delimiter
   end
 
   def analyze
@@ -63,7 +64,7 @@ class StatementAnalysis::CsvAnalyzer
   end
 
   def parse_csv(content)
-    CSV.parse(content, skip_blanks: true)
+    CSV.parse(content, col_sep: @delimiter, skip_blanks: true)
   rescue CSV::MalformedCSVError => e
     raise DetectionError, "Failed to parse CSV: #{e.message}"
   end
