@@ -15,6 +15,23 @@
       </p>
     </div>
 
+    <div>
+      <%= label_tag :delimiter, "Delimiter", class: "block text-sm font-medium leading-6" %>
+      <div class="mt-2">
+        <%= select_tag :delimiter,
+            options_for_select([
+              ["Comma (,)", ","],
+              ["Semicolon (;)", ";"],
+              ["Tab", "\t"],
+              ["Pipe (|)", "|"]
+            ], ","),
+            class: "select select-bordered w-full" %>
+      </div>
+      <p class="text-sm text-base-content/60 mt-1">
+        Select the delimiter used in your CSV file
+      </p>
+    </div>
+
     <% if @account.credit_card? %>
       <div>
         <%= label_tag :credit_card_statement_id, "Credit Card Statement (Optional)", class: "block text-sm font-medium leading-6" %>
