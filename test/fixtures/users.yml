@@ -1,3 +1,9 @@
 default:
   username: default
   password_digest: <%= BCrypt::Password.create("qwe123") %>
+  superuser: true
+
+secondary:
+  username: sister
+  password_digest: <%= BCrypt::Password.create("asd456") %>
+  superuser: false

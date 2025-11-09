@@ -1,0 +1,39 @@
+<%= form_with(model: user, class: "contents") do |form| %>
+  <%= render FormErrorsExplanation.new(user.errors) if user.errors.any? %>
+
+  <%= render UI::FormGroup.new do %>
+    <%= render UI::FormLabel.new(form, :username) %>
+    <%= render UI::TextField.new(form, :username) %>
+  <% end %>
+
+  <%= render UI::FormGroup.new do %>
+    <%= render UI::FormLabel.new(form, :password) %>
+    <%= form.password_field :password, class: "w-full input", required: !user.persisted? %>
+    <% if user.persisted? %>
+      <p class="text-sm text-gray-500 mt-1">Leave blank to keep current password</p>
+    <% end %>
+  <% end %>
+
+  <%= render UI::FormGroup.new do %>
+    <%= render UI::FormLabel.new(form, :password_confirmation) %>
+    <%= form.password_field :password_confirmation, class: "w-full input", required: !user.persisted? %>
+  <% end %>
+
+  <div class="form-control">
+    <label class="label cursor-pointer justify-start gap-2">
+      <%= form.check_box :superuser, class: "checkbox" %>
+      <span class="label-text">Superuser</span>
+    </label>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mt-4">
+    <%= render UI::Button.new(form:) %>
+    <%= link_to "Back to users", users_path, class: "ml-2 btn btn-soft" %>
+    <% if user.persisted? && user != Current.user %>
+      <%= link_to user, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error" do %>
+        Delete User
+      <% end %>
+    <% end %>
+  </div>
+
+<% end %>

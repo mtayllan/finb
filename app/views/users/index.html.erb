@@ -1,0 +1,40 @@
+<div class="w-full">
+  <div class="flex flex-wrap justify-between items-center pb-2">
+    <%= render UI::H1.new.with_content('Users') %>
+    <%= render UI::Button.new(href: new_user_path).with_content("New User") %>
+  </div>
+
+  <div class="overflow-x-auto mt-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Superuser</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.username %></td>
+            <td>
+              <% if user.superuser? %>
+                <span class="badge badge-primary">Yes</span>
+              <% else %>
+                <span class="badge">No</span>
+              <% end %>
+            </td>
+            <td class="text-right">
+              <%= link_to "Edit", edit_user_path(user), class: "btn btn-sm btn-soft" %>
+              <% unless user == Current.user %>
+                <%= link_to "Delete", user_path(user),
+                    data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+                    class: "btn btn-sm btn-soft btn-error" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

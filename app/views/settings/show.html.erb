@@ -29,6 +29,15 @@
     <% end %>
   </div>
 
+  <% if Current.user&.superuser? %>
+    <hr>
+    <div class="my-4 max-w-md">
+      <p class="text-lg font-bold mb-2">User Management</p>
+      <p class="text-xs mb-2">Manage users for this instance. Create, edit, and delete user accounts.</p>
+      <%= link_to "Manage Users", users_path, class: "btn btn-primary btn-soft" %>
+    </div>
+  <% end %>
+
   <div class="mt-4">
     <%= button_to "Logout", sessions_url, method: :delete, class: "btn btn-error" %>
   </div>

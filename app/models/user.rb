@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  validates :username, presence: true, uniqueness: true
+
   has_many :accounts, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :credit_card_statements, through: :accounts
@@ -23,5 +25,9 @@ class User < ApplicationRecord
 
   def splits_as_payer
     Split.joins(payer_transaction: :account).where(accounts: {user_id: id})
+  end
+
+  def superuser?
+    superuser
   end
 end

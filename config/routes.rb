@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resource :sessions, only: %i[new create destroy]
 
+  resources :users, except: :show
+
   resources :transfers, except: :show
   resources :transactions, except: :show
   resources :accounts do
