@@ -12,7 +12,7 @@
   <div class="flex items-center gap-2">
     <div class="text-base-content/80">Statement Value:</div>
     <div class="font-semibold tracking-tight">
-      <%= number_to_currency(@statement.value) %>
+    <%= number_to_currency(@statement.value) %>
     </div>
   </div>
   <% if @statement.paid_at? %>
@@ -56,7 +56,14 @@
           <% transactions.each do |transaction| %>
             <tr id="<%= dom_id transaction %>">
               <td><%= transaction.date.to_fs(:day_month_year) %></td>
-              <td><%= transaction.description %></td>
+              <td>
+                <div class="flex items-center gap-2">
+                  <%= transaction.description %>
+                  <% if transaction.description.match?(/\(\d+\/\d+\)/) %>
+                    <i class="ph ph-credit-card text-info"></i>
+                  <% end %>
+                </div>
+              </td>
               <td>
                 <div class="flex items-center">
                   <div class="mr-2">
