@@ -24,7 +24,7 @@ docker build -t finb .
 ```
 - Run
 ```
-docker run -d -p 9090:3000 --name finb -v finb-storage:/rails/storage --env SECRET_KEY_BASE=1 finb
+docker run -d -p 9090:3000 --name finb -v finb-storage:/rails/storage --env USE_SSL=false --env SECRET_KEY_BASE=1 finb
 ```
 - Access: http://localhost:9090
 
