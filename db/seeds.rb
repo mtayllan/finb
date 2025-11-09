@@ -1,5 +1,5 @@
 if Rails.env.development?
-  user = User.create(username: "default", password: "qwe123")
+  user = User.create(username: "default", password: "qwe123", superuser: true)
 
   Category.create([
     {
