@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
+  resource :setup, only: [:show, :create]
   resource :sessions, only: %i[new create destroy]
 
   resources :users, except: :show

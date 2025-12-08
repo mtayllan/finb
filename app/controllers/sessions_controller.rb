@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate
 
   def new
+    return redirect_to setup_path unless User.exists?
     redirect_to post_authentication_url if Session.find_by(token: cookies.signed[:session_token])
   end
 

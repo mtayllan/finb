@@ -2,7 +2,7 @@
 
 <html data-theme="night">
   <head>
-    <title>Finb</title>
+    <title>Finb - Setup</title>
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -38,27 +38,50 @@
   <body class="flex items-center justify-center min-h-screen">
     <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
       <div class="flex flex-col space-y-2 text-center">
-        <h1 class="text-2xl font-semibold tracking-tight">Login</h1>
+        <h1 class="text-2xl font-semibold tracking-tight">Welcome to FinB</h1>
+
+        <p class="text-sm text-gray-400">
+          Create your first user account to get started
+        </p>
       </div>
 
       <div class="grid gap-6 p-6">
-        <%= form_with url: sessions_url, method: :post do  |f| %>
+        <%= form_with model: @user, url: setup_path, method: :post do |f| %>
           <div class="grid gap-1">
             <fieldset class="fieldset">
               <legend class="fieldset-legend">Username</legend>
               <%= f.text_field :username, class: "input", required: true, placeholder: "type here" %>
+
+              <% if @user.errors[:username].any? %>
+                <p class="text-xs text-warning mt-1">
+                  <%= @user.errors[:username].first %>
+                </p>
+              <% end %>
             </fieldset>
 
             <fieldset class="fieldset">
               <legend class="fieldset-legend">Password</legend>
               <%= f.password_field :password, class: "input", required: true, placeholder: "type here" %>
+
+              <% if @user.errors[:password].any? %>
+                <p class="text-xs text-warning mt-1">
+                  <%= @user.errors[:password].first %>
+                </p>
+              <% end %>
             </fieldset>
 
-            <% if flash[:alert] %>
-              <p class="text-xs text-warning">Invalid username or password</p>
-            <% end %>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Password Confirmation</legend>
+              <%= f.password_field :password_confirmation, class: "input", required: true, placeholder: "type here" %>
 
-            <%= f.submit "Login", class: "btn btn-primary" %>
+              <% if @user.errors[:password_confirmation].any? %>
+                <p class="text-xs text-warning mt-1">
+                  <%= @user.errors[:password_confirmation].first %>
+                </p>
+              <% end %>
+            </fieldset>
+
+            <%= f.submit "Create Account", class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>

@@ -6,6 +6,13 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should redirect to setup when no users exist" do
+    User.destroy_all
+
+    get new_sessions_url
+    assert_redirected_to setup_path
+  end
+
   test "should create session with valid credentials" do
     user = users(:default)
 
