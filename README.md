@@ -70,9 +70,10 @@ docker run \
   finb
 ```
 
+**Note:** Generate a random secret key base with `openssl rand -hex 64` and replace `$YOUR_SECRET_KEY_BASE` with the generated value.
+
 4. Access the application at http://localhost:9090
 
-**Note:** Generate a secret key base with `bin/rails secret` and replace `$YOUR_SECRET_KEY_BASE` with the generated value.
 
 ### Updating Docker Deployment
 
