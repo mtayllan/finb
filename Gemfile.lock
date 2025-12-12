@@ -124,7 +124,7 @@ GEM
       activesupport (>= 6.1)
     groupdate (6.7.0)
       activesupport (>= 7.1)
-    honeybadger (6.1.3)
+    honeybadger (6.2.0)
       logger
       ostruct
     hotwire-spark (0.1.13)
@@ -390,7 +390,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   groupdate
-  honeybadger (~> 6.1)
+  honeybadger (~> 6.2)
   hotwire-spark
   importmap-rails
   kamal (~> 2.5)
