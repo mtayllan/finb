@@ -1,0 +1,4 @@
+<%= link_to edit_tag_path(tag), class: "flex items-center btn btn-neutral btn-lg justify-start" do %>
+  <div class="w-4 h-4 rounded-full me-2" style="background-color: <%= tag.color %>"></div>
+  <span class="text-sm font-medium"> <%= tag.name %> </span>
+<% end %>

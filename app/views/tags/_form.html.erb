@@ -1,0 +1,23 @@
+<%= form_with(model: tag, class: "contents") do |form| %>
+  <%= render FormErrorsExplanation.new(tag.errors) if tag.errors.any? %>
+
+  <%= render UI::FormGroup.new do %>
+    <%= render UI::FormLabel.new(form, :name) %>
+    <%= render UI::TextField.new(form, :name) %>
+  <% end %>
+
+  <%= render UI::FormGroup.new do %>
+    <%= render UI::FormLabel.new(form, :color) %>
+    <%= render UI::ColorField.new(form, :color, default_value: tag.color) %>
+  <% end %>
+
+  <div class="flex flex-wrap gap-2">
+    <%= render UI::Button.new(form:) %>
+    <%= link_to "Back to tags", tags_path, class: "ml-2 btn btn-soft" %>
+    <% if tag.persisted? %>
+      <%= link_to tag, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error" do %>
+        Delete Tag
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

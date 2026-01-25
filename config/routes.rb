@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resource :statement_payment, only: [:new, :create], controller: "credit_cards/statement_payments"
   end
   resources :categories, except: :show
+  resources :tags, except: :show
   resources :splits, except: :show do
     resource :confirmations, only: [:create, :destroy], controller: "splits/confirmations"
   end

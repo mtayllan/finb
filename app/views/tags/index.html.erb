@@ -1,0 +1,10 @@
+<div class="w-full">
+  <div class="flex flex-wrap justify-between items-center pb-2">
+    <%= render UI::H1.new.with_content('Tags') %>
+    <%= render UI::Button.new(href: new_tag_path).with_content("New Tag") %>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-2">
+    <%= render @tags %>
+  </div>
+</div>
