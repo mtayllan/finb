@@ -70,6 +70,17 @@
     <% end %>
   <% end %>
 
+  <% if Current.user.tags.any? %>
+    <%= render UI::FormGroup.new do %>
+      <%= render UI::FormLabel.new(form, :tags) %>
+      <%= render UI::MultiSelectField.new(name: "transaction[tag_ids][]", selected_values: transaction.tag_ids, placeholder: "Select tags...") do |comp| %>
+        <% Current.user.tags.by_last_usage.each do |tag| %>
+          <% comp.with_option(value: tag.id, label: tag.name, color: tag.color, selected: transaction.tag_ids.include?(tag.id)) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
   <%= render UI::FormGroup.new do %>
     <%= render UI::FormLabel.new(form, :date) %>
     <%= render "components/ui/date_picker", name: form.field_name(:date), initial_value: transaction.date&.to_fs(:day_month_year) %>

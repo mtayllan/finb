@@ -58,9 +58,19 @@
               <td><%= transaction.date.to_fs(:day_month_year) %></td>
               <td>
                 <div class="flex items-center gap-2">
-                  <%= transaction.description %>
+                  <span><%= transaction.description %></span>
                   <% if transaction.description.match?(/\(\d+\/\d+\)/) %>
                     <i class="ph ph-credit-card text-info"></i>
+                  <% end %>
+                  <% if transaction.tags.any? %>
+                    <div class="flex flex-wrap gap-1">
+                      <% transaction.tags.first(2).each do |tag| %>
+                        <%= render AppUI::Tags::Badge.new(tag, size: :sm) %>
+                      <% end %>
+                      <% if transaction.tags.size > 2 %>
+                        <span class="text-xs text-base-content/60">+<%= transaction.tags.size - 2 %></span>
+                      <% end %>
+                    </div>
                   <% end %>
                 </div>
               </td>

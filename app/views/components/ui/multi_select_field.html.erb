@@ -1,0 +1,44 @@
+<% options %> <%# Force options to be evaluated first so options_data is populated %>
+<div data-controller="ui--multi-select-field" data-ui--multi-select-field-name-value="<%= @name %>" class="relative">
+  <div
+    data-ui--multi-select-field-target="trigger"
+    data-action="click->ui--multi-select-field#toggleDropdown"
+    class="input input-bordered w-full min-h-10 h-auto flex items-center gap-1 flex-wrap cursor-pointer py-1.5"
+  >
+    <div data-ui--multi-select-field-target="chips" class="flex flex-wrap gap-1">
+      <% selected_options_data.each do |opt| %>
+        <span
+          class="inline-flex items-center gap-1 px-2 py-0.5 text-sm rounded-full bg-base-200"
+          data-chip-value="<%= opt[:value] %>"
+        >
+          <% if opt[:color] %>
+            <span class="w-2 h-2 rounded-full" style="background-color: <%= opt[:color] %>"></span>
+          <% end %>
+          <%= opt[:label] %>
+          <button type="button" class="hover:text-error" data-action="click->ui--multi-select-field#removeChip" data-value="<%= opt[:value] %>">
+            <i class="ph ph-x text-xs"></i>
+          </button>
+        </span>
+      <% end %>
+    </div>
+    <span data-ui--multi-select-field-target="placeholder" class="text-base-content/50 <%= selected_options_data.any? ? 'hidden' : '' %>">
+      <%= @placeholder || "Select..." %>
+    </span>
+    <i class="ph ph-caret-down ml-auto"></i>
+  </div>
+
+  <div data-ui--multi-select-field-target="hiddenInputs">
+    <% selected_options_data.each do |opt| %>
+      <input type="hidden" name="<%= @name %>" value="<%= opt[:value] %>" data-input-value="<%= opt[:value] %>">
+    <% end %>
+  </div>
+
+  <div
+    data-ui--multi-select-field-target="dropdown"
+    class="hidden absolute left-0 right-0 mt-1 z-10 overflow-auto max-h-64 rounded-md border bg-base-100 text-base-content shadow-md"
+  >
+    <% options.each do |option| %>
+      <%= option %>
+    <% end %>
+  </div>
+</div>

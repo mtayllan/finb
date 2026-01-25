@@ -40,6 +40,17 @@
         <% end %>
       <% end %>
 
+      <% if @tags.any? %>
+        <%= render UI::FormGroup.new do %>
+          <%= render UI::FormLabel.new(form, :tags) %>
+          <%= render UI::MultiSelectField.new(name: "tag_ids[]", selected_values: @selected_tag_ids, placeholder: "All Tags") do |comp| %>
+            <% @tags.each do |tag| %>
+              <% comp.with_option(value: tag.id, label: tag.name, color: tag.color, selected: @selected_tag_ids.include?(tag.id.to_s)) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
       <%= render UI::FormGroup.new do %>
         <%= render UI::FormLabel.new(form, :start_date) %>
         <%= render "components/ui/date_picker", name: form.field_name(:start_date), initial_value: @start_date.to_fs(:day_month_year), show_quick_select: false %>
@@ -165,6 +176,47 @@
                     <div class="flex items-center space-x-2">
                       <%= render AppUI::Accounts::Icon.new(account, size: "lg") %>
                       <span><%= account.name %></span>
+                    </div>
+                  </td>
+                  <td class="text-right <%= total >= 0 ? 'text-positive' : 'text-negative' %>">
+                    <%= number_to_currency(total) %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @tag_totals.any? %>
+    <div class="mt-6">
+      <h3 class="text-xl font-bold mb-4">By Tag</h3>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="h-96">
+          <div
+            data-controller="categories-pie-chart"
+            data-categories-pie-chart-title-value="Transaction Totals by Tag"
+            data-categories-pie-chart-data-value="<%= @tag_totals.map { |tag, total| { name: tag.name, color: tag.color, value: total.abs } }.to_json %>"
+            class="h-full"
+          >
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="table table-zebra">
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th class="text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tag_totals.each do |tag, total| %>
+                <tr>
+                  <td>
+                    <div class="flex items-center space-x-2">
+                      <%= render AppUI::Tags::Badge.new(tag) %>
                     </div>
                   </td>
                   <td class="text-right <%= total >= 0 ? 'text-positive' : 'text-negative' %>">
