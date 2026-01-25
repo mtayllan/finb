@@ -49,6 +49,15 @@
             <% end %>
           <% end %>
         <% end %>
+
+        <%= render UI::FormGroup.new do %>
+          <%= render UI::FormLabel.new(form, :excluded_tags) %>
+          <%= render UI::MultiSelectField.new(name: "excluded_tag_ids[]", selected_values: @excluded_tag_ids, placeholder: "No exclusions") do |comp| %>
+            <% @tags.each do |tag| %>
+              <% comp.with_option(value: tag.id, label: tag.name, color: tag.color, selected: @excluded_tag_ids.include?(tag.id.to_s)) %>
+            <% end %>
+          <% end %>
+        <% end %>
       <% end %>
 
       <%= render UI::FormGroup.new do %>
