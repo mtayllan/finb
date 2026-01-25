@@ -6,7 +6,9 @@ class TransactionsController < ApplicationController
     filter = {date: @month.all_month}
     filter[:account_id] = params[:account_id] if params[:account_id]
     filter[:category_id] = params[:category_id] if params[:category_id]
-    @transactions = Current.user.transactions.includes(:category, :account, :payer_split, :tags).where(filter).order(date: :desc, created_at: :desc)
+    @transactions = Current.user.transactions.includes(:category, :account, :payer_split, :tags).where(filter)
+    @transactions = @transactions.where("LOWER(description) LIKE LOWER(?)", "%#{params[:search]}%") if params[:search].present?
+    @transactions = @transactions.order(date: :desc, created_at: :desc)
   end
 
   def new

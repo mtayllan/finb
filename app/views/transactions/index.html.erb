@@ -4,10 +4,28 @@
     <%= link_to "New Transaction", new_transaction_path, class: "btn btn-primary" %>
   </div>
 
+  <div class="my-4">
+    <%= form_with url: transactions_path, method: :get, data: { turbo_action: "replace" } do |f| %>
+      <%= hidden_field_tag :month, @month.strftime('%Y/%m') %>
+      <%= hidden_field_tag :account_id, params[:account_id] if params[:account_id] %>
+      <%= hidden_field_tag :category_id, params[:category_id] if params[:category_id] %>
+      <div class="flex gap-2">
+        <label class="input input-bordered flex items-center gap-2 flex-1">
+          <i class="ph ph-magnifying-glass"></i>
+          <%= f.search_field :search, value: params[:search], placeholder: "Search by description...", class: "grow", data: params[:search].present? ? { controller: "autofocus-end" } : {} %>
+        </label>
+        <%= f.submit "Search", class: "btn btn-primary" %>
+        <% if params[:search].present? %>
+          <%= link_to "Clear", url_for(params.permit(:month, :account_id, :category_id).except(:search)), class: "btn btn-ghost" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="flex justify-center items-center my-6 gap-8">
     <%=
       link_to @month.prev_month.strftime('%b %Y'),
-              url_for(params.permit(:account_id, :category_id).merge(month: @month.prev_month.strftime('%Y/%m'))),
+              url_for(params.permit(:account_id, :category_id, :search).merge(month: @month.prev_month.strftime('%Y/%m'))),
               class: "link"
     %>
 
@@ -15,7 +33,7 @@
 
     <%=
       link_to @month.next_month.strftime('%b %Y'),
-              url_for(params.permit(:account_id, :category_id).merge(month: @month.next_month.strftime('%Y/%m'))),
+              url_for(params.permit(:account_id, :category_id, :search).merge(month: @month.next_month.strftime('%Y/%m'))),
               class: "link"
     %>
   </div>
@@ -38,4 +56,3 @@
     </table>
   </div>
 </div>
-
