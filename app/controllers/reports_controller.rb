@@ -21,12 +21,17 @@ class ReportsController < ApplicationController
     @selected_category_id = params[:category_id]
     @selected_account_id = params[:account_id]
     @selected_tag_ids = Array(params[:tag_ids]).compact_blank
+    @excluded_tag_ids = Array(params[:excluded_tag_ids]).compact_blank
 
     transactions = Current.user.transactions.where(date: @start_date..@end_date)
     transactions = transactions.where(exclude_from_reports: false)
     transactions = transactions.where(category_id: @selected_category_id) if @selected_category_id.present?
     transactions = transactions.where(account_id: @selected_account_id) if @selected_account_id.present?
     transactions = transactions.joins(:tags).where(tags: {id: @selected_tag_ids}).distinct if @selected_tag_ids.any?
+    if @excluded_tag_ids.any?
+      excluded_transaction_ids = TransactionTag.where(tag_id: @excluded_tag_ids).select(:transaction_id)
+      transactions = transactions.where.not(id: excluded_transaction_ids)
+    end
 
     if @granularity == "total"
       @total_income = transactions.where("value > 0").sum(:value)
