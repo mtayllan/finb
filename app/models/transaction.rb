@@ -8,7 +8,7 @@ class Transaction < ApplicationRecord
   has_one :payer_split, class_name: "Split", foreign_key: "payer_transaction_id"
   has_one :borrower_split, class_name: "Split", foreign_key: "borrower_transaction_id", dependent: :nullify
 
-  has_many :transaction_tags, dependent: :destroy
+  has_many :transaction_tags, dependent: :destroy, inverse_of: :taggable_transaction
   has_many :tags, through: :transaction_tags
 
   validates :value, :date, :description, presence: true

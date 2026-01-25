@@ -28,6 +28,8 @@
   </div>
 
   <div data-ui--multi-select-field-target="hiddenInputs">
+    <%# Empty value ensures Rails clears association when all selections are removed %>
+    <input type="hidden" name="<%= @name %>" value="">
     <% selected_options_data.each do |opt| %>
       <input type="hidden" name="<%= @name %>" value="<%= opt[:value] %>" data-input-value="<%= opt[:value] %>">
     <% end %>
