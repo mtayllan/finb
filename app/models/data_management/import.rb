@@ -15,6 +15,8 @@ module DataManagement
 
     def clear_data
       Split.delete_all
+      TransactionTag.delete_all
+      Tag.delete_all
       Transaction.delete_all
       Transfer.delete_all
       CreditCard::Statement.delete_all
@@ -30,6 +32,8 @@ module DataManagement
       CreditCard::Statement.insert_all(@data["credit_card_statements"])
       Transfer.insert_all(@data["transfers"])
       Transaction.insert_all(@data["transactions"])
+      Tag.insert_all(@data["tags"]) if @data["tags"]
+      TransactionTag.insert_all(@data["transaction_tags"]) if @data["transaction_tags"]
       Split.insert_all(@data["splits"])
     end
 

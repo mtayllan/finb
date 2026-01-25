@@ -10,7 +10,9 @@ module DataManagement
         end,
         transfers: Transfer.find_each.map(&:attributes),
         credit_card_statements: CreditCard::Statement.find_each.map(&:attributes),
-        splits: Split.find_each.map(&:attributes)
+        splits: Split.find_each.map(&:attributes),
+        tags: Tag.find_each.map(&:attributes),
+        transaction_tags: TransactionTag.find_each.map(&:attributes)
       }.to_json
     end
   end
