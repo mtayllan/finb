@@ -6,7 +6,7 @@ class TransactionsController < ApplicationController
     filter = {date: @month.all_month}
     filter[:account_id] = params[:account_id] if params[:account_id]
     filter[:category_id] = params[:category_id] if params[:category_id]
-    @transactions = Current.user.transactions.includes(:category, :account, :payer_split).where(filter).order(date: :desc, created_at: :desc)
+    @transactions = Current.user.transactions.includes(:category, :account, :payer_split, :tags).where(filter).order(date: :desc, created_at: :desc)
   end
 
   def new
@@ -53,7 +53,7 @@ class TransactionsController < ApplicationController
     if params[:transaction][:transaction_type] == "expense"
       params[:transaction][:value] = "-#{params[:transaction][:value]}"
     end
-    params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date, :credit_card_statement_month, :exclude_from_reports)
+    params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date, :credit_card_statement_month, :exclude_from_reports, tag_ids: [])
   end
 
   def after_save_url(transaction)
