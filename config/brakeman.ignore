@@ -3,13 +3,13 @@
     {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
-      "fingerprint": "3f712c714f7cebd2ed93ec9e0f1fe816192bd88eb1c5b29b53a7aebbada2d067",
+      "fingerprint": "63034f50f1add5a183e00fb20c923b92e39a5081ed7a9c1e6fe5075514700e9d",
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/views/transactions/index.html.erb",
       "line": 36,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => Current.user.transactions.includes(:category, :account, :payer_split).where(:date => (Date.parse(params[:month]) or Date.current).all_month, :account_id => params[:account_id], :category_id => params[:category_id]).order(:date => :desc, :created_at => :desc), {})",
+      "code": "render(action => Current.user.transactions.includes(:category, :account, :payer_split, :tags).where(:date => (Date.parse(params[:month]) or Date.current).all_month, :account_id => params[:account_id], :category_id => params[:category_id]).order(:date => :desc, :created_at => :desc), {})",
       "render_path": [
         {
           "type": "controller",
@@ -31,29 +31,6 @@
       "confidence": "Weak",
       "cwe_id": [
         22
-      ],
-      "note": ""
-    },
-    {
-      "warning_type": "Mass Assignment",
-      "warning_code": 105,
-      "fingerprint": "42fc7f95545d962af5039a52e3e943df8403d81fe1798b2a436308e1378a3ed5",
-      "check_name": "PermitAttributes",
-      "message": "Potentially dangerous key allowed for mass assignment",
-      "file": "app/controllers/transactions_controller.rb",
-      "line": 56,
-      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
-      "code": "params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date, :credit_card_statement_month, :exclude_from_reports)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "TransactionsController",
-        "method": "transaction_params"
-      },
-      "user_input": ":account_id",
-      "confidence": "High",
-      "cwe_id": [
-        915
       ],
       "note": ""
     },
@@ -90,7 +67,30 @@
         22
       ],
       "note": ""
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 105,
+      "fingerprint": "cd7583c0c2a5dbc0375fa302080e9f6f124681616cf23f85def565542c64a9a5",
+      "check_name": "PermitAttributes",
+      "message": "Potentially dangerous key allowed for mass assignment",
+      "file": "app/controllers/transactions_controller.rb",
+      "line": 56,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params.require(:transaction).permit(:description, :value, :category_id, :account_id, :date, :credit_card_statement_month, :exclude_from_reports, :tag_ids => ([]))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TransactionsController",
+        "method": "transaction_params"
+      },
+      "user_input": ":account_id",
+      "confidence": "High",
+      "cwe_id": [
+        915
+      ],
+      "note": "no need for now as app is for personal usage"
     }
   ],
-  "brakeman_version": "7.1.0"
+  "brakeman_version": "7.1.2"
 }
