@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_103730) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_24_195149) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.decimal "balance", precision: 19, scale: 2, null: false
@@ -102,6 +102,26 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_103730) do
     t.index ["statement_analysis_id"], name: "index_statement_analysis_items_on_statement_analysis_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "color", default: "#000000", null: false
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id", "name"], name: "index_tags_on_user_id_and_name", unique: true
+    t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
+  create_table "transaction_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "tag_id", null: false
+    t.integer "transaction_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_transaction_tags_on_tag_id"
+    t.index ["transaction_id", "tag_id"], name: "index_transaction_tags_on_transaction_id_and_tag_id", unique: true
+    t.index ["transaction_id"], name: "index_transaction_tags_on_transaction_id"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.integer "account_id"
     t.integer "category_id", null: false
@@ -151,6 +171,9 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_103730) do
   add_foreign_key "statement_analyses", "credit_card_statements"
   add_foreign_key "statement_analysis_items", "categories"
   add_foreign_key "statement_analysis_items", "statement_analyses"
+  add_foreign_key "tags", "users"
+  add_foreign_key "transaction_tags", "tags", on_delete: :cascade
+  add_foreign_key "transaction_tags", "transactions", on_delete: :cascade
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
   add_foreign_key "transactions", "credit_card_statements"
