@@ -52,6 +52,7 @@ module Transaction::Installmentable
       new_transaction = new
       new_transaction.account_id = transaction.account_id
       new_transaction.category_id = transaction.category_id
+      new_transaction.tag_ids = transaction.tag_ids
       # Don't copy description, value and date as they will be set separately
       new_transaction
     end
