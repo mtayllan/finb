@@ -20,6 +20,7 @@ env:
     - SECRET_KEY_BASE
     - HONEYBADGER_API_KEY
     - HONEYBADGER_REPORT_DATA
+    - GROQ_API_KEY
 
 ssh:
   user: <%= ENV["KAMAL_SSH_USER"] %>

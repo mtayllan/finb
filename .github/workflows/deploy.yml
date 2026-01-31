@@ -68,3 +68,4 @@ jobs:
           KAMAL_SSH_USER: ${{ secrets.KAMAL_SSH_USER }}
           HONEYBADGER_API_KEY: ${{ secrets.HONEYBADGER_API_KEY }}
           HONEYBADGER_REPORT_DATA: ${{ secrets.HONEYBADGER_REPORT_DATA }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
