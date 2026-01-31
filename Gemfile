@@ -11,6 +11,7 @@ gem "solid_cache"
 gem "solid_cable"
 gem "groupdate"
 gem "csv"
+gem "pdf-reader"
 
 # FRONTEND
 gem "propshaft"
@@ -32,6 +33,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "standard"
   gem "standard-rails"
+  gem "dotenv-rails"
 end
 
 group :development do
@@ -44,4 +46,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "simplecov", require: false
+  gem "webmock"
 end

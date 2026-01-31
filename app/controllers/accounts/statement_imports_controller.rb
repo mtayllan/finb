@@ -9,32 +9,48 @@ class Accounts::StatementImportsController < ApplicationController
   end
 
   def create
-    csv_file = params[:csv_file]
+    file = params[:csv_file] || params[:pdf_file]
+    file_type = params[:csv_file] ? :csv : :pdf
     delimiter = params[:delimiter].presence || ","
 
-    if csv_file.blank?
-      redirect_to new_account_statement_import_path(@account), alert: "Please select a CSV file"
+    if file.blank?
+      redirect_to new_account_statement_import_path(@account), alert: "Please select a file"
       return
     end
 
     begin
-      analysis_result = StatementAnalysis::CsvAnalyzer.analyze(csv_file, delimiter: delimiter)
+      if file_type == :pdf
+        pdf_password = params[:pdf_password].presence
+        analysis_result = StatementAnalysis::PdfAnalyzer.analyze(
+          file,
+          password: pdf_password,
+          is_credit_card: @account.credit_card?
+        )
+        total_rows = analysis_result[:transactions].size
+      else
+        analysis_result = StatementAnalysis::CsvAnalyzer.analyze(file, delimiter: delimiter)
+        total_rows = analysis_result[:rows].size
+      end
 
       @statement_analysis = StatementAnalysis.new(
         account: @account,
-        total_rows: analysis_result[:rows].size,
+        total_rows: total_rows,
         credit_card_statement_id: params[:credit_card_statement_id]
       )
 
       if @statement_analysis.save
-        create_analysis_items(analysis_result)
-        redirect_to edit_account_statement_import_path(@account, @statement_analysis), notice: "CSV analyzed successfully. Review and assign categories."
+        if file_type == :pdf
+          create_analysis_items_from_pdf(analysis_result)
+        else
+          create_analysis_items_from_csv(analysis_result)
+        end
+        redirect_to edit_account_statement_import_path(@account, @statement_analysis), notice: "File analyzed successfully. Review and assign categories."
       else
         load_credit_card_statements if @account.credit_card?
         render :new, status: :unprocessable_content
       end
-    rescue StatementAnalysis::CsvAnalyzer::DetectionError => e
-      redirect_to new_account_statement_import_path(@account), alert: "CSV analysis failed: #{e.message}"
+    rescue StatementAnalysis::CsvAnalyzer::DetectionError, StatementAnalysis::PdfAnalyzer::DetectionError => e
+      redirect_to new_account_statement_import_path(@account), alert: "Analysis failed: #{e.message}"
     end
   end
 
@@ -83,7 +99,7 @@ class Accounts::StatementImportsController < ApplicationController
     @credit_card_statements = @account.credit_card_statements.order(month: :desc)
   end
 
-  def create_analysis_items(analysis_result)
+  def create_analysis_items_from_csv(analysis_result)
     date_col = analysis_result[:date_column]
     value_col = analysis_result[:value_column]
     desc_col = analysis_result[:description_column]
@@ -103,6 +119,20 @@ class Accounts::StatementImportsController < ApplicationController
     rescue ArgumentError => e
       # Skip rows with invalid data but log them
       Rails.logger.warn("Skipping row #{index + 1}: #{e.message}")
+    end
+  end
+
+  def create_analysis_items_from_pdf(analysis_result)
+    analysis_result[:transactions].each_with_index do |transaction, index|
+      @statement_analysis.items.create!(
+        date: transaction[:date],
+        value: transaction[:value],
+        original_description: transaction[:description],
+        description: transaction[:description],
+        row_number: index + 1
+      )
+    rescue ArgumentError => e
+      Rails.logger.warn("Skipping transaction #{index + 1}: #{e.message}")
     end
   end
 
