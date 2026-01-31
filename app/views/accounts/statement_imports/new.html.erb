@@ -3,33 +3,78 @@
     Import Statement for <%= @account.name %>
   <% end %>
 
-  <%= form_with url: account_statement_imports_path(@account), method: :post, multipart: true, class: "space-y-6" do |form| %>
+  <%= form_with url: account_statement_imports_path(@account), method: :post, multipart: true, class: "space-y-6", data: { controller: "file-type-toggle" } do |form| %>
 
     <div>
-      <%= label_tag :csv_file, "CSV File", class: "block text-sm font-medium leading-6" %>
-      <div class="mt-2">
-        <%= file_field_tag :csv_file, accept: ".csv", required: true, class: "file-input file-input-bordered w-full" %>
+      <%= label_tag :file_type, "File Type", class: "block text-sm font-medium leading-6" %>
+      <div class="mt-2 flex gap-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <%= radio_button_tag :file_type, "csv", true, data: { action: "file-type-toggle#toggle" }, class: "radio radio-primary" %>
+          <span class="label-text">CSV</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <%= radio_button_tag :file_type, "pdf", false, data: { action: "file-type-toggle#toggle" }, class: "radio radio-primary" %>
+          <span class="label-text">PDF</span>
+        </label>
       </div>
-      <p class="text-sm text-base-content/60 mt-1">
-        Select a CSV file with your bank or credit card statement
-      </p>
     </div>
 
-    <div>
-      <%= label_tag :delimiter, "Delimiter", class: "block text-sm font-medium leading-6" %>
-      <div class="mt-2">
-        <%= select_tag :delimiter,
-            options_for_select([
-              ["Comma (,)", ","],
-              ["Semicolon (;)", ";"],
-              ["Tab", "\t"],
-              ["Pipe (|)", "|"]
-            ], ","),
-            class: "select select-bordered w-full" %>
+    <div data-file-type-toggle-target="csvFields">
+      <div>
+        <%= label_tag :csv_file, "CSV File", class: "block text-sm font-medium leading-6" %>
+        <div class="mt-2">
+          <%= file_field_tag :csv_file, accept: ".csv", class: "file-input file-input-bordered w-full", data: { file_type_toggle_target: "csvInput" } %>
+        </div>
+        <p class="text-sm text-base-content/60 mt-1">
+          Select a CSV file with your bank or credit card statement
+        </p>
       </div>
-      <p class="text-sm text-base-content/60 mt-1">
-        Select the delimiter used in your CSV file
-      </p>
+
+      <div class="mt-4">
+        <%= label_tag :delimiter, "Delimiter", class: "block text-sm font-medium leading-6" %>
+        <div class="mt-2">
+          <%= select_tag :delimiter,
+              options_for_select([
+                ["Comma (,)", ","],
+                ["Semicolon (;)", ";"],
+                ["Tab", "\t"],
+                ["Pipe (|)", "|"]
+              ], ","),
+              class: "select select-bordered w-full" %>
+        </div>
+        <p class="text-sm text-base-content/60 mt-1">
+          Select the delimiter used in your CSV file
+        </p>
+      </div>
+    </div>
+
+    <div data-file-type-toggle-target="pdfFields" class="hidden">
+      <% if ENV["GROQ_API_KEY"].blank? %>
+        <div class="alert alert-warning mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          <div>
+            <strong>Groq API Key not configured!</strong>
+            <p class="text-sm">PDF import requires a Groq API key. Get your free key at <a href="https://console.groq.com/" target="_blank" class="link">console.groq.com</a> and add it to your <code>.env</code> file.</p>
+          </div>
+        </div>
+      <% end %>
+
+      <div>
+        <%= label_tag :pdf_file, "PDF File", class: "block text-sm font-medium leading-6" %>
+        <div class="mt-2">
+          <%= file_field_tag :pdf_file, accept: ".pdf", class: "file-input file-input-bordered w-full", data: { file_type_toggle_target: "pdfInput" } %>
+        </div>
+        <p class="text-sm text-base-content/60 mt-1">
+          Select a PDF file with your bank or credit card statement. AI will extract transactions automatically.
+        </p>
+      </div>
+
+      <div class="mt-4">
+        <%= label_tag :pdf_password, "PDF Password (if protected)", class: "block text-sm font-medium leading-6" %>
+        <div class="mt-2">
+          <%= password_field_tag :pdf_password, nil, class: "input input-bordered w-full", placeholder: "Leave empty if PDF is not protected" %>
+        </div>
+      </div>
     </div>
 
     <% if @account.credit_card? %>
@@ -48,7 +93,7 @@
     <% end %>
 
     <div class="flex justify-between mt-6">
-      <%= form.submit "Analyze CSV", class: "btn btn-primary" %>
+      <%= form.submit "Submit", class: "btn btn-primary" %>
       <%= link_to "Cancel", account_path(@account), class: "ml-2 btn btn-soft" %>
     </div>
   <% end %>
@@ -60,7 +105,8 @@
     <div>
       <h3 class="font-bold">How it works:</h3>
       <ul class="text-sm list-disc list-inside mt-2">
-        <li>Upload your CSV file and we'll automatically detect the date, value, and description columns</li>
+        <li><strong>CSV:</strong> We'll automatically detect the date, value, and description columns</li>
+        <li><strong>PDF:</strong> AI will read the document and extract transactions automatically</li>
         <li>Review all detected transactions before importing</li>
         <li>Assign categories to each transaction (individually or in bulk)</li>
         <li>Uncheck any transactions you don't want to import</li>

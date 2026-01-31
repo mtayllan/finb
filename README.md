@@ -39,12 +39,21 @@ bundle install
 bin/rails db:setup
 ```
 
-4. Start the development server:
+4. (Optional) Configure Groq API for PDF import:
+```bash
+cp .env.example .env
+# Edit .env and add your Groq API key:
+# GROQ_API_KEY=your_api_key_here
+```
+
+Get your free API key at [console.groq.com](https://console.groq.com/)
+
+5. Start the development server:
 ```bash
 bin/dev
 ```
 
-5. Access the application at http://localhost:3000
+6. Access the application at http://localhost:3000
 
 ### Docker Deployment
 
@@ -67,10 +76,13 @@ docker run \
   -v finb-storage:/rails/storage \
   --env SECRET_KEY_BASE=$YOUR_SECRET_KEY_BASE \
   --env USE_SSL=false \
+  --env GROQ_API_KEY=$YOUR_GROQ_API_KEY \
   finb
 ```
 
-**Note:** Generate a random secret key base with `openssl rand -hex 64` and replace `$YOUR_SECRET_KEY_BASE` with the generated value.
+**Notes:**
+- Generate a random secret key base with `openssl rand -hex 64` and replace `$YOUR_SECRET_KEY_BASE` with the generated value.
+- (Optional) Add your Groq API key to enable PDF import feature. Get a free key at [console.groq.com](https://console.groq.com/) and replace `$YOUR_GROQ_API_KEY` with your key. If you don't need PDF import, you can omit the `--env GROQ_API_KEY` line.
 
 4. Access the application at http://localhost:9090
 
