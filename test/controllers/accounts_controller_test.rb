@@ -100,10 +100,12 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show account transactions filtered by category" do
-    account = create(:account, user: users(:default))
-    category = create(:category, user: users(:default))
-    other_category = create(:category, user: users(:default))
-    create_list(:transaction, 3, account: account, category:)
+    # Create fresh account to avoid conflicts with fixture data and parallel tests
+    user = users(:default)
+    account = create(:account, user: user, initial_balance_date: 1.year.ago)
+    category = categories(:food)
+    other_category = categories(:other)
+    create_list(:transaction, 3, account: account, category: category)
     create_list(:transaction, 2, account: account, category: other_category)
 
     get account_url(account, params: {category_id: category.id})
@@ -112,11 +114,13 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show account transactions filtered by month" do
-    account = create(:account, initial_balance_date: 3.months.ago, user: users(:default))
-    create_list(:transaction, 3, account: account, date: 1.month.ago)
-    create_list(:transaction, 2, account: account, date: 2.months.ago)
+    # Create fresh account to avoid conflicts with fixture data and parallel tests
+    user = users(:default)
+    account = create(:account, user: user, initial_balance_date: 1.year.ago)
+    create_list(:transaction, 3, account: account, date: Date.current)
+    create_list(:transaction, 2, account: account, date: 1.month.from_now)
 
-    get account_url(account, params: {month: 1.month.ago.iso8601})
+    get account_url(account, params: {month: Date.current.iso8601})
 
     assert_select "tr", 5
   end
