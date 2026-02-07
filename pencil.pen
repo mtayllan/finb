@@ -1923,6 +1923,1112 @@
           "fontSize": 12
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "QCcAx",
+      "x": 900,
+      "y": 4150,
+      "name": "Component/Badge/Primary",
+      "reusable": true,
+      "height": 24,
+      "fill": "$primary",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$primary"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "IBmSi",
+          "name": "Label",
+          "fill": "$primary-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "0NyhZ",
+      "x": 900,
+      "y": 4190,
+      "name": "Component/Badge/Secondary",
+      "reusable": true,
+      "height": 24,
+      "fill": "$secondary",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$secondary"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "1MXf2",
+          "name": "Label",
+          "fill": "$secondary-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "WZbCi",
+      "x": 900,
+      "y": 4230,
+      "name": "Component/Badge/Accent",
+      "reusable": true,
+      "height": 24,
+      "fill": "$accent",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$accent"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "P9Cix",
+          "name": "Label",
+          "fill": "$accent-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "C78Hg",
+      "x": 900,
+      "y": 4270,
+      "name": "Component/Badge/Neutral",
+      "reusable": true,
+      "height": 24,
+      "fill": "$neutral",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$neutral"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "6nQJJ",
+          "name": "Label",
+          "fill": "$neutral-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "pJyur",
+      "x": 900,
+      "y": 4310,
+      "name": "Component/Badge/Info",
+      "reusable": true,
+      "height": 24,
+      "fill": "$info",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "oE3wg",
+          "name": "Label",
+          "fill": "$info-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "fXdLV",
+      "x": 900,
+      "y": 4350,
+      "name": "Component/Badge/Success",
+      "reusable": true,
+      "height": 24,
+      "fill": "$success",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "FkCiq",
+          "name": "Label",
+          "fill": "$success-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "uKIKS",
+      "x": 900,
+      "y": 4390,
+      "name": "Component/Badge/Warning",
+      "reusable": true,
+      "height": 24,
+      "fill": "$warning",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "GvNzk",
+          "name": "Label",
+          "fill": "$warning-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "TyvPw",
+      "x": 900,
+      "y": 4430,
+      "name": "Component/Badge/Error",
+      "reusable": true,
+      "height": 24,
+      "fill": "$error",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "ir2D4",
+          "name": "Label",
+          "fill": "$error-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "H6pdQ",
+      "x": 900,
+      "y": 4570,
+      "name": "Component/Badge/Outline",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$base-content"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "meCow",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "5Er9d",
+      "x": 900,
+      "y": 4610,
+      "name": "Component/Badge/Dash",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$base-content"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "zgaqj",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "viVu7",
+      "x": 900,
+      "y": 4650,
+      "name": "Component/Badge/Soft",
+      "reusable": true,
+      "height": 24,
+      "fill": "$default-soft-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$default-soft-border"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "K5eC2",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "e3nCA",
+      "x": 900,
+      "y": 4690,
+      "name": "Component/Badge/Ghost",
+      "reusable": true,
+      "height": 24,
+      "fill": "$ghost-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$ghost-bg"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "wvsjb",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "LQjBU",
+      "x": 900,
+      "y": 4830,
+      "name": "Component/Badge/Soft/Primary",
+      "reusable": true,
+      "height": 24,
+      "fill": "$primary-soft-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$primary-soft-border"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "OM6Mw",
+          "name": "Label",
+          "fill": "$primary",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "gz69b",
+      "x": 900,
+      "y": 4870,
+      "name": "Component/Badge/Soft/Secondary",
+      "reusable": true,
+      "height": 24,
+      "fill": "$secondary-soft-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$secondary-soft-border"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "gtXfy",
+          "name": "Label",
+          "fill": "$secondary",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "t71f7",
+      "x": 900,
+      "y": 4910,
+      "name": "Component/Badge/Soft/Accent",
+      "reusable": true,
+      "height": 24,
+      "fill": "$accent-soft-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$accent-soft-border"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "fO8ac",
+          "name": "Label",
+          "fill": "$accent",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "jLy3V",
+      "x": 900,
+      "y": 4950,
+      "name": "Component/Badge/Soft/Info",
+      "reusable": true,
+      "height": 24,
+      "fill": "$info-soft-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info-soft-border"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "5A8cJ",
+          "name": "Label",
+          "fill": "$info",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "WEfvT",
+      "x": 900,
+      "y": 4990,
+      "name": "Component/Badge/Soft/Success",
+      "reusable": true,
+      "height": 24,
+      "fill": "$success-soft-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success-soft-border"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "fwZ0R",
+          "name": "Label",
+          "fill": "$success",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "2dRWj",
+      "x": 900,
+      "y": 5030,
+      "name": "Component/Badge/Soft/Warning",
+      "reusable": true,
+      "height": 24,
+      "fill": "$warning-soft-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning-soft-border"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "fWCPl",
+          "name": "Label",
+          "fill": "$warning",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "L1wtC",
+      "x": 900,
+      "y": 5070,
+      "name": "Component/Badge/Soft/Error",
+      "reusable": true,
+      "height": 24,
+      "fill": "$error-soft-bg",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error-soft-border"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Vgsl3",
+          "name": "Label",
+          "fill": "$error",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Ftnss",
+      "x": 900,
+      "y": 5210,
+      "name": "Component/Badge/Outline/Primary",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$primary"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "rXdQ3",
+          "name": "Label",
+          "fill": "$primary",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "LQu2N",
+      "x": 900,
+      "y": 5250,
+      "name": "Component/Badge/Outline/Secondary",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$secondary"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "YbTrD",
+          "name": "Label",
+          "fill": "$secondary",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "aBUSC",
+      "x": 900,
+      "y": 5290,
+      "name": "Component/Badge/Outline/Accent",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$accent"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "6Sfiq",
+          "name": "Label",
+          "fill": "$accent",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "2pW1p",
+      "x": 900,
+      "y": 5330,
+      "name": "Component/Badge/Outline/Info",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "TuvtK",
+          "name": "Label",
+          "fill": "$info",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "q7M3X",
+      "x": 900,
+      "y": 5370,
+      "name": "Component/Badge/Outline/Success",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "F0pVT",
+          "name": "Label",
+          "fill": "$success",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "GVEuz",
+      "x": 900,
+      "y": 5410,
+      "name": "Component/Badge/Outline/Warning",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Myxhm",
+          "name": "Label",
+          "fill": "$warning",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "6oQCE",
+      "x": 900,
+      "y": 5450,
+      "name": "Component/Badge/Outline/Error",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "EpAwL",
+          "name": "Label",
+          "fill": "$error",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "rxoD1",
+      "x": 900,
+      "y": 5590,
+      "name": "Component/Badge/Dash/Primary",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$primary"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Iawv8",
+          "name": "Label",
+          "fill": "$primary",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "vIbQK",
+      "x": 900,
+      "y": 5630,
+      "name": "Component/Badge/Dash/Secondary",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$secondary"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "arkra",
+          "name": "Label",
+          "fill": "$secondary",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "V7VWP",
+      "x": 900,
+      "y": 5670,
+      "name": "Component/Badge/Dash/Accent",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$accent"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "exGwx",
+          "name": "Label",
+          "fill": "$accent",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "rj9a1",
+      "x": 900,
+      "y": 5710,
+      "name": "Component/Badge/Dash/Info",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "vND37",
+          "name": "Label",
+          "fill": "$info",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "osIq7",
+      "x": 900,
+      "y": 5750,
+      "name": "Component/Badge/Dash/Success",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "H1Guk",
+          "name": "Label",
+          "fill": "$success",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "xBSr0",
+      "x": 900,
+      "y": 5790,
+      "name": "Component/Badge/Dash/Warning",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "hQBDJ",
+          "name": "Label",
+          "fill": "$warning",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "sGfuO",
+      "x": 900,
+      "y": 5830,
+      "name": "Component/Badge/Dash/Error",
+      "reusable": true,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        11
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "ZvBw4",
+          "name": "Label",
+          "fill": "$error",
+          "content": "Badge",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
     }
   ],
   "variables": {
@@ -2077,6 +3183,42 @@
     "warning-soft-border": {
       "type": "color",
       "value": "#222631"
+    },
+    "accent-soft-bg": {
+      "type": "color",
+      "value": "#201e34"
+    },
+    "accent-soft-border": {
+      "type": "color",
+      "value": "#242036"
+    },
+    "default-soft-bg": {
+      "type": "color",
+      "value": "#1b2335"
+    },
+    "default-soft-border": {
+      "type": "color",
+      "value": "#1e2638"
+    },
+    "ghost-bg": {
+      "type": "color",
+      "value": "#0c1425"
+    },
+    "primary-soft-bg": {
+      "type": "color",
+      "value": "#142238"
+    },
+    "primary-soft-border": {
+      "type": "color",
+      "value": "#15253b"
+    },
+    "secondary-soft-bg": {
+      "type": "color",
+      "value": "#171f38"
+    },
+    "secondary-soft-border": {
+      "type": "color",
+      "value": "#19213b"
     }
   }
 }
