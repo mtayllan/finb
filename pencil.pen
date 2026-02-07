@@ -3302,6 +3302,515 @@
           "fontSize": 16
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "WItPp",
+      "x": 3198,
+      "y": 0,
+      "name": "Cards",
+      "layout": "vertical",
+      "gap": 60,
+      "children": [
+        {
+          "type": "frame",
+          "id": "kdzTt",
+          "name": "Component/Card/Default",
+          "reusable": true,
+          "clip": true,
+          "width": 384,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-box",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "blur": 3
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ADGhT",
+              "name": "Figure",
+              "clip": true,
+              "width": "fill_container",
+              "height": 200,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "CstB7",
+                  "name": "Image",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "$base-300"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kYl7B",
+              "name": "Body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "9E2yz",
+                  "name": "Title",
+                  "fill": "$base-content",
+                  "content": "Card Title",
+                  "fontFamily": "$font-family",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "kDyVx",
+                  "name": "Description",
+                  "fill": "$base-content",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A card component has a figure, a body part, and inside body there are title and actions parts",
+                  "lineHeight": 1.75,
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                },
+                {
+                  "type": "frame",
+                  "id": "992ag",
+                  "name": "Actions",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "id": "RQSZv",
+                      "type": "ref",
+                      "ref": "eQs2w",
+                      "name": "btn"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Q6Ja3",
+          "name": "Component/Card/Border",
+          "reusable": true,
+          "clip": true,
+          "width": 384,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-200"
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "GpCWU",
+              "name": "Figure",
+              "clip": true,
+              "width": "fill_container",
+              "height": 200,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hK2R8",
+                  "name": "Image",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "$base-300"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WupoI",
+              "name": "Body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Ykirj",
+                  "name": "Title",
+                  "fill": "$base-content",
+                  "content": "Card Title",
+                  "fontFamily": "$font-family",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "n1k6M",
+                  "name": "Description",
+                  "fill": "$base-content",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A card component has a figure, a body part, and inside body there are title and actions parts",
+                  "lineHeight": 1.75,
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                },
+                {
+                  "type": "frame",
+                  "id": "a6d1C",
+                  "name": "Actions",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "id": "uaP1e",
+                      "type": "ref",
+                      "ref": "eQs2w",
+                      "name": "bBtn"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "K5yVe",
+          "name": "Component/Card/Dash",
+          "reusable": true,
+          "clip": true,
+          "width": 384,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-200"
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "9u3FC",
+              "name": "Figure",
+              "clip": true,
+              "width": "fill_container",
+              "height": 200,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "q8daH",
+                  "name": "Image",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "$base-300"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "7N1Jg",
+              "name": "Body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "AYuxC",
+                  "name": "Title",
+                  "fill": "$base-content",
+                  "content": "Card Title",
+                  "fontFamily": "$font-family",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "RPPxl",
+                  "name": "Description",
+                  "fill": "$base-content",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A card component has a figure, a body part, and inside body there are title and actions parts",
+                  "lineHeight": 1.75,
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                },
+                {
+                  "type": "frame",
+                  "id": "X48h8",
+                  "name": "Actions",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "id": "O4JIc",
+                      "type": "ref",
+                      "ref": "eQs2w",
+                      "name": "dBtn"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MgB3n",
+          "name": "Component/Card/No Image",
+          "reusable": true,
+          "clip": true,
+          "width": 384,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-box",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "blur": 3
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Vt3eb",
+              "name": "Body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KX9XT",
+                  "name": "Title",
+                  "fill": "$base-content",
+                  "content": "Card title!",
+                  "fontFamily": "$font-family",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "HC5IT",
+                  "name": "Description",
+                  "fill": "$base-content",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A card component has a figure, a body part, and inside body there are title and actions parts",
+                  "lineHeight": 1.75,
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                },
+                {
+                  "type": "frame",
+                  "id": "JysJr",
+                  "name": "Actions",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "id": "XrWX2",
+                      "type": "ref",
+                      "ref": "eQs2w",
+                      "name": "niBtn"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rGGAL",
+          "name": "Component/Card/Neutral",
+          "reusable": true,
+          "clip": true,
+          "width": 384,
+          "fill": "$neutral",
+          "cornerRadius": "$radius-box",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "blur": 3
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "LAeVw",
+              "name": "Body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aq56t",
+                  "name": "Title",
+                  "fill": "$neutral-content",
+                  "content": "Cookies!",
+                  "fontFamily": "$font-family",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "frJbM",
+                  "name": "Description",
+                  "fill": "$neutral-content",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "We are using cookies for no reason.",
+                  "lineHeight": 1.75,
+                  "textAlign": "center",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                },
+                {
+                  "type": "frame",
+                  "id": "XklUp",
+                  "name": "Actions",
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "id": "kTVTT",
+                      "type": "ref",
+                      "ref": "eQs2w",
+                      "name": "nBtnAccept",
+                      "descendants": {
+                        "GCW8m": {
+                          "content": "Accept"
+                        }
+                      }
+                    },
+                    {
+                      "id": "y1NVG",
+                      "type": "ref",
+                      "ref": "wBToy",
+                      "name": "nBtnDeny",
+                      "descendants": {
+                        "Q8sFA": {
+                          "content": "Deny"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "kpeXZ",
+          "name": "Component/Card/Primary",
+          "reusable": true,
+          "clip": true,
+          "width": 384,
+          "fill": "$primary",
+          "cornerRadius": "$radius-box",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "offset": {
+              "x": 0,
+              "y": 1
+            },
+            "blur": 3
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "etJCP",
+              "name": "Body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0SO9Q",
+                  "name": "Title",
+                  "fill": "$primary-content",
+                  "content": "Card title!",
+                  "fontFamily": "$font-family",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "1ryx8",
+                  "name": "Description",
+                  "fill": "$primary-content",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A card component has a figure, a body part, and inside body there are title and actions parts",
+                  "lineHeight": 1.75,
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                },
+                {
+                  "type": "frame",
+                  "id": "Qqtwu",
+                  "name": "Actions",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "id": "kOX7s",
+                      "type": "ref",
+                      "ref": "AuRzJ",
+                      "name": "pBtn",
+                      "descendants": {
+                        "UQkGE": {
+                          "content": "Buy Now"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
