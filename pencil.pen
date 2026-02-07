@@ -3,1538 +3,396 @@
   "children": [
     {
       "type": "frame",
-      "id": "bi8Au",
-      "x": 0,
+      "id": "zUbSS",
+      "x": 1600,
       "y": 0,
-      "name": "Frame",
-      "clip": true,
-      "width": 800,
-      "height": 600,
-      "fill": "#FFFFFF",
-      "layout": "none"
-    },
-    {
-      "type": "frame",
-      "id": "eQs2w",
-      "x": 900,
-      "y": 0,
-      "name": "Component/Button/Primary",
-      "reusable": true,
-      "height": 40,
-      "fill": "$primary",
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "GCW8m",
-          "name": "Label",
-          "fill": "$primary-content",
-          "content": "Button",
-          "fontFamily": "Inter",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "AuRzJ",
-      "x": 900,
-      "y": 60,
-      "name": "Component/Button/Neutral",
-      "reusable": true,
-      "height": 40,
-      "fill": "$neutral",
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "UQkGE",
-          "name": "Label",
-          "fill": "$neutral-content",
-          "content": "Neutral",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "zGBY8",
-      "x": 900,
-      "y": 120,
-      "name": "Component/Button/Secondary",
-      "reusable": true,
-      "height": 40,
-      "fill": "$secondary",
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "mWoDv",
-          "name": "Label",
-          "fill": "$secondary-content",
-          "content": "Secondary",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "IAx5O",
-      "x": 900,
-      "y": 180,
-      "name": "Component/Button/Accent",
-      "reusable": true,
-      "height": 40,
-      "fill": "$accent",
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "tpoLN",
-          "name": "Label",
-          "fill": "$accent-content",
-          "content": "Accent",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "dVfWC",
-      "x": 900,
-      "y": 240,
-      "name": "Component/Button/Info",
-      "reusable": true,
-      "height": 40,
-      "fill": "$info",
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "pXXFm",
-          "name": "Label",
-          "fill": "$info-content",
-          "content": "Info",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "9UvK8",
-      "x": 900,
-      "y": 300,
-      "name": "Component/Button/Success",
-      "reusable": true,
-      "height": 40,
-      "fill": "$success",
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "WOAdm",
-          "name": "Label",
-          "fill": "$success-content",
-          "content": "Success",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "0vUDd",
-      "x": 900,
-      "y": 360,
-      "name": "Component/Button/Warning",
-      "reusable": true,
-      "height": 40,
-      "fill": "$warning",
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "qZPGh",
-          "name": "Label",
-          "fill": "$warning-content",
-          "content": "Warning",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "4eSN6",
-      "x": 900,
-      "y": 420,
-      "name": "Component/Button/Error",
-      "reusable": true,
-      "height": 40,
-      "fill": "$error",
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "bQetd",
-          "name": "Label",
-          "fill": "$error-content",
-          "content": "Error",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "TcFwU",
-      "x": 900,
-      "y": 500,
-      "name": "Component/Button/Outline",
-      "reusable": true,
-      "height": 40,
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$base-content"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "sNYYO",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "Outline",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "wBToy",
-      "x": 900,
-      "y": 560,
-      "name": "Component/Button/Ghost",
-      "reusable": true,
-      "height": 40,
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "Q8sFA",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "Ghost",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "vNC4w",
-      "x": 900,
-      "y": 620,
-      "name": "Component/Button/Link",
-      "reusable": true,
-      "height": 40,
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "fL8DN",
-          "name": "Label",
-          "fill": "$primary",
-          "content": "Link",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "xs4X4",
-      "x": 900,
-      "y": 680,
-      "name": "Component/Button/Soft",
-      "reusable": true,
-      "height": 40,
-      "fill": "$neutral",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$neutral"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "Bd23R",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "Soft",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Aq6YD",
-      "x": 900,
-      "y": 740,
-      "name": "Component/Button/Dash",
-      "reusable": true,
-      "height": 40,
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$base-content"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        16
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "XOodD",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "Dash",
-          "fontFamily": "$font-family",
-          "fontSize": 14,
-          "fontWeight": "600"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Sd5bu",
-      "x": 900,
-      "y": 900,
-      "name": "Component/Checkbox/Default",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$base-content-20"
-      },
-      "layout": "none"
-    },
-    {
-      "type": "frame",
-      "id": "4PMKS",
-      "x": 900,
-      "y": 940,
-      "name": "Component/Checkbox/Checked",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$base-content-20"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "mi8NA",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$base-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "mOUj8",
-      "x": 900,
-      "y": 990,
-      "name": "Component/Checkbox/Primary",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "fill": "$primary",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$primary"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "o0TUG",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$primary-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "PNJU8",
-      "x": 900,
-      "y": 1030,
-      "name": "Component/Checkbox/Secondary",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "fill": "$secondary",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$secondary"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "emkG1",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$secondary-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "TKVrJ",
-      "x": 900,
-      "y": 1070,
-      "name": "Component/Checkbox/Accent",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "fill": "$accent",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$accent"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "JUxDQ",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$accent-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "p1gKe",
-      "x": 900,
-      "y": 1110,
-      "name": "Component/Checkbox/Neutral",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "fill": "$neutral",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$neutral"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "fzQPm",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$neutral-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "DUR7U",
-      "x": 900,
-      "y": 1150,
-      "name": "Component/Checkbox/Info",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "fill": "$info",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "NH2QY",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$info-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "hRnHE",
-      "x": 900,
-      "y": 1190,
-      "name": "Component/Checkbox/Success",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "fill": "$success",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "XuxWV",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$success-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Mb22T",
-      "x": 900,
-      "y": 1230,
-      "name": "Component/Checkbox/Warning",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "fill": "$warning",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "nVx1q",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$warning-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "1rLVv",
-      "x": 900,
-      "y": 1270,
-      "name": "Component/Checkbox/Error",
-      "reusable": true,
-      "width": 24,
-      "height": 24,
-      "fill": "$error",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error"
-      },
-      "layout": "none",
-      "children": [
-        {
-          "type": "path",
-          "id": "0e1EX",
-          "x": 4.575,
-          "y": 6.06,
-          "name": "Checkmark",
-          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
-          "fill": "$error-content",
-          "width": 14.85,
-          "height": 11.88
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "FKtDa",
-      "x": 900,
-      "y": 1400,
-      "name": "Component/Alert/Default",
-      "reusable": true,
-      "width": 400,
-      "fill": "$base-200",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$base-200"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "vipO3",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "info",
-          "iconFontFamily": "lucide",
-          "fill": "$base-content"
-        },
-        {
-          "type": "text",
-          "id": "dm0zH",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "12 unread messages. Tap to see.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "0SsUZ",
-      "x": 900,
-      "y": 1470,
-      "name": "Component/Alert/Info",
-      "reusable": true,
-      "width": 400,
-      "fill": "$info",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "KLUtk",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "info",
-          "iconFontFamily": "lucide",
-          "fill": "$info-content"
-        },
-        {
-          "type": "text",
-          "id": "zqHwM",
-          "name": "Label",
-          "fill": "$info-content",
-          "content": "New software update available.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Mx5V5",
-      "x": 900,
-      "y": 1540,
-      "name": "Component/Alert/Success",
-      "reusable": true,
-      "width": 400,
-      "fill": "$success",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "cbsQN",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "circle-check",
-          "iconFontFamily": "lucide",
-          "fill": "$success-content"
-        },
-        {
-          "type": "text",
-          "id": "Aa86j",
-          "name": "Label",
-          "fill": "$success-content",
-          "content": "Your purchase has been confirmed!",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "zwsuH",
-      "x": 900,
-      "y": 1610,
-      "name": "Component/Alert/Warning",
-      "reusable": true,
-      "width": 400,
-      "fill": "$warning",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "W1W4h",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "triangle-alert",
-          "iconFontFamily": "lucide",
-          "fill": "$warning-content"
-        },
-        {
-          "type": "text",
-          "id": "1onip",
-          "name": "Label",
-          "fill": "$warning-content",
-          "content": "Warning: Invalid email address!",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "VXWRC",
-      "x": 900,
-      "y": 1680,
-      "name": "Component/Alert/Error",
-      "reusable": true,
-      "width": 400,
-      "fill": "$error",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "ZCMBd",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "circle-x",
-          "iconFontFamily": "lucide",
-          "fill": "$error-content"
-        },
-        {
-          "type": "text",
-          "id": "IogLa",
-          "name": "Label",
-          "fill": "$error-content",
-          "content": "Error! Task failed successfully.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "XKGtk",
-      "x": 900,
-      "y": 1800,
-      "name": "Component/Alert/Soft/Info",
-      "reusable": true,
-      "width": 400,
-      "fill": "$info-soft-bg",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info-soft-border"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "rwCia",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "info",
-          "iconFontFamily": "lucide",
-          "fill": "$info"
-        },
-        {
-          "type": "text",
-          "id": "soXsd",
-          "name": "Label",
-          "fill": "$info",
-          "content": "12 unread messages. Tap to see.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "0298o",
-      "x": 900,
-      "y": 1870,
-      "name": "Component/Alert/Soft/Success",
-      "reusable": true,
-      "width": 400,
-      "fill": "$success-soft-bg",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success-soft-border"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "cMECc",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "circle-check",
-          "iconFontFamily": "lucide",
-          "fill": "$success"
-        },
-        {
-          "type": "text",
-          "id": "wGvd7",
-          "name": "Label",
-          "fill": "$success",
-          "content": "Your purchase has been confirmed!",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "K6sIn",
-      "x": 900,
-      "y": 1940,
-      "name": "Component/Alert/Soft/Warning",
-      "reusable": true,
-      "width": 400,
-      "fill": "$warning-soft-bg",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning-soft-border"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "mJ3lF",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "triangle-alert",
-          "iconFontFamily": "lucide",
-          "fill": "$warning"
-        },
-        {
-          "type": "text",
-          "id": "ALKnR",
-          "name": "Label",
-          "fill": "$warning",
-          "content": "Warning: Invalid email address!",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "ohYLU",
-      "x": 900,
-      "y": 2010,
-      "name": "Component/Alert/Soft/Error",
-      "reusable": true,
-      "width": 400,
-      "fill": "$error-soft-bg",
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error-soft-border"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "t0Gqq",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "circle-x",
-          "iconFontFamily": "lucide",
-          "fill": "$error"
-        },
-        {
-          "type": "text",
-          "id": "dN86g",
-          "name": "Label",
-          "fill": "$error",
-          "content": "Error! Task failed successfully.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "N308k",
-      "x": 900,
-      "y": 2130,
-      "name": "Component/Alert/Outline/Info",
-      "reusable": true,
-      "width": 400,
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "45Lyg",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "info",
-          "iconFontFamily": "lucide",
-          "fill": "$info"
-        },
-        {
-          "type": "text",
-          "id": "ObQBz",
-          "name": "Label",
-          "fill": "$info",
-          "content": "12 unread messages. Tap to see.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "mGhzj",
-      "x": 900,
-      "y": 2200,
-      "name": "Component/Alert/Outline/Success",
-      "reusable": true,
-      "width": 400,
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "Oz7SC",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "circle-check",
-          "iconFontFamily": "lucide",
-          "fill": "$success"
-        },
-        {
-          "type": "text",
-          "id": "9eZte",
-          "name": "Label",
-          "fill": "$success",
-          "content": "Your purchase has been confirmed!",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "cpPf1",
-      "x": 900,
-      "y": 2270,
-      "name": "Component/Alert/Outline/Warning",
-      "reusable": true,
-      "width": 400,
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "Fxp2H",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "triangle-alert",
-          "iconFontFamily": "lucide",
-          "fill": "$warning"
-        },
-        {
-          "type": "text",
-          "id": "XTitw",
-          "name": "Label",
-          "fill": "$warning",
-          "content": "Warning: Invalid email address!",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "NTJLg",
-      "x": 900,
-      "y": 2340,
-      "name": "Component/Alert/Outline/Error",
-      "reusable": true,
-      "width": 400,
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "fyEC9",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "circle-x",
-          "iconFontFamily": "lucide",
-          "fill": "$error"
-        },
-        {
-          "type": "text",
-          "id": "dQsUA",
-          "name": "Label",
-          "fill": "$error",
-          "content": "Error! Task failed successfully.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Rcec7",
-      "x": 900,
-      "y": 2460,
-      "name": "Component/Alert/Dash/Info",
-      "reusable": true,
-      "width": 400,
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "hx2J7",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "info",
-          "iconFontFamily": "lucide",
-          "fill": "$info"
-        },
-        {
-          "type": "text",
-          "id": "dhsRr",
-          "name": "Label",
-          "fill": "$info",
-          "content": "12 unread messages. Tap to see.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "V2DCj",
-      "x": 900,
-      "y": 2530,
-      "name": "Component/Alert/Dash/Success",
-      "reusable": true,
-      "width": 400,
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "NuwE7",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "circle-check",
-          "iconFontFamily": "lucide",
-          "fill": "$success"
-        },
-        {
-          "type": "text",
-          "id": "hTQYU",
-          "name": "Label",
-          "fill": "$success",
-          "content": "Your purchase has been confirmed!",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "XcN6q",
-      "x": 900,
-      "y": 2600,
-      "name": "Component/Alert/Dash/Warning",
-      "reusable": true,
-      "width": 400,
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "HTNa7",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "triangle-alert",
-          "iconFontFamily": "lucide",
-          "fill": "$warning"
-        },
-        {
-          "type": "text",
-          "id": "SUg20",
-          "name": "Label",
-          "fill": "$warning",
-          "content": "Warning: Invalid email address!",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "UoWkM",
-      "x": 900,
-      "y": 2670,
-      "name": "Component/Alert/Dash/Error",
-      "reusable": true,
-      "width": 400,
-      "cornerRadius": "$radius-box",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error"
-      },
-      "gap": 16,
-      "padding": [
-        12,
-        16
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "icon_font",
-          "id": "NHhWl",
-          "name": "Icon",
-          "width": 20,
-          "height": 20,
-          "iconFontName": "circle-x",
-          "iconFontFamily": "lucide",
-          "fill": "$error"
-        },
-        {
-          "type": "text",
-          "id": "5bacm",
-          "name": "Label",
-          "fill": "$error",
-          "content": "Error! Task failed successfully.",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "R0ouX",
-      "x": 900,
-      "y": 2814,
-      "name": "Component/Toast/Default",
-      "reusable": true,
+      "name": "Buttons",
       "layout": "vertical",
-      "gap": 8,
+      "gap": 12,
+      "padding": 24,
       "children": [
         {
-          "id": "hx2LN",
-          "type": "ref",
-          "ref": "0SsUZ",
-          "name": "alert1",
-          "descendants": {
-            "zqHwM": {
-              "content": "New message arrived."
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "3q4fX",
-      "x": 900,
-      "y": 2914,
-      "name": "Component/Toast/Stacked",
-      "reusable": true,
-      "layout": "vertical",
-      "gap": 8,
-      "children": [
-        {
-          "id": "iDe5F",
-          "type": "ref",
-          "ref": "0SsUZ",
-          "name": "alertA",
-          "descendants": {
-            "zqHwM": {
-              "content": "New mail arrived."
-            }
-          }
+          "type": "text",
+          "id": "w7etx",
+          "name": "lbl1",
+          "fill": "$base-content",
+          "content": "Buttons",
+          "fontFamily": "$font-family",
+          "fontSize": 24,
+          "fontWeight": "700"
         },
-        {
-          "id": "uQwAX",
-          "type": "ref",
-          "ref": "Mx5V5",
-          "name": "alertB",
-          "descendants": {
-            "Aa86j": {
-              "content": "Message sent successfully."
-            }
-          }
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "1el7K",
-      "x": 900,
-      "y": 3030,
-      "name": "Component/Toast/In-Context",
-      "reusable": true,
-      "clip": true,
-      "width": 500,
-      "height": 200,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-box",
-      "layout": "none",
-      "children": [
         {
           "type": "frame",
-          "id": "C2fzn",
-          "x": 234,
-          "y": 100,
-          "name": "Toast Container",
-          "layout": "vertical",
+          "id": "eQs2w",
+          "name": "Component/Button/Primary",
+          "reusable": true,
+          "height": 40,
+          "fill": "$primary",
+          "cornerRadius": "$radius-field",
           "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
           "children": [
             {
-              "id": "c6JEE",
-              "type": "ref",
-              "ref": "0SsUZ",
-              "name": "infoAlert",
-              "width": 250,
-              "descendants": {
-                "zqHwM": {
-                  "content": "New mail arrived."
-                }
-              }
-            },
+              "type": "text",
+              "id": "GCW8m",
+              "name": "Label",
+              "fill": "$primary-content",
+              "content": "Button",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "AuRzJ",
+          "name": "Component/Button/Neutral",
+          "reusable": true,
+          "height": 40,
+          "fill": "$neutral",
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
             {
-              "id": "JiGO9",
-              "type": "ref",
-              "ref": "Mx5V5",
-              "name": "successAlert",
-              "width": 250,
-              "descendants": {
-                "Aa86j": {
-                  "content": "Message sent successfully."
-                }
-              }
+              "type": "text",
+              "id": "UQkGE",
+              "name": "Label",
+              "fill": "$neutral-content",
+              "content": "Neutral",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zGBY8",
+          "name": "Component/Button/Secondary",
+          "reusable": true,
+          "height": 40,
+          "fill": "$secondary",
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "mWoDv",
+              "name": "Label",
+              "fill": "$secondary-content",
+              "content": "Secondary",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "IAx5O",
+          "name": "Component/Button/Accent",
+          "reusable": true,
+          "height": 40,
+          "fill": "$accent",
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "tpoLN",
+              "name": "Label",
+              "fill": "$accent-content",
+              "content": "Accent",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dVfWC",
+          "name": "Component/Button/Info",
+          "reusable": true,
+          "height": 40,
+          "fill": "$info",
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "pXXFm",
+              "name": "Label",
+              "fill": "$info-content",
+              "content": "Info",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9UvK8",
+          "name": "Component/Button/Success",
+          "reusable": true,
+          "height": 40,
+          "fill": "$success",
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "WOAdm",
+              "name": "Label",
+              "fill": "$success-content",
+              "content": "Success",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0vUDd",
+          "name": "Component/Button/Warning",
+          "reusable": true,
+          "height": 40,
+          "fill": "$warning",
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "qZPGh",
+              "name": "Label",
+              "fill": "$warning-content",
+              "content": "Warning",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "4eSN6",
+          "name": "Component/Button/Error",
+          "reusable": true,
+          "height": 40,
+          "fill": "$error",
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "bQetd",
+              "name": "Label",
+              "fill": "$error-content",
+              "content": "Error",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TcFwU",
+          "name": "Component/Button/Outline",
+          "reusable": true,
+          "height": 40,
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-content"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "sNYYO",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Outline",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wBToy",
+          "name": "Component/Button/Ghost",
+          "reusable": true,
+          "height": 40,
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Q8sFA",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Ghost",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "vNC4w",
+          "name": "Component/Button/Link",
+          "reusable": true,
+          "height": 40,
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "fL8DN",
+              "name": "Label",
+              "fill": "$primary",
+              "content": "Link",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xs4X4",
+          "name": "Component/Button/Soft",
+          "reusable": true,
+          "height": 40,
+          "fill": "$neutral",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$neutral"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Bd23R",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Soft",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Aq6YD",
+          "name": "Component/Button/Dash",
+          "reusable": true,
+          "height": 40,
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-content"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "XOodD",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Dash",
+              "fontFamily": "$font-family",
+              "fontSize": 14,
+              "fontWeight": "600"
             }
           ]
         }
@@ -1542,1840 +400,2908 @@
     },
     {
       "type": "frame",
-      "id": "Uty4e",
-      "x": 900,
-      "y": 3350,
-      "name": "Component/Input/Default",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$base-content-20"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "0jB5m",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "paSb7",
-      "x": 900,
-      "y": 3410,
-      "name": "Component/Input/Ghost",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "cornerRadius": "$radius-field",
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "qegym",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Z4cRa",
-      "x": 900,
-      "y": 3470,
-      "name": "Component/Input/Neutral",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$neutral"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "i6ukb",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "fnx4z",
-      "x": 900,
-      "y": 3530,
-      "name": "Component/Input/Primary",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$primary"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "NlGuF",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "dw8y6",
-      "x": 900,
-      "y": 3590,
-      "name": "Component/Input/Secondary",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$secondary"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "b49dn",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "VYmyl",
-      "x": 900,
-      "y": 3650,
-      "name": "Component/Input/Accent",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$accent"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "JxgZM",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "wgX42",
-      "x": 900,
-      "y": 3710,
-      "name": "Component/Input/Info",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "sdMrF",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "R396g",
-      "x": 900,
-      "y": 3770,
-      "name": "Component/Input/Success",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "fapli",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Tz7xL",
-      "x": 900,
-      "y": 3830,
-      "name": "Component/Input/Warning",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "rEP10",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "hcEtX",
-      "x": 900,
-      "y": 3890,
-      "name": "Component/Input/Error",
-      "reusable": true,
-      "width": 320,
-      "height": 40,
-      "fill": "$base-100",
-      "cornerRadius": "$radius-field",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        12
-      ],
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "32k8E",
-          "name": "Placeholder",
-          "opacity": 0.5,
-          "fill": "$base-content",
-          "content": "Type here",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "nvRR1",
-      "x": 900,
-      "y": 3970,
-      "name": "Component/Input/With Label",
-      "reusable": true,
-      "width": 320,
+      "id": "m84Vo",
+      "x": 1600,
+      "y": 803,
+      "name": "Checkboxes",
       "layout": "vertical",
-      "gap": 4,
+      "gap": 12,
+      "padding": 24,
       "children": [
         {
           "type": "text",
-          "id": "K4owI",
-          "name": "Label",
+          "id": "SRRIY",
+          "name": "lbl2",
           "fill": "$base-content",
-          "content": "Label",
+          "content": "Checkboxes",
           "fontFamily": "$font-family",
-          "fontSize": 12,
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "Sd5bu",
+          "name": "Component/Checkbox/Default",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-content-20"
+          },
+          "layout": "none"
+        },
+        {
+          "type": "frame",
+          "id": "4PMKS",
+          "name": "Component/Checkbox/Checked",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-content-20"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "mi8NA",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$base-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mOUj8",
+          "name": "Component/Checkbox/Primary",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "fill": "$primary",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$primary"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "o0TUG",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$primary-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PNJU8",
+          "name": "Component/Checkbox/Secondary",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "fill": "$secondary",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$secondary"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "emkG1",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$secondary-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TKVrJ",
+          "name": "Component/Checkbox/Accent",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "fill": "$accent",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$accent"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "JUxDQ",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$accent-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "p1gKe",
+          "name": "Component/Checkbox/Neutral",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "fill": "$neutral",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$neutral"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "fzQPm",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$neutral-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DUR7U",
+          "name": "Component/Checkbox/Info",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "fill": "$info",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "NH2QY",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$info-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hRnHE",
+          "name": "Component/Checkbox/Success",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "fill": "$success",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "XuxWV",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$success-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Mb22T",
+          "name": "Component/Checkbox/Warning",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "fill": "$warning",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "nVx1q",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$warning-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "1rLVv",
+          "name": "Component/Checkbox/Error",
+          "reusable": true,
+          "width": 24,
+          "height": 24,
+          "fill": "$error",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error"
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "path",
+              "id": "0e1EX",
+              "x": 4.575,
+              "y": 6.06,
+              "name": "Checkmark",
+              "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+              "fill": "$error-content",
+              "width": 14.85,
+              "height": 11.88
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "jfWo9",
+      "x": 1900,
+      "y": 0,
+      "name": "Inputs",
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 24,
+      "children": [
+        {
+          "type": "text",
+          "id": "jYbDr",
+          "name": "lbl3",
+          "fill": "$base-content",
+          "content": "Inputs",
+          "fontFamily": "$font-family",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "Uty4e",
+          "name": "Component/Input/Default",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-content-20"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "0jB5m",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "paSb7",
+          "name": "Component/Input/Ghost",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "cornerRadius": "$radius-field",
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "qegym",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Z4cRa",
+          "name": "Component/Input/Neutral",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$neutral"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "i6ukb",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fnx4z",
+          "name": "Component/Input/Primary",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$primary"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "NlGuF",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dw8y6",
+          "name": "Component/Input/Secondary",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$secondary"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "b49dn",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VYmyl",
+          "name": "Component/Input/Accent",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$accent"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "JxgZM",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wgX42",
+          "name": "Component/Input/Info",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "sdMrF",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "R396g",
+          "name": "Component/Input/Success",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "fapli",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Tz7xL",
+          "name": "Component/Input/Warning",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "rEP10",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hcEtX",
+          "name": "Component/Input/Error",
+          "reusable": true,
+          "width": 320,
+          "height": 40,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-field",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "32k8E",
+              "name": "Placeholder",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Type here",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nvRR1",
+          "name": "Component/Input/With Label",
+          "reusable": true,
+          "width": 320,
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "K4owI",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Label",
+              "fontFamily": "$font-family",
+              "fontSize": 12,
+              "fontWeight": "600"
+            },
+            {
+              "id": "cPQBR",
+              "type": "ref",
+              "ref": "Uty4e",
+              "name": "Input",
+              "width": "fill_container"
+            },
+            {
+              "type": "text",
+              "id": "1MOkG",
+              "name": "Helper",
+              "opacity": 0.5,
+              "fill": "$base-content",
+              "content": "Optional",
+              "fontFamily": "$font-family",
+              "fontSize": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "EIdrv",
+      "x": 1900,
+      "y": 737,
+      "name": "Toasts",
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 24,
+      "children": [
+        {
+          "type": "text",
+          "id": "uFLeM",
+          "name": "lbl4",
+          "fill": "$base-content",
+          "content": "Toasts",
+          "fontFamily": "$font-family",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "R0ouX",
+          "name": "Component/Toast/Default",
+          "reusable": true,
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "id": "hx2LN",
+              "type": "ref",
+              "ref": "0SsUZ",
+              "name": "alert1",
+              "descendants": {
+                "zqHwM": {
+                  "content": "New message arrived."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3q4fX",
+          "name": "Component/Toast/Stacked",
+          "reusable": true,
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "id": "iDe5F",
+              "type": "ref",
+              "ref": "0SsUZ",
+              "name": "alertA",
+              "descendants": {
+                "zqHwM": {
+                  "content": "New mail arrived."
+                }
+              }
+            },
+            {
+              "id": "uQwAX",
+              "type": "ref",
+              "ref": "Mx5V5",
+              "name": "alertB",
+              "descendants": {
+                "Aa86j": {
+                  "content": "Message sent successfully."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "1el7K",
+          "name": "Component/Toast/In-Context",
+          "reusable": true,
+          "clip": true,
+          "width": 500,
+          "height": 200,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-box",
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "C2fzn",
+              "x": 234,
+              "y": 100,
+              "name": "Toast Container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "id": "c6JEE",
+                  "type": "ref",
+                  "ref": "0SsUZ",
+                  "name": "infoAlert",
+                  "width": 250,
+                  "descendants": {
+                    "zqHwM": {
+                      "content": "New mail arrived."
+                    }
+                  }
+                },
+                {
+                  "id": "JiGO9",
+                  "type": "ref",
+                  "ref": "Mx5V5",
+                  "name": "successAlert",
+                  "width": 250,
+                  "descendants": {
+                    "Aa86j": {
+                      "content": "Message sent successfully."
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "MXLzj",
+      "x": 1900,
+      "y": 1240,
+      "name": "Alerts",
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 24,
+      "children": [
+        {
+          "type": "text",
+          "id": "8PT0G",
+          "name": "lbl5",
+          "fill": "$base-content",
+          "content": "Alerts",
+          "fontFamily": "$font-family",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "FKtDa",
+          "name": "Component/Alert/Default",
+          "reusable": true,
+          "width": 400,
+          "fill": "$base-200",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-200"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "vipO3",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "info",
+              "iconFontFamily": "lucide",
+              "fill": "$base-content"
+            },
+            {
+              "type": "text",
+              "id": "dm0zH",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "12 unread messages. Tap to see.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0SsUZ",
+          "name": "Component/Alert/Info",
+          "reusable": true,
+          "width": 400,
+          "fill": "$info",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "KLUtk",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "info",
+              "iconFontFamily": "lucide",
+              "fill": "$info-content"
+            },
+            {
+              "type": "text",
+              "id": "zqHwM",
+              "name": "Label",
+              "fill": "$info-content",
+              "content": "New software update available.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Mx5V5",
+          "name": "Component/Alert/Success",
+          "reusable": true,
+          "width": 400,
+          "fill": "$success",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "cbsQN",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "circle-check",
+              "iconFontFamily": "lucide",
+              "fill": "$success-content"
+            },
+            {
+              "type": "text",
+              "id": "Aa86j",
+              "name": "Label",
+              "fill": "$success-content",
+              "content": "Your purchase has been confirmed!",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zwsuH",
+          "name": "Component/Alert/Warning",
+          "reusable": true,
+          "width": 400,
+          "fill": "$warning",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "W1W4h",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "triangle-alert",
+              "iconFontFamily": "lucide",
+              "fill": "$warning-content"
+            },
+            {
+              "type": "text",
+              "id": "1onip",
+              "name": "Label",
+              "fill": "$warning-content",
+              "content": "Warning: Invalid email address!",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VXWRC",
+          "name": "Component/Alert/Error",
+          "reusable": true,
+          "width": 400,
+          "fill": "$error",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "ZCMBd",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "circle-x",
+              "iconFontFamily": "lucide",
+              "fill": "$error-content"
+            },
+            {
+              "type": "text",
+              "id": "IogLa",
+              "name": "Label",
+              "fill": "$error-content",
+              "content": "Error! Task failed successfully.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XKGtk",
+          "name": "Component/Alert/Soft/Info",
+          "reusable": true,
+          "width": 400,
+          "fill": "$info-soft-bg",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info-soft-border"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "rwCia",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "info",
+              "iconFontFamily": "lucide",
+              "fill": "$info"
+            },
+            {
+              "type": "text",
+              "id": "soXsd",
+              "name": "Label",
+              "fill": "$info",
+              "content": "12 unread messages. Tap to see.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0298o",
+          "name": "Component/Alert/Soft/Success",
+          "reusable": true,
+          "width": 400,
+          "fill": "$success-soft-bg",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success-soft-border"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "cMECc",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "circle-check",
+              "iconFontFamily": "lucide",
+              "fill": "$success"
+            },
+            {
+              "type": "text",
+              "id": "wGvd7",
+              "name": "Label",
+              "fill": "$success",
+              "content": "Your purchase has been confirmed!",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "K6sIn",
+          "name": "Component/Alert/Soft/Warning",
+          "reusable": true,
+          "width": 400,
+          "fill": "$warning-soft-bg",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning-soft-border"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "mJ3lF",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "triangle-alert",
+              "iconFontFamily": "lucide",
+              "fill": "$warning"
+            },
+            {
+              "type": "text",
+              "id": "ALKnR",
+              "name": "Label",
+              "fill": "$warning",
+              "content": "Warning: Invalid email address!",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ohYLU",
+          "name": "Component/Alert/Soft/Error",
+          "reusable": true,
+          "width": 400,
+          "fill": "$error-soft-bg",
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error-soft-border"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "t0Gqq",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "circle-x",
+              "iconFontFamily": "lucide",
+              "fill": "$error"
+            },
+            {
+              "type": "text",
+              "id": "dN86g",
+              "name": "Label",
+              "fill": "$error",
+              "content": "Error! Task failed successfully.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "N308k",
+          "name": "Component/Alert/Outline/Info",
+          "reusable": true,
+          "width": 400,
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "45Lyg",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "info",
+              "iconFontFamily": "lucide",
+              "fill": "$info"
+            },
+            {
+              "type": "text",
+              "id": "ObQBz",
+              "name": "Label",
+              "fill": "$info",
+              "content": "12 unread messages. Tap to see.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mGhzj",
+          "name": "Component/Alert/Outline/Success",
+          "reusable": true,
+          "width": 400,
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "Oz7SC",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "circle-check",
+              "iconFontFamily": "lucide",
+              "fill": "$success"
+            },
+            {
+              "type": "text",
+              "id": "9eZte",
+              "name": "Label",
+              "fill": "$success",
+              "content": "Your purchase has been confirmed!",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cpPf1",
+          "name": "Component/Alert/Outline/Warning",
+          "reusable": true,
+          "width": 400,
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "Fxp2H",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "triangle-alert",
+              "iconFontFamily": "lucide",
+              "fill": "$warning"
+            },
+            {
+              "type": "text",
+              "id": "XTitw",
+              "name": "Label",
+              "fill": "$warning",
+              "content": "Warning: Invalid email address!",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NTJLg",
+          "name": "Component/Alert/Outline/Error",
+          "reusable": true,
+          "width": 400,
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "fyEC9",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "circle-x",
+              "iconFontFamily": "lucide",
+              "fill": "$error"
+            },
+            {
+              "type": "text",
+              "id": "dQsUA",
+              "name": "Label",
+              "fill": "$error",
+              "content": "Error! Task failed successfully.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Rcec7",
+          "name": "Component/Alert/Dash/Info",
+          "reusable": true,
+          "width": 400,
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "hx2J7",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "info",
+              "iconFontFamily": "lucide",
+              "fill": "$info"
+            },
+            {
+              "type": "text",
+              "id": "dhsRr",
+              "name": "Label",
+              "fill": "$info",
+              "content": "12 unread messages. Tap to see.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "V2DCj",
+          "name": "Component/Alert/Dash/Success",
+          "reusable": true,
+          "width": 400,
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "NuwE7",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "circle-check",
+              "iconFontFamily": "lucide",
+              "fill": "$success"
+            },
+            {
+              "type": "text",
+              "id": "hTQYU",
+              "name": "Label",
+              "fill": "$success",
+              "content": "Your purchase has been confirmed!",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XcN6q",
+          "name": "Component/Alert/Dash/Warning",
+          "reusable": true,
+          "width": 400,
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "HTNa7",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "triangle-alert",
+              "iconFontFamily": "lucide",
+              "fill": "$warning"
+            },
+            {
+              "type": "text",
+              "id": "SUg20",
+              "name": "Label",
+              "fill": "$warning",
+              "content": "Warning: Invalid email address!",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UoWkM",
+          "name": "Component/Alert/Dash/Error",
+          "reusable": true,
+          "width": 400,
+          "cornerRadius": "$radius-box",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error"
+          },
+          "gap": 16,
+          "padding": [
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "NHhWl",
+              "name": "Icon",
+              "width": 20,
+              "height": 20,
+              "iconFontName": "circle-x",
+              "iconFontFamily": "lucide",
+              "fill": "$error"
+            },
+            {
+              "type": "text",
+              "id": "5bacm",
+              "name": "Label",
+              "fill": "$error",
+              "content": "Error! Task failed successfully.",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "EaOFd",
+      "x": 1600,
+      "y": 1290,
+      "name": "Badges",
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 24,
+      "children": [
+        {
+          "type": "text",
+          "id": "fXUHu",
+          "name": "lbl6",
+          "fill": "$base-content",
+          "content": "Badges",
+          "fontFamily": "$font-family",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "QCcAx",
+          "name": "Component/Badge/Primary",
+          "reusable": true,
+          "height": 24,
+          "fill": "$primary",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$primary"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "IBmSi",
+              "name": "Label",
+              "fill": "$primary-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0NyhZ",
+          "name": "Component/Badge/Secondary",
+          "reusable": true,
+          "height": 24,
+          "fill": "$secondary",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$secondary"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "1MXf2",
+              "name": "Label",
+              "fill": "$secondary-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WZbCi",
+          "name": "Component/Badge/Accent",
+          "reusable": true,
+          "height": 24,
+          "fill": "$accent",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$accent"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "P9Cix",
+              "name": "Label",
+              "fill": "$accent-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "C78Hg",
+          "name": "Component/Badge/Neutral",
+          "reusable": true,
+          "height": 24,
+          "fill": "$neutral",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$neutral"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "6nQJJ",
+              "name": "Label",
+              "fill": "$neutral-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pJyur",
+          "name": "Component/Badge/Info",
+          "reusable": true,
+          "height": 24,
+          "fill": "$info",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "oE3wg",
+              "name": "Label",
+              "fill": "$info-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fXdLV",
+          "name": "Component/Badge/Success",
+          "reusable": true,
+          "height": 24,
+          "fill": "$success",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "FkCiq",
+              "name": "Label",
+              "fill": "$success-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uKIKS",
+          "name": "Component/Badge/Warning",
+          "reusable": true,
+          "height": 24,
+          "fill": "$warning",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "GvNzk",
+              "name": "Label",
+              "fill": "$warning-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TyvPw",
+          "name": "Component/Badge/Error",
+          "reusable": true,
+          "height": 24,
+          "fill": "$error",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "ir2D4",
+              "name": "Label",
+              "fill": "$error-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "H6pdQ",
+          "name": "Component/Badge/Outline",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-content"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "meCow",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5Er9d",
+          "name": "Component/Badge/Dash",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$base-content"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "zgaqj",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "viVu7",
+          "name": "Component/Badge/Soft",
+          "reusable": true,
+          "height": 24,
+          "fill": "$default-soft-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$default-soft-border"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "K5eC2",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "e3nCA",
+          "name": "Component/Badge/Ghost",
+          "reusable": true,
+          "height": 24,
+          "fill": "$ghost-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$ghost-bg"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "wvsjb",
+              "name": "Label",
+              "fill": "$base-content",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LQjBU",
+          "name": "Component/Badge/Soft/Primary",
+          "reusable": true,
+          "height": 24,
+          "fill": "$primary-soft-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$primary-soft-border"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "OM6Mw",
+              "name": "Label",
+              "fill": "$primary",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gz69b",
+          "name": "Component/Badge/Soft/Secondary",
+          "reusable": true,
+          "height": 24,
+          "fill": "$secondary-soft-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$secondary-soft-border"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "gtXfy",
+              "name": "Label",
+              "fill": "$secondary",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "t71f7",
+          "name": "Component/Badge/Soft/Accent",
+          "reusable": true,
+          "height": 24,
+          "fill": "$accent-soft-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$accent-soft-border"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "fO8ac",
+              "name": "Label",
+              "fill": "$accent",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jLy3V",
+          "name": "Component/Badge/Soft/Info",
+          "reusable": true,
+          "height": 24,
+          "fill": "$info-soft-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info-soft-border"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "5A8cJ",
+              "name": "Label",
+              "fill": "$info",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WEfvT",
+          "name": "Component/Badge/Soft/Success",
+          "reusable": true,
+          "height": 24,
+          "fill": "$success-soft-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success-soft-border"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "fwZ0R",
+              "name": "Label",
+              "fill": "$success",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2dRWj",
+          "name": "Component/Badge/Soft/Warning",
+          "reusable": true,
+          "height": 24,
+          "fill": "$warning-soft-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning-soft-border"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "fWCPl",
+              "name": "Label",
+              "fill": "$warning",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "L1wtC",
+          "name": "Component/Badge/Soft/Error",
+          "reusable": true,
+          "height": 24,
+          "fill": "$error-soft-bg",
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error-soft-border"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Vgsl3",
+              "name": "Label",
+              "fill": "$error",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ftnss",
+          "name": "Component/Badge/Outline/Primary",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$primary"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "rXdQ3",
+              "name": "Label",
+              "fill": "$primary",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LQu2N",
+          "name": "Component/Badge/Outline/Secondary",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$secondary"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "YbTrD",
+              "name": "Label",
+              "fill": "$secondary",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "aBUSC",
+          "name": "Component/Badge/Outline/Accent",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$accent"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "6Sfiq",
+              "name": "Label",
+              "fill": "$accent",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2pW1p",
+          "name": "Component/Badge/Outline/Info",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "TuvtK",
+              "name": "Label",
+              "fill": "$info",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "q7M3X",
+          "name": "Component/Badge/Outline/Success",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "F0pVT",
+              "name": "Label",
+              "fill": "$success",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GVEuz",
+          "name": "Component/Badge/Outline/Warning",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Myxhm",
+              "name": "Label",
+              "fill": "$warning",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6oQCE",
+          "name": "Component/Badge/Outline/Error",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "EpAwL",
+              "name": "Label",
+              "fill": "$error",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rxoD1",
+          "name": "Component/Badge/Dash/Primary",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$primary"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Iawv8",
+              "name": "Label",
+              "fill": "$primary",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "vIbQK",
+          "name": "Component/Badge/Dash/Secondary",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$secondary"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "arkra",
+              "name": "Label",
+              "fill": "$secondary",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "V7VWP",
+          "name": "Component/Badge/Dash/Accent",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$accent"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "exGwx",
+              "name": "Label",
+              "fill": "$accent",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rj9a1",
+          "name": "Component/Badge/Dash/Info",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$info"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "vND37",
+              "name": "Label",
+              "fill": "$info",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "osIq7",
+          "name": "Component/Badge/Dash/Success",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$success"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "H1Guk",
+              "name": "Label",
+              "fill": "$success",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xBSr0",
+          "name": "Component/Badge/Dash/Warning",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$warning"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "hQBDJ",
+              "name": "Label",
+              "fill": "$warning",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sGfuO",
+          "name": "Component/Badge/Dash/Error",
+          "reusable": true,
+          "height": 24,
+          "cornerRadius": "$radius-selector",
+          "stroke": {
+            "align": "inside",
+            "thickness": "$border",
+            "fill": "$error"
+          },
+          "gap": 8,
+          "padding": [
+            0,
+            11
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "ZvBw4",
+              "name": "Label",
+              "fill": "$error",
+              "content": "Badge",
+              "fontFamily": "$font-family",
+              "fontSize": 14
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "KPHNr",
+      "x": 2550,
+      "y": 0,
+      "name": "Typography",
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 24,
+      "children": [
+        {
+          "type": "text",
+          "id": "B8FxO",
+          "name": "lbl7",
+          "fill": "$base-content",
+          "content": "Typography",
+          "fontFamily": "$font-family",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "sgDhI",
+          "name": "Component/Typography/H1",
+          "reusable": true,
+          "fill": "$base-content",
+          "content": "Heading 1",
+          "lineHeight": 1.111,
+          "fontFamily": "$font-family",
+          "fontSize": 36,
+          "fontWeight": "800"
+        },
+        {
+          "type": "text",
+          "id": "gIgok",
+          "name": "Component/Typography/H2",
+          "reusable": true,
+          "fill": "$base-content",
+          "content": "Heading 2",
+          "lineHeight": 1.333,
+          "fontFamily": "$font-family",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "LAyc8",
+          "name": "Component/Typography/H3",
+          "reusable": true,
+          "fill": "$base-content",
+          "content": "Heading 3",
+          "lineHeight": 1.6,
+          "fontFamily": "$font-family",
+          "fontSize": 20,
           "fontWeight": "600"
         },
         {
-          "id": "cPQBR",
-          "type": "ref",
-          "ref": "Uty4e",
-          "name": "Input",
-          "width": "fill_container"
+          "type": "text",
+          "id": "kuae9",
+          "name": "Component/Typography/H4",
+          "reusable": true,
+          "fill": "$base-content",
+          "content": "Heading 4",
+          "lineHeight": 1.5,
+          "fontFamily": "$font-family",
+          "fontSize": 16,
+          "fontWeight": "600"
         },
         {
           "type": "text",
-          "id": "1MOkG",
-          "name": "Helper",
-          "opacity": 0.5,
+          "id": "ONIs6",
+          "name": "Component/Typography/H5",
+          "reusable": true,
           "fill": "$base-content",
-          "content": "Optional",
+          "content": "Heading 5",
+          "lineHeight": 1.75,
           "fontFamily": "$font-family",
-          "fontSize": 12
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "QCcAx",
-      "x": 900,
-      "y": 4150,
-      "name": "Component/Badge/Primary",
-      "reusable": true,
-      "height": 24,
-      "fill": "$primary",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$primary"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "IBmSi",
-          "name": "Label",
-          "fill": "$primary-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "0NyhZ",
-      "x": 900,
-      "y": 4190,
-      "name": "Component/Badge/Secondary",
-      "reusable": true,
-      "height": 24,
-      "fill": "$secondary",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$secondary"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "1MXf2",
-          "name": "Label",
-          "fill": "$secondary-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "WZbCi",
-      "x": 900,
-      "y": 4230,
-      "name": "Component/Badge/Accent",
-      "reusable": true,
-      "height": 24,
-      "fill": "$accent",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$accent"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "P9Cix",
-          "name": "Label",
-          "fill": "$accent-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "C78Hg",
-      "x": 900,
-      "y": 4270,
-      "name": "Component/Badge/Neutral",
-      "reusable": true,
-      "height": 24,
-      "fill": "$neutral",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$neutral"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "6nQJJ",
-          "name": "Label",
-          "fill": "$neutral-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "pJyur",
-      "x": 900,
-      "y": 4310,
-      "name": "Component/Badge/Info",
-      "reusable": true,
-      "height": 24,
-      "fill": "$info",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "oE3wg",
-          "name": "Label",
-          "fill": "$info-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "fXdLV",
-      "x": 900,
-      "y": 4350,
-      "name": "Component/Badge/Success",
-      "reusable": true,
-      "height": 24,
-      "fill": "$success",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "FkCiq",
-          "name": "Label",
-          "fill": "$success-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "uKIKS",
-      "x": 900,
-      "y": 4390,
-      "name": "Component/Badge/Warning",
-      "reusable": true,
-      "height": 24,
-      "fill": "$warning",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "GvNzk",
-          "name": "Label",
-          "fill": "$warning-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "TyvPw",
-      "x": 900,
-      "y": 4430,
-      "name": "Component/Badge/Error",
-      "reusable": true,
-      "height": 24,
-      "fill": "$error",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "ir2D4",
-          "name": "Label",
-          "fill": "$error-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "H6pdQ",
-      "x": 900,
-      "y": 4570,
-      "name": "Component/Badge/Outline",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$base-content"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "meCow",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "5Er9d",
-      "x": 900,
-      "y": 4610,
-      "name": "Component/Badge/Dash",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$base-content"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "zgaqj",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "viVu7",
-      "x": 900,
-      "y": 4650,
-      "name": "Component/Badge/Soft",
-      "reusable": true,
-      "height": 24,
-      "fill": "$default-soft-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$default-soft-border"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "K5eC2",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "e3nCA",
-      "x": 900,
-      "y": 4690,
-      "name": "Component/Badge/Ghost",
-      "reusable": true,
-      "height": 24,
-      "fill": "$ghost-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$ghost-bg"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "wvsjb",
-          "name": "Label",
-          "fill": "$base-content",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "LQjBU",
-      "x": 900,
-      "y": 4830,
-      "name": "Component/Badge/Soft/Primary",
-      "reusable": true,
-      "height": 24,
-      "fill": "$primary-soft-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$primary-soft-border"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "OM6Mw",
-          "name": "Label",
-          "fill": "$primary",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "gz69b",
-      "x": 900,
-      "y": 4870,
-      "name": "Component/Badge/Soft/Secondary",
-      "reusable": true,
-      "height": 24,
-      "fill": "$secondary-soft-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$secondary-soft-border"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "gtXfy",
-          "name": "Label",
-          "fill": "$secondary",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "t71f7",
-      "x": 900,
-      "y": 4910,
-      "name": "Component/Badge/Soft/Accent",
-      "reusable": true,
-      "height": 24,
-      "fill": "$accent-soft-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$accent-soft-border"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "fO8ac",
-          "name": "Label",
-          "fill": "$accent",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "jLy3V",
-      "x": 900,
-      "y": 4950,
-      "name": "Component/Badge/Soft/Info",
-      "reusable": true,
-      "height": 24,
-      "fill": "$info-soft-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info-soft-border"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "5A8cJ",
-          "name": "Label",
-          "fill": "$info",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "WEfvT",
-      "x": 900,
-      "y": 4990,
-      "name": "Component/Badge/Soft/Success",
-      "reusable": true,
-      "height": 24,
-      "fill": "$success-soft-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success-soft-border"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "fwZ0R",
-          "name": "Label",
-          "fill": "$success",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "2dRWj",
-      "x": 900,
-      "y": 5030,
-      "name": "Component/Badge/Soft/Warning",
-      "reusable": true,
-      "height": 24,
-      "fill": "$warning-soft-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning-soft-border"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "fWCPl",
-          "name": "Label",
-          "fill": "$warning",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "L1wtC",
-      "x": 900,
-      "y": 5070,
-      "name": "Component/Badge/Soft/Error",
-      "reusable": true,
-      "height": 24,
-      "fill": "$error-soft-bg",
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error-soft-border"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "Vgsl3",
-          "name": "Label",
-          "fill": "$error",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "Ftnss",
-      "x": 900,
-      "y": 5210,
-      "name": "Component/Badge/Outline/Primary",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$primary"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "rXdQ3",
-          "name": "Label",
-          "fill": "$primary",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "LQu2N",
-      "x": 900,
-      "y": 5250,
-      "name": "Component/Badge/Outline/Secondary",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$secondary"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "YbTrD",
-          "name": "Label",
-          "fill": "$secondary",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "aBUSC",
-      "x": 900,
-      "y": 5290,
-      "name": "Component/Badge/Outline/Accent",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$accent"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "6Sfiq",
-          "name": "Label",
-          "fill": "$accent",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "2pW1p",
-      "x": 900,
-      "y": 5330,
-      "name": "Component/Badge/Outline/Info",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "TuvtK",
-          "name": "Label",
-          "fill": "$info",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "q7M3X",
-      "x": 900,
-      "y": 5370,
-      "name": "Component/Badge/Outline/Success",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "F0pVT",
-          "name": "Label",
-          "fill": "$success",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "GVEuz",
-      "x": 900,
-      "y": 5410,
-      "name": "Component/Badge/Outline/Warning",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "Myxhm",
-          "name": "Label",
-          "fill": "$warning",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "6oQCE",
-      "x": 900,
-      "y": 5450,
-      "name": "Component/Badge/Outline/Error",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "EpAwL",
-          "name": "Label",
-          "fill": "$error",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "rxoD1",
-      "x": 900,
-      "y": 5590,
-      "name": "Component/Badge/Dash/Primary",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$primary"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "Iawv8",
-          "name": "Label",
-          "fill": "$primary",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "vIbQK",
-      "x": 900,
-      "y": 5630,
-      "name": "Component/Badge/Dash/Secondary",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$secondary"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "arkra",
-          "name": "Label",
-          "fill": "$secondary",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "V7VWP",
-      "x": 900,
-      "y": 5670,
-      "name": "Component/Badge/Dash/Accent",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$accent"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "exGwx",
-          "name": "Label",
-          "fill": "$accent",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "rj9a1",
-      "x": 900,
-      "y": 5710,
-      "name": "Component/Badge/Dash/Info",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$info"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "vND37",
-          "name": "Label",
-          "fill": "$info",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "osIq7",
-      "x": 900,
-      "y": 5750,
-      "name": "Component/Badge/Dash/Success",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$success"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "H1Guk",
-          "name": "Label",
-          "fill": "$success",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "xBSr0",
-      "x": 900,
-      "y": 5790,
-      "name": "Component/Badge/Dash/Warning",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$warning"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "hQBDJ",
-          "name": "Label",
-          "fill": "$warning",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "sGfuO",
-      "x": 900,
-      "y": 5830,
-      "name": "Component/Badge/Dash/Error",
-      "reusable": true,
-      "height": 24,
-      "cornerRadius": "$radius-selector",
-      "stroke": {
-        "align": "inside",
-        "thickness": "$border",
-        "fill": "$error"
-      },
-      "gap": 8,
-      "padding": [
-        0,
-        11
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
-        {
-          "type": "text",
-          "id": "ZvBw4",
-          "name": "Label",
-          "fill": "$error",
-          "content": "Badge",
-          "fontFamily": "$font-family",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "id": "sgDhI",
-      "x": 900,
-      "y": 6000,
-      "name": "Component/Typography/H1",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Heading 1",
-      "lineHeight": 1.111,
-      "fontFamily": "$font-family",
-      "fontSize": 36,
-      "fontWeight": "800"
-    },
-    {
-      "type": "text",
-      "id": "gIgok",
-      "x": 900,
-      "y": 6060,
-      "name": "Component/Typography/H2",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Heading 2",
-      "lineHeight": 1.333,
-      "fontFamily": "$font-family",
-      "fontSize": 24,
-      "fontWeight": "700"
-    },
-    {
-      "type": "text",
-      "id": "LAyc8",
-      "x": 900,
-      "y": 6110,
-      "name": "Component/Typography/H3",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Heading 3",
-      "lineHeight": 1.6,
-      "fontFamily": "$font-family",
-      "fontSize": 20,
-      "fontWeight": "600"
-    },
-    {
-      "type": "text",
-      "id": "kuae9",
-      "x": 900,
-      "y": 6155,
-      "name": "Component/Typography/H4",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Heading 4",
-      "lineHeight": 1.5,
-      "fontFamily": "$font-family",
-      "fontSize": 16,
-      "fontWeight": "600"
-    },
-    {
-      "type": "text",
-      "id": "ONIs6",
-      "x": 900,
-      "y": 6195,
-      "name": "Component/Typography/H5",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Heading 5",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "abX1y",
-      "x": 900,
-      "y": 6235,
-      "name": "Component/Typography/H6",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Heading 6",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "9mULW",
-      "x": 900,
-      "y": 6310,
-      "name": "Component/Typography/Paragraph",
-      "reusable": true,
-      "fill": "$base-content",
-      "textGrowth": "fixed-width",
-      "width": 500,
-      "content": "Body text paragraph. Used for regular content in prose blocks.",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "K7gZ6",
-      "x": 900,
-      "y": 6400,
-      "name": "Component/Typography/Bold",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Bold text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16,
-      "fontWeight": "600"
-    },
-    {
-      "type": "text",
-      "id": "joIXA",
-      "x": 900,
-      "y": 6440,
-      "name": "Component/Typography/Italic",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Italic text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16,
-      "fontStyle": "italic"
-    },
-    {
-      "type": "text",
-      "id": "ohirW",
-      "x": 900,
-      "y": 6480,
-      "name": "Component/Typography/Bold Italic",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Bold italic text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16,
-      "fontWeight": "600",
-      "fontStyle": "italic"
-    },
-    {
-      "type": "text",
-      "id": "35Bdd",
-      "x": 900,
-      "y": 6540,
-      "name": "Component/Typography/Link",
-      "reusable": true,
-      "fill": "$base-content",
-      "content": "Link text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16,
-      "fontWeight": "500"
-    },
-    {
-      "type": "frame",
-      "id": "Zve6F",
-      "x": 900,
-      "y": 6620,
-      "name": "Component/Typography/Blockquote",
-      "reusable": true,
-      "width": 500,
-      "stroke": {
-        "align": "inside",
-        "thickness": 0,
-        "fill": "transparent"
-      },
-      "padding": [
-        0,
-        0,
-        0,
-        16
-      ],
-      "children": [
-        {
-          "type": "rectangle",
-          "cornerRadius": 2,
-          "id": "iqxwm",
-          "name": "Border",
-          "fill": "$neutral-content",
-          "width": 4,
-          "height": "fill_container"
+          "fontSize": 16
         },
         {
           "type": "text",
-          "id": "tbvg1",
-          "name": "Content",
+          "id": "abX1y",
+          "name": "Component/Typography/H6",
+          "reusable": true,
+          "fill": "$base-content",
+          "content": "Heading 6",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "9mULW",
+          "name": "Component/Typography/Paragraph",
+          "reusable": true,
           "fill": "$base-content",
           "textGrowth": "fixed-width",
-          "width": "fill_container",
-          "content": "This is a blockquote. It stands out and draws attention to important information.",
+          "width": 500,
+          "content": "Body text paragraph. Used for regular content in prose blocks.",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "K7gZ6",
+          "name": "Component/Typography/Bold",
+          "reusable": true,
+          "fill": "$base-content",
+          "content": "Bold text",
           "lineHeight": 1.75,
           "fontFamily": "$font-family",
           "fontSize": 16,
-          "fontWeight": "500",
-          "fontStyle": "italic"
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "4zcbH",
-      "x": 900,
-      "y": 6740,
-      "name": "Component/Typography/Inline Code",
-      "reusable": true,
-      "fill": "$base-200",
-      "cornerRadius": 6,
-      "padding": [
-        2,
-        6
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "children": [
+          "fontWeight": "600"
+        },
         {
           "type": "text",
-          "id": "i1XAr",
-          "name": "Code",
+          "id": "joIXA",
+          "name": "Component/Typography/Italic",
+          "reusable": true,
           "fill": "$base-content",
-          "content": "console.log()",
-          "fontFamily": "monospace",
-          "fontSize": 14
-        }
-      ]
-    },
-    {
-      "type": "frame",
-      "id": "y0ik6",
-      "x": 900,
-      "y": 6790,
-      "name": "Component/Typography/Code Block",
-      "reusable": true,
-      "width": 500,
-      "fill": "$neutral",
-      "cornerRadius": 6,
-      "layout": "vertical",
-      "padding": [
-        12,
-        16
-      ],
-      "children": [
+          "content": "Italic text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16,
+          "fontStyle": "italic"
+        },
         {
           "type": "text",
-          "id": "TKCBx",
-          "name": "Code",
-          "fill": "$neutral-content",
-          "textGrowth": "fixed-width",
-          "width": "fill_container",
-          "content": "function greet() {\n  console.log('Hello, world!');\n}",
-          "lineHeight": 1.5,
-          "fontFamily": "monospace",
-          "fontSize": 14
+          "id": "ohirW",
+          "name": "Component/Typography/Bold Italic",
+          "reusable": true,
+          "fill": "$base-content",
+          "content": "Bold italic text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "fontStyle": "italic"
+        },
+        {
+          "type": "text",
+          "id": "35Bdd",
+          "name": "Component/Typography/Link",
+          "reusable": true,
+          "fill": "$base-content",
+          "content": "Link text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16,
+          "fontWeight": "500"
+        },
+        {
+          "type": "frame",
+          "id": "Zve6F",
+          "name": "Component/Typography/Blockquote",
+          "reusable": true,
+          "width": 500,
+          "stroke": {
+            "align": "inside",
+            "thickness": 0,
+            "fill": "transparent"
+          },
+          "padding": [
+            0,
+            0,
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 2,
+              "id": "iqxwm",
+              "name": "Border",
+              "fill": "$neutral-content",
+              "width": 4,
+              "height": "fill_container"
+            },
+            {
+              "type": "text",
+              "id": "tbvg1",
+              "name": "Content",
+              "fill": "$base-content",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "This is a blockquote. It stands out and draws attention to important information.",
+              "lineHeight": 1.75,
+              "fontFamily": "$font-family",
+              "fontSize": 16,
+              "fontWeight": "500",
+              "fontStyle": "italic"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "4zcbH",
+          "name": "Component/Typography/Inline Code",
+          "reusable": true,
+          "fill": "$base-200",
+          "cornerRadius": 6,
+          "padding": [
+            2,
+            6
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "i1XAr",
+              "name": "Code",
+              "fill": "$base-content",
+              "content": "console.log()",
+              "fontFamily": "monospace",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "y0ik6",
+          "name": "Component/Typography/Code Block",
+          "reusable": true,
+          "width": 500,
+          "fill": "$neutral",
+          "cornerRadius": 6,
+          "layout": "vertical",
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "TKCBx",
+              "name": "Code",
+              "fill": "$neutral-content",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "function greet() {\n  console.log('Hello, world!');\n}",
+              "lineHeight": 1.5,
+              "fontFamily": "monospace",
+              "fontSize": 14
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "qDkDR",
+          "name": "Component/Typography/Text Primary",
+          "reusable": true,
+          "fill": "$primary",
+          "content": "Primary text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "F8wCv",
+          "name": "Component/Typography/Text Secondary",
+          "reusable": true,
+          "fill": "$secondary",
+          "content": "Secondary text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "mBM18",
+          "name": "Component/Typography/Text Accent",
+          "reusable": true,
+          "fill": "$accent",
+          "content": "Accent text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "9OiGp",
+          "name": "Component/Typography/Text Info",
+          "reusable": true,
+          "fill": "$info",
+          "content": "Info text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "7LHQx",
+          "name": "Component/Typography/Text Success",
+          "reusable": true,
+          "fill": "$success",
+          "content": "Success text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "eQINf",
+          "name": "Component/Typography/Text Warning",
+          "reusable": true,
+          "fill": "$warning",
+          "content": "Warning text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "Mg7HV",
+          "name": "Component/Typography/Text Error",
+          "reusable": true,
+          "fill": "$error",
+          "content": "Error text",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16
         }
       ]
-    },
-    {
-      "type": "text",
-      "id": "qDkDR",
-      "x": 900,
-      "y": 6930,
-      "name": "Component/Typography/Text Primary",
-      "reusable": true,
-      "fill": "$primary",
-      "content": "Primary text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "F8wCv",
-      "x": 900,
-      "y": 6970,
-      "name": "Component/Typography/Text Secondary",
-      "reusable": true,
-      "fill": "$secondary",
-      "content": "Secondary text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "mBM18",
-      "x": 900,
-      "y": 7010,
-      "name": "Component/Typography/Text Accent",
-      "reusable": true,
-      "fill": "$accent",
-      "content": "Accent text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "9OiGp",
-      "x": 900,
-      "y": 7050,
-      "name": "Component/Typography/Text Info",
-      "reusable": true,
-      "fill": "$info",
-      "content": "Info text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "7LHQx",
-      "x": 900,
-      "y": 7090,
-      "name": "Component/Typography/Text Success",
-      "reusable": true,
-      "fill": "$success",
-      "content": "Success text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "eQINf",
-      "x": 900,
-      "y": 7130,
-      "name": "Component/Typography/Text Warning",
-      "reusable": true,
-      "fill": "$warning",
-      "content": "Warning text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
-    },
-    {
-      "type": "text",
-      "id": "Mg7HV",
-      "x": 900,
-      "y": 7170,
-      "name": "Component/Typography/Text Error",
-      "reusable": true,
-      "fill": "$error",
-      "content": "Error text",
-      "lineHeight": 1.75,
-      "fontFamily": "$font-family",
-      "fontSize": 16
     }
   ],
   "variables": {
