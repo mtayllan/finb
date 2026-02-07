@@ -3029,6 +3029,353 @@
           "fontSize": 14
         }
       ]
+    },
+    {
+      "type": "text",
+      "id": "sgDhI",
+      "x": 900,
+      "y": 6000,
+      "name": "Component/Typography/H1",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Heading 1",
+      "lineHeight": 1.111,
+      "fontFamily": "$font-family",
+      "fontSize": 36,
+      "fontWeight": "800"
+    },
+    {
+      "type": "text",
+      "id": "gIgok",
+      "x": 900,
+      "y": 6060,
+      "name": "Component/Typography/H2",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Heading 2",
+      "lineHeight": 1.333,
+      "fontFamily": "$font-family",
+      "fontSize": 24,
+      "fontWeight": "700"
+    },
+    {
+      "type": "text",
+      "id": "LAyc8",
+      "x": 900,
+      "y": 6110,
+      "name": "Component/Typography/H3",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Heading 3",
+      "lineHeight": 1.6,
+      "fontFamily": "$font-family",
+      "fontSize": 20,
+      "fontWeight": "600"
+    },
+    {
+      "type": "text",
+      "id": "kuae9",
+      "x": 900,
+      "y": 6155,
+      "name": "Component/Typography/H4",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Heading 4",
+      "lineHeight": 1.5,
+      "fontFamily": "$font-family",
+      "fontSize": 16,
+      "fontWeight": "600"
+    },
+    {
+      "type": "text",
+      "id": "ONIs6",
+      "x": 900,
+      "y": 6195,
+      "name": "Component/Typography/H5",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Heading 5",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "abX1y",
+      "x": 900,
+      "y": 6235,
+      "name": "Component/Typography/H6",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Heading 6",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "9mULW",
+      "x": 900,
+      "y": 6310,
+      "name": "Component/Typography/Paragraph",
+      "reusable": true,
+      "fill": "$base-content",
+      "textGrowth": "fixed-width",
+      "width": 500,
+      "content": "Body text paragraph. Used for regular content in prose blocks.",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "K7gZ6",
+      "x": 900,
+      "y": 6400,
+      "name": "Component/Typography/Bold",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Bold text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16,
+      "fontWeight": "600"
+    },
+    {
+      "type": "text",
+      "id": "joIXA",
+      "x": 900,
+      "y": 6440,
+      "name": "Component/Typography/Italic",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Italic text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16,
+      "fontStyle": "italic"
+    },
+    {
+      "type": "text",
+      "id": "ohirW",
+      "x": 900,
+      "y": 6480,
+      "name": "Component/Typography/Bold Italic",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Bold italic text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16,
+      "fontWeight": "600",
+      "fontStyle": "italic"
+    },
+    {
+      "type": "text",
+      "id": "35Bdd",
+      "x": 900,
+      "y": 6540,
+      "name": "Component/Typography/Link",
+      "reusable": true,
+      "fill": "$base-content",
+      "content": "Link text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16,
+      "fontWeight": "500"
+    },
+    {
+      "type": "frame",
+      "id": "Zve6F",
+      "x": 900,
+      "y": 6620,
+      "name": "Component/Typography/Blockquote",
+      "reusable": true,
+      "width": 500,
+      "stroke": {
+        "align": "inside",
+        "thickness": 0,
+        "fill": "transparent"
+      },
+      "padding": [
+        0,
+        0,
+        0,
+        16
+      ],
+      "children": [
+        {
+          "type": "rectangle",
+          "cornerRadius": 2,
+          "id": "iqxwm",
+          "name": "Border",
+          "fill": "$neutral-content",
+          "width": 4,
+          "height": "fill_container"
+        },
+        {
+          "type": "text",
+          "id": "tbvg1",
+          "name": "Content",
+          "fill": "$base-content",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "This is a blockquote. It stands out and draws attention to important information.",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 16,
+          "fontWeight": "500",
+          "fontStyle": "italic"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "4zcbH",
+      "x": 900,
+      "y": 6740,
+      "name": "Component/Typography/Inline Code",
+      "reusable": true,
+      "fill": "$base-200",
+      "cornerRadius": 6,
+      "padding": [
+        2,
+        6
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "i1XAr",
+          "name": "Code",
+          "fill": "$base-content",
+          "content": "console.log()",
+          "fontFamily": "monospace",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "y0ik6",
+      "x": 900,
+      "y": 6790,
+      "name": "Component/Typography/Code Block",
+      "reusable": true,
+      "width": 500,
+      "fill": "$neutral",
+      "cornerRadius": 6,
+      "layout": "vertical",
+      "padding": [
+        12,
+        16
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "TKCBx",
+          "name": "Code",
+          "fill": "$neutral-content",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "function greet() {\n  console.log('Hello, world!');\n}",
+          "lineHeight": 1.5,
+          "fontFamily": "monospace",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "qDkDR",
+      "x": 900,
+      "y": 6930,
+      "name": "Component/Typography/Text Primary",
+      "reusable": true,
+      "fill": "$primary",
+      "content": "Primary text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "F8wCv",
+      "x": 900,
+      "y": 6970,
+      "name": "Component/Typography/Text Secondary",
+      "reusable": true,
+      "fill": "$secondary",
+      "content": "Secondary text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "mBM18",
+      "x": 900,
+      "y": 7010,
+      "name": "Component/Typography/Text Accent",
+      "reusable": true,
+      "fill": "$accent",
+      "content": "Accent text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "9OiGp",
+      "x": 900,
+      "y": 7050,
+      "name": "Component/Typography/Text Info",
+      "reusable": true,
+      "fill": "$info",
+      "content": "Info text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "7LHQx",
+      "x": 900,
+      "y": 7090,
+      "name": "Component/Typography/Text Success",
+      "reusable": true,
+      "fill": "$success",
+      "content": "Success text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "eQINf",
+      "x": 900,
+      "y": 7130,
+      "name": "Component/Typography/Text Warning",
+      "reusable": true,
+      "fill": "$warning",
+      "content": "Warning text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
+    },
+    {
+      "type": "text",
+      "id": "Mg7HV",
+      "x": 900,
+      "y": 7170,
+      "name": "Component/Typography/Text Error",
+      "reusable": true,
+      "fill": "$error",
+      "content": "Error text",
+      "lineHeight": 1.75,
+      "fontFamily": "$font-family",
+      "fontSize": 16
     }
   ],
   "variables": {
