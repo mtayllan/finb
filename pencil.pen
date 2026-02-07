@@ -1431,6 +1431,114 @@
           "fontSize": 14
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "R0ouX",
+      "x": 900,
+      "y": 2814,
+      "name": "Component/Toast/Default",
+      "reusable": true,
+      "layout": "vertical",
+      "gap": 8,
+      "children": [
+        {
+          "id": "hx2LN",
+          "type": "ref",
+          "ref": "0SsUZ",
+          "name": "alert1",
+          "descendants": {
+            "zqHwM": {
+              "content": "New message arrived."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "3q4fX",
+      "x": 900,
+      "y": 2914,
+      "name": "Component/Toast/Stacked",
+      "reusable": true,
+      "layout": "vertical",
+      "gap": 8,
+      "children": [
+        {
+          "id": "iDe5F",
+          "type": "ref",
+          "ref": "0SsUZ",
+          "name": "alertA",
+          "descendants": {
+            "zqHwM": {
+              "content": "New mail arrived."
+            }
+          }
+        },
+        {
+          "id": "uQwAX",
+          "type": "ref",
+          "ref": "Mx5V5",
+          "name": "alertB",
+          "descendants": {
+            "Aa86j": {
+              "content": "Message sent successfully."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "1el7K",
+      "x": 900,
+      "y": 3030,
+      "name": "Component/Toast/In-Context",
+      "reusable": true,
+      "clip": true,
+      "width": 500,
+      "height": 200,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-box",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "C2fzn",
+          "x": 234,
+          "y": 100,
+          "name": "Toast Container",
+          "layout": "vertical",
+          "gap": 8,
+          "children": [
+            {
+              "id": "c6JEE",
+              "type": "ref",
+              "ref": "0SsUZ",
+              "name": "infoAlert",
+              "width": 250,
+              "descendants": {
+                "zqHwM": {
+                  "content": "New mail arrived."
+                }
+              }
+            },
+            {
+              "id": "JiGO9",
+              "type": "ref",
+              "ref": "Mx5V5",
+              "name": "successAlert",
+              "width": 250,
+              "descendants": {
+                "Aa86j": {
+                  "content": "Message sent successfully."
+                }
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
