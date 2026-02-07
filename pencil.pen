@@ -3811,6 +3811,680 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "CKh1G",
+      "x": 3682,
+      "y": 0,
+      "name": "Lists",
+      "layout": "vertical",
+      "gap": 60,
+      "children": [
+        {
+          "type": "frame",
+          "id": "T3U2V",
+          "name": "Component/List/Row",
+          "reusable": true,
+          "width": "fill_container",
+          "fill": "$base-100",
+          "gap": 16,
+          "padding": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "vzrbu",
+              "name": "Avatar",
+              "clip": true,
+              "width": 40,
+              "height": 40,
+              "fill": "$neutral",
+              "cornerRadius": "$radius-box",
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "WEm5X",
+                  "name": "Icon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "user",
+                  "iconFontFamily": "lucide",
+                  "fill": "$neutral-content"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "u2gMq",
+              "name": "Content",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KMXTe",
+                  "name": "Title",
+                  "fill": "$base-content",
+                  "content": "Title",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                },
+                {
+                  "type": "text",
+                  "id": "nfdeG",
+                  "name": "Subtitle",
+                  "opacity": 0.6,
+                  "fill": "$base-content",
+                  "content": "SUBTITLE",
+                  "fontFamily": "$font-family",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "m954a",
+              "name": "Actions",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "kmFhL",
+                  "name": "Play",
+                  "opacity": 0.6,
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "play",
+                  "iconFontFamily": "lucide",
+                  "fill": "$base-content"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "knlWR",
+                  "name": "Heart",
+                  "opacity": 0.6,
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "heart",
+                  "iconFontFamily": "lucide",
+                  "fill": "$base-content"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "00o3C",
+          "name": "Component/List/Default",
+          "reusable": true,
+          "clip": true,
+          "width": 480,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-box",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "blur": 6,
+            "spread": -1
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "yZ6oN",
+              "name": "Header",
+              "width": "fill_container",
+              "padding": [
+                16,
+                16,
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uQ6Us",
+                  "name": "Header Text",
+                  "opacity": 0.6,
+                  "fill": "$base-content",
+                  "content": "List header",
+                  "fontFamily": "$font-family",
+                  "fontSize": 12,
+                  "letterSpacing": 0.3
+                }
+              ]
+            },
+            {
+              "id": "MpJMJ",
+              "type": "ref",
+              "ref": "T3U2V",
+              "name": "Row 1",
+              "descendants": {
+                "KMXTe": {
+                  "content": "Dio Lupa"
+                },
+                "nfdeG": {
+                  "content": "REMAINING REASON"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "WTFPP",
+              "name": "Separator",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#c9cbd00d"
+            },
+            {
+              "id": "qWcUQ",
+              "type": "ref",
+              "ref": "T3U2V",
+              "name": "Row 2",
+              "descendants": {
+                "KMXTe": {
+                  "content": "Ellie Beilish"
+                },
+                "nfdeG": {
+                  "content": "BEARS OF A FEVER"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "EUpon",
+              "name": "Separator",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#c9cbd00d"
+            },
+            {
+              "id": "fDfXh",
+              "type": "ref",
+              "ref": "T3U2V",
+              "name": "Row 3",
+              "descendants": {
+                "KMXTe": {
+                  "content": "Sabrino Gardener"
+                },
+                "nfdeG": {
+                  "content": "CAPPUCCINO"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BpZO1",
+          "name": "Component/List/Numbered Row",
+          "reusable": true,
+          "width": "fill_container",
+          "fill": "$base-100",
+          "gap": 16,
+          "padding": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "0oOT5",
+              "name": "Number",
+              "opacity": 0.3,
+              "fill": "$base-content",
+              "textGrowth": "fixed-width",
+              "width": 48,
+              "content": "01",
+              "textAlign": "right",
+              "fontFamily": "$font-family",
+              "fontSize": 36,
+              "fontWeight": "100"
+            },
+            {
+              "type": "frame",
+              "id": "IAGij",
+              "name": "Avatar",
+              "clip": true,
+              "width": 40,
+              "height": 40,
+              "fill": "$neutral",
+              "cornerRadius": "$radius-box",
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "r2lBC",
+                  "name": "Icon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "music",
+                  "iconFontFamily": "lucide",
+                  "fill": "$neutral-content"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cC2ON",
+              "name": "Content",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rxWnu",
+                  "name": "Title",
+                  "fill": "$base-content",
+                  "content": "Title",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                },
+                {
+                  "type": "text",
+                  "id": "L70LR",
+                  "name": "Subtitle",
+                  "opacity": 0.6,
+                  "fill": "$base-content",
+                  "content": "SUBTITLE",
+                  "fontFamily": "$font-family",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "12n9k",
+              "name": "Actions",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "OlTij",
+                  "name": "Play",
+                  "opacity": 0.6,
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "play",
+                  "iconFontFamily": "lucide",
+                  "fill": "$base-content"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Hadh7",
+          "name": "Component/List/Numbered",
+          "reusable": true,
+          "clip": true,
+          "width": 480,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-box",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "blur": 6,
+            "spread": -1
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "4yLn2",
+              "name": "Header",
+              "width": "fill_container",
+              "padding": [
+                16,
+                16,
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fDdc8",
+                  "name": "Header Text",
+                  "opacity": 0.6,
+                  "fill": "$base-content",
+                  "content": "List header",
+                  "fontFamily": "$font-family",
+                  "fontSize": 12,
+                  "letterSpacing": 0.3
+                }
+              ]
+            },
+            {
+              "id": "Z4kxf",
+              "type": "ref",
+              "ref": "BpZO1",
+              "name": "Row 1",
+              "descendants": {
+                "0oOT5": {
+                  "content": "01"
+                },
+                "rxWnu": {
+                  "content": "Dio Lupa"
+                },
+                "L70LR": {
+                  "content": "REMAINING REASON"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "VTGNN",
+              "name": "Separator",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#c9cbd00d"
+            },
+            {
+              "id": "2c187",
+              "type": "ref",
+              "ref": "BpZO1",
+              "name": "Row 2",
+              "descendants": {
+                "0oOT5": {
+                  "content": "02"
+                },
+                "rxWnu": {
+                  "content": "Ellie Beilish"
+                },
+                "L70LR": {
+                  "content": "BEARS OF A FEVER"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "0pkiw",
+              "name": "Separator",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#c9cbd00d"
+            },
+            {
+              "id": "JUuDm",
+              "type": "ref",
+              "ref": "BpZO1",
+              "name": "Row 3",
+              "descendants": {
+                "0oOT5": {
+                  "content": "03"
+                },
+                "rxWnu": {
+                  "content": "Sabrino Gardener"
+                },
+                "L70LR": {
+                  "content": "CAPPUCCINO"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "kssj0",
+          "name": "Component/List/Row With Description",
+          "reusable": true,
+          "width": "fill_container",
+          "fill": "$base-100",
+          "gap": 16,
+          "padding": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "0zgXS",
+              "name": "Avatar",
+              "clip": true,
+              "width": 40,
+              "height": 40,
+              "fill": "$neutral",
+              "cornerRadius": "$radius-box",
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "0yzQx",
+                  "name": "Icon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "headphones",
+                  "iconFontFamily": "lucide",
+                  "fill": "$neutral-content"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "34wzm",
+              "name": "Content Wrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YrcOh",
+                  "name": "Top Row",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "v37BU",
+                      "name": "Title",
+                      "fill": "$base-content",
+                      "content": "Title",
+                      "fontFamily": "$font-family",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "LKCW6",
+                      "name": "Subtitle",
+                      "opacity": 0.6,
+                      "fill": "$base-content",
+                      "content": "SUBTITLE",
+                      "fontFamily": "$font-family",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "A8KnJ",
+                  "name": "Description",
+                  "opacity": 0.6,
+                  "fill": "$base-content",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Description text that wraps to multiple lines providing additional context about the item.",
+                  "lineHeight": 1.4,
+                  "fontFamily": "$font-family",
+                  "fontSize": 12
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WWnhp",
+              "name": "Actions",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "AE2UI",
+                  "name": "Play",
+                  "opacity": 0.6,
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "play",
+                  "iconFontFamily": "lucide",
+                  "fill": "$base-content"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "fwieY",
+                  "name": "Heart",
+                  "opacity": 0.6,
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "heart",
+                  "iconFontFamily": "lucide",
+                  "fill": "$base-content"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dKQmm",
+          "name": "Component/List/With Description",
+          "reusable": true,
+          "clip": true,
+          "width": 480,
+          "fill": "$base-100",
+          "cornerRadius": "$radius-box",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000001a",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "blur": 6,
+            "spread": -1
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "85GWH",
+              "name": "Header",
+              "width": "fill_container",
+              "padding": [
+                16,
+                16,
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mp1qw",
+                  "name": "Header Text",
+                  "opacity": 0.6,
+                  "fill": "$base-content",
+                  "content": "List header",
+                  "fontFamily": "$font-family",
+                  "fontSize": 12,
+                  "letterSpacing": 0.3
+                }
+              ]
+            },
+            {
+              "id": "o4AtU",
+              "type": "ref",
+              "ref": "kssj0",
+              "name": "Row 1",
+              "descendants": {
+                "v37BU": {
+                  "content": "Dio Lupa"
+                },
+                "LKCW6": {
+                  "content": "REMAINING REASON"
+                },
+                "A8KnJ": {
+                  "content": "\"Remaining Reason\" became an instant hit, praised for its haunting sound and emotional depth."
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "SYeyB",
+              "name": "Separator",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#c9cbd00d"
+            },
+            {
+              "id": "pDBYx",
+              "type": "ref",
+              "ref": "kssj0",
+              "name": "Row 2",
+              "descendants": {
+                "v37BU": {
+                  "content": "Ellie Beilish"
+                },
+                "LKCW6": {
+                  "content": "BEARS OF A FEVER"
+                },
+                "A8KnJ": {
+                  "content": "\"Bears of a Fever\" captivated audiences with its intense energy and mysterious lyrics."
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "d0wdi",
+              "name": "Separator",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#c9cbd00d"
+            },
+            {
+              "id": "KAlAF",
+              "type": "ref",
+              "ref": "kssj0",
+              "name": "Row 3",
+              "descendants": {
+                "v37BU": {
+                  "content": "Sabrino Gardener"
+                },
+                "LKCW6": {
+                  "content": "CAPPUCCINO"
+                },
+                "A8KnJ": {
+                  "content": "\"Cappuccino\" quickly gained attention for its smooth melody and relatable themes."
+                }
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
