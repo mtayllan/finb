@@ -708,6 +708,729 @@
           "height": 11.88
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "FKtDa",
+      "x": 900,
+      "y": 1400,
+      "name": "Component/Alert/Default",
+      "reusable": true,
+      "width": 400,
+      "fill": "$base-200",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$base-200"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "vipO3",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "info",
+          "iconFontFamily": "lucide",
+          "fill": "$base-content"
+        },
+        {
+          "type": "text",
+          "id": "dm0zH",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "12 unread messages. Tap to see.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "0SsUZ",
+      "x": 900,
+      "y": 1470,
+      "name": "Component/Alert/Info",
+      "reusable": true,
+      "width": 400,
+      "fill": "$info",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "KLUtk",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "info",
+          "iconFontFamily": "lucide",
+          "fill": "$info-content"
+        },
+        {
+          "type": "text",
+          "id": "zqHwM",
+          "name": "Label",
+          "fill": "$info-content",
+          "content": "New software update available.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Mx5V5",
+      "x": 900,
+      "y": 1540,
+      "name": "Component/Alert/Success",
+      "reusable": true,
+      "width": 400,
+      "fill": "$success",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "cbsQN",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "circle-check",
+          "iconFontFamily": "lucide",
+          "fill": "$success-content"
+        },
+        {
+          "type": "text",
+          "id": "Aa86j",
+          "name": "Label",
+          "fill": "$success-content",
+          "content": "Your purchase has been confirmed!",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "zwsuH",
+      "x": 900,
+      "y": 1610,
+      "name": "Component/Alert/Warning",
+      "reusable": true,
+      "width": 400,
+      "fill": "$warning",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "W1W4h",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "triangle-alert",
+          "iconFontFamily": "lucide",
+          "fill": "$warning-content"
+        },
+        {
+          "type": "text",
+          "id": "1onip",
+          "name": "Label",
+          "fill": "$warning-content",
+          "content": "Warning: Invalid email address!",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "VXWRC",
+      "x": 900,
+      "y": 1680,
+      "name": "Component/Alert/Error",
+      "reusable": true,
+      "width": 400,
+      "fill": "$error",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "ZCMBd",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "circle-x",
+          "iconFontFamily": "lucide",
+          "fill": "$error-content"
+        },
+        {
+          "type": "text",
+          "id": "IogLa",
+          "name": "Label",
+          "fill": "$error-content",
+          "content": "Error! Task failed successfully.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XKGtk",
+      "x": 900,
+      "y": 1800,
+      "name": "Component/Alert/Soft/Info",
+      "reusable": true,
+      "width": 400,
+      "fill": "$info-soft-bg",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info-soft-border"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "rwCia",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "info",
+          "iconFontFamily": "lucide",
+          "fill": "$info"
+        },
+        {
+          "type": "text",
+          "id": "soXsd",
+          "name": "Label",
+          "fill": "$info",
+          "content": "12 unread messages. Tap to see.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "0298o",
+      "x": 900,
+      "y": 1870,
+      "name": "Component/Alert/Soft/Success",
+      "reusable": true,
+      "width": 400,
+      "fill": "$success-soft-bg",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success-soft-border"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "cMECc",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "circle-check",
+          "iconFontFamily": "lucide",
+          "fill": "$success"
+        },
+        {
+          "type": "text",
+          "id": "wGvd7",
+          "name": "Label",
+          "fill": "$success",
+          "content": "Your purchase has been confirmed!",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "K6sIn",
+      "x": 900,
+      "y": 1940,
+      "name": "Component/Alert/Soft/Warning",
+      "reusable": true,
+      "width": 400,
+      "fill": "$warning-soft-bg",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning-soft-border"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "mJ3lF",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "triangle-alert",
+          "iconFontFamily": "lucide",
+          "fill": "$warning"
+        },
+        {
+          "type": "text",
+          "id": "ALKnR",
+          "name": "Label",
+          "fill": "$warning",
+          "content": "Warning: Invalid email address!",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ohYLU",
+      "x": 900,
+      "y": 2010,
+      "name": "Component/Alert/Soft/Error",
+      "reusable": true,
+      "width": 400,
+      "fill": "$error-soft-bg",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error-soft-border"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "t0Gqq",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "circle-x",
+          "iconFontFamily": "lucide",
+          "fill": "$error"
+        },
+        {
+          "type": "text",
+          "id": "dN86g",
+          "name": "Label",
+          "fill": "$error",
+          "content": "Error! Task failed successfully.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "N308k",
+      "x": 900,
+      "y": 2130,
+      "name": "Component/Alert/Outline/Info",
+      "reusable": true,
+      "width": 400,
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "45Lyg",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "info",
+          "iconFontFamily": "lucide",
+          "fill": "$info"
+        },
+        {
+          "type": "text",
+          "id": "ObQBz",
+          "name": "Label",
+          "fill": "$info",
+          "content": "12 unread messages. Tap to see.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mGhzj",
+      "x": 900,
+      "y": 2200,
+      "name": "Component/Alert/Outline/Success",
+      "reusable": true,
+      "width": 400,
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "Oz7SC",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "circle-check",
+          "iconFontFamily": "lucide",
+          "fill": "$success"
+        },
+        {
+          "type": "text",
+          "id": "9eZte",
+          "name": "Label",
+          "fill": "$success",
+          "content": "Your purchase has been confirmed!",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "cpPf1",
+      "x": 900,
+      "y": 2270,
+      "name": "Component/Alert/Outline/Warning",
+      "reusable": true,
+      "width": 400,
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "Fxp2H",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "triangle-alert",
+          "iconFontFamily": "lucide",
+          "fill": "$warning"
+        },
+        {
+          "type": "text",
+          "id": "XTitw",
+          "name": "Label",
+          "fill": "$warning",
+          "content": "Warning: Invalid email address!",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "NTJLg",
+      "x": 900,
+      "y": 2340,
+      "name": "Component/Alert/Outline/Error",
+      "reusable": true,
+      "width": 400,
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "fyEC9",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "circle-x",
+          "iconFontFamily": "lucide",
+          "fill": "$error"
+        },
+        {
+          "type": "text",
+          "id": "dQsUA",
+          "name": "Label",
+          "fill": "$error",
+          "content": "Error! Task failed successfully.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Rcec7",
+      "x": 900,
+      "y": 2460,
+      "name": "Component/Alert/Dash/Info",
+      "reusable": true,
+      "width": 400,
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "hx2J7",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "info",
+          "iconFontFamily": "lucide",
+          "fill": "$info"
+        },
+        {
+          "type": "text",
+          "id": "dhsRr",
+          "name": "Label",
+          "fill": "$info",
+          "content": "12 unread messages. Tap to see.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "V2DCj",
+      "x": 900,
+      "y": 2530,
+      "name": "Component/Alert/Dash/Success",
+      "reusable": true,
+      "width": 400,
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "NuwE7",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "circle-check",
+          "iconFontFamily": "lucide",
+          "fill": "$success"
+        },
+        {
+          "type": "text",
+          "id": "hTQYU",
+          "name": "Label",
+          "fill": "$success",
+          "content": "Your purchase has been confirmed!",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XcN6q",
+      "x": 900,
+      "y": 2600,
+      "name": "Component/Alert/Dash/Warning",
+      "reusable": true,
+      "width": 400,
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "HTNa7",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "triangle-alert",
+          "iconFontFamily": "lucide",
+          "fill": "$warning"
+        },
+        {
+          "type": "text",
+          "id": "SUg20",
+          "name": "Label",
+          "fill": "$warning",
+          "content": "Warning: Invalid email address!",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "UoWkM",
+      "x": 900,
+      "y": 2670,
+      "name": "Component/Alert/Dash/Error",
+      "reusable": true,
+      "width": 400,
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error"
+      },
+      "gap": 16,
+      "padding": [
+        12,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "NHhWl",
+          "name": "Icon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "circle-x",
+          "iconFontFamily": "lucide",
+          "fill": "$error"
+        },
+        {
+          "type": "text",
+          "id": "5bacm",
+          "name": "Label",
+          "fill": "$error",
+          "content": "Error! Task failed successfully.",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
     }
   ],
   "variables": {
@@ -830,6 +1553,38 @@
     "warning-content": {
       "type": "color",
       "value": "#140d02"
+    },
+    "error-soft-bg": {
+      "type": "color",
+      "value": "#201f31"
+    },
+    "error-soft-border": {
+      "type": "color",
+      "value": "#242033"
+    },
+    "info-soft-bg": {
+      "type": "color",
+      "value": "#122137"
+    },
+    "info-soft-border": {
+      "type": "color",
+      "value": "#13233a"
+    },
+    "success-soft-bg": {
+      "type": "color",
+      "value": "#132434"
+    },
+    "success-soft-border": {
+      "type": "color",
+      "value": "#152737"
+    },
+    "warning-soft-bg": {
+      "type": "color",
+      "value": "#1e2330"
+    },
+    "warning-soft-border": {
+      "type": "color",
+      "value": "#222631"
     }
   }
 }
