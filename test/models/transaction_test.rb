@@ -87,6 +87,45 @@ class TransactionTest < ActiveSupport::TestCase
     assert_equal 0, transaction.reload.report_value.to_f
   end
 
+  test "credit card statement month is current month when date is before expiration day" do
+    date = Date.current.next_month.change(day: 10)
+    transaction = Transaction.create!(
+      account: accounts(:credit_one),
+      category: categories(:food),
+      description: "Before expiration",
+      value: -50.0,
+      date: date
+    )
+
+    assert_equal date.beginning_of_month, transaction.credit_card_statement.month
+  end
+
+  test "credit card statement month is next month when date is on expiration day" do
+    date = Date.current.next_month.change(day: 20)
+    transaction = Transaction.create!(
+      account: accounts(:credit_one),
+      category: categories(:food),
+      description: "On expiration",
+      value: -50.0,
+      date: date
+    )
+
+    assert_equal date.next_month.beginning_of_month, transaction.credit_card_statement.month
+  end
+
+  test "credit card statement month is next month when date is after expiration day" do
+    date = Date.current.next_month.change(day: 25)
+    transaction = Transaction.create!(
+      account: accounts(:credit_one),
+      category: categories(:food),
+      description: "After expiration",
+      value: -50.0,
+      date: date
+    )
+
+    assert_equal date.next_month.beginning_of_month, transaction.credit_card_statement.month
+  end
+
   test "report_value should equal value for income transactions" do
     transaction = Transaction.create!(
       account: accounts(:bank_one),
