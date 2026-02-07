@@ -1,0 +1,835 @@
+{
+  "version": "2.7",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "eQs2w",
+      "x": 900,
+      "y": 0,
+      "name": "Component/Button/Primary",
+      "reusable": true,
+      "height": 40,
+      "fill": "$primary",
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "GCW8m",
+          "name": "Label",
+          "fill": "$primary-content",
+          "content": "Button",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "AuRzJ",
+      "x": 900,
+      "y": 60,
+      "name": "Component/Button/Neutral",
+      "reusable": true,
+      "height": 40,
+      "fill": "$neutral",
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "UQkGE",
+          "name": "Label",
+          "fill": "$neutral-content",
+          "content": "Neutral",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "zGBY8",
+      "x": 900,
+      "y": 120,
+      "name": "Component/Button/Secondary",
+      "reusable": true,
+      "height": 40,
+      "fill": "$secondary",
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "mWoDv",
+          "name": "Label",
+          "fill": "$secondary-content",
+          "content": "Secondary",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "IAx5O",
+      "x": 900,
+      "y": 180,
+      "name": "Component/Button/Accent",
+      "reusable": true,
+      "height": 40,
+      "fill": "$accent",
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "tpoLN",
+          "name": "Label",
+          "fill": "$accent-content",
+          "content": "Accent",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "dVfWC",
+      "x": 900,
+      "y": 240,
+      "name": "Component/Button/Info",
+      "reusable": true,
+      "height": 40,
+      "fill": "$info",
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "pXXFm",
+          "name": "Label",
+          "fill": "$info-content",
+          "content": "Info",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "9UvK8",
+      "x": 900,
+      "y": 300,
+      "name": "Component/Button/Success",
+      "reusable": true,
+      "height": 40,
+      "fill": "$success",
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "WOAdm",
+          "name": "Label",
+          "fill": "$success-content",
+          "content": "Success",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "0vUDd",
+      "x": 900,
+      "y": 360,
+      "name": "Component/Button/Warning",
+      "reusable": true,
+      "height": 40,
+      "fill": "$warning",
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "qZPGh",
+          "name": "Label",
+          "fill": "$warning-content",
+          "content": "Warning",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "4eSN6",
+      "x": 900,
+      "y": 420,
+      "name": "Component/Button/Error",
+      "reusable": true,
+      "height": 40,
+      "fill": "$error",
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "bQetd",
+          "name": "Label",
+          "fill": "$error-content",
+          "content": "Error",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "TcFwU",
+      "x": 900,
+      "y": 500,
+      "name": "Component/Button/Outline",
+      "reusable": true,
+      "height": 40,
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$base-content"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "sNYYO",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Outline",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wBToy",
+      "x": 900,
+      "y": 560,
+      "name": "Component/Button/Ghost",
+      "reusable": true,
+      "height": 40,
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Q8sFA",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Ghost",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "vNC4w",
+      "x": 900,
+      "y": 620,
+      "name": "Component/Button/Link",
+      "reusable": true,
+      "height": 40,
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "fL8DN",
+          "name": "Label",
+          "fill": "$primary",
+          "content": "Link",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "xs4X4",
+      "x": 900,
+      "y": 680,
+      "name": "Component/Button/Soft",
+      "reusable": true,
+      "height": 40,
+      "fill": "$neutral",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$neutral"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Bd23R",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Soft",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Aq6YD",
+      "x": 900,
+      "y": 740,
+      "name": "Component/Button/Dash",
+      "reusable": true,
+      "height": 40,
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$base-content"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "XOodD",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Dash",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Sd5bu",
+      "x": 900,
+      "y": 900,
+      "name": "Component/Checkbox/Default",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$base-content-20"
+      },
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "4PMKS",
+      "x": 900,
+      "y": 940,
+      "name": "Component/Checkbox/Checked",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$base-content-20"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "mi8NA",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$base-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mOUj8",
+      "x": 900,
+      "y": 990,
+      "name": "Component/Checkbox/Primary",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "fill": "$primary",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$primary"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "o0TUG",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$primary-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "PNJU8",
+      "x": 900,
+      "y": 1030,
+      "name": "Component/Checkbox/Secondary",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "fill": "$secondary",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$secondary"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "emkG1",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$secondary-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "TKVrJ",
+      "x": 900,
+      "y": 1070,
+      "name": "Component/Checkbox/Accent",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "fill": "$accent",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$accent"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "JUxDQ",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$accent-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "p1gKe",
+      "x": 900,
+      "y": 1110,
+      "name": "Component/Checkbox/Neutral",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "fill": "$neutral",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$neutral"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "fzQPm",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$neutral-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "DUR7U",
+      "x": 900,
+      "y": 1150,
+      "name": "Component/Checkbox/Info",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "fill": "$info",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "NH2QY",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$info-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "hRnHE",
+      "x": 900,
+      "y": 1190,
+      "name": "Component/Checkbox/Success",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "fill": "$success",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "XuxWV",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$success-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Mb22T",
+      "x": 900,
+      "y": 1230,
+      "name": "Component/Checkbox/Warning",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "fill": "$warning",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "nVx1q",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$warning-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "1rLVv",
+      "x": 900,
+      "y": 1270,
+      "name": "Component/Checkbox/Error",
+      "reusable": true,
+      "width": 24,
+      "height": 24,
+      "fill": "$error",
+      "cornerRadius": "$radius-selector",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error"
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "path",
+          "id": "0e1EX",
+          "x": 4.575,
+          "y": 6.06,
+          "name": "Checkmark",
+          "geometry": "M0 6.93l1.98-1.98 2.97 2.97 7.92-7.92 1.98 1.98-9.9 9.9z",
+          "fill": "$error-content",
+          "width": 14.85,
+          "height": 11.88
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "accent": {
+      "type": "color",
+      "value": "#f471b5"
+    },
+    "accent-content": {
+      "type": "color",
+      "value": "#14040c"
+    },
+    "base-100": {
+      "type": "color",
+      "value": "#0f172a"
+    },
+    "base-200": {
+      "type": "color",
+      "value": "#0c1425"
+    },
+    "base-300": {
+      "type": "color",
+      "value": "#0a1120"
+    },
+    "base-content": {
+      "type": "color",
+      "value": "#c9cbd0"
+    },
+    "base-content-20": {
+      "type": "color",
+      "value": "#343b4b"
+    },
+    "border": {
+      "type": "number",
+      "value": 1
+    },
+    "depth": {
+      "type": "number",
+      "value": 0
+    },
+    "error": {
+      "type": "color",
+      "value": "#fb7085"
+    },
+    "error-content": {
+      "type": "color",
+      "value": "#150406"
+    },
+    "font-family": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "info": {
+      "type": "color",
+      "value": "#0ca5e9"
+    },
+    "info-content": {
+      "type": "color",
+      "value": "#000000"
+    },
+    "neutral": {
+      "type": "color",
+      "value": "#1e293b"
+    },
+    "neutral-content": {
+      "type": "color",
+      "value": "#cdd0d4"
+    },
+    "noise": {
+      "type": "number",
+      "value": 0
+    },
+    "primary": {
+      "type": "color",
+      "value": "#3abdf7"
+    },
+    "primary-content": {
+      "type": "color",
+      "value": "#010d15"
+    },
+    "radius-box": {
+      "type": "number",
+      "value": 16
+    },
+    "radius-field": {
+      "type": "number",
+      "value": 8
+    },
+    "radius-selector": {
+      "type": "number",
+      "value": 16
+    },
+    "secondary": {
+      "type": "color",
+      "value": "#818cf8"
+    },
+    "secondary-content": {
+      "type": "color",
+      "value": "#060715"
+    },
+    "size-field": {
+      "type": "number",
+      "value": 4
+    },
+    "size-selector": {
+      "type": "number",
+      "value": 4
+    },
+    "success": {
+      "type": "color",
+      "value": "#2ed4bf"
+    },
+    "success-content": {
+      "type": "color",
+      "value": "#01100d"
+    },
+    "warning": {
+      "type": "color",
+      "value": "#f4bf51"
+    },
+    "warning-content": {
+      "type": "color",
+      "value": "#140d02"
+    }
+  }
+}
