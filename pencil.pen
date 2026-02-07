@@ -1539,6 +1539,390 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "Uty4e",
+      "x": 900,
+      "y": 3350,
+      "name": "Component/Input/Default",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$base-content-20"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "0jB5m",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "paSb7",
+      "x": 900,
+      "y": 3410,
+      "name": "Component/Input/Ghost",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "cornerRadius": "$radius-field",
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "qegym",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Z4cRa",
+      "x": 900,
+      "y": 3470,
+      "name": "Component/Input/Neutral",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$neutral"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "i6ukb",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "fnx4z",
+      "x": 900,
+      "y": 3530,
+      "name": "Component/Input/Primary",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$primary"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "NlGuF",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "dw8y6",
+      "x": 900,
+      "y": 3590,
+      "name": "Component/Input/Secondary",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$secondary"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "b49dn",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "VYmyl",
+      "x": 900,
+      "y": 3650,
+      "name": "Component/Input/Accent",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$accent"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "JxgZM",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wgX42",
+      "x": 900,
+      "y": 3710,
+      "name": "Component/Input/Info",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$info"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "sdMrF",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "R396g",
+      "x": 900,
+      "y": 3770,
+      "name": "Component/Input/Success",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$success"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "fapli",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Tz7xL",
+      "x": 900,
+      "y": 3830,
+      "name": "Component/Input/Warning",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$warning"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "rEP10",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "hcEtX",
+      "x": 900,
+      "y": 3890,
+      "name": "Component/Input/Error",
+      "reusable": true,
+      "width": 320,
+      "height": 40,
+      "fill": "$base-100",
+      "cornerRadius": "$radius-field",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$error"
+      },
+      "gap": 8,
+      "padding": [
+        0,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "32k8E",
+          "name": "Placeholder",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Type here",
+          "fontFamily": "$font-family",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "nvRR1",
+      "x": 900,
+      "y": 3970,
+      "name": "Component/Input/With Label",
+      "reusable": true,
+      "width": 320,
+      "layout": "vertical",
+      "gap": 4,
+      "children": [
+        {
+          "type": "text",
+          "id": "K4owI",
+          "name": "Label",
+          "fill": "$base-content",
+          "content": "Label",
+          "fontFamily": "$font-family",
+          "fontSize": 12,
+          "fontWeight": "600"
+        },
+        {
+          "id": "cPQBR",
+          "type": "ref",
+          "ref": "Uty4e",
+          "name": "Input",
+          "width": "fill_container"
+        },
+        {
+          "type": "text",
+          "id": "1MOkG",
+          "name": "Helper",
+          "opacity": 0.5,
+          "fill": "$base-content",
+          "content": "Optional",
+          "fontFamily": "$font-family",
+          "fontSize": 12
+        }
+      ]
     }
   ],
   "variables": {
