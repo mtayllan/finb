@@ -1,0 +1,41 @@
+<div class="w-full max-w-4xl mx-auto">
+  <%= render UI::H1.new.with_content('Quick Transaction Chat') %>
+
+  <div class="card bg-base-200 shadow-xl mb-4">
+    <div class="card-body">
+      <h2 class="card-title">How it works</h2>
+      <p class="text-sm">Type your transaction in natural language. AI will parse it and create the transaction automatically.</p>
+      <p class="text-sm italic">Example: "bought bread at bakery today 5 dollars"</p>
+    </div>
+  </div>
+
+  <!-- Chat messages -->
+  <div class="space-y-4 mb-6">
+    <% if @messages.any? %>
+      <% @messages.reverse.each do |msg| %>
+        <%= render "message", message: msg %>
+      <% end %>
+    <% else %>
+      <div class="text-center text-base-content/60 py-8">
+        <i class="ph ph-chat-circle-dots text-5xl mb-2"></i>
+        <p>No messages yet. Start by typing your first transaction!</p>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Input form -->
+  <div class="sticky bottom-0 bg-base-100 pb-4 pt-4 border-t border-base-300">
+    <%= form_with url: chat_index_path, method: :post, class: "flex gap-2" do |f| %>
+      <%= f.text_field :message, 
+          placeholder: "Type your transaction here...", 
+          class: "input input-bordered flex-1",
+          autofocus: true,
+          autocomplete: "off" %>
+      <%= f.submit "Send", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to "← Back", transactions_path, class: "btn btn-ghost btn-sm" %>
+  </div>
+</div>

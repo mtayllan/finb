@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users, except: :show
 
   resources :transfers, except: :show
+  resources :chat, only: [:index, :create]
   resources :transactions, except: :show
   resources :accounts do
     resource :balance_fix, only: [:new, :create], controller: "accounts/balance_fixes"

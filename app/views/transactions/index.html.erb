@@ -1,7 +1,13 @@
 <div class="w-full">
-  <div class="flex flex-wrap justify-between items-center">
+  <div class="flex flex-wrap justify-between items-center gap-2">
     <%= render UI::H1.new.with_content('Transactions') %>
-    <%= link_to "New Transaction", new_transaction_path, class: "btn btn-primary" %>
+    <div class="flex gap-2">
+      <%= link_to chat_index_path, class: "btn btn-secondary" do %>
+        <i class="ph ph-chat-circle-dots"></i>
+        Quick Chat
+      <% end %>
+      <%= link_to "New Transaction", new_transaction_path, class: "btn btn-primary" %>
+    </div>
   </div>
 
   <div class="my-4">

@@ -47,11 +47,36 @@ FinB is a Personal Finances Manager
 - `Transfer` - Represents a transfer between accounts, belongs to two Accounts
 - `Session` - Represents a user session, used for authentication
 
-### Project Conventions
+### Model Design Principles
 
-- Prioritize good OOP code, do not create `app/services` module.
-- All business logic goes on app/models. Create a new object scoped to the principal model when developing a complex business logic scenario. Example: `app/models/account/update_balances.rb`
-- If a model belongs mainly to another one, create it scoped to the other. Example: `app/models/account/balance.rb`
+**Minimal Validations**
+- Only validate what's essential (presence, uniqueness, format)
+- Prefer contextual validations with `on:` when validation applies only in specific scenarios
+
+**Callbacks: Use Sparingly**
+- Callbacks should only handle setup operations (generating codes, setting defaults) or simple cleanup
+- Do NOT use callbacks for business logic. Extract business logic into POROs instead
+
+**Default Values via Lambdas**
+- Use lambda defaults for associations that can be inferred from context:
+  ```ruby
+  belongs_to :user, default: -> { Current.user }
+  ```
+
+**POROs (Plain Old Ruby Objects)**
+- Use POROs scoped under model namespaces for non-persistent logic
+- Presentation logic (formatting, display strings) belongs in POROs, not in the model
+- Complex operations (multi-step procedures) belong in POROs
+- Store under `app/models/<model_name>/`. Example: `app/models/chat_message/transaction_parser.rb`
+
+**Concerns for Shared Horizontal Behavior**
+- Use concerns (`ActiveSupport::Concern`) when behavior is shared across multiple models
+- Each concern should be self-contained: its own associations, scopes, and methods
+- For behavior specific to one model, prefer POROs over concerns
+
+**Scope Naming**
+- Use semantic, business-focused names (e.g., `recent`, `active`, `open`)
+- Avoid technical naming; prefer intent-revealing terms
 
 
 ### Frontend Architecture
@@ -67,8 +92,7 @@ FinB is a Personal Finances Manager
 
 ### Testing Philosophy
 - Comprehensive test coverage using Rails' built-in Minitest
-- Use fixtures for default test data, like a default User, Account, or Category
-- Use FactoryBot for complex scenarios, like filters
+- Use fixtures for all test data. Do NOT use FactoryBot
 - Keep fixtures minimal (2-3 per model for base cases)
 - Only test critical code paths that significantly increase confidence
 - Write tests as you go, when required

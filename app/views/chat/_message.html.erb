@@ -1,0 +1,23 @@
+<div class="chat chat-end">
+  <div class="chat-bubble chat-bubble-primary">
+    <%= message.message %>
+  </div>
+  <div class="chat-footer opacity-50 text-xs">
+    <%= message.created_at.strftime("%H:%M") %>
+  </div>
+</div>
+
+<% if message.response %>
+  <div class="chat chat-start">
+    <div class="chat-bubble <%= message.created_transaction ? 'chat-bubble-success' : 'chat-bubble-error' %>">
+      <%= message.response %>
+    </div>
+    <% if message.created_transaction %>
+      <div class="chat-footer opacity-50 text-xs mt-1">
+        <%= link_to "View transaction", 
+            edit_transaction_path(message.created_transaction), 
+            class: "link link-hover" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
