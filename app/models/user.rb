@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :credit_card_statements, through: :accounts
   has_many :tags, dependent: :destroy
+  has_many :chat_messages, dependent: :destroy
 
   def transactions
     Transaction.left_joins(:borrower_split).where(account: accounts).or(

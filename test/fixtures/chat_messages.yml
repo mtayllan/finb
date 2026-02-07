@@ -1,0 +1,4 @@
+greeting:
+  user: default
+  message: "bought bread at bakery today 5 dollars"
+  response: "Created: Bread at bakery | Value: R$ 5.00 | Date: 01/02/2026 | Account: First Bank | Category: Food"

@@ -65,6 +65,7 @@ class Transaction < ApplicationRecord
   end
 
   def set_credit_card_statement
+    self.credit_card_statement_month ||= date&.beginning_of_month if account.credit_card?
     return if credit_card_statement_month.blank?
 
     self.credit_card_statement = account.credit_card_statements.find_or_create_by(month: credit_card_statement_month)

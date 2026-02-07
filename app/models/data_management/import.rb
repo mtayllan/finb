@@ -14,6 +14,7 @@ module DataManagement
     private
 
     def clear_data
+      ChatMessage.delete_all
       Split.delete_all
       TransactionTag.delete_all
       Tag.delete_all
@@ -35,6 +36,7 @@ module DataManagement
       Tag.insert_all(@data["tags"]) if @data["tags"]
       TransactionTag.insert_all(@data["transaction_tags"]) if @data["transaction_tags"]
       Split.insert_all(@data["splits"])
+      ChatMessage.insert_all(@data["chat_messages"]) if @data["chat_messages"]
     end
 
     def populate_account_balances
