@@ -4485,6 +4485,2407 @@
           ]
         }
       ]
+    },
+    {
+      "type": "ellipse",
+      "id": "eKor0",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Default",
+      "reusable": true,
+      "opacity": 0.2,
+      "fill": "$base-content",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "ellipse",
+      "id": "lEEO4",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Primary",
+      "reusable": true,
+      "fill": "$primary",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "ellipse",
+      "id": "jCDWf",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Secondary",
+      "reusable": true,
+      "fill": "$secondary",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "ellipse",
+      "id": "WnIBg",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Accent",
+      "reusable": true,
+      "fill": "$accent",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "ellipse",
+      "id": "f0iAI",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Neutral",
+      "reusable": true,
+      "fill": "$neutral",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "ellipse",
+      "id": "PLP1o",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Info",
+      "reusable": true,
+      "fill": "$info",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "ellipse",
+      "id": "rXCVb",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Success",
+      "reusable": true,
+      "fill": "$success",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "ellipse",
+      "id": "jpQxd",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Warning",
+      "reusable": true,
+      "fill": "$warning",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "ellipse",
+      "id": "EUlpM",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Status/Error",
+      "reusable": true,
+      "fill": "$error",
+      "width": 8,
+      "height": 8
+    },
+    {
+      "type": "frame",
+      "id": "lfyHh",
+      "x": 4262,
+      "y": 0,
+      "name": "Statuses",
+      "width": 280,
+      "fill": "$base-100",
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 24,
+      "children": [
+        {
+          "type": "text",
+          "id": "EQYia",
+          "name": "colorsTitle",
+          "fill": "$base-content",
+          "content": "Status Colors",
+          "fontFamily": "$font-family",
+          "fontSize": 16,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "kjQse",
+          "name": "row1",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "pU62Z",
+              "type": "ref",
+              "ref": "eKor0",
+              "name": "s1"
+            },
+            {
+              "type": "text",
+              "id": "mvle7",
+              "name": "lbl1",
+              "fill": "$base-content",
+              "content": "Default",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jEP7Y",
+          "name": "row2",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "vswWe",
+              "type": "ref",
+              "ref": "lEEO4",
+              "name": "s2"
+            },
+            {
+              "type": "text",
+              "id": "KJJc7",
+              "name": "lbl2",
+              "fill": "$base-content",
+              "content": "Primary",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Fxqgs",
+          "name": "row3",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "UiKaP",
+              "type": "ref",
+              "ref": "jCDWf",
+              "name": "s3"
+            },
+            {
+              "type": "text",
+              "id": "vPT3K",
+              "name": "lbl3",
+              "fill": "$base-content",
+              "content": "Secondary",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "qLrC2",
+          "name": "row4",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "pWH5I",
+              "type": "ref",
+              "ref": "WnIBg",
+              "name": "s4"
+            },
+            {
+              "type": "text",
+              "id": "buLVV",
+              "name": "lbl4",
+              "fill": "$base-content",
+              "content": "Accent",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wyWcx",
+          "name": "row5",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "zynxg",
+              "type": "ref",
+              "ref": "f0iAI",
+              "name": "s5"
+            },
+            {
+              "type": "text",
+              "id": "hHcet",
+              "name": "lbl5",
+              "fill": "$base-content",
+              "content": "Neutral",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MXDg4",
+          "name": "row6",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "D4EnO",
+              "type": "ref",
+              "ref": "PLP1o",
+              "name": "s6"
+            },
+            {
+              "type": "text",
+              "id": "EJyui",
+              "name": "lbl6",
+              "fill": "$base-content",
+              "content": "Info",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "umP0m",
+          "name": "row7",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "ztJuX",
+              "type": "ref",
+              "ref": "rXCVb",
+              "name": "s7"
+            },
+            {
+              "type": "text",
+              "id": "zkxMz",
+              "name": "lbl7",
+              "fill": "$base-content",
+              "content": "Success",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jGoij",
+          "name": "row8",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "rU5QY",
+              "type": "ref",
+              "ref": "jpQxd",
+              "name": "s8"
+            },
+            {
+              "type": "text",
+              "id": "ZPq4h",
+              "name": "lbl8",
+              "fill": "$base-content",
+              "content": "Warning",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NBlWy",
+          "name": "row9",
+          "gap": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "IYPvK",
+              "type": "ref",
+              "ref": "EUlpM",
+              "name": "s9"
+            },
+            {
+              "type": "text",
+              "id": "2miGs",
+              "name": "lbl9",
+              "fill": "$base-content",
+              "content": "Error",
+              "fontFamily": "$font-family",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "vOxhC",
+          "name": "sizesTitle",
+          "fill": "$base-content",
+          "content": "Status Sizes",
+          "fontFamily": "$font-family",
+          "fontSize": 16,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "uZNXG",
+          "name": "sizesRow",
+          "gap": 24,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "F68px",
+              "name": "sxs",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "Q5686",
+                  "type": "ref",
+                  "ref": "lEEO4",
+                  "width": 2,
+                  "height": 2,
+                  "name": "sxsDot"
+                },
+                {
+                  "type": "text",
+                  "id": "9uGZ1",
+                  "name": "sxsLbl",
+                  "fill": "$base-content",
+                  "content": "xs",
+                  "fontFamily": "$font-family",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "BbFUG",
+              "name": "ssm",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "fcL0g",
+                  "type": "ref",
+                  "ref": "lEEO4",
+                  "width": 4,
+                  "height": 4,
+                  "name": "ssmDot"
+                },
+                {
+                  "type": "text",
+                  "id": "KIIMe",
+                  "name": "ssmLbl",
+                  "fill": "$base-content",
+                  "content": "sm",
+                  "fontFamily": "$font-family",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vJQ8J",
+              "name": "smd",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "n1DrL",
+                  "type": "ref",
+                  "ref": "lEEO4",
+                  "width": 8,
+                  "height": 8,
+                  "name": "smdDot"
+                },
+                {
+                  "type": "text",
+                  "id": "PQAyw",
+                  "name": "smdLbl",
+                  "fill": "$base-content",
+                  "content": "md",
+                  "fontFamily": "$font-family",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uzUFu",
+              "name": "slg",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "Rkwrx",
+                  "type": "ref",
+                  "ref": "lEEO4",
+                  "width": 12,
+                  "height": 12,
+                  "name": "slgDot"
+                },
+                {
+                  "type": "text",
+                  "id": "7LlBr",
+                  "name": "slgLbl",
+                  "fill": "$base-content",
+                  "content": "lg",
+                  "fontFamily": "$font-family",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "db0vp",
+              "name": "sxl",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "hhyxE",
+                  "type": "ref",
+                  "ref": "lEEO4",
+                  "width": 16,
+                  "height": 16,
+                  "name": "sxlDot"
+                },
+                {
+                  "type": "text",
+                  "id": "TYh8T",
+                  "name": "sxlLbl",
+                  "fill": "$base-content",
+                  "content": "xl",
+                  "fontFamily": "$font-family",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "sDzOL",
+      "x": 4642,
+      "y": 1029,
+      "name": "Component/Stat/Default",
+      "reusable": true,
+      "fill": "$base-200",
+      "layout": "vertical",
+      "padding": [
+        16,
+        24
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "iijEo",
+          "name": "Title",
+          "fill": "$base-content-60",
+          "content": "Downloads",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12
+        },
+        {
+          "type": "text",
+          "id": "aJKVM",
+          "name": "Value",
+          "fill": "$base-content",
+          "content": "31K",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 32,
+          "fontWeight": "800"
+        },
+        {
+          "type": "text",
+          "id": "bgywH",
+          "name": "Description",
+          "fill": "$base-content-60",
+          "content": "Jan 1st - Feb 1st",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "SfiAm",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Table/Default",
+      "reusable": true,
+      "width": 640,
+      "cornerRadius": "$radius-box",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "t5nQn",
+          "name": "Header Row",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Kgm8V",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center"
+            },
+            {
+              "type": "frame",
+              "id": "yoRU8",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "28yOl",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Name",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XX7rN",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ru7ki",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Job",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "S14Ox",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "tFvPF",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Favorite Color",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "2eNbc",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "twAz4",
+          "name": "Row 1",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "n4HKc",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HhDVY",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "1",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "m6xVk",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lmnDl",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Cy Ganderton",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Zcg0B",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "TxBaI",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Quality Control Specialist",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YcwSB",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XcOt6",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Blue",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "oGkaO",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "RKw4k",
+          "name": "Row 2",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "erMeN",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "8pSEI",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "2",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vnw5A",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "35KT3",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Hart Hagerty",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EZFKX",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HoQuy",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Desktop Support Technician",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Iorvf",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nZnBt",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Purple",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "5wvQe",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "BKihf",
+          "name": "Row 3",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "1UfDU",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "5zlKr",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "3",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jjPtr",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yEkje",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Brice Swyre",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WVspL",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "2uoo4",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Tax Accountant",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Qgtft",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XE2pL",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Red",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "IVjhV",
+      "x": 4642,
+      "y": 0,
+      "name": "Stats",
+      "layout": "vertical",
+      "gap": 40,
+      "children": [
+        {
+          "type": "frame",
+          "id": "rNAio",
+          "name": "Stats",
+          "clip": true,
+          "fill": "$base-200",
+          "cornerRadius": "$radius-box",
+          "children": [
+            {
+              "id": "ORBMu",
+              "type": "ref",
+              "ref": "sDzOL",
+              "name": "s1"
+            },
+            {
+              "type": "rectangle",
+              "id": "PHaeh",
+              "name": "Divider",
+              "fill": "$base-content-20",
+              "width": 1,
+              "height": "fill_container"
+            },
+            {
+              "id": "xT8vb",
+              "type": "ref",
+              "ref": "sDzOL",
+              "name": "s2",
+              "descendants": {
+                "iijEo": {
+                  "content": "New Users"
+                },
+                "aJKVM": {
+                  "content": "4,200"
+                },
+                "bgywH": {
+                  "content": "21% more than last month"
+                }
+              }
+            },
+            {
+              "type": "rectangle",
+              "id": "Uq4d0",
+              "name": "Divider",
+              "fill": "$base-content-20",
+              "width": 1,
+              "height": "fill_container"
+            },
+            {
+              "id": "Tp5WY",
+              "type": "ref",
+              "ref": "sDzOL",
+              "name": "s3",
+              "descendants": {
+                "iijEo": {
+                  "content": "New Registers"
+                },
+                "aJKVM": {
+                  "content": "1,200"
+                },
+                "bgywH": {
+                  "content": "14% more than last month"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TtXNx",
+          "name": "Stats Vertical",
+          "clip": true,
+          "fill": "$base-200",
+          "cornerRadius": "$radius-box",
+          "layout": "vertical",
+          "children": [
+            {
+              "id": "vQ3FJ",
+              "type": "ref",
+              "ref": "sDzOL",
+              "name": "sv1"
+            },
+            {
+              "type": "rectangle",
+              "id": "kv17L",
+              "name": "Divider",
+              "fill": "$base-content-20",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "id": "K2IGs",
+              "type": "ref",
+              "ref": "sDzOL",
+              "name": "sv2",
+              "descendants": {
+                "iijEo": {
+                  "content": "New Users"
+                },
+                "aJKVM": {
+                  "content": "4,200"
+                },
+                "bgywH": {
+                  "content": "+21%"
+                }
+              }
+            },
+            {
+              "type": "rectangle",
+              "id": "zGzvM",
+              "name": "Divider",
+              "fill": "$base-content-20",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "id": "DIRIC",
+              "type": "ref",
+              "ref": "sDzOL",
+              "name": "sv3",
+              "descendants": {
+                "iijEo": {
+                  "content": "New Registers"
+                },
+                "aJKVM": {
+                  "content": "1,200"
+                },
+                "bgywH": {
+                  "content": "+14%"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "q4E0n",
+          "name": "Stats Colored",
+          "clip": true,
+          "fill": "$base-200",
+          "cornerRadius": "$radius-box",
+          "children": [
+            {
+              "id": "s2CtL",
+              "type": "ref",
+              "ref": "2WqWy",
+              "name": "stat-primary"
+            },
+            {
+              "type": "rectangle",
+              "id": "KsHab",
+              "name": "Divider",
+              "fill": "$base-content-20",
+              "width": 1,
+              "height": "fill_container"
+            },
+            {
+              "id": "3Ar6g",
+              "type": "ref",
+              "ref": "UoEvh",
+              "name": "stat-secondary",
+              "descendants": {
+                "qQfvh": {
+                  "content": "New Users"
+                },
+                "VbAr2": {
+                  "content": "4,200"
+                },
+                "RPtH8": {
+                  "content": "↗︎ 400 (22%)"
+                }
+              }
+            },
+            {
+              "type": "rectangle",
+              "id": "eL3BE",
+              "name": "Divider",
+              "fill": "$base-content-20",
+              "width": 1,
+              "height": "fill_container"
+            },
+            {
+              "id": "Es6yN",
+              "type": "ref",
+              "ref": "J0hq7",
+              "name": "stat-accent",
+              "descendants": {
+                "Oc0aC": {
+                  "content": "New Registers"
+                },
+                "HRVBt": {
+                  "content": "1,200"
+                },
+                "Iblgk": {
+                  "content": "↗︎ 90 (14%)"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5DZJ5",
+          "name": "Stats With Actions",
+          "clip": true,
+          "fill": "$base-200",
+          "cornerRadius": "$radius-box",
+          "children": [
+            {
+              "id": "6r4B8",
+              "type": "ref",
+              "ref": "YYAnf",
+              "name": "stat-actions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mEty9",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Table/Zebra",
+      "reusable": true,
+      "width": 640,
+      "cornerRadius": "$radius-box",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "2VBa8",
+          "name": "Header Row",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "la9Br",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center"
+            },
+            {
+              "type": "frame",
+              "id": "0lwhl",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "PS5KY",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Name",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fH4O5",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "p6SGK",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Job",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zLNSv",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KKSlN",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Favorite Color",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "5dj9h",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "8OnXU",
+          "name": "Row 1",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "eiL1i",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "U6ypv",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "1",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "85AUH",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bPnOO",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Cy Ganderton",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "w2eTu",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YoPHI",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Quality Control Specialist",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zGlAS",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0iIrS",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Blue",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "sM3dM",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "zlLN5",
+          "name": "Row 2 (Zebra)",
+          "width": "fill_container",
+          "height": 42,
+          "fill": "$base-200",
+          "children": [
+            {
+              "type": "frame",
+              "id": "mkVhM",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "whUcp",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "2",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "4jpbn",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "m5RQq",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Hart Hagerty",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vdSCx",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "EgkTa",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Desktop Support Technician",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "5NUNp",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jdVer",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Purple",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "tESLK",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "kMxeo",
+          "name": "Row 3",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "y5w6P",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0Mzog",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "3",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "5p4xn",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "7Vpf8",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Brice Swyre",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "CT4rj",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "MXrmp",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Tax Accountant",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "86fXg",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KGb9T",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Red",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "UoEvh",
+      "x": 4800,
+      "y": 1029,
+      "name": "Component/Stat/Secondary",
+      "reusable": true,
+      "fill": "$base-200",
+      "layout": "vertical",
+      "padding": [
+        16,
+        24
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "qQfvh",
+          "name": "Title",
+          "fill": "$base-content-60",
+          "content": "Downloads",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12
+        },
+        {
+          "type": "text",
+          "id": "VbAr2",
+          "name": "Value",
+          "fill": "$secondary",
+          "content": "31K",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 32,
+          "fontWeight": "800"
+        },
+        {
+          "type": "text",
+          "id": "RPtH8",
+          "name": "Description",
+          "fill": "$base-content-60",
+          "content": "Jan 1st - Feb 1st",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "J0hq7",
+      "x": 4960,
+      "y": 1029,
+      "name": "Component/Stat/Accent",
+      "reusable": true,
+      "fill": "$base-200",
+      "layout": "vertical",
+      "padding": [
+        16,
+        24
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "Oc0aC",
+          "name": "Title",
+          "fill": "$base-content-60",
+          "content": "Downloads",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12
+        },
+        {
+          "type": "text",
+          "id": "HRVBt",
+          "name": "Value",
+          "fill": "$accent",
+          "content": "31K",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 32,
+          "fontWeight": "800"
+        },
+        {
+          "type": "text",
+          "id": "Iblgk",
+          "name": "Description",
+          "fill": "$base-content-60",
+          "content": "Jan 1st - Feb 1st",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mEeCg",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Table/Border",
+      "reusable": true,
+      "width": 640,
+      "fill": "$base-200",
+      "cornerRadius": "$radius-box",
+      "stroke": {
+        "align": "inside",
+        "thickness": "$border",
+        "fill": "$table-border-color"
+      },
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "KovE4",
+          "name": "Header Row",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "6c9IH",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center"
+            },
+            {
+              "type": "frame",
+              "id": "iVOsF",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "UtjdZ",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Name",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "8EpQn",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vVzLr",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Job",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fNk60",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "79Tz0",
+                  "name": "Label",
+                  "fill": "$table-header-color",
+                  "content": "Favorite Color",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "aULs2",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "TYRKu",
+          "name": "Row 1",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "DScR0",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "n4ITu",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "1",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MXGny",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vzVAT",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Cy Ganderton",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "5QcYy",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KCJ35",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Quality Control Specialist",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "7dfIn",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "u98oa",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Blue",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "sQ6f4",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "NfsTL",
+          "name": "Row 2",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "bJXGQ",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "1a7lS",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "2",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ChoUa",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zXzMj",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Hart Hagerty",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iv48A",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4uni6",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Desktop Support Technician",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bEEB2",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lKCwW",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Purple",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "W7zUW",
+          "name": "Divider",
+          "fill": "$table-border-color",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "RfSYW",
+          "name": "Row 3",
+          "width": "fill_container",
+          "height": 42,
+          "children": [
+            {
+              "type": "frame",
+              "id": "0lpr2",
+              "name": "Cell #",
+              "width": 50,
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "js3Be",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "3",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KeEBi",
+              "name": "Cell Name",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Wk5rC",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Brice Swyre",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iWWn5",
+              "name": "Cell Job",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "K4Q9a",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Tax Accountant",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uKCHl",
+              "name": "Cell Color",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                12,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QmqKG",
+                  "name": "Content",
+                  "fill": "$base-content",
+                  "content": "Red",
+                  "fontFamily": "$font-family",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "CQOth",
+      "x": 4642,
+      "y": 1587,
+      "name": "Tables",
+      "width": 700,
+      "fill": "$base-100",
+      "layout": "vertical",
+      "gap": 32,
+      "padding": 32,
+      "children": [
+        {
+          "type": "text",
+          "id": "karQU",
+          "name": "Title",
+          "fill": "$base-content",
+          "content": "Tables",
+          "fontFamily": "$font-family",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "5YsiF",
+          "name": "Label Default",
+          "fill": "$table-header-color",
+          "content": "Default",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        },
+        {
+          "id": "6HxUH",
+          "type": "ref",
+          "ref": "SfiAm",
+          "width": "fill_container",
+          "name": "t1"
+        },
+        {
+          "type": "text",
+          "id": "EZc7d",
+          "name": "Label Zebra",
+          "fill": "$table-header-color",
+          "content": "Zebra",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        },
+        {
+          "id": "Br76K",
+          "type": "ref",
+          "ref": "mEty9",
+          "width": "fill_container",
+          "name": "t2"
+        },
+        {
+          "type": "text",
+          "id": "rkXKZ",
+          "name": "Label Border",
+          "fill": "$table-header-color",
+          "content": "Border",
+          "fontFamily": "$font-family",
+          "fontSize": 14,
+          "fontWeight": "600"
+        },
+        {
+          "id": "JBDIE",
+          "type": "ref",
+          "ref": "mEeCg",
+          "width": "fill_container",
+          "name": "t3"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "2WqWy",
+      "x": 4642,
+      "y": 1179,
+      "name": "Component/Stat/Primary",
+      "reusable": true,
+      "fill": "$base-200",
+      "layout": "vertical",
+      "padding": [
+        16,
+        24
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "J8iYl",
+          "name": "Title",
+          "fill": "$base-content-60",
+          "content": "Total Page Views",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "yCLTd",
+          "name": "Value",
+          "fill": "$primary",
+          "content": "89,400",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 32,
+          "fontWeight": "800"
+        },
+        {
+          "type": "text",
+          "id": "ecTXb",
+          "name": "Description",
+          "fill": "$base-content-60",
+          "content": "21% more than last month",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "YYAnf",
+      "x": 4861,
+      "y": 1179,
+      "name": "Component/Stat/With Actions",
+      "reusable": true,
+      "fill": "$base-200",
+      "layout": "vertical",
+      "gap": 8,
+      "padding": [
+        16,
+        24
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "AF8x2",
+          "name": "Title",
+          "fill": "$base-content-60",
+          "content": "Account balance",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "pFUw2",
+          "name": "Value",
+          "fill": "$base-content",
+          "content": "$89,400",
+          "lineHeight": 1.75,
+          "fontFamily": "$font-family",
+          "fontSize": 32,
+          "fontWeight": "800"
+        },
+        {
+          "type": "frame",
+          "id": "AgOvk",
+          "name": "Actions",
+          "gap": 8,
+          "children": [
+            {
+              "id": "5deKf",
+              "type": "ref",
+              "ref": "9UvK8",
+              "name": "btn1",
+              "height": 32,
+              "padding": [
+                0,
+                14
+              ],
+              "descendants": {
+                "WOAdm": {
+                  "content": "Add funds",
+                  "fontSize": 13
+                }
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
@@ -4675,6 +7076,18 @@
     "secondary-soft-border": {
       "type": "color",
       "value": "#19213b"
+    },
+    "table-border-color": {
+      "type": "color",
+      "value": "#182032"
+    },
+    "table-header-color": {
+      "type": "color",
+      "value": "#7e838e"
+    },
+    "base-content-60": {
+      "type": "color",
+      "value": "#7f838e"
     }
   }
 }
