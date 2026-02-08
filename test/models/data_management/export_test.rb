@@ -9,7 +9,7 @@ module DataManagement
       assert json_string.present?
       data = JSON.parse(json_string)
 
-      expected_keys = %w[users categories accounts transactions transfers credit_card_statements splits tags transaction_tags]
+      expected_keys = %w[users categories accounts transactions transfers credit_card_statements splits tags transaction_tags chat_messages]
       assert_equal expected_keys.sort, data.keys.sort
     end
 
@@ -40,6 +40,7 @@ module DataManagement
     end
 
     test "should handle empty database" do
+      ChatMessage.delete_all
       Split.delete_all
       TransactionTag.delete_all
       Tag.delete_all

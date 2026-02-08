@@ -8,7 +8,6 @@ end
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
-require "test_helpers/session_test_helper"
 require "webmock/minitest"
 
 WebMock.disable_net_connect!
@@ -28,6 +27,7 @@ module ActiveSupport
       end
     end
 
+    include GroqTestHelper
     include SessionTestHelper
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
