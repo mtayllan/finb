@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
+      GROQ_API_KEY: test_key_for_ci
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
