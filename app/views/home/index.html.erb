@@ -1,209 +1,171 @@
-<div class="w-full">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div>
-      <div class="flex items-center justify-between">
-        <h3 class="text-xl font-bold">Accounts</h3>
-        <%= link_to accounts_url do %>
-          <i class="ph ph-arrow-square-out"></i>
-        <% end %>
-      </div>
-      <div class="grid gap-6 max-h-96 overflow-y-auto pr-4 my-4">
-        <% @accounts.each do |account| %>
-          <div class="flex items-center justify-between space-x-4">
-            <div class="flex items-center space-x-4">
-              <span class="relative flex shrink-0">
-                <%= render AppUI::Accounts::Icon.new(account) %>
-              </span>
-              <div>
-                <p class="text-sm font-medium leading-none"><%= account.name %></p>
-                <%= link_to "View details", account_url(account), class: "text-sm link" %>
-              </div>
-            </div>
-            <div>
-              <%= number_to_currency(account.balance) %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="flex items-center justify-between text-lg font-medium pr-4">
-        <div>Total</div>
-        <div><%= number_to_currency(@total_balance) %></div>
+<div class="w-full min-h-screen bg-base-100">
+  <%# Mobile & Desktop: Hero Banner %>
+  <div class="w-full mb-4 lg:mb-8">
+    <%# Mobile: Full-width hero banner %>
+    <div class="lg:hidden bg-primary rounded-2xl p-5">
+      <div class="text-primary-content text-xs font-semibold opacity-80">Total Net Worth</div>
+      <div class="text-primary-content text-3xl font-extrabold mt-2"><%= number_to_currency(@total_balance) %></div>
+      <div class="flex items-center gap-2 mt-2">
+        <span class="text-primary-content text-sm font-semibold flex items-center gap-1">
+          <i class="ph <%= @balance_change >= 0 ? 'ph-caret-up' : 'ph-caret-down' %>"></i>
+          <%= number_to_currency(@balance_change.abs) %>
+          (<%= @balance_change_percent.abs %>%)
+          vs last month
+        </span>
       </div>
     </div>
-    <div>
-      <div class="flex items-center justify-between">
-        <h3 class="text-xl font-bold">Last Transactions</h3>
-        <%= link_to transactions_url do %>
-          <i class="ph ph-arrow-square-out"></i>
-        <% end %>
+
+    <%# Desktop: 4 stat cards grid %>
+    <div class="hidden lg:grid grid-cols-4 gap-5">
+      <%# Total Balance Card %>
+      <div class="bg-primary rounded-2xl p-6 flex flex-col gap-2">
+        <div class="text-primary-content text-xs font-semibold opacity-80">Total Balance</div>
+        <div class="text-primary-content text-3xl font-extrabold"><%= number_to_currency(@total_balance) %></div>
+        <div class="text-primary-content text-sm flex items-center gap-1">
+          <i class="ph <%= @balance_change >= 0 ? 'ph-caret-up' : 'ph-caret-down' %>"></i>
+          <%= number_to_currency(@balance_change.abs) %>
+          (<%= @balance_change_percent.abs %>%) vs last month
+        </div>
       </div>
-      <div class="grid gap-6 max-h-[120rem] overflow-y-auto my-4">
-        <% @last_transactions.each do |transaction| %>
-          <div class="flex items-center justify-between space-x-4">
-            <div class="flex items-center space-x-4">
-              <span class="relative flex shrink-0">
-                <%= render AppUI::Categories::Icon.new(transaction.category) %>
-              </span>
-              <div>
-                <p class="text-sm font-medium leading-none"><%= transaction.description %></p>
-                <p class="text-sm">
-                  <% if transaction.account %>
-                    <%= transaction.account.name %>
-                  <% else %>
-                    From Split
-                  <% end %>
-                </p>
-              </div>
-            </div>
-            <div>
-              <p class="<%= transaction.value.positive? ? 'text-positive' : 'text-negative' %>">
-                <%= number_to_currency(transaction.value) %>
-              </p>
-            </div>
-          </div>
-        <% end %>
+
+      <%# Monthly Income Card %>
+      <div class="bg-base-200 rounded-2xl p-6 flex flex-col gap-2">
+        <div class="text-base-content text-xs font-semibold opacity-70">Monthly Income</div>
+        <div class="text-positive text-3xl font-extrabold"><%= number_to_currency(@totals[:total_income]) %></div>
+        <div class="text-positive text-sm">+0%</div>
       </div>
-    </div>
-    <div>
-      <div class="flex items-center justify-between">
-        <h3 class="text-xl font-bold">Last Transfers</h3>
-        <%= link_to transfers_url do %>
-          <i class="ph ph-arrow-square-out"></i>
-        <% end %>
+
+      <%# Monthly Expenses Card %>
+      <div class="bg-base-200 rounded-2xl p-6 flex flex-col gap-2">
+        <div class="text-base-content text-xs font-semibold opacity-70">Monthly Expenses</div>
+        <div class="text-negative text-3xl font-extrabold"><%= number_to_currency(@totals[:total_expenses].abs) %></div>
+        <div class="text-negative text-sm">+0%</div>
       </div>
-      <div class="grid gap-6 max-h-[120rem] my-4">
-        <% @last_transfers.each do |transfer| %>
-          <div class="grid grid-cols-3">
-            <div class="flex items-center gap-4">
-              <div>
-                <%= render AppUI::Accounts::Icon.new(transfer.origin_account) %>
-              </div>
-              <div class="text-ellipsis line-clamp-1 text-sm"><%= transfer.origin_account.name %></div>
-            </div>
-            <div class="flex flex-col items-center justify-center text-sm">
-              <p class="leading-none">---></p>
-              <p><%= transfer.value %></p>
-            </div>
-            <div class="flex flex-row-reverse items-center gap-4">
-              <div>
-                <%= render AppUI::Accounts::Icon.new(transfer.target_account) %>
-              </div>
-              <div class="text-ellipsis line-clamp-1"><%= transfer.target_account.name %></div>
-            </div>
-          </div>
-        <% end %>
+
+      <%# Net Flow Card %>
+      <div class="bg-base-200 rounded-2xl p-6 flex flex-col gap-2">
+        <div class="text-base-content text-xs font-semibold opacity-70">Net Flow</div>
+        <div class="text-base-content text-3xl font-extrabold">
+          <%= number_to_currency(@totals[:total_income] + @totals[:total_expenses]) %>
+        </div>
+        <div class="text-base-content text-sm opacity-60">This month</div>
       </div>
     </div>
   </div>
 
-  <hr class="my-4">
+  <%# Desktop: Action Buttons %>
+  <div class="hidden lg:flex gap-3 mb-8">
+    <%= link_to "New Transaction", new_transaction_path, class: "btn btn-primary" %>
+    <%= link_to "New Transfer", new_transfer_path, class: "btn btn-neutral" %>
+    <%= link_to "View Reports", transactions_path, class: "btn btn-ghost" %>
+  </div>
 
-  <h3 class="text-xl text-center font-bold">Month Summary</h3>
-
+  <%# Mobile: Month Summary %>
   <%= turbo_frame_tag "month_summary" do %>
-    <div class="flex justify-center items-center my-6 gap-8">
-      <%=
-        link_to @month.prev_month.strftime('%b %Y'),
-                url_for(month: @month.prev_month.strftime('%Y/%m')),
-                class: "link"
-      %>
-
-      <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
-
-      <%=
-        link_to @month.next_month.strftime('%b %Y'),
-                url_for(month: @month.next_month.strftime('%Y/%m')),
-                class: "link"
-      %>
-    </div>
-
-    <div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-        <div class="flex flex-col gap-2">
-          <div class="my-2">Summary</div>
-          <div class="rounded-xl border shadow-sm">
-            <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-              <h3 class="tracking-tight text-sm font-medium">Balance</h3>
-              <i class="ph-bold ph-arrows-down-up text-xl"></i>
-            </div>
-            <div class="p-6 pt-0">
-              <div class="text-2xl font-bold"><%= number_to_currency(@totals[:total_expenses] + @totals[:total_income]) %></div>
-            </div>
-          </div>
-
-          <div class="rounded-xl border shadow-sm">
-            <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-              <h3 class="tracking-tight text-sm font-medium">Income</h3>
-              <i class="ph-bold ph-arrow-up text-xl"></i>
-            </div>
-            <div class="p-6 pt-0">
-              <div class="text-2xl font-bold"><%= number_to_currency(@totals[:total_income]) %></div>
-            </div>
-          </div>
-
-          <div class="rounded-xl border shadow-sm">
-            <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
-              <h3 class="tracking-tight text-sm font-medium">Expenses</h3>
-              <i class="ph-bold ph-arrow-down text-xl"></i>
-            </div>
-            <div class="p-6 pt-0">
-              <div class="text-2xl font-bold"><%= number_to_currency(@totals[:total_expenses]) %></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col">
-          <div class="my-2">Expenses by Category</div>
-          <div class="flex flex-col">
-            <% @totals[:expenses_by_category].each do |category, value| %>
-              <div class="mt-2 flex justify-between">
-                <div class="flex items-center">
-                  <div class="mr-2">
-                    <%= render AppUI::Categories::Icon.new(category) %>
-                  </div>
-                  <h2 class="font-semibold mr-2 hover:underline">
-                    <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id), data: { turbo: false }  %>
-                  </h2>
-                </div>
-                <div>
-                  <%= number_to_currency(value) %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="flex flex-col">
-          <div class="my-2">Income by Category</div>
-          <div class="flex flex-col">
-            <% @totals[:income_by_category].each do |category, value| %>
-              <div class="mt-2 flex justify-between">
-                <div class="flex items-center">
-                  <div class="mr-2">
-                    <%= render AppUI::Categories::Icon.new(category) %>
-                  </div>
-                  <h2 class="font-semibold mr-2 hover:underline">
-                    <%= link_to category.name, transactions_path(month: Date.current.strftime('%Y/%m'), category_id: category.id), data: { turbo: false } %>
-                  </h2>
-                </div>
-                <div>
-                  <%= number_to_currency(value) %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
+    <div class="lg:hidden bg-base-200 rounded-2xl p-5 mb-4">
+      <%# Month Selector %>
+      <div class="flex items-center justify-between mb-4">
+        <%= link_to root_path(month: @month.prev_month.strftime('%Y/%m')), class: "text-base-content text-xl" do %>
+          <i class="ph ph-caret-left"></i>
+        <% end %>
+        <div class="text-base-content text-base font-semibold"><%= @month.strftime('%B %Y') %></div>
+        <%= link_to root_path(month: @month.next_month.strftime('%Y/%m')), class: "text-base-content text-xl" do %>
+          <i class="ph ph-caret-right"></i>
+        <% end %>
       </div>
 
-      <div
-        class="grid md:grid-cols-2 mt-4"
-        data-controller="categories-charts"
-        data-categories-charts-expenses-value="<%= @totals[:expenses_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1].abs } }.to_json %>"
-        data-categories-charts-income-value="<%= @totals[:income_by_category].map { { name: _1[0].name, color: _1[0].color, value: _1[1] } }.to_json %>"
-      >
-        <div data-categories-charts-target="expenses" class="w-full h-96 flex"></div>
-        <div data-categories-charts-target="income" class="w-full h-96 flex"></div>
+      <%# Income & Expenses %>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-1">
+          <div class="text-base-content text-xs opacity-60">Income</div>
+          <div class="text-positive text-xl font-bold"><%= number_to_currency(@totals[:total_income]) %></div>
+          <div class="text-positive text-xs">+0%</div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <div class="text-base-content text-xs opacity-60">Expenses</div>
+          <div class="text-negative text-xl font-bold"><%= number_to_currency(@totals[:total_expenses].abs) %></div>
+          <div class="text-negative text-xs">+0%</div>
+        </div>
       </div>
     </div>
   <% end %>
+
+  <%# Desktop: 3-Column Grid | Mobile: Vertical Stack %>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+    <%# Left Column (Desktop) / Section (Mobile): Spending Breakdown %>
+    <div class="bg-base-200 rounded-2xl p-5 flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base lg:text-lg font-semibold text-base-content">Spending Breakdown</h3>
+        <%= link_to reports_path, class: "text-xs lg:text-sm text-primary flex items-center gap-1" do %>
+          View reports <i class="ph ph-caret-right"></i>
+        <% end %>
+      </div>
+
+      <% @top_categories.each do |item| %>
+        <div class="flex flex-col gap-1.5">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full" style="background-color: <%= item[:category].color %>"></div>
+            <div class="flex-1 text-sm text-base-content"><%= item[:category].name %></div>
+            <div class="text-sm font-semibold text-base-content"><%= number_to_currency(item[:amount].abs) %></div>
+            <div class="text-xs text-base-content opacity-60"><%= item[:percentage] %>%</div>
+          </div>
+          <div class="w-full h-1 bg-base-300 rounded-sm overflow-hidden">
+            <div class="h-full rounded-sm" style="width: <%= item[:percentage] %>%; background-color: <%= item[:category].color %>"></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%# Middle Column (Desktop) / Section (Mobile): Recent Activity %>
+    <div class="bg-base-200 rounded-2xl p-5 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base lg:text-lg font-semibold text-base-content">Recent Activity</h3>
+        <%= link_to transactions_path, class: "text-xs lg:text-sm text-primary flex items-center gap-1" do %>
+          View all <i class="ph ph-caret-right"></i>
+        <% end %>
+      </div>
+
+      <% @last_transactions.each do |transaction| %>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center <%= transaction.value.positive? ? 'bg-positive/15' : 'bg-negative/15' %>">
+            <%= render AppUI::Categories::Icon.new(transaction.category) %>
+          </div>
+          <div class="flex-1 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-base-content"><%= transaction.description %></div>
+            <div class="text-xs text-base-content opacity-60">
+              <%= transaction.category.name %> • <%= time_ago_in_words(transaction.date) %> ago
+            </div>
+          </div>
+          <div class="text-sm lg:text-base font-semibold <%= transaction.value.positive? ? 'text-positive' : 'text-negative' %>">
+            <%= number_to_currency(transaction.value) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%# Right Column (Desktop) / Section (Mobile): Accounts %>
+    <div class="bg-base-200 rounded-2xl p-5 flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base lg:text-lg font-semibold text-base-content">Accounts</h3>
+        <%= link_to accounts_path, class: "text-xs lg:text-sm text-primary flex items-center gap-1" do %>
+          View all <i class="ph ph-caret-right"></i>
+        <% end %>
+      </div>
+
+      <% @accounts.each do |account| %>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center">
+            <%= render AppUI::Accounts::Icon.new(account) %>
+          </div>
+          <div class="flex-1 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-base-content"><%= account.name %></div>
+            <div class="text-xs text-base-content opacity-60"><%= account.kind.humanize %></div>
+          </div>
+          <div class="text-sm lg:text-base font-semibold <%= account.balance.negative? ? 'text-negative' : 'text-base-content' %>">
+            <%= number_to_currency(account.balance) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-
