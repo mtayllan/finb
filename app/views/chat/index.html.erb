@@ -1,41 +1,80 @@
-<div class="w-full max-w-4xl mx-auto">
-  <%= render UI::H1.new.with_content('Quick Transaction Chat') %>
+<div class="flex flex-col w-full mx-auto bg-base-100 rounded-lg shadow-lg overflow-hidden" style="height: calc(100vh - 8rem);" data-controller="chat">
+  <!-- Header -->
+  <div class="flex items-center gap-4 px-4 md:px-12 py-4 bg-base-200 border-b border-base-300">
+    <%= link_to transactions_path, class: "btn btn-ghost btn-sm btn-circle" do %>
+      <i class="ph ph-arrow-left text-xl"></i>
+    <% end %>
+    <div class="flex-1">
+      <h1 class="text-lg md:text-xl font-bold">Quick Transaction Chat</h1>
+      <p class="text-xs md:text-sm text-base-content/60 hidden md:block">Type transactions in natural language and AI will create them for you</p>
+    </div>
+    <button type="button"
+            class="btn btn-ghost btn-sm btn-circle"
+            onclick="info_modal.showModal()">
+      <i class="ph ph-info text-xl"></i>
+    </button>
+  </div>
 
-  <div class="card bg-base-200 shadow-xl mb-4">
-    <div class="card-body">
-      <h2 class="card-title">How it works</h2>
-      <p class="text-sm">Type your transaction in natural language. AI will parse it and create the transaction automatically.</p>
-      <p class="text-sm italic">Example: "bought bread at bakery today 5 dollars"</p>
+  <!-- Messages area -->
+  <div class="flex-1 overflow-y-auto px-4 md:px-12 py-6" data-chat-target="messages">
+    <div class="space-y-4 md:space-y-6 max-w-4xl mx-auto">
+      <% if @messages.any? %>
+        <% @messages.reverse_each do |msg| %>
+          <%= render "message", message: msg %>
+        <% end %>
+      <% else %>
+        <!-- Empty state -->
+        <div class="flex flex-col items-center justify-center py-16 md:py-24 text-center">
+          <i class="ph ph-chat-circle-dots text-5xl md:text-6xl text-base-content/30 mb-4"></i>
+          <h2 class="text-base md:text-lg font-semibold text-base-content/60 mb-2">No messages yet</h2>
+          <p class="text-sm text-base-content/50">Type your first transaction<br class="md:hidden"> using natural language</p>
+        </div>
+      <% end %>
+
     </div>
   </div>
 
-  <!-- Chat messages -->
-  <div class="space-y-4 mb-6">
-    <% if @messages.any? %>
-      <% @messages.reverse.each do |msg| %>
-        <%= render "message", message: msg %>
+  <!-- Input area -->
+  <div class="border-t border-base-300 bg-base-200 px-4 md:px-12 py-4 md:py-6">
+    <div class="max-w-4xl mx-auto">
+      <%= form_with url: chat_index_path,
+                    method: :post,
+                    class: "flex gap-2" do |f| %>
+        <%= f.text_field :message,
+            placeholder: "Type your transaction here... e.g., 'bought coffee at Starbucks 5 dollars'",
+            class: "input input-bordered flex-1 md:text-base",
+            autofocus: true,
+            autocomplete: "off",
+            required: true %>
+        <%= f.submit "Send",
+            class: "btn btn-primary px-6 md:px-8" %>
       <% end %>
-    <% else %>
-      <div class="text-center text-base-content/60 py-8">
-        <i class="ph ph-chat-circle-dots text-5xl mb-2"></i>
-        <p>No messages yet. Start by typing your first transaction!</p>
-      </div>
-    <% end %>
-  </div>
-
-  <!-- Input form -->
-  <div class="sticky bottom-0 bg-base-100 pb-4 pt-4 border-t border-base-300">
-    <%= form_with url: chat_index_path, method: :post, class: "flex gap-2" do |f| %>
-      <%= f.text_field :message, 
-          placeholder: "Type your transaction here...", 
-          class: "input input-bordered flex-1",
-          autofocus: true,
-          autocomplete: "off" %>
-      <%= f.submit "Send", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-  <div class="mt-4">
-    <%= link_to "← Back", transactions_path, class: "btn btn-ghost btn-sm" %>
+    </div>
   </div>
 </div>
+
+<!-- Info Modal -->
+<dialog id="info_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4">How it works</h3>
+    <div class="space-y-3">
+      <p class="text-sm">Type your transaction in natural language. AI will parse it and create the transaction automatically.</p>
+      <div class="bg-base-200 rounded-lg p-4">
+        <p class="text-sm font-semibold mb-2">Examples:</p>
+        <ul class="text-sm space-y-1 list-disc list-inside text-base-content/80">
+          <li>"bought bread at bakery today 5 dollars"</li>
+          <li>"10 reais em restaurante, nubank"</li>
+          <li>"50 reais em jogos, itaú crédito"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

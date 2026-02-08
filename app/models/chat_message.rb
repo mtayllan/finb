@@ -4,7 +4,7 @@ class ChatMessage < ApplicationRecord
 
   validates :message, presence: true
 
-  scope :recent, -> { order(created_at: :desc).limit(50) }
+  scope :recent, -> { order(created_at: :desc).limit(10) }
 
   class ParseError < StandardError; end
 
