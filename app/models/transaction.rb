@@ -65,9 +65,28 @@ class Transaction < ApplicationRecord
   end
 
   def set_credit_card_statement
+    self.credit_card_statement_month ||= detect_credit_card_statement_month
     return if credit_card_statement_month.blank?
 
     self.credit_card_statement = account.credit_card_statements.find_or_create_by(month: credit_card_statement_month)
+  end
+
+  def detect_credit_card_statement_month
+    return unless account.credit_card?
+
+    expiration_day = account.credit_card_expiration_day
+    return date.beginning_of_month unless expiration_day
+
+    expiration_date_on_month = date.change(day: expiration_day)
+    expiration_date_on_month = expiration_date_on_month.next_month if date > expiration_date_on_month
+
+    closing_date = expiration_date_on_month - 7.days
+
+    if closing_date > date
+      expiration_date_on_month.beginning_of_month
+    else
+      (expiration_date_on_month + 1.month).beginning_of_month
+    end
   end
 
   def set_report_value

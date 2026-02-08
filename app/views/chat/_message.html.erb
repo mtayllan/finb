@@ -1,0 +1,42 @@
+<!-- User message -->
+<div class="chat chat-end">
+  <div class="chat-bubble chat-bubble-primary text-sm md:text-base max-w-[280px] md:max-w-md">
+    <%= message.message %>
+  </div>
+  <div class="chat-footer opacity-50 text-xs">
+    <%= message.created_at.strftime("%H:%M") %>
+  </div>
+</div>
+
+<!-- AI response -->
+<% if message.response %>
+  <div class="chat chat-start">
+    <div class="chat-bubble text-sm md:text-base max-w-[300px] md:max-w-lg <%= message.created_transaction ? 'chat-bubble-success' : 'chat-bubble-error' %>">
+      <% if message.created_transaction %>
+        <div class="flex items-start gap-2">
+          <i class="ph ph-check-circle text-lg flex-shrink-0 mt-0.5"></i>
+          <div>
+            <div class="font-semibold">Transaction created</div>
+            <div class="text-sm opacity-90">
+              <%= message.created_transaction.description %> •
+              <%= number_to_currency(message.created_transaction.value) %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="flex items-start gap-2">
+          <i class="ph ph-x-circle text-lg flex-shrink-0 mt-0.5"></i>
+          <div><%= message.response %></div>
+        </div>
+      <% end %>
+    </div>
+    <% if message.created_transaction %>
+      <div class="chat-footer mt-1">
+        <%= link_to edit_transaction_path(message.created_transaction),
+                    class: "text-xs link link-hover text-success" do %>
+          View transaction →
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_24_195149) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_01_174417) do
   create_table "account_balances", force: :cascade do |t|
     t.integer "account_id", null: false
     t.decimal "balance", precision: 19, scale: 2, null: false
@@ -43,6 +43,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_24_195149) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "created_transaction_id"
+    t.text "message", null: false
+    t.text "response"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["created_transaction_id"], name: "index_chat_messages_on_created_transaction_id"
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
   create_table "credit_card_statements", force: :cascade do |t|
@@ -132,6 +143,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_24_195149) do
     t.boolean "exclude_from_reports", default: false, null: false
     t.boolean "from_split", default: false
     t.decimal "report_value", precision: 9, scale: 2
+    t.string "search_description"
     t.datetime "updated_at", null: false
     t.decimal "value", precision: 9, scale: 2, default: "0.0", null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
@@ -162,6 +174,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_24_195149) do
   add_foreign_key "account_balances", "accounts", on_delete: :cascade
   add_foreign_key "accounts", "users"
   add_foreign_key "categories", "users"
+  add_foreign_key "chat_messages", "transactions", column: "created_transaction_id"
+  add_foreign_key "chat_messages", "users"
   add_foreign_key "credit_card_statements", "accounts"
   add_foreign_key "sessions", "users", on_delete: :cascade
   add_foreign_key "splits", "transactions", column: "borrower_transaction_id"
