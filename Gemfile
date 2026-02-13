@@ -25,7 +25,7 @@ gem "view_component"
 gem "bootsnap", require: false
 gem "kamal", "~> 2.5", require: false
 gem "thruster", "~> 0.1", require: false
-gem "honeybadger", "~> 6.1"
+gem "honeybadger", "~> 6.3"
 
 group :development, :test do
   gem "debug"
