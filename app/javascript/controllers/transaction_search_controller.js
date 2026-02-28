@@ -3,7 +3,7 @@ import { useClickOutside, useDebounce } from "stimulus-use"
 import { get } from "@rails/request.js"
 
 export default class extends Controller {
-  static targets = ["transaction", "account", "category"]
+  static targets = ["transaction", "dropdown", "account", "category"]
   static debounces = [{ name: "search", wait: 200 }]
 
   connect() {
@@ -15,16 +15,12 @@ export default class extends Controller {
     this.closeDropdown();
   }
 
-  transactionDropdown() {
-    return this.transactionTarget.querySelector('div');
-  }
-
   openDropdown() {
-    this.transactionDropdown().classList.remove('hidden');
+    this.dropdownTarget.classList.remove('hidden');
   }
 
   closeDropdown() {
-    this.transactionDropdown().classList.add('hidden');
+    this.dropdownTarget.classList.add('hidden');
   }
 
   async search() {
@@ -36,7 +32,7 @@ export default class extends Controller {
 
     const transactions = await get(`/similar_transactions?q=${query}`, { responseKind: 'json' }).then(response => response.json);
 
-    this.transactionDropdown().innerHTML = '';
+    this.dropdownTarget.innerHTML = '';
 
     transactions.forEach(transaction => {
       const button = document.createElement('button');
@@ -58,7 +54,7 @@ export default class extends Controller {
           </div>
         </div>
       `;
-      this.transactionDropdown().appendChild(button);
+      this.dropdownTarget.appendChild(button);
     });
 
     this.openDropdown()
