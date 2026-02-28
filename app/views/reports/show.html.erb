@@ -10,14 +10,14 @@
         <%= render UI::FormLabel.new(form, :quick_filters) %>
         <select name="quick_filter" class="select select-bordered w-full" onchange="this.form.requestSubmit()">
           <option value="">Select a date range...</option>
-          <option value="today" <%= 'selected' if @start_date == Date.current && @end_date == Date.current %>>Today</option>
-          <option value="this_week" <%= 'selected' if @start_date == Date.current.beginning_of_week && @end_date == Date.current.end_of_week %>>This Week</option>
-          <option value="last_week" <%= 'selected' if @start_date == 1.week.ago.beginning_of_week && @end_date == 1.week.ago.end_of_week %>>Last Week</option>
+          <option value="today">Today</option>
+          <option value="this_week">This Week</option>
+          <option value="last_week">Last Week</option>
           <option value="last_2_weeks">Last 2 Weeks</option>
-          <option value="this_month" <%= 'selected' if @start_date == Date.current.beginning_of_month && @end_date == Date.current.end_of_month %>>This Month</option>
-          <option value="last_month" <%= 'selected' if @start_date == 1.month.ago.beginning_of_month && @end_date == 1.month.ago.end_of_month %>>Last Month</option>
+          <option value="this_month">This Month</option>
+          <option value="last_month">Last Month</option>
           <option value="last_3_months">Last 3 Months</option>
-          <option value="this_year" <%= 'selected' if @start_date == Date.current.beginning_of_year && @end_date == Date.current.end_of_year %>>This Year</option>
+          <option value="this_year">This Year</option>
         </select>
       <% end %>
     </div>
