@@ -34,3 +34,5 @@ credit_one:
   credit_card_expiration_day: 20
   initial_balance_date: <%= Date.current %>
   user: default
+
+

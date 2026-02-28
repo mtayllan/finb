@@ -1,21 +1,55 @@
 <div class="w-full">
-  <div class="flex flex-wrap justify-between items-center pb-2">
+  <div class="flex flex-wrap justify-between items-center pb-4">
     <%= render UI::H1.new.with_content('Credit Cards') %>
   </div>
 
-  <div class="flex flex-col max-w-sm">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <% @credit_cards.each do |credit_card| %>
-      <%= link_to credit_card_path(credit_card), class: "flex justify-between items-center hover:bg-neutral rounded-md p-1" do %>
-        <div class="flex items-center space-x-2">
-          <%= render AppUI::Accounts::Icon.new(credit_card, size: "lg") %>
-          <span>
-            <%= credit_card.name %>
-          </span>
+      <%= link_to credit_card_path(credit_card), class: "block group" do %>
+        <div
+          class="relative rounded-2xl overflow-hidden shadow-lg aspect-[1.586] p-5 flex flex-col transition-transform duration-200 group-hover:scale-[1.02]"
+          style="background-color: <%= credit_card.color %>;"
+        >
+          <%# Gradient overlay to ensure text contrast over any background color %>
+          <div class="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/50 pointer-events-none"></div>
+
+          <%# Shine effect %>
+          <div class="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none"></div>
+
+          <%# Top row: card name + icon %>
+          <div class="relative flex justify-between items-start">
+            <p class="text-white font-semibold text-sm tracking-wider uppercase drop-shadow"><%= credit_card.name %></p>
+            <i class="ph ph-credit-card text-xl text-white/70"></i>
+          </div>
+
+          <%# Middle: current statement value, vertically centered %>
+          <div class="relative flex-1 flex flex-col justify-center">
+            <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5">Current Statement</p>
+            <p class="text-white text-2xl font-bold tracking-tight drop-shadow">
+              <%= number_to_currency(credit_card.current_statement&.value || 0) %>
+            </p>
+          </div>
+
+          <%# Bottom row: payment status + future (only if > 0) %>
+          <div class="relative flex justify-between items-end">
+            <div>
+              <% if credit_card.current_statement&.paid_at? %>
+                <p class="text-white/60 text-xs">Paid <%= credit_card.current_statement.paid_at.to_fs(:day_month_year) %></p>
+              <% elsif credit_card.current_statement %>
+                <p class="text-yellow-300/90 text-xs font-medium">Awaiting payment</p>
+              <% end %>
+              <% if credit_card.credit_card_expiration_day.present? %>
+                <p class="text-white/50 text-xs mt-0.5">Closes day <%= credit_card.credit_card_expiration_day %></p>
+              <% end %>
+            </div>
+            <% if credit_card.future_sum > 0 %>
+              <div class="text-right">
+                <p class="text-white/60 text-xs uppercase tracking-widest">Future</p>
+                <p class="text-white font-semibold text-sm drop-shadow"><%= number_to_currency(credit_card.future_sum) %></p>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <p
-          class="text-xs <%= credit_card.balance.positive? ? 'text-positive' : 'text-negative' %>">
-          <%= number_to_currency credit_card.balance %>
-        </p>
       <% end %>
     <% end %>
   </div>

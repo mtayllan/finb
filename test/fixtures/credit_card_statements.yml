@@ -1,0 +1,18 @@
+_fixture:
+  model_class: CreditCard::Statement
+
+cc_stmt_current:
+  account: credit_one
+  month: <%= Date.current.beginning_of_month %>
+  value: 500
+
+cc_stmt_next:
+  account: credit_one
+  month: <%= Date.current.beginning_of_month + 1.month %>
+  value: 300
+
+cc_stmt_far:
+  account: credit_one
+  month: <%= Date.current.beginning_of_month + 2.months %>
+  value: 200
+  paid_at: <%= Date.current %>
