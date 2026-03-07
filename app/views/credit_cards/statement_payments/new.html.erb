@@ -29,7 +29,12 @@
         </div>
       </div>
 
-      <p class="text-sm text-base-content/80 mt-4">Date: <%= Date.current.to_fs(:day_month_year) %></p>
+      <div class="mt-4">
+        <%= label_tag "date", "Date", class: "block text-sm font-medium leading-6" %>
+        <div class="mt-2">
+          <%= render "components/ui/date_picker", name: "date", initial_value: Date.current.to_fs(:day_month_year), show_quick_select: true %>
+        </div>
+      </div>
     </div>
 
     <div class="flex justify-between mt-6">
