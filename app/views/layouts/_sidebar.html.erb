@@ -1,0 +1,89 @@
+<aside class="hidden md:flex flex-col w-64 min-h-screen bg-base-200 border-r border-neutral fixed top-0 left-0 z-20">
+  <%# Brand %>
+  <div class="flex items-center gap-3 px-5 pt-4 pb-2 shrink-0">
+    <%= image_tag "icon.png", class: "size-5", alt: "FinB" %>
+    <span class="font-bold text-lg">FinB</span>
+  </div>
+
+  <div class="divider my-0"></div>
+
+  <%# Navigation %>
+  <nav class="flex-1 flex flex-col gap-0.5 p-3 overflow-y-auto text-sm">
+    <%= link_to root_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'home' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-house text-base w-4"></i>
+      Dashboard
+    <% end %>
+
+    <p class="mt-3 mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Money</p>
+
+    <%= link_to transactions_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'transactions' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-arrows-left-right text-base w-4"></i>
+      Transactions
+    <% end %>
+    <%= link_to new_transaction_path(transaction_type: "expense"), class: "flex items-center gap-2 pl-9 pr-3 py-1.5 rounded-lg text-xs text-base-content/60 hover:bg-base-300 hover:text-base-content transition-colors" do %>
+      <i class="ph-bold ph-plus text-xs"></i>
+      New Expense
+    <% end %>
+    <%= link_to new_transaction_path(transaction_type: "income"), class: "flex items-center gap-2 pl-9 pr-3 py-1.5 rounded-lg text-xs text-base-content/60 hover:bg-base-300 hover:text-base-content transition-colors" do %>
+      <i class="ph-bold ph-plus text-xs"></i>
+      New Income
+    <% end %>
+
+    <%= link_to transfers_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'transfers' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-swap text-base w-4"></i>
+      Transfers
+    <% end %>
+    <%= link_to new_transfer_path, class: "flex items-center gap-2 pl-9 pr-3 py-1.5 rounded-lg text-xs text-base-content/60 hover:bg-base-300 hover:text-base-content transition-colors" do %>
+      <i class="ph-bold ph-plus text-xs"></i>
+      New Transfer
+    <% end %>
+
+    <p class="mt-3 mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Accounts</p>
+
+    <%= link_to accounts_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'accounts' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-bank text-base w-4"></i>
+      Accounts
+    <% end %>
+    <%= link_to credit_cards_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'credit_cards' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-credit-card text-base w-4"></i>
+      Credit Cards
+    <% end %>
+
+    <p class="mt-3 mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Analyze</p>
+
+    <%= link_to splits_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'splits' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-scissors text-base w-4"></i>
+      Splits
+    <% end %>
+    <%= link_to reports_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'reports' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-chart-line-up text-base w-4"></i>
+      Reports
+    <% end %>
+
+    <p class="mt-3 mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Manage</p>
+
+    <%= link_to categories_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'categories' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-tag text-base w-4"></i>
+      Categories
+    <% end %>
+    <%= link_to tags_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'tags' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-hash text-base w-4"></i>
+      Tags
+    <% end %>
+  </nav>
+
+  <div class="divider my-0"></div>
+
+  <%# User area %>
+  <div class="flex items-center gap-3 px-4 py-4">
+    <div class="size-8 rounded-full bg-primary flex items-center justify-center text-primary-content text-sm font-semibold shrink-0">
+      <%= Current.user.username[0].upcase %>
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="text-sm font-medium truncate"><%= Current.user.username %></p>
+    </div>
+    <%= link_to settings_path, class: "text-base-content/60 hover:text-base-content transition-colors" do %>
+      <i class="ph-bold ph-gear text-base"></i>
+    <% end %>
+  </div>
+</aside>
