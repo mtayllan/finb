@@ -1,26 +1,152 @@
-<div class="flex md:hidden dock dock-md bg-neutral text-neutral-content">
-  <%= link_to root_path, class: class_names('dock-active': controller_name == "home") do %>
-    <i class="ph-bold ph-house"></i>
-    <span class="sr-only">Home</span>
-  <% end %>
-  <%= link_to transactions_path, class: class_names('dock-active': controller_name == "transactions") do %>
-    <i class="ph-bold ph-plus"></i>
-    <span class="sr-only">Transactions</span>
-  <% end %>
-  <%= link_to transfers_path, class: class_names('dock-active': controller_name == "transfers") do %>
-    <i class="ph-bold ph-repeat"></i>
-    <span class="sr-only">Transfers</span>
-  <% end %>
-  <%= link_to accounts_path, class: class_names('dock-active': controller_name == "accounts") do %>
-    <i class="ph-bold ph-bank"></i>
-    <span class="sr-only">Accounts</span>
-  <% end %>
-  <%= link_to categories_path, class: class_names('dock-active': controller_name == "categories") do %>
-    <i class="ph-bold ph-tag"></i>
-    <span class="sr-only">Categories</span>
-  <% end %>
-  <%= link_to settings_path, class: class_names('dock-active': controller_name == "settings") do %>
-    <i class="ph-bold ph-gear"></i>
-    <span class="sr-only">Settings</span>
-  <% end %>
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-30" data-controller="bottom-navigation">
+  <%# Overlay %>
+  <div class="fixed inset-0 bg-black/60 hidden z-20"
+       data-bottom-navigation-target="overlay"
+       data-action="click->bottom-navigation#closeAll"></div>
+
+  <%# Circular Action Menu (fans out from center button) %>
+  <div class="fixed bottom-24 left-1/2 -translate-x-1/2 w-[220px] h-[110px] z-30 pointer-events-none"
+       data-bottom-navigation-target="actions">
+    <%# Expense - bottom left of arc %>
+    <%= link_to new_transaction_path(transaction_type: "expense"),
+        class: "absolute left-0 bottom-0 flex flex-col items-center gap-1.5 pointer-events-auto transition-all duration-300 scale-0 opacity-0",
+        data: { bottom_navigation_target: "actionItem" } do %>
+      <span class="size-12 rounded-full bg-error flex items-center justify-center shadow-lg">
+        <i class="ph-bold ph-minus text-xl text-white"></i>
+      </span>
+      <span class="text-[11px] font-bold text-base-content">Expense</span>
+    <% end %>
+    <%# Income - top center of arc %>
+    <%= link_to new_transaction_path(transaction_type: "income"),
+        class: "absolute left-1/2 -translate-x-1/2 top-0 flex flex-col items-center gap-1.5 pointer-events-auto transition-all duration-300 scale-0 opacity-0",
+        data: { bottom_navigation_target: "actionItem" } do %>
+      <span class="size-12 rounded-full bg-success flex items-center justify-center shadow-lg">
+        <i class="ph-bold ph-plus text-xl text-white"></i>
+      </span>
+      <span class="text-[11px] font-bold text-base-content">Income</span>
+    <% end %>
+    <%# Transfer - bottom right of arc %>
+    <%= link_to new_transfer_path,
+        class: "absolute right-0 bottom-0 flex flex-col items-center gap-1.5 pointer-events-auto transition-all duration-300 scale-0 opacity-0",
+        data: { bottom_navigation_target: "actionItem" } do %>
+      <span class="size-12 rounded-full bg-secondary flex items-center justify-center shadow-lg">
+        <i class="ph-bold ph-swap text-xl text-white"></i>
+      </span>
+      <span class="text-[11px] font-bold text-base-content">Transfer</span>
+    <% end %>
+  </div>
+
+  <%# Menu Bottom Sheet %>
+  <div class="fixed bottom-20 left-0 right-0 bg-base-200 rounded-t-2xl translate-y-full transition-transform duration-300 ease-in-out z-30"
+       data-bottom-navigation-target="menu">
+    <%# Drag handle %>
+    <div class="flex justify-center pt-3 pb-2">
+      <div class="w-10 h-1 rounded-full bg-base-content/20"></div>
+    </div>
+
+    <nav class="flex flex-col gap-0.5 px-4 pb-2 text-sm max-h-[60vh] overflow-y-auto">
+      <%= link_to root_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'home' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-house text-base w-5"></i>
+        Dashboard
+      <% end %>
+
+      <p class="mt-2 mb-0.5 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Money</p>
+
+      <%= link_to transactions_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'transactions' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-arrows-left-right text-base w-5"></i>
+        Transactions
+      <% end %>
+      <%= link_to transfers_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'transfers' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-swap text-base w-5"></i>
+        Transfers
+      <% end %>
+
+      <p class="mt-2 mb-0.5 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Accounts</p>
+
+      <%= link_to accounts_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'accounts' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-bank text-base w-5"></i>
+        Accounts
+      <% end %>
+      <%= link_to credit_cards_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'credit_cards' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-credit-card text-base w-5"></i>
+        Credit Cards
+      <% end %>
+
+      <p class="mt-2 mb-0.5 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Analyze</p>
+
+      <%= link_to splits_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'splits' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-scissors text-base w-5"></i>
+        Splits
+      <% end %>
+      <%= link_to reports_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'reports' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-chart-line-up text-base w-5"></i>
+        Reports
+      <% end %>
+
+      <p class="mt-2 mb-0.5 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Manage</p>
+
+      <%= link_to categories_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'categories' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-tag text-base w-5"></i>
+        Categories
+      <% end %>
+      <%= link_to tags_path, class: "flex items-center gap-3.5 px-3 py-3.5 rounded-lg font-medium #{controller_name == 'tags' ? 'bg-neutral text-primary' : 'text-base-content'}" do %>
+        <i class="ph-bold ph-hash text-base w-5"></i>
+        Tags
+      <% end %>
+    </nav>
+
+    <div class="border-t border-neutral">
+      <div class="flex items-center gap-3 px-5 py-3">
+        <div class="size-8 rounded-full bg-primary flex items-center justify-center text-primary-content text-sm font-semibold shrink-0">
+          <%= Current.user.username[0].upcase %>
+        </div>
+        <p class="flex-1 text-sm font-medium truncate"><%= Current.user.username %></p>
+        <%= link_to settings_path, class: "text-base-content/60 hover:text-base-content transition-colors" do %>
+          <i class="ph-bold ph-gear text-base"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%# Bottom Navigation Bar %>
+  <div class="relative z-30 bg-base-200 border-t border-neutral pt-2 pb-6">
+    <div class="flex items-center justify-around px-2">
+      <%# Home %>
+      <%= link_to root_path, class: "flex flex-col items-center justify-center gap-1 w-16 h-12 #{controller_name == 'home' ? 'text-primary' : 'text-base-content/60'}" do %>
+        <i class="ph-bold ph-house text-2xl"></i>
+        <span class="text-[10px] font-medium">Home</span>
+      <% end %>
+
+      <%# Accounts %>
+      <%= link_to accounts_path, class: "flex flex-col items-center justify-center gap-1 w-16 h-12 #{controller_name == 'accounts' ? 'text-primary' : 'text-base-content/60'}" do %>
+        <i class="ph-bold ph-bank text-2xl"></i>
+        <span class="text-[10px] font-medium">Accounts</span>
+      <% end %>
+
+      <%# Add Button (center) %>
+      <div class="flex flex-col items-center justify-center w-16 h-12">
+        <button class="size-11 rounded-full bg-primary flex items-center justify-center text-primary-content shadow-lg"
+                data-bottom-navigation-target="addButton"
+                data-action="click->bottom-navigation#toggleActions">
+          <i class="ph-bold ph-lightning text-2xl" data-bottom-navigation-target="addIcon"></i>
+          <i class="ph-bold ph-x text-2xl hidden" data-bottom-navigation-target="closeIcon"></i>
+        </button>
+      </div>
+
+      <%# Reports %>
+      <%= link_to reports_path, class: "flex flex-col items-center justify-center gap-1 w-16 h-12 #{controller_name == 'reports' ? 'text-primary' : 'text-base-content/60'}" do %>
+        <i class="ph-bold ph-chart-line-up text-2xl"></i>
+        <span class="text-[10px] font-medium">Reports</span>
+      <% end %>
+
+      <%# Menu %>
+      <button class="flex flex-col items-center justify-center gap-1 w-16 h-12 text-base-content/60 transition-colors"
+              data-bottom-navigation-target="menuButton"
+              data-action="click->bottom-navigation#toggleMenu">
+        <i class="ph-bold ph-list text-2xl" data-bottom-navigation-target="menuIcon"></i>
+        <i class="ph-bold ph-x text-2xl hidden" data-bottom-navigation-target="menuCloseIcon"></i>
+        <span class="text-[10px] font-medium">Menu</span>
+      </button>
+    </div>
+  </div>
 </div>
