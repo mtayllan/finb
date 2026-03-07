@@ -11,6 +11,8 @@ class Transaction < ApplicationRecord
   has_many :transaction_tags, dependent: :destroy, inverse_of: :taggable_transaction
   has_many :tags, through: :transaction_tags
 
+  attr_accessor :transaction_type
+
   validates :value, :date, :description, presence: true
   validates :value, numericality: {other_than: 0}
   validate :date_after_account_initial_balance_date

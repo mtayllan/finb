@@ -5,7 +5,9 @@ class AppUI::TransactionKindSwitch < ViewComponent::Base
   end
 
   def checked?
-    if @transaction.value.zero?
+    if @transaction.transaction_type.present?
+      @transaction.transaction_type == "income"
+    elsif @transaction.value.zero?
       @transaction.account&.investment?
     else
       @transaction.value > 0
