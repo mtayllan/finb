@@ -1,47 +1,99 @@
 <%= turbo_frame_tag "split_#{split.id}" do %>
-  <div class="border-b-1 border-base-content/10 pb-2 md:pb-0 grid md:grid-cols-9 gap-4 w-full">
-    <div class="text-sm"><%= split.payer_transaction.date.to_fs(:day_month_year) %></div>
-    <div class="md:col-span-2"><%= split.payer_transaction.description %></div>
-    <div>
-      <span class="md:hidden">From</span>
-      <%= split.payer_transaction.account.user.username %>
-    </div>
-    <div class="md:col-span-2">
-      <%= number_to_currency(split.payer_transaction.value.abs) %>
-      |
-      <%= number_to_currency(split.amount_borrowed) %>
-    </div>
-    <div class="md:col-span-3 flex gap-2 pb-2">
-      <% if split.borrower_transaction %>
-        <div class="flex items-center space-x-2">
-          <div>
-            <%= render UI::Icon.new(split.borrower_transaction.category.icon, size: "2xl", background: true, color: split.borrower_transaction.category.color) %>
+  <%# Desktop row %>
+  <div class="hidden lg:block">
+    <div class="card bg-base-200/50 hover:bg-base-200 transition-colors mb-2">
+      <div class="card-body p-4">
+        <div class="grid lg:grid-cols-12 gap-4 items-center">
+          <div class="col-span-1 text-sm text-base-content/60">
+            <%= split.payer_transaction.date.to_fs(:day_month_year) %>
           </div>
-          <div>
-            <%= split.borrower_transaction.category.name %>
+          <div class="col-span-3">
+            <div class="font-medium"><%= split.payer_transaction.description %></div>
+            <div class="text-xs text-base-content/50">
+              Paid by <%= split.payer_transaction.account.user.username %>
+            </div>
           </div>
-          <div>
-            <%= button_to "Unconfirm", split_confirmations_path(split), method: :delete, class: "btn btn-soft btn-sm btn-error" %>
+          <div class="col-span-2 text-right">
+            <span class="font-medium"><%= number_to_currency(split.payer_transaction.value.abs) %></span>
           </div>
-        </div>
-      <% else %>
-        <%= form_with(url: split_confirmations_path(split), method: :post) do |form| %>
-          <div class="flex space-x-2">
-            <%= render UI::SelectField.new(name: "category_id", placeholder: 'Select a category', value: split.borrower_transaction&.category_id) do |comp| %>
-              <% Current.user.categories.order(:name).each do |category| %>
-                <% comp.with_option(value: category.id) do %>
-                  <div class="mr-2">
-                    <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
-                  </div>
-                  <div><%= category.name %></div>
+          <div class="col-span-2 text-right">
+            <span class="text-primary font-medium"><%= number_to_currency(split.amount_borrowed) %></span>
+          </div>
+          <div class="col-span-4">
+            <% if split.borrower_transaction %>
+              <div class="flex items-center gap-2 flex-wrap">
+                <%= render UI::Icon.new(split.borrower_transaction.category.icon, size: "2xl", background: true, color: split.borrower_transaction.category.color) %>
+                <span class="text-sm"><%= split.borrower_transaction.category.name %></span>
+                <span class="badge badge-soft badge-success badge-sm">Confirmed</span>
+                <%= button_to split_confirmations_path(split), method: :delete, class: "btn btn-ghost btn-sm btn-circle text-error ml-auto" do %>
+                  <i class="ph-bold ph-x"></i>
                 <% end %>
+              </div>
+            <% else %>
+              <%= form_with(url: split_confirmations_path(split), method: :post) do |form| %>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <%= render UI::SelectField.new(name: "category_id", placeholder: 'Select a category', value: split.borrower_transaction&.category_id) do |comp| %>
+                    <% Current.user.categories.order(:name).each do |category| %>
+                      <% comp.with_option(value: category.id) do %>
+                        <div class="mr-2">
+                          <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
+                        </div>
+                        <div><%= category.name %></div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <%= form.submit 'Confirm', class: "btn btn-primary btn-sm" %>
+                </div>
               <% end %>
             <% end %>
-
-            <%= form.submit 'Confirm', class: "btn btn-primary" %>
           </div>
-        <% end %>
-      <% end %>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <%# Mobile row %>
+  <div class="lg:hidden flex flex-col gap-2 py-3 border-b border-neutral">
+    <% if split.borrower_transaction %>
+      <%# Confirmed mobile row %>
+      <div class="flex items-center gap-3">
+        <div class="flex flex-col gap-0.5 flex-1 min-w-0">
+          <span class="text-sm font-medium truncate"><%= split.payer_transaction.description %></span>
+          <span class="text-xs text-base-content/60"><%= split.payer_transaction.date.strftime('%d/%m') %> · paid by <%= split.payer_transaction.account.user.username %> · <%= split.borrower_transaction.category.name %></span>
+        </div>
+        <div class="flex flex-col items-end gap-0.5 shrink-0">
+          <span class="text-xs text-base-content/60"><%= number_to_currency(split.payer_transaction.value.abs) %></span>
+          <span class="text-xs font-semibold"><%= number_to_currency(split.amount_borrowed) %></span>
+        </div>
+        <span class="badge badge-soft badge-success badge-xs">Confirmed</span>
+      </div>
+    <% else %>
+      <%# Pending mobile row %>
+      <div class="flex items-center gap-3">
+        <div class="flex flex-col gap-0.5 flex-1 min-w-0">
+          <span class="text-sm font-medium truncate"><%= split.payer_transaction.description %></span>
+          <span class="text-xs text-base-content/60"><%= split.payer_transaction.date.strftime('%d/%m') %> · paid by <%= split.payer_transaction.account.user.username %></span>
+        </div>
+        <div class="flex flex-col items-end gap-0.5 shrink-0">
+          <span class="text-xs text-base-content/60"><%= number_to_currency(split.payer_transaction.value.abs) %></span>
+          <span class="text-xs font-semibold text-warning">you owe <%= number_to_currency(split.amount_borrowed) %></span>
+        </div>
+      </div>
+      <%= form_with(url: split_confirmations_path(split), method: :post) do |form| %>
+        <div class="flex items-center gap-2">
+          <%= render UI::SelectField.new(name: "category_id", placeholder: 'Select category', value: nil) do |comp| %>
+            <% Current.user.categories.order(:name).each do |category| %>
+              <% comp.with_option(value: category.id) do %>
+                <div class="mr-2">
+                  <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
+                </div>
+                <div><%= category.name %></div>
+              <% end %>
+            <% end %>
+          <% end %>
+          <%= form.submit 'Confirm', class: "btn btn-primary btn-sm" %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 <% end %>

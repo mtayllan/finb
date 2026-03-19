@@ -21,6 +21,10 @@ class SplitsController < ApplicationController
         me_owed: paid_by_user.sum(&:amount_borrowed)
       }
     end
+
+    @payer_count = @splits_as_payer.count
+    @borrower_count = @splits_as_borrower.count
+    @pending_count = @splits_as_borrower.where(confirmed_at: nil).count
   end
 
   def new

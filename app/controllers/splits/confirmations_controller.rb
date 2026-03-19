@@ -15,7 +15,12 @@ class Splits::ConfirmationsController < ApplicationController
     @split.update!(borrower_transaction: transaction, confirmed_at: Date.current)
 
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("split_#{@split.id}", partial: "splits/borrower_row", locals: {split: @split}) }
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace("split_#{@split.id}", partial: "splits/borrower_row", locals: {split: @split}),
+          turbo_stream.replace("borrower_badge", partial: "splits/borrower_badge", locals: badge_locals)
+        ]
+      end
       format.html { redirect_to splits_path, notice: "Split confirmed!" }
     end
   end
@@ -26,10 +31,15 @@ class Splits::ConfirmationsController < ApplicationController
     end
 
     @split.borrower_transaction.destroy!
-    @split.update(confirmed_at: nil)
+    @split.update!(borrower_transaction: nil, confirmed_at: nil)
 
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("split_#{@split.id}", partial: "splits/borrower_row", locals: {split: @split}) }
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace("split_#{@split.id}", partial: "splits/borrower_row", locals: {split: @split}),
+          turbo_stream.replace("borrower_badge", partial: "splits/borrower_badge", locals: badge_locals)
+        ]
+      end
       format.html { redirect_to splits_path, notice: "Split unconfirmed!" }
     end
   end
@@ -38,5 +48,10 @@ class Splits::ConfirmationsController < ApplicationController
 
   def set_split
     @split = Current.user.splits_as_borrower.find(params[:split_id])
+  end
+
+  def badge_locals
+    splits = Current.user.splits_as_borrower
+    {pending_count: splits.where(confirmed_at: nil).count, borrower_count: splits.count}
   end
 end
