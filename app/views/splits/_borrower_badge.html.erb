@@ -1,0 +1,7 @@
+<turbo-frame id="borrower_badge">
+  <% if pending_count > 0 %>
+    <span class="badge badge-sm badge-soft badge-warning"><%= pending_count %><span class="hidden sm:inline"> pending</span></span>
+  <% else %>
+    <span class="badge badge-sm badge-soft badge-primary"><%= borrower_count %></span>
+  <% end %>
+</turbo-frame>
