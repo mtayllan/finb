@@ -20,6 +20,8 @@ module DataManagement
       Tag.delete_all
       Transaction.delete_all
       Transfer.delete_all
+      StatementAnalysis::Item.delete_all
+      StatementAnalysis.delete_all
       CreditCard::Statement.delete_all
       Account.delete_all
       Category.delete_all
