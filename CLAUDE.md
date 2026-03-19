@@ -86,6 +86,7 @@ FinB is a Personal Finances Manager
   - `app_ui` for app related components
 - **Stimulus Controllers**: Handle interactivity, organized alongside components
 - **Styling**: Tailwind CSS v4 with Daisy UI https://daisyui.com/
+  - Never use arbitrary pixel values for font sizes (e.g. `text-[13px]`, `text-[11px]`). Always use Tailwind's standard size tokens: `text-xs`, `text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`, etc.
 - Icons with **Phosphor Icons** lib
 - User rails importmaps to install JS packages
 
