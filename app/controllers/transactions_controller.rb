@@ -16,6 +16,7 @@ class TransactionsController < ApplicationController
   end
 
   def edit
+    session[:transaction_return_to] = request.referer
   end
 
   def create
@@ -59,6 +60,8 @@ class TransactionsController < ApplicationController
   end
 
   def after_save_url(transaction)
+    return session.delete(:transaction_return_to) || transactions_url unless transaction.account
+
     if transaction.credit_card_statement
       credit_card_url(transaction.account, month: transaction.credit_card_statement.month.strftime("%Y/%m"))
     else
