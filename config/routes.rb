@@ -45,4 +45,8 @@ Rails.application.routes.draw do
     resource :income_by_category, only: :show
     resource :expenses_by_category, only: :show
   end
+
+  unless Rails.env.production?
+    get "dev/login/:id", to: "dev/login#create", as: :dev_login
+  end
 end

@@ -154,3 +154,16 @@ Summary: in present tense. Not capitalized. No period at the end.
 <summary> is a brief description of the commit, using imperative mood and present tense. For example, use change instead of changed or changes.
 
 <body> is a more detailed description of the commit message, also using imperative mood and present tense like <header>. <body> describes the motivation for the change, such as why the change was introduced, what the previous logic was, what the current logic is, and what impact the change has.
+
+## Explorations with Playwright MCP
+
+When exploring the application with the Playwright MCP tool, use the dev-only auto-login routes to authenticate without filling forms:
+
+- navigate to `http://localhost:3000/dev/login/:id`
+
+Default to ID `1`. If it fails (404), use the Rails console to find the first valid ID:
+```ruby
+User.first.id
+```
+
+These routes are not available in production.
