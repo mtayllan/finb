@@ -1,4 +1,4 @@
-<aside class="hidden md:flex flex-col w-64 min-h-screen bg-base-200 border-r border-neutral fixed top-0 left-0 z-20">
+<aside class="hidden md:flex flex-col w-64 h-screen bg-base-200 border-r border-neutral fixed top-0 left-0 z-20">
   <%# Brand %>
   <div class="flex items-center gap-3 px-5 pt-4 pb-2 shrink-0">
     <%= image_tag "icon.png", class: "size-5", alt: "FinB" %>
@@ -75,7 +75,7 @@
   <div class="divider my-0"></div>
 
   <%# User area %>
-  <div class="flex items-center gap-3 px-4 py-4">
+  <div class="flex items-center gap-3 px-4 py-4 shrink-0">
     <div class="size-8 rounded-full bg-primary flex items-center justify-center text-primary-content text-sm font-semibold shrink-0">
       <%= Current.user.username[0].upcase %>
     </div>
