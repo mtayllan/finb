@@ -4,7 +4,7 @@ bank_one:
   balance: 0
   color: "#fff000"
   kind: checking
-  initial_balance_date: <%= Date.current %>
+  initial_balance_date: <%= 1.month.ago %>
   user: default
 
 savings_one:
@@ -13,7 +13,7 @@ savings_one:
   balance: 1000
   color: "#00ff00"
   kind: savings
-  initial_balance_date: <%= Date.current %>
+  initial_balance_date: <%= 1.month.ago %>
   user: default
 
 investments_one:
@@ -22,7 +22,7 @@ investments_one:
   balance: 5000
   color: "#00ffff"
   kind: investment
-  initial_balance_date: <%= Date.current %>
+  initial_balance_date: <%= 1.month.ago %>
   user: default
 
 credit_one:
@@ -32,7 +32,7 @@ credit_one:
   color: "#ff11ff"
   kind: credit_card
   credit_card_expiration_day: 20
-  initial_balance_date: <%= Date.current %>
+  initial_balance_date: <%= 1.month.ago %>
   user: default
 
 
