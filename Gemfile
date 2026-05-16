@@ -23,7 +23,7 @@ gem "view_component"
 
 # OTHER
 gem "bootsnap", require: false
-gem "kamal", "~> 2.5", require: false
+gem "kamal", "~> 2.11", require: false
 gem "thruster", "~> 0.1", require: false
 gem "honeybadger", "~> 6.5"
 
