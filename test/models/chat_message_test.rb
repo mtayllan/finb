@@ -33,6 +33,8 @@ class ChatMessageTest < ActiveSupport::TestCase
   end
 
   test "process sets credit card statement for credit card accounts" do
+    travel_to Date.current.beginning_of_month
+
     stub_groq_api(
       value: -100.0,
       date: Date.current.to_s,
