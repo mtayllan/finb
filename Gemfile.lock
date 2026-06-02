@@ -134,7 +134,7 @@ GEM
       activesupport (>= 7.2)
     hashdiff (1.2.1)
     hashery (2.1.2)
-    honeybadger (6.6.1)
+    honeybadger (6.6.2)
       logger
       ostruct
     hotwire-spark (0.1.13)
