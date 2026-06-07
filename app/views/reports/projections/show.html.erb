@@ -1,0 +1,127 @@
+<div class="w-full">
+  <div class="flex justify-between items-center pb-2">
+    <%= render UI::H1.new.with_content('Projection') %>
+  </div>
+  <hr>
+
+  <p class="text-sm text-base-content/60 mt-4">
+    Projected income, expenses and balance based on the average of the last
+    <%= Projection::HISTORY_MONTHS %> months plus already-scheduled future transactions.
+  </p>
+
+  <%= form_with url: reports_projection_path, method: :get, local: true, class: "mt-4" do |form| %>
+    <div class="max-w-xs">
+      <%= render UI::FormGroup.new do %>
+        <%= render UI::FormLabel.new(form, :months) %>
+        <select name="months" class="select select-bordered w-full" onchange="this.form.requestSubmit()">
+          <% Reports::ProjectionsController::ALLOWED_MONTHS.each do |option| %>
+            <option value="<%= option %>" <%= "selected" if @months == option %>>Next <%= option %> months</option>
+          <% end %>
+        </select>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+    <div class="stat bg-base-200">
+      <div class="stat-title">Current Balance</div>
+      <div class="stat-value <%= @projection.starting_balance >= 0 ? 'text-positive' : 'text-negative' %>">
+        <%= number_to_currency(@projection.starting_balance) %>
+      </div>
+    </div>
+    <div class="stat bg-base-200">
+      <div class="stat-title">Projected Income</div>
+      <div class="stat-value text-positive"><%= number_to_currency(@projection.total_projected_income) %></div>
+    </div>
+    <div class="stat bg-base-200">
+      <div class="stat-title">Projected Expenses</div>
+      <div class="stat-value text-negative"><%= number_to_currency(@projection.total_projected_expenses.abs) %></div>
+    </div>
+    <div class="stat bg-base-200">
+      <div class="stat-title">Projected Net</div>
+      <div class="stat-value <%= @projection.total_net >= 0 ? 'text-positive' : 'text-negative' %>">
+        <%= number_to_currency(@projection.total_net) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <h3 class="text-xl font-bold mb-4">Projected Balance</h3>
+    <div
+      data-controller="charts--projected-balance"
+      data-charts--projected-balance-balances-value="<%= @projection.projected_balance_by_month.to_a.to_json %>"
+      class="h-96"
+    >
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <h3 class="text-xl font-bold mb-4">Income vs Expenses by Month</h3>
+    <div
+      data-controller="charts--transactions-totals"
+      data-charts--transactions-totals-expenses-value="<%= @projection.projected_expenses_by_month.to_a.to_json %>"
+      data-charts--transactions-totals-income-value="<%= @projection.projected_income_by_month.to_a.to_json %>"
+      data-charts--transactions-totals-granularity-value="month"
+      class="h-96"
+    >
+    </div>
+  </div>
+
+  <% if @projection.projected_expense_by_category.any? %>
+    <div class="mt-6">
+      <h3 class="text-xl font-bold mb-4">Projected Expenses by Category</h3>
+      <div class="overflow-x-auto">
+        <table class="table table-zebra">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th class="text-right">Total (<%= @months %> months)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @projection.projected_expense_by_category.each do |category, total| %>
+              <tr>
+                <td>
+                  <div class="flex items-center space-x-2">
+                    <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
+                    <span><%= category.name %></span>
+                  </div>
+                </td>
+                <td class="text-right text-negative"><%= number_to_currency(total) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @projection.projected_income_by_category.any? %>
+    <div class="mt-6">
+      <h3 class="text-xl font-bold mb-4">Projected Income by Category</h3>
+      <div class="overflow-x-auto">
+        <table class="table table-zebra">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th class="text-right">Total (<%= @months %> months)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @projection.projected_income_by_category.each do |category, total| %>
+              <tr>
+                <td>
+                  <div class="flex items-center space-x-2">
+                    <%= render AppUI::Categories::Icon.new(category, size: "lg") %>
+                    <span><%= category.name %></span>
+                  </div>
+                </td>
+                <td class="text-right text-positive"><%= number_to_currency(total) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

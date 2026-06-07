@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resource :daily_balance, only: :show
     resource :income_by_category, only: :show
     resource :expenses_by_category, only: :show
+    resource :projection, only: :show
   end
 
   unless Rails.env.production?

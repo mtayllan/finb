@@ -59,6 +59,10 @@
       <i class="ph-bold ph-chart-line-up text-base w-4"></i>
       Reports
     <% end %>
+    <%= link_to reports_projection_path, class: "flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition-colors #{controller_name == 'projections' ? 'bg-neutral text-primary' : 'text-base-content hover:bg-base-300'}" do %>
+      <i class="ph-bold ph-trend-up text-base w-4"></i>
+      Projection
+    <% end %>
 
     <p class="mt-3 mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-base-content/60">Manage</p>
 
