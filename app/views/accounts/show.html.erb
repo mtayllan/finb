@@ -71,7 +71,7 @@
       <tbody>
         <% @account_events.each do |record| %>
           <% if record.is_a?(Transaction) %>
-            <%= render 'transaction', transaction: record %>
+            <%= render AppUI::Transactions::Row.new(record) %>
           <% elsif record.is_a?(Transfer) %>
             <%= render 'transfer', transfer: record %>
           <% else %>

@@ -57,7 +57,9 @@
         </tr>
       </thead>
       <tbody>
-        <%= render @transactions %>
+        <% @transactions.each do |transaction| %>
+          <%= render AppUI::Transactions::Row.new(transaction, show_account: true, return_to_transactions: true) %>
+        <% end %>
       </tbody>
     </table>
   </div>

@@ -1,6 +1,6 @@
 <tr id="<%= dom_id transaction %>">
   <td>
-    <% if transaction.date > Date.current %>
+    <% if future? %>
       <div class="tooltip tooltip-right cursor-help" data-tip="Future Transaction">
         <i class="ph ph-hourglass text-warning"></i>
       </div>
@@ -10,6 +10,9 @@
   <td>
     <div class="flex items-center gap-2">
       <span><%= transaction.description %></span>
+      <% if installment? %>
+        <i class="ph ph-credit-card text-info"></i>
+      <% end %>
       <% if transaction.tags.any? %>
         <div class="flex flex-wrap gap-1">
           <% transaction.tags.first(2).each do |tag| %>
@@ -25,14 +28,30 @@
   <td>
     <div class="flex items-center">
       <div class="mr-2">
-        <%= render UI::Icon.new(transaction.category.icon, size: "2xl", background: true, color: transaction.category.color) %>
+        <%= render AppUI::Categories::Icon.new(transaction.category) %>
       </div>
       <div class="link">
-        <%= link_to transaction.category.name, url_for(params.permit(:month, :account_id).merge(category_id: transaction.category_id)) %>
+        <%= link_to transaction.category.name, category_url %>
       </div>
     </div>
   </td>
-  <td class="<%= transaction.value >= 0 ? 'text-positive' : 'text-negative' %>">
+  <% if @show_account %>
+    <td>
+      <% if transaction.account %>
+        <div class="flex items-center">
+          <div class="mr-2">
+            <%= render AppUI::Accounts::Icon.new(transaction.account) %>
+          </div>
+          <div class="link">
+            <%= link_to transaction.account.name, account_url %>
+          </div>
+        </div>
+      <% else %>
+        SPLIT: <%= transaction.borrower_split.payer_transaction.account.user.username %>
+      <% end %>
+    </td>
+  <% end %>
+  <td class="<%= value_class %>">
     <%= number_to_currency(transaction.value) %>
     <% if transaction.payer_split %>
       |
@@ -48,15 +67,17 @@
       <i class="ph ph-trash"></i>
       Delete
     <% end %>
-    <% if transaction.can_edit_split? %>
-      <%= link_to edit_split_path(transaction.payer_split), class: "btn btn-soft btn-sm" do %>
-        <i class="ph ph-arrows-out-line-horizontal"></i>
-        Edit Split
-      <% end %>
-    <% elsif transaction.can_create_split? %>
-      <%= link_to new_split_path(transaction_id: transaction.id), class: "btn btn-soft btn-sm" do %>
-        <i class="ph ph-arrows-out-line-horizontal"></i>
-        Create Split
+    <% if @show_split_actions %>
+      <% if transaction.can_edit_split? %>
+        <%= link_to edit_split_path(transaction.payer_split, **split_link_options), class: "btn btn-soft btn-sm" do %>
+          <i class="ph ph-arrows-out-line-horizontal"></i>
+          Edit Split
+        <% end %>
+      <% elsif transaction.can_create_split? %>
+        <%= link_to new_split_path(transaction_id: transaction.id, **split_link_options), class: "btn btn-soft btn-sm" do %>
+          <i class="ph ph-arrows-out-line-horizontal"></i>
+          Create Split
+        <% end %>
       <% end %>
     <% end %>
   </td>

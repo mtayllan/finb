@@ -54,50 +54,7 @@
             <td colspan="5" class="h-[1rem]"></td>
           </tr>
           <% transactions.each do |transaction| %>
-            <tr id="<%= dom_id transaction %>">
-              <td><%= transaction.date.to_fs(:day_month_year) %></td>
-              <td>
-                <div class="flex items-center gap-2">
-                  <span><%= transaction.description %></span>
-                  <% if transaction.description.match?(/\(\d+\/\d+\)/) %>
-                    <i class="ph ph-credit-card text-info"></i>
-                  <% end %>
-                  <% if transaction.tags.any? %>
-                    <div class="flex flex-wrap gap-1">
-                      <% transaction.tags.first(2).each do |tag| %>
-                        <%= render AppUI::Tags::Badge.new(tag, size: :sm) %>
-                      <% end %>
-                      <% if transaction.tags.size > 2 %>
-                        <span class="text-xs text-base-content/60">+<%= transaction.tags.size - 2 %></span>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-              </td>
-              <td>
-                <div class="flex items-center">
-                  <div class="mr-2">
-                    <%= render AppUI::Categories::Icon.new(transaction.category) %>
-                  </div>
-                  <div>
-                    <%= transaction.category.name %>
-                  </div>
-                </div>
-              </td>
-              <td class="<%= transaction.value >= 0 ? 'text-positive' : 'text-negative' %>">
-                <%= number_to_currency(transaction.value) %>
-              </td>
-              <td class="flex gap-2">
-                <%= link_to edit_transaction_path(transaction), class: "btn btn-soft btn-secondary" do %>
-                  <i class="ph ph-pencil-simple-line"></i>
-                  Edit
-                <% end %>
-                <%= link_to transaction, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-soft btn-error" do %>
-                  <i class="ph ph-trash"></i>
-                  Delete
-                <% end %>
-              </td>
-            </tr>
+            <%= render AppUI::Transactions::Row.new(transaction, show_installment_indicator: true) %>
           <% end %>
         <% end %>
       </tbody>
