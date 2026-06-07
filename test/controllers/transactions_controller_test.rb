@@ -11,8 +11,85 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index with filtered results" do
-    get transactions_url, params: {month: Date.current.strftime("%Y/%m"), category_id: create(:category).id, account_id: create(:account).id}
+    get transactions_url, params: {category_id: create(:category).id, account_id: create(:account).id}
     assert_response :success
+  end
+
+  test "index filters by category and account" do
+    user = users(:default)
+    account = create(:account, user:)
+    other_account = create(:account, user:)
+    matching = create(:transaction, account:, category: categories(:food), value: -5)
+    create(:transaction, account: other_account, category: categories(:other), value: -5)
+
+    get transactions_url, params: {category_id: categories(:food).id, account_id: account.id}
+
+    assert_response :success
+    assert_select "tr#transaction_#{matching.id}"
+    assert_select "tr[id^=?]", "transaction_", 1
+  end
+
+  test "index filters by date range" do
+    user = users(:default)
+    account = create(:account, user:, initial_balance_date: 1.year.ago)
+    in_range = create(:transaction, account:, category: categories(:food), date: Date.current, value: -5)
+    out_of_range = create(:transaction, account:, category: categories(:food), date: 2.months.ago.to_date, value: -5)
+
+    get transactions_url, params: {start_date: 1.month.ago.to_date.to_s, end_date: Date.current.to_s}
+
+    assert_response :success
+    assert_select "tr#transaction_#{in_range.id}"
+    assert_select "tr#transaction_#{out_of_range.id}", false
+  end
+
+  test "index filters by tag" do
+    user = users(:default)
+    account = create(:account, user:)
+    tag = tags(:tropicalrb)
+    tagged = create(:transaction, account:, category: categories(:food), value: -5)
+    tagged.tags << tag
+    create(:transaction, account:, category: categories(:food), value: -5)
+
+    get transactions_url, params: {tag_ids: [tag.id]}
+
+    assert_response :success
+    assert_select "tr#transaction_#{tagged.id}"
+    assert_select "tr[id^=?]", "transaction_", 1
+  end
+
+  test "index paginates 20 per page" do
+    user = users(:default)
+    account = create(:account, user:)
+    Transaction.delete_all
+    create_list(:transaction, 51, account:, category: categories(:food), value: -5, date: Date.current)
+
+    get transactions_url
+    assert_response :success
+    assert_select "tr[id^=?]", "transaction_", 20
+
+    # page 0 -> offset 0, page -1 -> offset 20, page -2 -> offset 40 (11 remaining)
+    get transactions_url, params: {page: -2}
+    assert_response :success
+    assert_select "tr[id^=?]", "transaction_", 11
+  end
+
+  test "index defaults anchored at today, skipping future transactions" do
+    user = users(:default)
+    account = create(:account, user:, initial_balance_date: 2.years.ago)
+    Transaction.delete_all
+    future = create(:transaction, account:, category: categories(:food), value: -5, date: 1.month.from_now.to_date)
+    today_tx = create(:transaction, account:, category: categories(:food), value: -5, date: Date.current)
+
+    get transactions_url
+    assert_response :success
+    assert_select "tr#transaction_#{today_tx.id}"
+    assert_select "tr#transaction_#{future.id}", false
+
+    # Future transactions live on positive pages (Previous).
+    get transactions_url, params: {page: 1}
+    assert_response :success
+    assert_select "tr#transaction_#{future.id}"
+    assert_select "tr#transaction_#{today_tx.id}", false
   end
 
   test "should get new" do

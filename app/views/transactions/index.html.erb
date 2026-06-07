@@ -1,7 +1,17 @@
-<div class="w-full">
+<% active_filters = [params[:start_date], params[:end_date], params[:category_id], params[:account_id], params[:search], *Array(params[:tag_ids])].any?(&:present?) %>
+
+<div class="w-full" data-controller="disclosure">
   <div class="flex flex-wrap justify-between items-center gap-2">
     <%= render UI::H1.new.with_content('Transactions') %>
     <div class="flex gap-2">
+      <div class="indicator">
+        <% if active_filters %>
+          <span class="indicator-item badge badge-primary badge-xs"></span>
+        <% end %>
+        <button type="button" class="btn btn-soft" data-action="click->disclosure#toggle">
+          <i class="ph ph-funnel"></i>
+        </button>
+      </div>
       <%= link_to chat_index_path, class: "btn btn-secondary" do %>
         <i class="ph ph-chat-circle-dots"></i>
         Quick Chat
@@ -10,42 +20,94 @@
     </div>
   </div>
 
-  <div class="my-4">
-    <%= form_with url: transactions_path, method: :get, data: { turbo_action: "replace" } do |f| %>
-      <%= hidden_field_tag :month, @month.strftime('%Y/%m') %>
-      <%= hidden_field_tag :account_id, params[:account_id] if params[:account_id] %>
-      <%= hidden_field_tag :category_id, params[:category_id] if params[:category_id] %>
-      <div class="flex gap-2">
-        <label class="input input-bordered flex items-center gap-2 flex-1">
-          <i class="ph ph-magnifying-glass"></i>
-          <%= f.search_field :search, value: params[:search], placeholder: "Search by description...", class: "grow", data: params[:search].present? ? { controller: "autofocus-end" } : {} %>
-        </label>
-        <%= f.submit "Search", class: "btn btn-primary" %>
-        <% if params[:search].present? %>
-          <%= link_to "Clear", url_for(params.permit(:month, :account_id, :category_id).except(:search)), class: "btn btn-ghost" %>
+  <div data-disclosure-target="content" class="<%= active_filters ? '' : 'hidden' %>">
+    <%= form_with url: transactions_path, method: :get, data: { turbo_action: "replace" }, class: "space-y-4 my-4" do |form| %>
+      <div>
+        <%= render UI::FormGroup.new do %>
+          <%= render UI::FormLabel.new(form, :quick_filters) %>
+          <select name="quick_filter" class="select select-bordered w-full" onchange="this.form.requestSubmit()">
+            <option value="">Select a date range...</option>
+            <option value="today">Today</option>
+            <option value="this_week">This Week</option>
+            <option value="last_week">Last Week</option>
+            <option value="last_2_weeks">Last 2 Weeks</option>
+            <option value="this_month">This Month</option>
+            <option value="last_month">Last Month</option>
+            <option value="last_3_months">Last 3 Months</option>
+            <option value="this_year">This Year</option>
+          </select>
         <% end %>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <%= render UI::FormGroup.new do %>
+          <%= render UI::FormLabel.new(form, :category_id) %>
+          <%= render UI::SelectField.new(name: form.field_name(:category_id), placeholder: 'All Categories', value: @selected_category_id) do |select| %>
+            <% @categories.each do |category| %>
+              <% select.with_option(value: category.id, label: category.name) %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <%= render UI::FormGroup.new do %>
+          <%= render UI::FormLabel.new(form, :account_id) %>
+          <%= render UI::SelectField.new(name: form.field_name(:account_id), placeholder: 'All Accounts', value: @selected_account_id) do |select| %>
+            <% @accounts.each do |account| %>
+              <% select.with_option(value: account.id, label: account.name) %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% if @tags.any? %>
+          <%= render UI::FormGroup.new do %>
+            <%= render UI::FormLabel.new(form, :tags) %>
+            <%= render UI::MultiSelectField.new(name: "tag_ids[]", selected_values: @selected_tag_ids, placeholder: "All Tags") do |comp| %>
+              <% @tags.each do |tag| %>
+                <% comp.with_option(value: tag.id, label: tag.name, color: tag.color, selected: @selected_tag_ids.include?(tag.id.to_s)) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <%= render UI::FormGroup.new do %>
+          <%= render UI::FormLabel.new(form, :start_date) %>
+          <%= render "components/ui/date_picker", name: form.field_name(:start_date), initial_value: @start_date&.to_fs(:day_month_year), show_quick_select: false %>
+        <% end %>
+
+        <%= render UI::FormGroup.new do %>
+          <%= render UI::FormLabel.new(form, :end_date) %>
+          <%= render "components/ui/date_picker", name: form.field_name(:end_date), initial_value: @end_date&.to_fs(:day_month_year), show_quick_select: false %>
+        <% end %>
+
+        <%= render UI::FormGroup.new do %>
+          <%= render UI::FormLabel.new(form, :search) %>
+          <label class="input input-bordered flex items-center gap-2">
+            <i class="ph ph-magnifying-glass"></i>
+            <%= form.search_field :search, value: params[:search], placeholder: "Search by description...", class: "grow" %>
+          </label>
+        <% end %>
+      </div>
+
+      <div class="flex justify-end gap-2">
+        <%= link_to "Clear Filters", transactions_path, class: "btn btn-soft" %>
+        <%= form.submit "Update", class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
 
-  <div class="flex justify-center items-center my-6 gap-8">
-    <%=
-      link_to @month.prev_month.strftime('%b %Y'),
-              url_for(params.permit(:account_id, :category_id, :search).merge(month: @month.prev_month.strftime('%Y/%m'))),
-              class: "link"
-    %>
+  <% filters = params.permit(:start_date, :end_date, :quick_filter, :category_id, :account_id, :search, tag_ids: []) %>
 
-    <div class="text-2xl font-semibold tracking-tight"> <%= @month.strftime('%B %Y') %> </div>
+  <% pagination = capture do %>
+    <div class="flex justify-between items-center my-4">
+      <%= link_to "← Previous", url_for(filters.merge(page: @older_page)), class: "btn btn-soft" %>
+      <%= link_to "Next →", url_for(filters.merge(page: @newer_page)), class: "btn btn-soft" %>
+    </div>
+  <% end %>
 
-    <%=
-      link_to @month.next_month.strftime('%b %Y'),
-              url_for(params.permit(:account_id, :category_id, :search).merge(month: @month.next_month.strftime('%Y/%m'))),
-              class: "link"
-    %>
-  </div>
+  <%= pagination %>
 
   <div class="overflow-x-auto">
-    <table id="transactions" class="table table-zebra">
+    <table id="transactions" class="table">
       <thead>
         <tr>
           <th>Date</th>
@@ -57,10 +119,17 @@
         </tr>
       </thead>
       <tbody>
-        <% @transactions.each do |transaction| %>
-          <%= render AppUI::Transactions::Row.new(transaction, show_account: true, return_to_transactions: true) %>
+        <% @transactions.group_by(&:date).each do |date, transactions| %>
+          <tr class="bg-base-200 text-xs font-bold">
+            <td colspan="6" class="h-[1rem]"></td>
+          </tr>
+          <% transactions.each do |transaction| %>
+            <%= render AppUI::Transactions::Row.new(transaction, show_account: true, return_to_transactions: true) %>
+          <% end %>
         <% end %>
       </tbody>
     </table>
   </div>
+
+  <%= pagination %>
 </div>
