@@ -26,6 +26,9 @@ FinB is a Personal Finances Manager
 
 ## General Development Rules
 
+### Database
+- The app runs on **SQLite**.
+
 ### Authentication Context
 - Use `Current.user` for the current user. Do NOT use `current_user`.
 
