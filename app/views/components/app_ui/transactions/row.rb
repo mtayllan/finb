@@ -18,7 +18,7 @@ class AppUI::Transactions::Row < ViewComponent::Base
   end
 
   def installment?
-    @show_installment_indicator && transaction.description.match?(/\(\d+\/\d+\)/)
+    @show_installment_indicator && transaction.installment?
   end
 
   def value_class

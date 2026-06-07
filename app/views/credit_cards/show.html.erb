@@ -49,12 +49,20 @@
         </tr>
       </thead>
       <tbody>
-        <% @transactions.group_by(&:date).each do |date, transactions| %>
-          <tr class="bg-base-200 text-xs font-bold">
-            <td colspan="5" class="h-[1rem]"></td>
-          </tr>
-          <% transactions.each do |transaction| %>
-            <%= render AppUI::Transactions::Row.new(transaction, show_installment_indicator: true) %>
+        <% installment_groups = { false => @transactions.reject(&:installment?), true => @transactions.select(&:installment?) } %>
+        <% installment_groups.each do |is_installment, group| %>
+          <% if is_installment && group.any? %>
+            <tr class="bg-base-200">
+              <td colspan="5" class="py-6 px-4 text-xs font-bold text-primary uppercase tracking-widest">Installments</td>
+            </tr>
+          <% end %>
+          <% group.group_by(&:date).each do |date, transactions| %>
+            <tr class="bg-base-200 text-xs font-bold">
+              <td colspan="5" class="h-[1rem]"></td>
+            </tr>
+            <% transactions.each do |transaction| %>
+              <%= render AppUI::Transactions::Row.new(transaction, show_installment_indicator: true) %>
+            <% end %>
           <% end %>
         <% end %>
       </tbody>

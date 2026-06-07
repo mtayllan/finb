@@ -1,6 +1,12 @@
 module Transaction::Installmentable
   extend ActiveSupport::Concern
 
+  INSTALLMENT_PATTERN = /\(\d+\/\d+\)/
+
+  def installment?
+    description.to_s.match?(INSTALLMENT_PATTERN)
+  end
+
   class_methods do
     # Class method for creating installment transactions
     def create_with_installments(original_transaction, installments_count)
